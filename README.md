@@ -1,6 +1,8 @@
 # useFormState -- useful hooks and form elements in React / TypeScript
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- custom `useFormState` hook for managing form state
+- `MUI System` and `MUI Base` components for rendering form elements
 
 ## Available Scripts
 
