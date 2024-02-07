@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# useFormState -- useful hooks and form elements in React / TypeScript
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
