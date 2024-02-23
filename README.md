@@ -1,48 +1,96 @@
 # useFormState -- useful hooks and form elements in React / TypeScript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-- custom `useFormState` hook for managing form state
-- `MUI System` and `MUI Base` components for rendering form elements
+# `useFormState` Hook
 
-## Available Scripts
+The `useFormState` React hook generates a dynamic, type safe, consistent form state.  It handles validation, error messages, tracks initial values and current values, allows for resets and can be used to completely manage a form's state or as part of a composable data structure.
+## Usage
 
-In the project directory, you can run:
+### Form Config
 
-### `npm start`
+A `FormConfig` defines the structure and shape of the form, it is parsed internally by the `useFormState` hook to generate a form state.
+  - A FormConfig is an array of `FieldConfig<FieldValueType>` objects, each of which defines the type and values of a form field.
+  - A `FieldConfig` object has the following properties:
+    - `id`: A unique string identifier for the field.
+    - `initialValue`: The initial value of the field.
+    - `validations`: An array of validation functions that accept the field's value and return a string error message if the value is invalid. It returns the first invalid message, so priority of messages is determined by the order of the array.
+      - validation functions should match the signature of the ValidationFn, and return an error message (string) if invalid or an empty string if field is valid: `type ValidationFn<FieldValueType> = (value: FieldValueType) => string`
+    - `getIsDirty`: An optional function that accepts the field's initial value and current value and returns a boolean indicating whether the field has been modified from its initial state. If not provided, the hook will use a default function that checks for strict equality between the initial and current values.
+      - it must match the signature of the CompareFn: `type CompareFn<FieldValueType> = (prevValue: FieldValueType, nextValue: FieldValueType) => boolean;`
+      - Provide a custom `getIsDirty` function for custom field values which will not properly evaluate in a strict equal comparison (ie, any object or array).
+#### Example FormConfig
+   ```tsx
+   type TComplexField = {
+      shouldEmail: boolean;
+      email: string;
+    };
+   
+   const formConfig = [
+     {
+       id: 'name',
+       initialValue: user?.name || '',
+       validations: [(value: string) => isBlank(value) ? 'Name is required.' : ''],
+     } as FieldConfig<string>,
+     {
+      id: 'quantity',
+      initialValue: user?.quantity || 0,
+      validations: [
+        (value: number) => value < 1 ? 'Must have at least one thing.' : '',
+        (value: number) => value > 100 ? 'Too many things!.' : '',
+      ],
+     } as FieldConfig<number>,
+     {
+      id: 'complexField',
+      initialValue: {
+        shouldEmail: false,
+        email: user?.email || '',
+      },
+      validations: [
+        (value: TComplexField) => value.shouldEmail && isBlank(value.email) ? 'Email is required.' : '',
+      ],
+      getIsDirty: (initVal: TComplexField, currVal: TComplexField): boolean => (
+        initVal.enabled !== currVal.enabled || initVal.val !== currVal.val
+      ),
+     } as FieldConfig<TComplexField>,
+   ] as FormConfig;
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+###  Example Instantiation the `useFormState` hook with the `FormConfig` and FormType
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+   ```tsx
+   type MyFormType = {
+     name: string;
+     quantity: number;
+     complexField: TComplexField;
+  };
+  
+   const {
+     values,
+     errors,
+     isDirty,
+     isInvalid,
+     handleBlur,
+     handleChange,
+   } = useFormState<UpdateUserMyFormType>(formConfig);
+   ```
 
-### `npm test`
+Use the returned state and functions in your component to interact with the form state.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## State and Functions
 
-### `npm run build`
+- `values`: An object representing the current values of the form fields.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `errors`: An object that holds validation error messages for each field.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `isDirty`: A boolean indicating whether the form has been modified from its initial state.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `isInvalid`: A boolean indicating whether the form has validation errors.
 
-### `npm run eject`
+- `initialValues`: An object representing the initial values of the form fields. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `handleBlur(fieldName: keyof TFormValuesTypes)`: A function to handle the `onBlur` event for a specific field. It marks the field as "touched."  Error messages remain invisible until the field recieves an 'onBlur' event, so as not to prematurely render error UI.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `handleChange(fieldName: keyof TFormValuesTypes, value: TFormValuesTypes[keyof TFormValuesTypes])`: A function to handle changes to a specific field's value.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- `resetForm()`: Resets the form to its initial state, clearing any changes and touched states.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `resetField(fieldName: keyof TFormValuesTypes)`: Resets a specific field to its initial value and clears its touched state.
