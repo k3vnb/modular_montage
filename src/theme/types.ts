@@ -1,11 +1,4 @@
-export type ThemedTemplateVariants =
-  | "primary"
-  | "secondary"
-  | "info"
-  | "danger"
-  | "warning"
-  | "success"
-  | "special";
+import type { ThemedTemplateVariants } from "global/types";
 
 export type ThemedTemplateColorMap = {
   main: string;
