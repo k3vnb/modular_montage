@@ -1,12 +1,15 @@
-import './App.css';
+import { ThemeProvider } from "@emotion/react";
+import { Container } from "./App.elements";
+import { useGlobalContext } from "./contexts/GlobalContext";
 
 function App() {
+  const { theme } = useGlobalContext();
   return (
-    <div className="App">
-      <header className="App-header">
+    <ThemeProvider theme={theme}>
+      <Container>
         Use Form State
-      </header>
-    </div>
+      </Container>
+    </ThemeProvider>
   );
 }
 
