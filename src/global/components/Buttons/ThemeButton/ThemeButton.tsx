@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box, styled } from "@mui/system";
-import { Button as BaseButton, type ButtonProps as BaseButtonProps  } from "@mui/base";
+import type { ButtonProps as BaseButtonProps  } from "@mui/base";
 import type { SvgIconComponent } from "@mui/icons-material";
 import type { ThemedTemplateVariants } from "global/types";
 import { UnstyledButton } from "../UnstyledButton";
@@ -20,7 +20,7 @@ type StyledButtonProps = {
   variant: ThemedTemplateVariants;
 } & BaseButtonProps;
 
-export const StyledButton = styled(BaseButton, options)<StyledButtonProps>(({
+export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>(({
   theme,
   size,
   shadow,

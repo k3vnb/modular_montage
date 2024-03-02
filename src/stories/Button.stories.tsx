@@ -24,7 +24,6 @@ type ButtonListProps = {
 const ButtonList = (props: ButtonListProps) => {
   const buttonProps = {
     ...props,
-    fullWidth: true,
     icon: NotificationsIcon,
     onClick: () => undefined,
   };
