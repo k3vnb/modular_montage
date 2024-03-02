@@ -1,14 +1,14 @@
+import { Outlet } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
-import { Container } from "./App.elements";
 import { useGlobalContext } from "./contexts/GlobalContext";
+import { AppRedirectController } from "routes/components/AppRedirectController";
 
 function App() {
   const { theme } = useGlobalContext();
   return (
     <ThemeProvider theme={theme}>
-      <Container>
-        Widgets and Stuff
-      </Container>
+      <AppRedirectController />
+      <Outlet />
     </ThemeProvider>
   );
 }

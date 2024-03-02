@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box, Stack } from "@mui/system";
-import { Notifications } from "@mui/icons-material";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Button, type TButtonSize } from "global/components/Button";
 import type { ThemedTemplateVariants } from "global/types";
 
@@ -25,7 +25,7 @@ const ButtonList = (props: ButtonListProps) => {
   const buttonProps = {
     ...props,
     fullWidth: true,
-    icon: Notifications,
+    icon: NotificationsIcon,
     onClick: () => undefined,
   };
 

@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { RouterProvider } from "react-router-dom";
 import './index.css';
-import App from './App';
 import { GlobalContextProvider } from './contexts/GlobalContext';
+import { router } from 'routes';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <GlobalContextProvider>
-      <App />
+      <RouterProvider router={router} />
     </GlobalContextProvider>
   </React.StrictMode>
 );
