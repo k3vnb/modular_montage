@@ -2,8 +2,8 @@ import * as React from "react";
 import { Box, styled } from "@mui/system";
 import { Button as BaseButton, type ButtonProps as BaseButtonProps  } from "@mui/base";
 import type { SvgIconComponent } from "@mui/icons-material";
-import type { ThemedTemplateVariants } from "../../types";
-import { THEME_FONTS } from "../../../theme/typography";
+import type { ThemedTemplateVariants } from "global/types";
+import { THEME_FONTS } from "theme/typography";
 
 export type TButtonSize = "small" | "medium" | "large";
 
@@ -142,7 +142,7 @@ export type TButtonProps = {
   icon?: SvgIconComponent | React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 } & BaseButtonProps;
 
-export const Button: React.FC<TButtonProps> = ({
+export const ThemeButton: React.FC<TButtonProps> = ({
   text,
   type = "button",
   shadow = true,

@@ -2,7 +2,7 @@ import * as React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box, Stack } from "@mui/system";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { Button, type TButtonSize } from "global/components/Button";
+import { ThemeButton as Button, type TButtonSize } from "global/components/Buttons";
 import type { ThemedTemplateVariants } from "global/types";
 
 const variantOptions: ThemedTemplateVariants[] = [
