@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useLocation } from "react-router-dom";
-import Grid from "@mui/system/Unstable_Grid/Grid";
-import { Stack } from "@mui/system";
+import { Box, Stack } from "@mui/system";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -10,35 +9,51 @@ type LayoutProps = {
 
 const AppContainer = ({ children, debugMode }: LayoutProps): JSX.Element => {
   return (
-    <Grid 
-      container 
-      height="100%" 
+    <Box 
+      display="grid"
       minHeight="100%" 
       maxHeight="100%"
-      width="100vw"
-      wrap="nowrap"
       position="fixed"
-      columns={{ xs: 12 }}
       sx={{
+        width: "100vw",
+        height: "100%",
         overflow: "hidden",
-        flexDirection: {
-          xs: "column",
-          sm: "row",
-        },
+        gridTemplateRows: 'auto 1fr auto',
+        gridTemplateColumns: 'auto 1fr',
+        gridTemplateAreas: `
+          "header header"
+          "sidebar main"
+          "footer footer"`,
         backgroundColor: debugMode ? "rgb(255, 179, 0)" : "transparent",
       }}
     >
       {children}
-    </Grid>
+    </Box>
+  );
+};
+
+const Header = ({ children, debugMode }: LayoutProps): JSX.Element => {
+  return (
+    <Box
+      sx={{
+        gridArea: "header",
+        minWidth: "100%",
+        width: "100%",
+        backgroundColor: debugMode ? "rgb(0, 255, 255)" : "transparent",
+      }}
+    >
+      {children}
+    </Box>
   );
 };
 
 const Sidebar = ({ children, debugMode }: LayoutProps): JSX.Element => {
   const width = "auto"; // "auto" will grow to fit children's content
   return (
-    <Grid
+    <Box
       width={width}
       sx={{
+        gridArea: "sidebar",
         display: {
           xs: "none",
           sm: "block",
@@ -48,7 +63,7 @@ const Sidebar = ({ children, debugMode }: LayoutProps): JSX.Element => {
       }}
     >
       {children}
-    </Grid>
+    </Box>
   );
 };
 
@@ -70,10 +85,11 @@ const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
   }, [pathname]);
 
   return (
-    <Grid
+    <Box
       ref={ref}
       sx={{
-        flex: 2,
+        gridArea: "main",
+        // flex: 2,
         overflow: "auto",
         width: {
           xs: "100vw",
@@ -101,19 +117,19 @@ const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
             ),
           }),
           backgroundColor: debugMode ? "rgb(242, 0, 255)" : "transparent",
-
         }}    
       >
         {children}
       </Stack>
-    </Grid>
+    </Box>
   );
 };
 
 const BottomBar = ({ children, debugMode }: LayoutProps): JSX.Element => {
   return (
-    <Grid
+    <Box
       sx={{
+        gridArea: "footer",
         display: {
           xs: "block",
           sm: "none",
@@ -122,12 +138,13 @@ const BottomBar = ({ children, debugMode }: LayoutProps): JSX.Element => {
       }}
     >
       {children}
-    </Grid>
+    </Box>
   );
 };
 
 export const Layout = {
   AppContainer,
+  Header,
   Sidebar,
   MainContent,
   BottomBar,
