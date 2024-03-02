@@ -1,9 +1,9 @@
 export type ThemedTemplateVariants =
-  | "primary"
-  | "secondary"
-  | "info"
-  | "danger"
-  | "warning"
-  | "success"
-  | "special";
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'danger'
+  | 'warning'
+  | 'success'
+  | 'special';
   

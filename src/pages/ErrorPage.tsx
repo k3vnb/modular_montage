@@ -1,4 +1,4 @@
-import { Stack } from "@mui/system";
+import { Stack } from '@mui/system';
 
 export const ErrorPage = (): JSX.Element => {
   return (

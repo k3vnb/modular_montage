@@ -1,8 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
-import { ROUTES } from "./routes";
-import { AppLayout } from "layouts";
-import { PlaceholderPage, ErrorPage, NotFoundPage } from "pages";
-import App from "../App";
+import { createBrowserRouter } from 'react-router-dom';
+import { ROUTES } from './routes';
+import { AppLayout } from 'layouts';
+import { PlaceholderPage, ErrorPage, NotFoundPage } from 'pages';
+import App from '../App';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             ],
           },
           {
-            path: "*",
+            path: '*',
             element: <NotFoundPage />,
           },
         ],

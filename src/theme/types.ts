@@ -1,4 +1,4 @@
-import type { ThemedTemplateVariants } from "global/types";
+import type { ThemedTemplateVariants } from 'global/types';
 
 export type ThemedTemplateColorMap = {
   main: string;

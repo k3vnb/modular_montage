@@ -1,30 +1,30 @@
-import FireplaceIcon from "@mui/icons-material/FireplaceOutlined";
-import AppsIcon from "@mui/icons-material/AppsOutlined";
-import YardIcon from "@mui/icons-material/YardOutlined";
+import FireplaceIcon from '@mui/icons-material/FireplaceOutlined';
+import AppsIcon from '@mui/icons-material/AppsOutlined';
+import YardIcon from '@mui/icons-material/YardOutlined';
 // import ChairIcon from "@mui/icons-material/ChairOutlined";
 import BedroomBabyOutlinedIcon from '@mui/icons-material/BedroomBabyOutlined';
-import type { SvgIconComponent } from "@mui/icons-material";
+import type { SvgIconComponent } from '@mui/icons-material';
 
 
 export interface Route {
   path: string;
   subroutes?: Record<string, Route>;
-};
+}
 
 export interface NavRoute extends Route {
   shortLabel?: string;
   label: string;
   icon: SvgIconComponent | React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-};
+}
 
 const PATHS = {
-  root: "/",
-  dashboard: "/dashboard",
-  widgets: "/widgets",
-  forms: "/forms",
-  about: "/about",
-  etc: "/about/etc",
-  etc2: "/about/etc2",
+  root: '/',
+  dashboard: '/dashboard',
+  widgets: '/widgets',
+  forms: '/forms',
+  about: '/about',
+  etc: '/about/etc',
+  etc2: '/about/etc2',
 } as const;
 
 export const ROUTES = {
@@ -33,23 +33,23 @@ export const ROUTES = {
   },
   dashboard: {
     path: PATHS.dashboard,
-    label: "Dashboard",
-    shortLabel: "Home",
+    label: 'Dashboard',
+    shortLabel: 'Home',
     icon: AppsIcon,
   },
   widgets: {
     path: PATHS.widgets,
-    label: "Widgets",
+    label: 'Widgets',
     icon: BedroomBabyOutlinedIcon,
   },
   forms: {
     path: PATHS.forms,
-    label: "Forms",
+    label: 'Forms',
     icon: FireplaceIcon,
   },
   about: {
     path: PATHS.about,
-    label: "About",
+    label: 'About',
     icon: YardIcon,
     subroutes: {
       etc: {

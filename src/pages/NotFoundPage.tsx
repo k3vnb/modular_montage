@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { Box, Stack } from "@mui/system";
-import ArrowLeft from "@mui/icons-material/WestOutlined";
-import { ROUTES } from "routes";
+import { Link } from 'react-router-dom';
+import { Box, Stack } from '@mui/system';
+import ArrowLeft from '@mui/icons-material/WestOutlined';
+import { ROUTES } from 'routes';
 
 export const NotFoundPage = (): JSX.Element => {
   return (

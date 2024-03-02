@@ -7,216 +7,216 @@ type FontStyleCSSProperties = {
   fontStyle?: string;
 };
 
-type Sizes = "xs" | "s" | "m" | "l" | "xl";
+type Sizes = 'xs' | 's' | 'm' | 'l' | 'xl';
 
-export const fontFamily = "Poppins, Arial, sans-serif";
+export const fontFamily = 'Poppins, Arial, sans-serif';
 
-const sizeDefaults: Record<Sizes, Omit<FontStyleCSSProperties, "fontWeight" | "fontFamily">> = {
+const sizeDefaults: Record<Sizes, Omit<FontStyleCSSProperties, 'fontWeight' | 'fontFamily'>> = {
   xs: {
-    fontSize: "0.7rem",
-    lineHeight: "0.8rem",
-    letterSpacing: "normal",
+    fontSize: '0.7rem',
+    lineHeight: '0.8rem',
+    letterSpacing: 'normal',
   },
   s: {
-    fontSize: "0.75rem",
-    lineHeight: "1rem",
-    letterSpacing: "normal",
+    fontSize: '0.75rem',
+    lineHeight: '1rem',
+    letterSpacing: 'normal',
   },
   m: {
-    fontSize: "0.85rem",
-    lineHeight: "1.125rem",
-    letterSpacing: "normal",
+    fontSize: '0.85rem',
+    lineHeight: '1.125rem',
+    letterSpacing: 'normal',
   },
   l: {
-    fontSize: "1rem",
-    lineHeight: "1.5rem",
-    letterSpacing: "-0.176px",
+    fontSize: '1rem',
+    lineHeight: '1.5rem',
+    letterSpacing: '-0.176px',
   },
   xl: {
-    fontSize: "2.25rem",
-    lineHeight: "3rem",
-    letterSpacing: "-0.396px",
+    fontSize: '2.25rem',
+    lineHeight: '3rem',
+    letterSpacing: '-0.396px',
   },
 };
 
 const fontStyles = {
-  "text-xs-regular": {
+  'text-xs-regular': {
     ...sizeDefaults.xs,
     fontFamily,
     fontWeight: 400,
   },
-  "text-s-regular": {
+  'text-s-regular': {
     ...sizeDefaults.s,
     fontFamily,
     fontWeight: 400,
   },
-  "text-s-semibold": {
+  'text-s-semibold': {
     ...sizeDefaults.s,
     fontFamily,
     fontWeight: 600,
   },
-  "text-s-bold": {
+  'text-s-bold': {
     ...sizeDefaults.s,
     fontFamily,
     fontWeight: 700,
   },
-  "text-m-regular": {
+  'text-m-regular': {
     ...sizeDefaults.m,
     fontFamily,
     fontWeight: 300,
   },
-  "text-m-medium": {
+  'text-m-medium': {
     ...sizeDefaults.m,
     fontFamily,
     fontWeight: 500,
   },
-  "text-m-semibold": {
+  'text-m-semibold': {
     ...sizeDefaults.m,
     fontFamily,
     fontWeight: 600,
   },
-  "text-m-bold": {
+  'text-m-bold': {
     ...sizeDefaults.m,
     fontFamily,
     fontWeight: 700,
-    letterSpacing: "0.2px",
+    letterSpacing: '0.2px',
   },
-  "text-m-italic": {
+  'text-m-italic': {
     ...sizeDefaults.m,
     fontFamily,
     fontWeight: 400,
-    fontStyle: "italic",
+    fontStyle: 'italic',
   },
-  "text-m-extrabold": {
+  'text-m-extrabold': {
     ...sizeDefaults.m,
     fontFamily,
     fontWeight: 800,
-    letterSpacing: "0.2px",
+    letterSpacing: '0.2px',
   },
-  "text-l-regular": {
+  'text-l-regular': {
     ...sizeDefaults.l,
     fontFamily,
     fontWeight: 300,
   },
-  "text-l-medium": {
+  'text-l-medium': {
     ...sizeDefaults.l,
     fontFamily,
     fontWeight: 500,
   },
-  "text-l-semibold": {
+  'text-l-semibold': {
     ...sizeDefaults.l,
     fontFamily,
     fontWeight: 600,
   },
-  "text-l-bold": {
+  'text-l-bold': {
     ...sizeDefaults.l,
     fontFamily,
     fontWeight: 700,
-    letterSpacing: "0.25px",
+    letterSpacing: '0.25px',
   },
-  "text-xl-regular": {
+  'text-xl-regular': {
     ...sizeDefaults.xl,
     fontFamily,
     fontWeight: 400,
   },
-  "subtitle-regular": {
+  'subtitle-regular': {
     fontFamily,
     fontWeight: 400,
-    fontSize: "1.25rem",
-    lineHeight: "1.75rem",
-    letterSpacing: "-0.22px",
+    fontSize: '1.25rem',
+    lineHeight: '1.75rem',
+    letterSpacing: '-0.22px',
   },
-  "subtitle-semibold": {
+  'subtitle-semibold': {
     fontFamily,
     fontWeight: 600,
-    fontSize: "1.25rem",
-    lineHeight: "1.75rem",
-    letterSpacing: "-0.22px",
+    fontSize: '1.25rem',
+    lineHeight: '1.75rem',
+    letterSpacing: '-0.22px',
   },
-  "heading-h1": {
+  'heading-h1': {
     fontFamily,
     fontWeight: 600,
-    fontSize: "3rem",
-    lineHeight: "3.75rem",
-    letterSpacing: "-0.75px",
+    fontSize: '3rem',
+    lineHeight: '3.75rem',
+    letterSpacing: '-0.75px',
   },
-  "heading-h1-mobile": {
+  'heading-h1-mobile': {
     fontFamily,
     fontWeight: 600,
-    fontSize: "2.5rem",
-    lineHeight: "2.5rem",
-    letterSpacing: "-0.6px",
+    fontSize: '2.5rem',
+    lineHeight: '2.5rem',
+    letterSpacing: '-0.6px',
   },
-  "heading-h2": {
+  'heading-h2': {
     fontFamily,
     fontWeight: 500,
-    fontSize: "2.5rem",
-    lineHeight: "2.85rem",
-    letterSpacing: "-1.1px",
+    fontSize: '2.5rem',
+    lineHeight: '2.85rem',
+    letterSpacing: '-1.1px',
   },
-  "heading-h2-mobile": {
+  'heading-h2-mobile': {
     fontFamily,
     fontWeight: 500,
-    fontSize: "1.9rem",
-    lineHeight: "1.9rem",
-    letterSpacing: "-0.25px",
+    fontSize: '1.9rem',
+    lineHeight: '1.9rem',
+    letterSpacing: '-0.25px',
   },
-  "heading-h3": {
+  'heading-h3': {
     fontFamily,
     fontWeight: 400,
-    fontSize: "1.75rem",
-    lineHeight: "2.25rem",
-    letterSpacing: "normal",
+    fontSize: '1.75rem',
+    lineHeight: '2.25rem',
+    letterSpacing: 'normal',
   },
-  "heading-h4": {
+  'heading-h4': {
     fontFamily,
     fontWeight: 600,
-    fontSize: "1.125rem",
-    lineHeight: "1.75rem",
-    letterSpacing: "normal",
+    fontSize: '1.125rem',
+    lineHeight: '1.75rem',
+    letterSpacing: 'normal',
   },
-  "heading-h5": {
+  'heading-h5': {
     fontFamily,
     fontWeight: 700,
-    fontSize: "1rem",
-    lineHeight: "1.25rem",
-    letterSpacing: "0.15px",
+    fontSize: '1rem',
+    lineHeight: '1.25rem',
+    letterSpacing: '0.15px',
   },
-  "heading-h6": {
+  'heading-h6': {
     fontFamily,
     fontWeight: 700,
-    fontSize: "0.875rem",
-    lineHeight: "1.125rem",
-    letterSpacing: "0.15px",
+    fontSize: '0.875rem',
+    lineHeight: '1.125rem',
+    letterSpacing: '0.15px',
   },
 };
 
 const fontStyleVariants = {
-  textXs: fontStyles["text-xs-regular"],
-  textSm: fontStyles["text-s-regular"],
-  textSmSemibold: fontStyles["text-s-semibold"],
-  textSmBold: fontStyles["text-s-bold"],
-  textMd: fontStyles["text-m-regular"],
-  textMdMedium: fontStyles["text-m-medium"],
-  textMdSemibold: fontStyles["text-m-semibold"],
-  textMdBold: fontStyles["text-m-bold"],
-  textMdItalic: fontStyles["text-m-italic"],
-  textMdExtrabold: fontStyles["text-m-extrabold"],
-  textLg: fontStyles["text-l-regular"],
-  textLgMedium: fontStyles["text-l-medium"],
-  textLgSemibold: fontStyles["text-l-semibold"],
-  textLgBold: fontStyles["text-l-bold"],
-  textXl: fontStyles["text-xl-regular"],
-  subtitle: fontStyles["subtitle-regular"],
-  subtitleSemibold: fontStyles["subtitle-semibold"],
-  headingH1: fontStyles["heading-h1"],
-  headingH1Mobile: fontStyles["heading-h1-mobile"],
-  headingH2: fontStyles["heading-h2"],
-  headingH2Mobile: fontStyles["heading-h2-mobile"],
-  headingH3: fontStyles["heading-h3"],
-  headingH4: fontStyles["heading-h4"],
-  headingH5: fontStyles["heading-h5"],
-  headingH6: fontStyles["heading-h6"],
+  textXs: fontStyles['text-xs-regular'],
+  textSm: fontStyles['text-s-regular'],
+  textSmSemibold: fontStyles['text-s-semibold'],
+  textSmBold: fontStyles['text-s-bold'],
+  textMd: fontStyles['text-m-regular'],
+  textMdMedium: fontStyles['text-m-medium'],
+  textMdSemibold: fontStyles['text-m-semibold'],
+  textMdBold: fontStyles['text-m-bold'],
+  textMdItalic: fontStyles['text-m-italic'],
+  textMdExtrabold: fontStyles['text-m-extrabold'],
+  textLg: fontStyles['text-l-regular'],
+  textLgMedium: fontStyles['text-l-medium'],
+  textLgSemibold: fontStyles['text-l-semibold'],
+  textLgBold: fontStyles['text-l-bold'],
+  textXl: fontStyles['text-xl-regular'],
+  subtitle: fontStyles['subtitle-regular'],
+  subtitleSemibold: fontStyles['subtitle-semibold'],
+  headingH1: fontStyles['heading-h1'],
+  headingH1Mobile: fontStyles['heading-h1-mobile'],
+  headingH2: fontStyles['heading-h2'],
+  headingH2Mobile: fontStyles['heading-h2-mobile'],
+  headingH3: fontStyles['heading-h3'],
+  headingH4: fontStyles['heading-h4'],
+  headingH5: fontStyles['heading-h5'],
+  headingH6: fontStyles['heading-h6'],
 };
 
 type ThemeFontKeys = keyof typeof fontStyleVariants;

@@ -1,18 +1,18 @@
-import * as React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import { Box, Stack } from "@mui/system";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import { ThemeButton as Button, type TButtonSize } from "global/components/Buttons";
-import type { ThemedTemplateVariants } from "global/types";
+import * as React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Box, Stack } from '@mui/system';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import { ThemeButton as Button, type TButtonSize } from 'global/components/Buttons';
+import type { ThemedTemplateVariants } from 'global/types';
 
 const variantOptions: ThemedTemplateVariants[] = [
-  "primary",
-  "secondary",
-  "special",
-  "success",
-  "danger",
-  "warning",
-  "info",
+  'primary',
+  'secondary',
+  'special',
+  'success',
+  'danger',
+  'warning',
+  'info',
 ];
 
 type ButtonListProps = {
@@ -48,15 +48,15 @@ const ButtonList = (props: ButtonListProps) => {
   );
 };
 
-const ColorModeButtonLists = (props: Omit<ButtonListProps, "light">) => {
+const ColorModeButtonLists = (props: Omit<ButtonListProps, 'light'>) => {
   return (
     <Stack flexDirection="row" flexWrap="wrap" gap="20px">
-      {["light", "dark"].map((colorMode) => (
+      {['light', 'dark'].map((colorMode) => (
         <Stack key={colorMode} gap="20px">
-          <Box sx={{ fontVariant: "all-small-caps", color: "#323233", letterSpacing: "0.5px", textAlign: "center" }}>
+          <Box sx={{ fontVariant: 'all-small-caps', color: '#323233', letterSpacing: '0.5px', textAlign: 'center' }}>
             Color Mode: {colorMode}
           </Box>
-          <ButtonList {...props} light={colorMode === "light"} />
+          <ButtonList {...props} light={colorMode === 'light'} />
         </Stack>
       ))}
     </Stack>
@@ -66,14 +66,14 @@ const ColorModeButtonLists = (props: Omit<ButtonListProps, "light">) => {
 const ThemeButtonExamples: React.FC = () => {
   return (
     <Stack gap="40px">
-      {["large", "medium", "small"].map((size) => (
+      {['large', 'medium', 'small'].map((size) => (
         <Stack key={size} flexDirection="row" gap="40px">
-          {["with border", "no border"].map((borderType) => (
+          {['with border', 'no border'].map((borderType) => (
             <Stack key={borderType} gap="20px" maxWidth="max-content">
-              <Box sx={{ fontSize: "18px", color: "#626262", fontVariant: "all-small-caps", textTransform: "capitalize", fontWeight: "bolder", textAlign: "center",  letterSpacing: "0.5px", }}>
+              <Box sx={{ fontSize: '18px', color: '#626262', fontVariant: 'all-small-caps', textTransform: 'capitalize', fontWeight: 'bolder', textAlign: 'center',  letterSpacing: '0.5px', }}>
                 {`${size} - ${borderType}`}
               </Box>
-              <ColorModeButtonLists size={size as TButtonSize} showBorder={borderType === "with border"} />
+              <ColorModeButtonLists size={size as TButtonSize} showBorder={borderType === 'with border'} />
             </Stack>
           ))}
         </Stack>
@@ -83,9 +83,9 @@ const ThemeButtonExamples: React.FC = () => {
 };
 
 const meta = {
-  title: "Core Components/Buttons/Button Themes",
+  title: 'Core Components/Buttons/Button Themes',
   component: ThemeButtonExamples,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof ThemeButtonExamples>;
 
 export default meta;

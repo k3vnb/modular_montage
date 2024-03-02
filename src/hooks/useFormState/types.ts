@@ -10,14 +10,14 @@ export interface FormStateCore<TFormValuesTypes> {
   initialFormValues: TFormValuesTypes;
   fieldIsDirtyComparators: IsDirtyComparators<TFormValuesTypes>;
   fieldValidations: FieldValidations<TFormValuesTypes>;
-};
+}
 
 export interface FieldConfig<T> {
   id: string;
   initialValue: T;
   validations: ValidationFn<T>[];
   getIsDirty?: CompareFn<T>;
-};
+}
 
 export type FormConfig = Array<FieldConfig<unknown>>;
 

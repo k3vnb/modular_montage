@@ -6,12 +6,12 @@ import type {
   TouchedMap,
   ErrorMessageMap,
   UseFormStateReturnType,
-} from "./types";
+} from './types';
 
 // default compare function, will not work for objects/arrays (use custom 'getIsDirty' function for deep comparison)
 function shallowCompareIsDirty<T>(prevValue: T, nextValue: T) {
   return prevValue !== nextValue;
-};
+}
 
 export function getFormStateFromConfig<R>(fields: FormConfig){
   const formConfig = {
@@ -36,7 +36,7 @@ export function getFormStateFromConfig<R>(fields: FormConfig){
   });
 
   return formConfig as FormStateCore<R>;
-};
+}
 
 export function getEmptyFormState<T>(): UseFormStateReturnType<T> {
   return {
@@ -51,4 +51,4 @@ export function getEmptyFormState<T>(): UseFormStateReturnType<T> {
     handleBlur: () => undefined,
     handleChange: () => undefined,
   };
-};
+}

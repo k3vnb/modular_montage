@@ -1,5 +1,5 @@
-import * as React from "react";
-import { getFormStateFromConfig } from "./utils";
+import * as React from 'react';
+import { getFormStateFromConfig } from './utils';
 
 import type {
   FormStateCore,
@@ -7,7 +7,7 @@ import type {
   TouchedMap,
   ErrorMessageMap,
   UseFormStateReturnType,
-} from "./types";
+} from './types';
 
 export function useFormState<TFormValuesTypes>(
   formConfig: FormConfig
@@ -93,7 +93,7 @@ export function useFormState<TFormValuesTypes>(
       const errorMessage = validations
         .map((validation) => validation(value))
         .find((error) => !!error);
-      messages[key] = errorMessage || "";
+      messages[key] = errorMessage || '';
     }
 
     return messages;
@@ -129,4 +129,4 @@ export function useFormState<TFormValuesTypes>(
     handleBlur: handleFieldBlur,
     handleChange: handleFieldChange,
   };
-};
+}

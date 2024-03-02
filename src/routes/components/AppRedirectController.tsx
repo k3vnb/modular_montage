@@ -1,5 +1,5 @@
-import { Navigate, useMatch } from "react-router-dom";
-import { ROUTES } from "routes";
+import { Navigate, useMatch } from 'react-router-dom';
+import { ROUTES } from 'routes';
 
 export const AppRedirectController = () => {
   const match = useMatch(ROUTES.root.path);

@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
-import { Layout } from "./AppLayout.elements";
-import { Sidebar } from "global/components/Sidebar";
+import { Outlet } from 'react-router-dom';
+import { Layout } from './AppLayout.elements';
+import { Sidebar } from 'global/components/Sidebar';
 
 const IS_DEBUG_MODE = false;
 

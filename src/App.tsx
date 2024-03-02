@@ -1,7 +1,7 @@
-import { Outlet } from "react-router-dom";
-import { ThemeProvider } from "@emotion/react";
-import { useGlobalContext } from "./contexts/GlobalContext";
-import { AppRedirectController } from "routes/components/AppRedirectController";
+import { Outlet } from 'react-router-dom';
+import { ThemeProvider } from '@emotion/react';
+import { useGlobalContext } from './contexts/GlobalContext';
+import { AppRedirectController } from 'routes/components/AppRedirectController';
 
 function App() {
   const { theme } = useGlobalContext();

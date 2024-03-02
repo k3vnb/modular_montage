@@ -1,16 +1,16 @@
-import * as React from "react";
-import { Box, styled } from "@mui/system";
-import type { ButtonProps as BaseButtonProps  } from "@mui/base";
-import type { SvgIconComponent } from "@mui/icons-material";
-import type { ThemedTemplateVariants } from "global/types";
-import { UnstyledButton } from "../UnstyledButton";
-import { THEME_FONTS } from "theme/typography";
+import * as React from 'react';
+import { Box, styled } from '@mui/system';
+import type { ButtonProps as BaseButtonProps  } from '@mui/base';
+import type { SvgIconComponent } from '@mui/icons-material';
+import type { ThemedTemplateVariants } from 'global/types';
+import { UnstyledButton } from '../UnstyledButton';
+import { THEME_FONTS } from 'theme/typography';
 
-export type TButtonSize = "small" | "medium" | "large";
+export type TButtonSize = 'small' | 'medium' | 'large';
 
 const options = {
   shouldForwardProp: (prop: string) => ![
-    "variant", "size","light","showBorder","shadow",
+    'variant','size','light','showBorder','shadow',
   ].includes(prop),
 };
 
@@ -42,10 +42,10 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
       bgPressed: palette[variant].pressed,
       bgDisabled: palette.neutral[30],
 
-      border: showBorder ? palette[variant].border : "transparent",
-      borderHover: showBorder ? palette[variant].focus : "transparent",
-      borderPressed: showBorder ? palette[variant].focus : "transparent",
-      borderDisabled: showBorder ? palette.neutral[50] : "transparent",
+      border: showBorder ? palette[variant].border : 'transparent',
+      borderHover: showBorder ? palette[variant].focus : 'transparent',
+      borderPressed: showBorder ? palette[variant].focus : 'transparent',
+      borderDisabled: showBorder ? palette.neutral[50] : 'transparent',
       focusOutline: palette[variant].border,
     };
   
@@ -60,10 +60,10 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
       bgPressed: palette[variant].surface,
       bgDisabled: palette.neutral[30],
 
-      border: showBorder ? palette[variant].main : "transparent",
-      borderHover: showBorder ? palette[variant].hover : "transparent",
-      borderPressed: showBorder ? palette[variant].pressed : "transparent",
-      borderDisabled: showBorder ? palette.neutral[40] : "transparent",
+      border: showBorder ? palette[variant].main : 'transparent',
+      borderHover: showBorder ? palette[variant].hover : 'transparent',
+      borderPressed: showBorder ? palette[variant].pressed : 'transparent',
+      borderDisabled: showBorder ? palette.neutral[40] : 'transparent',
       focusOutline: palette[variant].border,
     };
   }, [palette, variant, light, showBorder]);
@@ -79,56 +79,56 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
 
   const padding = React.useMemo(() => {
     const sizes = {
-      small: "6px 16px",
-      medium: "8px 16px",
-      large: "10px 16px",
+      small: '6px 16px',
+      medium: '8px 16px',
+      large: '10px 16px',
     };
     return sizes[size];
   }, [size]);
 
   return {
-    minWidth: "min-content",
-    maxWidth: "100%",
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    gap: "8px",
+    minWidth: 'min-content',
+    maxWidth: '100%',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    gap: '8px',
     backgroundColor: colors.bg,
-    borderRadius: "4px",
+    borderRadius: '4px',
     border: `1.5px solid ${colors.border}`,
     padding,
     color: colors.text,
-    cursor: "pointer",
+    cursor: 'pointer',
     ...fontStyles,
     lineHeight: 0,
-    verticalAlign: "middle",
-    "&:hover&:not(:disabled)": {
+    verticalAlign: 'middle',
+    '&:hover&:not(:disabled)': {
       color: colors.textHover,
       borderColor: colors.borderHover,
       backgroundColor: colors.bgHover,
     },
-    "&:active&:not(:disabled)": {       
+    '&:active&:not(:disabled)': {       
       color: colors.textPressed,
       borderColor: colors.borderPressed,
       backgroundColor: colors.bgPressed,
     },
-    "&:focus-visible": {
+    '&:focus-visible': {
       outline: `3px solid ${colors.focusOutline}`,
     },
-    "&:disabled": {
-      cursor: "not-allowed",
+    '&:disabled': {
+      cursor: 'not-allowed',
       color: colors.textDisabled,
       borderColor: colors.borderDisabled,
       backgroundColor: colors.bgDisabled,
     },
-    "&:not(:hover, :active, :disabled, :focus)": {
-      boxShadow: shadow ? palette.shadow1 : "none",
+    '&:not(:hover, :active, :disabled, :focus)': {
+      boxShadow: shadow ? palette.shadow1 : 'none',
     },
     // Icon
-    ".btn-icon": {
-      marginTop: "-1px",
-      fontSize: "1rem",
+    '.btn-icon': {
+      marginTop: '-1px',
+      fontSize: '1rem',
     },
   };
 });
@@ -145,11 +145,11 @@ export type TButtonProps = {
 
 export const ThemeButton: React.FC<TButtonProps> = ({
   text,
-  type = "button",
+  type = 'button',
   shadow = true,
-  size = "large",
+  size = 'large',
   icon,
-  variant = "primary",
+  variant = 'primary',
   showBorder = false,
   ...props
 }) => {

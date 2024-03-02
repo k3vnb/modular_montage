@@ -1,16 +1,16 @@
-import * as React from "react";
-import type { Theme } from "@mui/system";
-import { theme as defaultTheme } from "../theme";
+import * as React from 'react';
+import type { Theme } from '@mui/system';
+import { theme as defaultTheme } from '../theme';
 
 
 export interface IGlobalContextValue {
   theme: Theme,
   updateTheme: (themeId: string) => void,
-};
+}
 
 export const GlobalContext = React.createContext<IGlobalContextValue>({
   theme: defaultTheme,
-  updateTheme: (themeId: string) => {},
+  updateTheme: () => undefined,
 });
 
 export const useGlobalContext = () => React.useContext(GlobalContext);
