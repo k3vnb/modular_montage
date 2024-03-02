@@ -18,6 +18,14 @@ const router = createBrowserRouter([
             element: <PlaceholderPage title="Dashboard" />,
           },
           {
+            path: ROUTES.widgets.path,
+            element: <PlaceholderPage title="Widgets" />,
+          },
+          {
+            path: ROUTES.forms.path,
+            element: <PlaceholderPage title="Forms" />,
+          },
+          {
             path: ROUTES.about.path,
             element: <PlaceholderPage hasSubroutes title="About" />,
             children: [
