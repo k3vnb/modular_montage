@@ -5,9 +5,10 @@ import { Stack } from "@mui/system";
 
 type LayoutProps = {
   children: React.ReactNode;
+  debugMode?: boolean;
 }
 
-const AppContainer = ({ children }: LayoutProps): JSX.Element => {
+const AppContainer = ({ children, debugMode }: LayoutProps): JSX.Element => {
   return (
     <Grid 
       container 
@@ -24,6 +25,7 @@ const AppContainer = ({ children }: LayoutProps): JSX.Element => {
           xs: "column",
           sm: "row",
         },
+        backgroundColor: debugMode ? "rgb(255, 179, 0)" : "transparent",
       }}
     >
       {children}
@@ -31,7 +33,7 @@ const AppContainer = ({ children }: LayoutProps): JSX.Element => {
   );
 };
 
-const Sidebar = ({ children }: LayoutProps): JSX.Element => {
+const Sidebar = ({ children, debugMode }: LayoutProps): JSX.Element => {
   const width = "auto"; // "auto" will grow to fit children's content
   return (
     <Grid
@@ -42,6 +44,7 @@ const Sidebar = ({ children }: LayoutProps): JSX.Element => {
           sm: "block",
         },
         minWidth: width,
+        backgroundColor: debugMode ? "rgb(255, 55, 0)" : "transparent",
       }}
     >
       {children}
@@ -56,7 +59,7 @@ export const MAIN_CONTENT_PADDING_X_XS = 2;
 export const MAIN_CONTENT_PADDING_LEFT_SM = 5;
 export const MAIN_CONTENT_PADDING_RIGHT_SM = 3;
 
-const MainContent = ({ children }: LayoutProps): JSX.Element => {
+const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
   const { pathname } = useLocation();
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -75,7 +78,8 @@ const MainContent = ({ children }: LayoutProps): JSX.Element => {
         width: {
           xs: "100vw",
           sm: "auto",
-        }
+        },
+        backgroundColor: debugMode ? "rgb(60, 255, 0)" : "transparent",
       }}
     >
       <Stack
@@ -96,6 +100,8 @@ const MainContent = ({ children }: LayoutProps): JSX.Element => {
               MAIN_CONTENT_PADDING_LEFT_SM,
             ),
           }),
+          backgroundColor: debugMode ? "rgb(242, 0, 255)" : "transparent",
+
         }}    
       >
         {children}
@@ -104,7 +110,7 @@ const MainContent = ({ children }: LayoutProps): JSX.Element => {
   );
 };
 
-const BottomBar = ({ children }: LayoutProps): JSX.Element => {
+const BottomBar = ({ children, debugMode }: LayoutProps): JSX.Element => {
   return (
     <Grid
       sx={{
@@ -112,6 +118,7 @@ const BottomBar = ({ children }: LayoutProps): JSX.Element => {
           xs: "block",
           sm: "none",
         },
+        backgroundColor: debugMode ? "rgb(255, 0, 111)" : "transparent",
       }}
     >
       {children}
