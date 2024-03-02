@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
+import CssBaseline from '@mui/material/CssBaseline';
 import './index.css';
 import { GlobalContextProvider } from './contexts/GlobalContext';
 import { router } from 'routes';
@@ -13,6 +14,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <GlobalContextProvider>
+      <CssBaseline />
       <RouterProvider router={router} />
     </GlobalContextProvider>
   </React.StrictMode>

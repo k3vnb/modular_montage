@@ -1,17 +1,45 @@
 import * as React from 'react';
 import { Box, Stack, styled } from '@mui/system';
-import { NavLink } from 'react-router-dom';
 import { NAV_ROUTES_LIST } from 'routes';
 
 import {
+  NavMenu,
+  NavMenuItem,
   ToggleExpandButton,
-} from "./Sidebar.elements";
+} from './Sidebar.elements';
 
 import {
   SIDEBAR_WIDTH,
   TRANSITION_DURATION,
   SIDEBAR_OVERFLOW_X_BUFFER,
 } from './constants';
+
+export const Sidebar: React.FC = () => {
+  const [expanded, setExpanded] = React.useState(true);
+
+  const toggleExpanded = React.useCallback(() => {
+    setExpanded((prevExpanded) => !prevExpanded);
+  }, [setExpanded]);
+
+  const width = React.useMemo(() => (
+    expanded ? SIDEBAR_WIDTH.expanded : SIDEBAR_WIDTH.collapsed
+  ), [expanded]);
+
+  return (
+    <RelativeWrapper width={width}>
+      <ToggleExpandButton onClick={toggleExpanded} expanded={expanded} />
+      <OverflowWrapper minWidth={width + SIDEBAR_OVERFLOW_X_BUFFER}>
+        <StyledStack width={width}>
+          <NavMenu slots={{ root: 'nav' }}>
+            {NAV_ROUTES_LIST.map((route) => (
+              <NavMenuItem key={route.path} expanded={expanded} {...route} />
+            ))}
+          </NavMenu>
+        </StyledStack>
+      </OverflowWrapper>
+    </RelativeWrapper>
+  );
+};
 
 const transition = `width ${TRANSITION_DURATION}ms cubic-bezier(0.4, 0, 0.6, 1) 0ms`;
 
@@ -29,37 +57,8 @@ const OverflowWrapper = styled(Box)(() => ({
 
 const StyledStack = styled(Stack)(({ theme }) => ({
   minHeight: '100%',
+  height: 'auto',
+  padding: '16px 0',
   backgroundColor: theme.palette.neutral[20],
   transition,
 }));
-
-export const Sidebar: React.FC = () => {
-  const [expanded, setExpanded] = React.useState(true);
-
-  const toggleExpanded = React.useCallback(() => {
-    setExpanded((prevExpanded) => !prevExpanded);
-  }, [setExpanded]);
-
-  const width = React.useMemo(() => (
-    expanded ? SIDEBAR_WIDTH.expanded : SIDEBAR_WIDTH.collapsed
-  ), [expanded]);
-
-  return (
-    <RelativeWrapper width={width}>
-      <ToggleExpandButton onClick={toggleExpanded} expanded={expanded} />
-      <OverflowWrapper minWidth={width + SIDEBAR_OVERFLOW_X_BUFFER}>
-        <StyledStack width={width} height="auto">
-          <ul style={{ listStyle: 'none', padding: 0 }}>
-            {NAV_ROUTES_LIST.map((route) => (
-              <li key={route.label} style={{ marginTop: '10px' }}>
-                <NavLink to={route.path}>
-                  {route.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </StyledStack>
-      </OverflowWrapper>
-    </RelativeWrapper>
-  );
-};
