@@ -1,4 +1,5 @@
 import { Box, Stack } from '@mui/system';
+import { PageTitle } from 'global/components/PageTitle';
 import { Outlet } from 'react-router-dom';
 
 type Props = {
@@ -8,9 +9,18 @@ type Props = {
 };
 
 export const PlaceholderPage = ({ title, isSubroute = false, hasSubroutes = false }: Props): JSX.Element => {
+  if (isSubroute) {
+    return (
+      <Box>
+        <h3>{title}</h3>
+        {hasSubroutes && <Outlet />}
+      </Box>
+    );
+  }
+
   return (
     <Stack gap="20px">
-      <Box component={isSubroute ? 'h3' : 'h2'}>{title}</Box>
+      <PageTitle title={title} />
       {hasSubroutes && <Outlet />}
     </Stack>
   );
