@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Box, Stack } from '@mui/system';
+import type { TContainerProps } from 'global/types';
 
-type LayoutProps = {
-  children: React.ReactNode;
+type Props = {
   debugMode?: boolean;
 }
+
+type LayoutProps = TContainerProps<Props>;
 
 const AppContainer = ({ children, debugMode }: LayoutProps): JSX.Element => {
   return (
@@ -55,7 +57,7 @@ const Sidebar = ({ children, debugMode }: LayoutProps): JSX.Element => {
       sx={{
         gridArea: 'sidebar',
         display: {
-          xs: 'none',
+          xxs: 'none',
           sm: 'block',
         },
         minWidth: width,
@@ -69,10 +71,10 @@ const Sidebar = ({ children, debugMode }: LayoutProps): JSX.Element => {
 
 // offset values for full width elements
 export const MAIN_CONTENT_PADDING_Y_XS = 4;
-export const MAIN_CONTENT_PADDING_Y_SM = 7;
+export const MAIN_CONTENT_PADDING_Y_SM = 4;
 export const MAIN_CONTENT_PADDING_X_XS = 2;
-export const MAIN_CONTENT_PADDING_LEFT_SM = 5;
-export const MAIN_CONTENT_PADDING_RIGHT_SM = 3;
+export const MAIN_CONTENT_PADDING_LEFT_SM = 8;
+export const MAIN_CONTENT_PADDING_RIGHT_SM = 8;
 
 const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
   const { pathname } = useLocation();
@@ -92,7 +94,7 @@ const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
         // flex: 2,
         overflow: 'auto',
         width: {
-          xs: '100vw',
+          xxs: '100vw',
           sm: 'auto',
         },
         backgroundColor: debugMode ? 'rgb(60, 255, 0)' : 'transparent',
@@ -105,7 +107,7 @@ const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
           width: '100%',
           minHeight: '100%',
           padding: theme => ({
-            xs: theme.spacing(
+            xxs: theme.spacing(
               MAIN_CONTENT_PADDING_Y_XS,
               MAIN_CONTENT_PADDING_X_XS,
             ),
@@ -131,7 +133,7 @@ const BottomBar = ({ children, debugMode }: LayoutProps): JSX.Element => {
       sx={{
         gridArea: 'footer',
         display: {
-          xs: 'block',
+          xxs: 'block',
           sm: 'none',
         },
         backgroundColor: debugMode ? 'rgb(255, 0, 111)' : 'transparent',

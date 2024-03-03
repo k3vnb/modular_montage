@@ -20,8 +20,7 @@ export const ROUTES = {
   },
   dashboard: {
     path: PATHS.dashboard,
-    label: 'Dashboard',
-    shortLabel: 'Home',
+    label: 'Home',
     icon: AppsIcon,
   },
   widgets: {

@@ -5,7 +5,7 @@ import { SIDEBAR_WIDTH, SIDEBAR_OVERFLOW_X_BUFFER } from './constants';
 import { OverflowWrapper, RelativeWrapper, SidebarContent } from './Sidebar.elements';
 
 export const Sidebar: React.FC = () => {
-  const [expanded, setExpanded] = React.useState(true);
+  const [expanded, setExpanded] = React.useState(false);
 
   const toggleExpanded = React.useCallback(() => {
     setExpanded((prevExpanded) => !prevExpanded);

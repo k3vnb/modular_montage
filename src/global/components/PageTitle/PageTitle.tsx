@@ -17,7 +17,7 @@ export const PageTitle = ({ title, description }: Props): JSX.Element => {
 
 const StyledTitle = styled(Box)(({ theme }) => ({
   color: theme.palette.neutral[90],
-  ...themeFonts.headingH2
+  ...themeFonts.headingH3
 }));
 
 const StyledDescription = styled(Box)(({ theme }) => ({

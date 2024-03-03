@@ -25,7 +25,7 @@ const StyledToggleExpandButton = styled(UnstyledButton)(({ theme }) => ({
   top: 0,
   right: 0,
   width: 32,
-  height: 48,
+  height: 32,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

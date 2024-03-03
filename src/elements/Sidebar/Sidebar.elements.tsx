@@ -18,7 +18,7 @@ export const OverflowWrapper = styled(Box)(() => ({
 export const SidebarContent = styled(Stack)(({ theme }) => ({
   minHeight: '100%',
   height: 'auto',
-  padding: '16px 0',
+  padding: '34px 0',
   backgroundColor: theme.palette.neutral[20],
   transition,
 }));

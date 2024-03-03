@@ -24,8 +24,8 @@ const NavMenuItem = ({ path, label, icon: Icon, expanded }: NavMenuItemProps): J
   return (
     <MenuItem tabIndex={-1}>
       <Box component={StyledNavLink} to={path} title={label}>
-        <Box aria-hidden="true" className="navIcon">
-          <Icon fontSize="inherit" />
+        <Box aria-hidden="true" className="iconContainer">
+          <Icon fontSize="inherit" className="navIcon" />
         </Box>
         <Box>{expanded && label}</Box>
       </Box>
@@ -54,13 +54,14 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
   textDecoration: 'none',
   color: theme.palette.neutral[60],
   transition: `all ${TRANSITION_DURATION}ms ease`,
-  '> .navIcon': {
+  '> .iconContainer': {
     width: SIDEBAR_WIDTH.collapsed,
     minWidth: SIDEBAR_WIDTH.collapsed,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     fontSize: 38,
+    marginLeft: '-1px',
   },
   '&.active': {
     color: theme.palette.primary.main,
