@@ -22,7 +22,7 @@ const NavMenuContainer = ({ children }: TContainerProps): JSX.Element => {
 
 const NavMenuItem = ({ path, label, icon: Icon, expanded }: NavMenuItemProps): JSX.Element => {
   return (
-    <MenuItem>
+    <MenuItem tabIndex={-1}>
       <Box component={StyledNavLink} to={path} title={label}>
         <Box aria-hidden="true" className="navIcon">
           <Icon fontSize="inherit" />

@@ -16,4 +16,7 @@ export const UnstyledButton = styled(BaseButton)(() => ({
   '&:focus': {
     boxShadow: 'none',
   },
+  ':focus-visible': {
+    outline: 'revert',
+  },
 }));
