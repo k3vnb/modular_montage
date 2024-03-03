@@ -1,18 +1,8 @@
 import * as React from 'react';
-import { Box, Stack, styled } from '@mui/system';
 import { NAV_ROUTES_LIST } from 'routes';
-
-import {
-  NavMenu,
-  NavMenuItem,
-  ToggleExpandButton,
-} from './Sidebar.elements';
-
-import {
-  SIDEBAR_WIDTH,
-  TRANSITION_DURATION,
-  SIDEBAR_OVERFLOW_X_BUFFER,
-} from './constants';
+import { NavMenu, ToggleExpandButton } from './bin';
+import { SIDEBAR_WIDTH, SIDEBAR_OVERFLOW_X_BUFFER } from './constants';
+import { OverflowWrapper, RelativeWrapper, SidebarContent } from './Sidebar.elements';
 
 export const Sidebar: React.FC = () => {
   const [expanded, setExpanded] = React.useState(true);
@@ -29,36 +19,14 @@ export const Sidebar: React.FC = () => {
     <RelativeWrapper width={width}>
       <ToggleExpandButton onClick={toggleExpanded} expanded={expanded} />
       <OverflowWrapper minWidth={width + SIDEBAR_OVERFLOW_X_BUFFER}>
-        <StyledStack width={width}>
-          <NavMenu slots={{ root: 'nav' }}>
+        <SidebarContent width={width}>
+          <NavMenu.Container>
             {NAV_ROUTES_LIST.map((route) => (
-              <NavMenuItem key={route.path} expanded={expanded} {...route} />
+              <NavMenu.Item key={route.path} expanded={expanded} {...route} />
             ))}
-          </NavMenu>
-        </StyledStack>
+          </NavMenu.Container>
+        </SidebarContent>
       </OverflowWrapper>
     </RelativeWrapper>
   );
 };
-
-const transition = `width ${TRANSITION_DURATION}ms cubic-bezier(0.4, 0, 0.6, 1) 0ms`;
-
-const RelativeWrapper = styled(Box)(() => ({
-  position: 'relative',
-  overflow: 'visible',
-  transition, 
-}));
-
-const OverflowWrapper = styled(Box)(() => ({
-  height: '100vh',
-  overflowY: 'auto',
-  transition,
-}));
-
-const StyledStack = styled(Stack)(({ theme }) => ({
-  minHeight: '100%',
-  height: 'auto',
-  padding: '16px 0',
-  backgroundColor: theme.palette.neutral[20],
-  transition,
-}));

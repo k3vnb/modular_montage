@@ -1,21 +1,8 @@
-import FireplaceIcon from '@mui/icons-material/FireplaceOutlined';
+import NoteIcon from '@mui/icons-material/NoteAltOutlined';
 import AppsIcon from '@mui/icons-material/AppsOutlined';
 import YardIcon from '@mui/icons-material/YardOutlined';
-// import ChairIcon from "@mui/icons-material/ChairOutlined";
-import BedroomBabyOutlinedIcon from '@mui/icons-material/BedroomBabyOutlined';
-import type { SvgIconComponent } from '@mui/icons-material';
-
-
-export interface Route {
-  path: string;
-  subroutes?: Record<string, Route>;
-}
-
-export interface NavRoute extends Route {
-  shortLabel?: string;
-  label: string;
-  icon: SvgIconComponent | React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-}
+import RockingHorseIcon from '@mui/icons-material/BedroomBabyOutlined';
+import type { TNavRoute } from './types';
 
 const PATHS = {
   root: '/',
@@ -40,12 +27,12 @@ export const ROUTES = {
   widgets: {
     path: PATHS.widgets,
     label: 'Widgets',
-    icon: BedroomBabyOutlinedIcon,
+    icon: RockingHorseIcon,
   },
   forms: {
     path: PATHS.forms,
     label: 'Forms',
-    icon: FireplaceIcon,
+    icon: NoteIcon,
   },
   about: {
     path: PATHS.about,
@@ -62,13 +49,13 @@ export const ROUTES = {
   },
 } as const;
 
-export const NAV_ROUTES_LIST: NavRoute[] = [
+export const NAV_ROUTES_LIST: TNavRoute[] = [
   ROUTES.dashboard,
   ROUTES.widgets,
   ROUTES.forms,
   ROUTES.about,
 ];
 
-export const NAV_ROUTES_LIST_MOBILE: NavRoute[] = [
+export const NAV_ROUTES_LIST_MOBILE: TNavRoute[] = [
   ...NAV_ROUTES_LIST,
 ];

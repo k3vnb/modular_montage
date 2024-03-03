@@ -6,3 +6,7 @@ export const SIDEBAR_WIDTH = {
 } as const;
 
 export const SIDEBAR_OVERFLOW_X_BUFFER = 10;
+
+export const BOTTOM_BAR_HEIGHT = 78;
+
+export const MENU_ID = 'nav-menu-sidebar';
