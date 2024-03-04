@@ -22,12 +22,12 @@ const Brand = (): JSX.Element => (
     <h1 className="sr-only">UX & UI Montage Reviewed</h1>
     <Stack aria-hidden="true" alignItems="start" justifyContent="center">
       <Stack direction="row" alignItems="center">
-        <StyledTitle mr="4px">Montage</StyledTitle>
+        <StyledTitle mr="4px">Modular</StyledTitle>
         <AdornedText component="span">UX</AdornedText>
       </Stack>
       <Stack direction="row" alignItems="center">
         <AdornedText component="span">UI</AdornedText>
-        <StyledTitle ml="4px">Reviewed</StyledTitle>
+        <StyledTitle ml="4px">Montage</StyledTitle>
       </Stack>
     </Stack>
   </>
