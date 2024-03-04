@@ -27,7 +27,7 @@ const NavMenuItem = ({ path, label, icon: Icon, expanded }: NavMenuItemProps): J
         <Box aria-hidden="true" className="iconContainer">
           <Icon fontSize="inherit" className="navIcon" />
         </Box>
-        <Box>{expanded && label}</Box>
+        <Box className={`label ${expanded ? 'expanded' : ''}`}>{expanded && label}</Box>
       </Box>
     </MenuItem>
   );
@@ -46,24 +46,56 @@ const StyledNavMenu = styled(Menu)(() => ({
   },
 }));
 
-const StyledNavLink = styled(NavLink)(({ theme }) => ({
-  width: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  padding: '16px 0px',
-  textDecoration: 'none',
-  color: theme.palette.neutral[60],
-  transition: `all ${TRANSITION_DURATION}ms ease`,
-  '> .iconContainer': {
-    width: SIDEBAR_WIDTH.collapsed,
-    minWidth: SIDEBAR_WIDTH.collapsed,
+const StyledNavLink = styled(NavLink)(({ theme }) => {
+  const { palette } = theme;
+  const rounded = `${theme.shape.borderRadius}px`;
+  const borderOffset = 4;
+  
+  return {
+    width: '100%',
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
-    fontSize: 38,
-    marginLeft: '-1px',
-  },
-  '&.active': {
-    color: theme.palette.primary.main,
-  },
-}));
+    padding: '16px 0px',
+    textDecoration: 'none',
+    letterSpacing: '0.5px',
+    color: palette.neutral[60],
+    transitionProperty: 'color, background-color, box-shadow',
+    transitionDuration: `${TRANSITION_DURATION}ms`,
+    transitionTimingFunction: 'ease',
+    borderBottom: '1px solid transparent',
+    '> .iconContainer': {
+      width: SIDEBAR_WIDTH.collapsed,
+      minWidth: SIDEBAR_WIDTH.collapsed,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: 38,
+    },
+    '&.active': {
+      color: palette.primary.main,
+      backgroundColor: palette.primary.surface,
+      fontWeight: 600,
+      letterSpacing: '0px',
+      borderColor: palette.primary.border,
+      borderWidth: `0 0 0 ${borderOffset}px`,
+      borderStyle: 'solid',
+      borderRadius: `0 ${rounded} ${rounded} 0`,
+      width: 'calc(100% + 4px)',
+      boxShadow: palette.shadow1,
+      '> .iconContainer': {
+        marginLeft: `-${borderOffset}px`,
+      },
+    },
+    '.label': {
+      opacity: 0,
+      transition: `opacity ${TRANSITION_DURATION}ms ease ${TRANSITION_DURATION}ms`,
+      '&.expanded': {
+        opacity: 1,
+      },
+    },
+    '&:hover&:not(.active)': {
+      color: palette.primary.main,
+      fontWeight: 500,
+    },
+  };
+});

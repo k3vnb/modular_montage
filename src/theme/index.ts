@@ -8,7 +8,7 @@ export const theme: Theme = createTheme({
     fontFamily: 'Arial, sans-serif',
   },
   shape: {
-    borderRadius: 20,
+    borderRadius: 1,
   },
   breakpoints: {
     values: {
