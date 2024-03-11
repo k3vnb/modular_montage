@@ -2,6 +2,7 @@ import { ThemePalette } from '../types';
 
 const colors = {
   neutral: {
+    0: '#FFFFFF',
     10: '#F2F2F2',
     15: '#E6E6E6',
     20: '#D9D9D9',
@@ -10,9 +11,11 @@ const colors = {
     50: '#999999',
     60: '#808080',
     70: '#666666',
+    75: '#5C5C5C',
     80: '#4D4D4D',
     85: '#333333',
     90: '#1A1A1A',
+    95: '#0A0A0A',
     100: '#000000',
   },
   primary: {
@@ -25,9 +28,9 @@ const colors = {
     surfaceHover: '#F5B6FF',
   },
   secondary: {
-    main: '#1F16C8',
-    surface: '#F6F4FF',
-    border: '#120E99',
+    surface: '#f7f6ff',
+    main: '#111546',
+    border: '#030154',
     hover: '#0800E8',
     pressed: '#0D0881',
     focus: '#1F16C833',

@@ -22,18 +22,19 @@ export const ToggleExpandButton = ({ onClick, expanded }: ToggleExpandButtonProp
 
 const StyledToggleExpandButton = styled(UnstyledButton)(({ theme }) => ({
   position: 'absolute',
-  top: 0,
+  top: '50%',
   right: 0,
   width: 32,
   height: 32,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  borderRadius: '50%',
   backgroundColor: theme.palette.neutral[10],
-  transition: `background-color ${TRANSITION_DURATION} ease`,
+  transition: `all ${TRANSITION_DURATION * 2} ease`,
   transform: 'translateX(50%)',
   '&:hover': {
-    backgroundColor: theme.palette.neutral[20],
+    backgroundColor: theme.palette.secondary.surface,
   },
   '&::after': {
     content: '""',
@@ -41,7 +42,7 @@ const StyledToggleExpandButton = styled(UnstyledButton)(({ theme }) => ({
     height: 0,
     borderTop: '8px solid transparent',
     borderBottom: '8px solid transparent',
-    borderLeft: `8px solid ${theme.palette.neutral[60]}`,
+    borderLeft: `8px solid ${theme.palette.neutral[20]}`,
     transformOrigin: 'center',
     transition: `transform ${TRANSITION_DURATION}ms ease`,
   },
