@@ -1,13 +1,12 @@
-import * as React from 'react';
+import React, { type PropsWithChildren } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Box, Stack } from '@mui/system';
-import type { TContainerProps } from 'global/types';
 
 type Props = {
   debugMode?: boolean;
 }
 
-type LayoutProps = TContainerProps<Props>;
+type LayoutProps = PropsWithChildren<Props>;
 
 const AppContainer = ({ children, debugMode }: LayoutProps): JSX.Element => {
   return (

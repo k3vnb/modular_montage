@@ -6,8 +6,3 @@ export type ThemedTemplateVariants =
   | 'warning'
   | 'success'
   | 'special';
-
-  export type TContainerProps<P = unknown> = P & {
-    children?: React.ReactNode;
-  };
-  
