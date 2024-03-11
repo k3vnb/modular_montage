@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { NAV_ROUTES_LIST } from 'routes';
 import { NavMenu, ToggleExpandButton } from './bin';
 import { SIDEBAR_WIDTH, SIDEBAR_OVERFLOW_X_BUFFER } from './constants';

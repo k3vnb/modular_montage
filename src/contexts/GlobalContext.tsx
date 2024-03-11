@@ -1,7 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import type { Theme } from '@mui/system';
 import { theme as defaultTheme } from '../theme';
-
 
 export interface IGlobalContextValue {
   theme: Theme,

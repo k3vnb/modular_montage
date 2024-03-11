@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Box, styled } from '@mui/system';
 import type { ButtonProps as BaseButtonProps  } from '@mui/base';
 import type { SvgIconComponent } from '@mui/icons-material';
