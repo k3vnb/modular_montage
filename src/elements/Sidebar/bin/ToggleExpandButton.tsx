@@ -30,11 +30,15 @@ const StyledToggleExpandButton = styled(UnstyledButton)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '50%',
-  backgroundColor: theme.palette.neutral[10],
+  backgroundColor: theme.palette.secondary.surface,
   transition: `all ${TRANSITION_DURATION * 2} ease`,
   transform: 'translateX(50%)',
+  border: `1px solid ${theme.palette.secondary.surface}`,
   '&:hover': {
-    backgroundColor: theme.palette.secondary.surface,
+    boxShadow: `1px 0px 2px ${theme.palette.neutral[10]}`,
+    '&::after': {
+      borderLeftColor: theme.palette.neutral[50],
+    },
   },
   '&::after': {
     content: '""',
@@ -42,7 +46,7 @@ const StyledToggleExpandButton = styled(UnstyledButton)(({ theme }) => ({
     height: 0,
     borderTop: '8px solid transparent',
     borderBottom: '8px solid transparent',
-    borderLeft: `8px solid ${theme.palette.neutral[20]}`,
+    borderLeft: `8px solid ${theme.palette.neutral[30]}`,
     transformOrigin: 'center',
     transition: `transform ${TRANSITION_DURATION}ms ease`,
   },
