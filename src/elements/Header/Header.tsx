@@ -8,7 +8,7 @@ export const Header = (): JSX.Element => {
         direction="row"
         justifyContent="space-between"
         alignItems="center"
-        padding="6px 16px"
+        padding="12px 16px"
         sx={{ position: 'relative', zIndex: 1 }}
       >
         <Brand />
@@ -20,7 +20,7 @@ export const Header = (): JSX.Element => {
 const Brand = (): JSX.Element => (
   <>
     <h1 className="sr-only">UX & UI Montage Reviewed</h1>
-    <Stack aria-hidden="true" alignItems="start" justifyContent="center">
+    <Stack className="brand" aria-hidden="true" alignItems="start" justifyContent="center">
       <Stack direction="row" alignItems="center">
         <StyledTitle mr="4px">Modular</StyledTitle>
         <AdornedText component="span">UX</AdornedText>
@@ -33,18 +33,16 @@ const Brand = (): JSX.Element => (
   </>
 );
 
-const StyledTitle = styled(Box)(({ theme }) => ({
+const StyledTitle = styled(Box)(() => ({
   ...THEME_FONTS.textLgMedium,
   lineHeight: 0.85,
-  color: theme.palette.neutral[90],
 }));
 
-const AdornedText = styled(Box)(({ theme }) => ({
+const AdornedText = styled(Box)(() => ({
   alignSelf: 'center',
   ...THEME_FONTS.textLgMedium,
   lineHeight: 0.5,
   fontSize: '0.6rem',
-  color: theme.palette.neutral[90],
   fontVariant: 'petite-caps',
   fontFamily: 'monospace',
 }));
@@ -56,7 +54,10 @@ const HeaderWrapper = styled(Box)(({ theme }) => ({
   maxHeight: '100%',
   maxWidth: '100%',
   overflow: 'hidden',
-  backgroundColor: theme.palette.primary.surface,
-  color: theme.palette.neutral[80],
-  borderBottom: `0.5px solid ${theme.palette.primary.border}`,
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.neutral[10],
+  borderBottom: `0.5px solid ${theme.palette.primary.accent}`,
+  '& .brand': {
+    textShadow: `0px 1px 0px ${theme.palette.neutral[95]}`,
+  },
 }));

@@ -19,13 +19,14 @@ const colors = {
     100: '#000000',
   },
   primary: {
-    main: '#BC16C8',
-    surface: '#FFDFFA',
+    main: '#39006e',
+    surface: '#FFF0FD',
     border: '#6B0E99',
     hover: '#62007A',
     pressed: '#6F0881',
     focus: '#C730E5FF',
     surfaceHover: '#F5B6FF',
+    accent: '#ff008c',
   },
   secondary: {
     surface: '#f7f6ff',
@@ -55,8 +56,8 @@ const colors = {
     surfaceHover: '#FFE1c0',
   },
   success: {
-    main: '#32CD32',
-    surface: '#E5FFE5',
+    main: '#186318',
+    surface: '#F5FFF5',
     border: '#8DBF8D',
     hover: '#006400',
     pressed: '#004F00',
@@ -73,13 +74,13 @@ const colors = {
     surfaceHover: '#B3D4FF',
   },
   special: {
-    main: '#CA0058',
-    surface: '#FFD7E9',
-    border: '#990E21',
-    hover: '#A10149',
+    main: '#5B00D1',
+    surface: '#F0E5FF',
+    border: '#990e97',
+    hover: '#541e9c',
     pressed: '#990E5D',
-    focus: '#990E33',
-    surfaceHover: '#FAC6D1',
+    focus: '#eb54ed',
+    surfaceHover: '#eca9f1',
   },
 };
 
