@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { Layout } from './AppLayout.elements';
 import { Header } from 'elements/Header';
 import { Sidebar } from 'elements/Sidebar';
+import { BottomBar } from 'elements/BottomBar';
 
 const IS_DEBUG_MODE = false;
 
@@ -18,7 +19,7 @@ export const AppLayout = (): JSX.Element => {
         <Outlet />
       </Layout.MainContent>
       <Layout.BottomBar debugMode={IS_DEBUG_MODE}>
-        BottomBar
+        <BottomBar />
       </Layout.BottomBar>
     </Layout.AppContainer>
   );

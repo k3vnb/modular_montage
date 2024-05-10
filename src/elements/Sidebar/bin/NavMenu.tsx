@@ -94,7 +94,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => {
       },
     },
     '&:hover&:not(.active)': {
-      color: palette.primary.main,
+      color: palette.special.main,
       fontWeight: 500,
     },
   };
