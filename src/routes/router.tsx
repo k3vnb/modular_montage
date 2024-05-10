@@ -26,6 +26,10 @@ const router = createBrowserRouter([
             element: <PlaceholderPage title="Forms" />,
           },
           {
+            path: ROUTES.contact.path,
+            element: <PlaceholderPage title="Contact" />,
+          },
+          {
             path: ROUTES.about.path,
             element: <PlaceholderPage hasSubroutes title="About" />,
             children: [

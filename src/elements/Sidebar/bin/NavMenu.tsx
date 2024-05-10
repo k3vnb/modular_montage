@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Box, styled } from '@mui/system';
 import { Menu, MenuItem } from '@mui/base';
-import { NavLink } from 'react-router-dom';
 import { MENU_ID, SIDEBAR_WIDTH, TRANSITION_DURATION } from '../constants';
 import type { TNavRoute } from 'routes';
 

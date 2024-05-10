@@ -1,6 +1,7 @@
 import NoteIcon from '@mui/icons-material/NoteAltOutlined';
 import AppsIcon from '@mui/icons-material/AppsOutlined';
 import YardIcon from '@mui/icons-material/YardOutlined';
+import AltEmail from '@mui/icons-material/AlternateEmailOutlined';
 import RockingHorseIcon from '@mui/icons-material/BedroomBabyOutlined';
 import type { TNavRoute } from './types';
 
@@ -12,6 +13,7 @@ const PATHS = {
   about: '/about',
   etc: '/about/etc',
   etc2: '/about/etc2',
+  contact: '/contact',
 } as const;
 
 export const ROUTES = {
@@ -46,6 +48,11 @@ export const ROUTES = {
       },
     },
   },
+  contact: {
+    path: PATHS.contact,
+    label: 'Contact',
+    icon: AltEmail,
+  },
 } as const;
 
 export const NAV_ROUTES_LIST: TNavRoute[] = [
@@ -53,6 +60,7 @@ export const NAV_ROUTES_LIST: TNavRoute[] = [
   ROUTES.widgets,
   ROUTES.forms,
   ROUTES.about,
+  ROUTES.contact,
 ];
 
 export const NAV_ROUTES_LIST_MOBILE: TNavRoute[] = [
