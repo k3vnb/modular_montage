@@ -1,6 +1,6 @@
 import React from 'react';
 import { FocusTrap } from '@mui/base';
-import { NavMenuItem, ToggleExpandButton } from './bin';
+import { NavMenuItem, ToggleExpandButton, BottomBarDrawer } from './bin';
 import { BottomBarMenu, StyledMenuItem } from './BottomBar.elements';
 import { DrawerContext, DrawerContextProvider } from 'global/components/Drawers/contexts/DrawerContext';
 import { NAV_ROUTES_LIST_MOBILE as allLinks } from 'routes';
@@ -9,8 +9,7 @@ import { MENU_ID } from './constants';
 const BottomBarContent = (): JSX.Element => {
   const { open, isDrawerVisible } = React.useContext(DrawerContext);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [primaryLinks, _drawerLinks] = React.useMemo(() => (
+  const [primaryLinks, drawerLinks] = React.useMemo(() => (
     [allLinks.slice(0, 3), allLinks.slice(3)]
   ), []);
 
@@ -21,7 +20,7 @@ const BottomBarContent = (): JSX.Element => {
   return (    
     <FocusTrap open={open}>
       <BottomBarMenu id={MENU_ID} component="nav" isDrawerVisible={isDrawerVisible}>
-        {/* <DrawerNavMenu links={drawerLinks} /> */}
+        <BottomBarDrawer links={drawerLinks} />
         {primaryLinks.map((link) => (
           <StyledMenuItem key={link.path} tabIndex={-1} zIndex={zIndex}>
             <NavMenuItem {...link} />
