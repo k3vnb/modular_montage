@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavItem, ToggleExpandButton, BottomBarDrawer, DrawerClickaway } from './bin';
 import { BottomBarContainer } from './BottomBar.elements';
-import { DrawerContext, DrawerContextProvider } from 'global/components/Drawers/contexts/DrawerContext';
+import { useDrawerContext, DrawerContextProvider } from 'global/components/Drawers/contexts/DrawerContext';
 import { NAV_ROUTES_LIST_MOBILE as allLinks } from 'routes';
 import { MENU_ID } from './constants';
 
 const BottomBarContent = (): JSX.Element => {
-  const { isDrawerVisible } = React.useContext(DrawerContext);
+  const { isDrawerVisible } = useDrawerContext();
 
   const [primaryLinks, drawerLinks] = React.useMemo(() => (
     [allLinks.slice(0, 3), allLinks.slice(3)]

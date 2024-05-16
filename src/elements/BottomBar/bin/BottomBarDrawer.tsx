@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 import { ClickAwayListener, FocusTrap } from '@mui/base';
 
 import { DrawerHeader } from 'global/components/Drawers/BottomDrawer';
-import { DrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
+import { useDrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
 import { Backdrop } from 'global/components/Backdrop';
 import { DrawerContents } from 'global/components/Drawers/BottomDrawer/BottomDrawer';
 import { DrawerList, DrawerNavItem } from './BottomBarDrawer.elements';
@@ -15,7 +15,7 @@ type DrawerNavMenuProps = {
 }
 
 export const DrawerClickaway = ({ children }: React.PropsWithChildren ) => {
-  const { open, closeDrawer, transitionDuration } = React.useContext(DrawerContext);
+  const { open, closeDrawer, transitionDuration } = useDrawerContext();
   return (
     <FocusTrap open={open}>
       <Box>
@@ -33,7 +33,7 @@ export const DrawerClickaway = ({ children }: React.PropsWithChildren ) => {
 const DRAWER_TITLE = 'More';
 
 export const BottomBarDrawer: React.FC<DrawerNavMenuProps> = ({ links }) => {
-  const { closeDrawer, open, transitionStatus } = React.useContext(DrawerContext);
+  const { closeDrawer, open, transitionStatus } = useDrawerContext();
   
   return (
     <DrawerContents

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useMatch } from 'react-router-dom';
 import { Box, styled } from '@mui/system';
 import { UnstyledList, ListItem } from 'global/components/List';
-import { DrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
+import { useDrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
 import { THEME_FONTS } from 'theme/typography';
 import type { TNavRoute } from 'routes';
 
@@ -12,7 +12,7 @@ export const DrawerNavItem: React.FC<TNavRoute> = ({
   icon: Icon,
 }) => {
   const match = useMatch(path);
-  const { closeDrawer } = React.useContext(DrawerContext);
+  const { closeDrawer } = useDrawerContext();
   const className = match ? 'active' : '';
 
   return (
@@ -34,7 +34,7 @@ export const DrawerNavItem: React.FC<TNavRoute> = ({
 
 export const StyledLinkContainer = styled(Box)(({ theme }) => {
   const { palette } = theme;
-  const paddingXOffset = 0.5;
+  const paddingXOffset = 0.75;
 
   return {
     display: 'flex',
@@ -43,24 +43,25 @@ export const StyledLinkContainer = styled(Box)(({ theme }) => {
     ...THEME_FONTS.textLg,
     padding: theme.spacing(0, paddingXOffset),
     margin: theme.spacing(0, -paddingXOffset),
-    gap: theme.spacing(2),
+    gap: theme.spacing(1),
     color: palette.neutral[100],
     letterSpacing: '.5px',
     height: '80px',
     textDecoration: 'none',
-    border: '4px solid transparent',
+    border: '1px solid transparent',
+    borderRadius: '4px',
     '&.active': {
-      backgroundColor: palette.secondary.surface,
-      color: palette.primary.main,
-      fontWeight: 600,
-      borderColor: palette.primary.border,
-      borderRadius: '0 1px 1px 0',
+      backgroundColor: palette.special.surface,
+      color: palette.special.main,
+      fontWeight: 500,
+      borderColor: palette.primary.focus,
+      borderRadius: '4px',
       width: `calc(100% + ${theme.spacing(paddingXOffset * 2)})`,
-      boxShadow: `inset 0px 0px 0px 4px ${palette.primary.border}`,
+      boxShadow: `inset 0px 0px 0px 2px ${palette.special.focus}`,
       letterSpacing: '0px',
     },
     '&:hover&:not(.active)': {
-      color: palette.primary.main,
+      color: palette.special.main,
       fontWeight: 600,
       letterSpacing: '0px',
     },

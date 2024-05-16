@@ -4,7 +4,7 @@ import { Box, styled } from '@mui/system';
 import MoreIcon from '@mui/icons-material/MoreHorizOutlined';
 
 import { UnstyledButton } from 'global/components/Buttons';
-import { DrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
+import { useDrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
 import { THEME_FONTS } from 'theme/typography';
 import { MENU_ID, TRANSITION_DURATION } from '../constants';
 import type { TNavRoute } from 'routes';
@@ -15,10 +15,10 @@ export const NavItem: React.FC<TNavRoute> = ({
   label,
   shortLabel = '',
 }) => {
-  const { open, closeDrawer } = React.useContext(DrawerContext);
+  const { open, closeDrawer } = useDrawerContext();
   const match = useMatch(path);
-  const isActive = !!match;
-  const className = isActive && !open ? 'active' : '';
+  const showIsActive = !!match && !open;
+
   const onClick = React.useCallback(() => {
     if (open) closeDrawer();
   }, [open, closeDrawer]);
@@ -29,7 +29,7 @@ export const NavItem: React.FC<TNavRoute> = ({
       onClick={onClick}
       style={{ textDecoration: 'unset' }}
     >
-      <StyledNavItem className={className}>
+      <StyledNavItem className={showIsActive ? 'active' : ''}>
         <IconContainer icon={icon} />
         {shortLabel || label}
       </StyledNavItem>
@@ -38,7 +38,7 @@ export const NavItem: React.FC<TNavRoute> = ({
 };
 
 export const ToggleExpandButton: React.FC = () => {
-  const { open, openDrawer, closeDrawer } = React.useContext(DrawerContext);
+  const { open, openDrawer, closeDrawer } = useDrawerContext();
 
   const openProps = React.useMemo(() => ({
     className: open ? 'active' : '',
