@@ -16,6 +16,18 @@ type DrawerNavMenuProps = {
 
 export const DrawerClickaway = ({ children }: React.PropsWithChildren ) => {
   const { open, closeDrawer, transitionDuration } = useDrawerContext();
+
+  const handleEscapeKey = React.useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') closeDrawer();
+  }, [closeDrawer]);
+
+  React.useEffect(() => {
+    document.body.addEventListener('keydown', handleEscapeKey);
+    return () => {
+      document.body.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [handleEscapeKey]);
+
   return (
     <FocusTrap open={open}>
       <Box>
