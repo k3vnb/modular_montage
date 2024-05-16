@@ -14,6 +14,7 @@ export type TUseDrawerTransition = {
   closeDrawer: () => void;
   transitionStatus: DrawerTransitionStatus;
   isDrawerVisible: boolean;
+  transitionDuration: number;
 }
 
 export const useDrawerTransition = (): TUseDrawerTransition => {
@@ -29,7 +30,6 @@ export const useDrawerTransition = (): TUseDrawerTransition => {
       didCompleteClose: !open && !isTransitioning,
     }
   ), [open, isTransitioning]);
-
 
   const isDrawerVisible = React.useMemo(() => (
     open || transitionStatus.isClosing
@@ -69,5 +69,6 @@ export const useDrawerTransition = (): TUseDrawerTransition => {
     closeDrawer,
     transitionStatus,
     isDrawerVisible,
+    transitionDuration: TRANSITION_DURATION,
   };
 };

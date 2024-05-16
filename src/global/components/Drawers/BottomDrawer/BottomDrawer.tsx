@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { useDrawerTransition } from '../hooks/useDrawerTransition';
 import { Backdrop } from 'global/components/Backdrop';
+import { CloseButton } from './bin';
 import { 
   StyledDrawerWrapper,
   StyledModal,
   DrawerContent,
  } from './BottomDrawer.elements';
-import { CloseButton } from './bin';
-import { TRANSITION_DURATION } from '../constants';
 
 type BottomDrawerCoreProps = {
   id: string;
@@ -57,6 +56,7 @@ export const BottomDrawerModal: React.FC<BottomDrawerCoreProps> = ({
     openDrawer,
     closeDrawer,
     transitionStatus,
+    transitionDuration,
   } = useDrawerTransition();
 
   const needsUpdate = isContentMounted && !isDrawerOpen;
@@ -90,7 +90,7 @@ export const BottomDrawerModal: React.FC<BottomDrawerCoreProps> = ({
       open={isModalMounted}
       onClose={handleStartClose}
       slots={{ backdrop: Backdrop }}
-      slotProps={{ backdrop: () => ({ open: isDrawerOpen, transitionDuration: TRANSITION_DURATION }) }}
+      slotProps={{ backdrop: () => ({ open: isDrawerOpen, transitionDuration }) }}
     >
       <DrawerContents
         ref={handleDidContentMount}

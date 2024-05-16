@@ -7,7 +7,6 @@ import { DrawerHeader } from 'global/components/Drawers/BottomDrawer';
 import { DrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
 import { BOTTOM_BAR_HEIGHT } from '../constants';
 import { Backdrop } from 'global/components/Backdrop';
-import { TRANSITION_DURATION } from 'global/components/Drawers/constants';
 import { DrawerContents } from 'global/components/Drawers/BottomDrawer/BottomDrawer';
 import type { TNavRoute } from 'routes';
 
@@ -16,11 +15,11 @@ type DrawerNavMenuProps = {
 }
 
 export const DrawerClickaway = ({ children }: React.PropsWithChildren ) => {
-  const { open, closeDrawer } = React.useContext(DrawerContext);
+  const { open, closeDrawer, transitionDuration } = React.useContext(DrawerContext);
   return (
     <FocusTrap open={open}>
       <Box>
-        <Backdrop open={open} transitionDuration={TRANSITION_DURATION} />
+        <Backdrop open={open} transitionDuration={transitionDuration} />
         <ClickAwayListener onClickAway={closeDrawer} mouseEvent="onMouseDown">
           <Box role="presentation">
             {children}

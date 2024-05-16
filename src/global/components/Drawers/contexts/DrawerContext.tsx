@@ -9,30 +9,19 @@ export const DrawerContext = React.createContext<TDrawerContextValue>({
   closeDrawer: () => undefined,
   transitionStatus: {} as TUseDrawerTransition['transitionStatus'],
   isDrawerVisible: false,
+  transitionDuration: 0,
 });
 
 export const DrawerContextProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const {
-    open,
-    openDrawer,
-    closeDrawer,
-    transitionStatus,
-    isDrawerVisible,
-  } = useDrawerTransition();
+  const drawerTransitionState = useDrawerTransition();
 
   return (
-    <DrawerContext.Provider
-      value={{
-        open,
-        openDrawer,
-        closeDrawer,
-        transitionStatus,
-        isDrawerVisible,
-      }}
-    >
+    <DrawerContext.Provider value={drawerTransitionState}>
       {children}
     </DrawerContext.Provider>
   );
 };
+
+export const useDrawerContext = () => React.useContext(DrawerContext);
