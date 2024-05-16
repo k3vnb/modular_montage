@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink, useMatch } from 'react-router-dom';
 import { Box, styled } from '@mui/system';
 import { UnstyledList, ListItem } from 'global/components/List';
@@ -6,14 +5,13 @@ import { useDrawerContext } from 'global/components/Drawers/contexts/DrawerConte
 import { THEME_FONTS } from 'theme/typography';
 import type { TNavRoute } from 'routes';
 
-const NavListItem: React.FC<TNavRoute> = ({
+const NavListItem = ({
   path,
   label,
   icon: Icon,
-}) => {
+}: TNavRoute): JSX.Element => {
   const match = useMatch(path);
   const { closeDrawer } = useDrawerContext();
-  const className = match ? 'active' : '';
 
   return (
     <StyledListItem>
@@ -23,8 +21,8 @@ const NavListItem: React.FC<TNavRoute> = ({
         onClick={closeDrawer}
         style={{ textDecoration: 'none' }}
       >
-        <StyledLinkContainer className={className}>
-          <Box className="iconContainer">
+        <StyledLinkContainer className={match ? 'active' : ''}>
+          <Box aria-hidden="true" className="iconContainer">
             <Icon fontSize="medium" />
           </Box>
           {label}
@@ -34,7 +32,12 @@ const NavListItem: React.FC<TNavRoute> = ({
   );
 };
 
-export const StyledLinkContainer = styled(Box)(({ theme }) => {
+export const DrawerList = {
+  Container: UnstyledList,
+  Item: NavListItem,
+};
+
+const StyledLinkContainer = styled(Box)(({ theme }) => {
   const { palette } = theme;
   const paddingXOffset = 0.75;
 
@@ -84,8 +87,3 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
     borderBottom: `1px solid ${theme.palette.neutral[30]}`,
   },
 }));
-
-export const DrawerList = {
-  Container: UnstyledList,
-  Item: NavListItem,
-};
