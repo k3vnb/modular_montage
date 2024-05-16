@@ -6,7 +6,7 @@ import { DrawerHeader } from 'global/components/Drawers/BottomDrawer';
 import { useDrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
 import { Backdrop } from 'global/components/Backdrop';
 import { BottomDrawerBase } from 'global/components/Drawers/BottomDrawer';
-import { DrawerList } from './BottomBarDrawer.elements';
+import { DrawerList } from './DrawerMenu.elements';
 import { BOTTOM_BAR_HEIGHT, MENU_ID } from '../constants';
 import type { TNavRoute } from 'routes';
 
@@ -32,7 +32,7 @@ export const DrawerClickaway = ({ children }: React.PropsWithChildren ) => {
 
 const DRAWER_TITLE = 'More';
 
-export const BottomBarDrawer: React.FC<DrawerNavMenuProps> = ({ links }) => {
+export const DrawerMenu: React.FC<DrawerNavMenuProps> = ({ links }) => {
   const { closeDrawer, open, transitionStatus } = useDrawerContext();
   return (
     <BottomDrawerBase

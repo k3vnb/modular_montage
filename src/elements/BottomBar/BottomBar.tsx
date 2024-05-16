@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavItem, ToggleExpandButton, BottomBarDrawer, DrawerClickaway } from './bin';
+import { NavItem, ToggleExpandButton, DrawerMenu, DrawerClickaway } from './bin';
 import { BottomBarContainer } from './BottomBar.elements';
 import { useDrawerContext, DrawerContextProvider } from 'global/components/Drawers/contexts/DrawerContext';
 import { NAV_ROUTES_LIST_MOBILE as allLinks } from 'routes';
@@ -25,7 +25,7 @@ const BottomBarContent = (): JSX.Element => {
           </li>
         </ul>
       </BottomBarContainer>
-      <BottomBarDrawer links={drawerLinks} />
+      <DrawerMenu links={drawerLinks} />
     </DrawerClickaway>
   );
 };

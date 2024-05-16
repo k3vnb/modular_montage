@@ -1,2 +1,2 @@
-export { NavItem, ToggleExpandButton } from './NavMenuItem';
-export { BottomBarDrawer, DrawerClickaway } from './BottomBarDrawer';
+export { NavItem, ToggleExpandButton } from './NavItems';
+export { DrawerMenu, DrawerClickaway } from './DrawerMenu';
