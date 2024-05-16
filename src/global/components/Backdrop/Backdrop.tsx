@@ -20,6 +20,7 @@ const BaseBackdrop = React.forwardRef<HTMLDivElement, BackdropProps>(function Ba
 
   return (
     <Box
+      aria-hidden="true"
       className={classNames}
       ref={ref}
       {...other}

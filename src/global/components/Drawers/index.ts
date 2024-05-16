@@ -1,1 +1,1 @@
-export { DrawerHeader, BottomDrawerModal, BottomDrawerWrapper } from './BottomDrawer';
+export { DrawerHeader, BottomDrawerModal } from './BottomDrawer';

@@ -9,57 +9,62 @@ import { THEME_FONTS } from 'theme/typography';
 import { MENU_ID, TRANSITION_DURATION } from '../constants';
 import type { TNavRoute } from 'routes';
 
-export const NavMenuItem: React.FC<TNavRoute> = ({
+export const NavItem: React.FC<TNavRoute> = ({
   path,
   icon,
   label,
   shortLabel = '',
 }) => {
+  const { open, closeDrawer } = React.useContext(DrawerContext);
   const match = useMatch(path);
   const isActive = !!match;
-  const { open } = React.useContext(DrawerContext);
-
-  const Icon = icon;
-
   const className = isActive && !open ? 'active' : '';
+  const onClick = React.useCallback(() => {
+    if (open) closeDrawer();
+  }, [open, closeDrawer]);
 
   return (
-    <Link to={path} style={{ textDecoration: 'unset' }}>
+    <Link
+      to={path}
+      onClick={onClick}
+      style={{ textDecoration: 'unset' }}
+    >
       <StyledNavItem className={className}>
-        <Box className="iconContainer">
-          <Icon fontSize="inherit" />
-        </Box>
+        <IconContainer icon={icon} />
         {shortLabel || label}
       </StyledNavItem>
     </Link>
   );
 };
 
-export const ToggleExpandButton: React.FC= () => {
-  const { open, openDrawer, isDrawerVisible } = React.useContext(DrawerContext);
+export const ToggleExpandButton: React.FC = () => {
+  const { open, openDrawer, closeDrawer } = React.useContext(DrawerContext);
 
-  const ariaLabel = open ? 'Close menu' : 'Open menu';
-
-  const onClick = React.useCallback(() => {
-    if (!isDrawerVisible) openDrawer();
-  }, [isDrawerVisible, openDrawer]);
+  const openProps = React.useMemo(() => ({
+    className: open ? 'active' : '',
+    'aria-label': `${open ? 'Close' : 'Open'} expanded navigation menu`,
+    'aria-expanded': open,
+    onClick: open ? closeDrawer : openDrawer,
+  }), [open, closeDrawer, openDrawer]);
 
   return (
     <StyledNavItem
-      aria-label={ariaLabel}
-      aria-controls={MENU_ID}
-      aria-expanded={open}
-      onClick={onClick}
-      className={open ? 'active' : ''}
       component={UnstyledButton}
+      aria-controls={MENU_ID}
+      aria-haspopup="true"
+      {...openProps}
     >
-      <Box className="iconContainer">
-        <MoreIcon fontSize="inherit" />
-      </Box>
+      <IconContainer icon={MoreIcon} />
       More
     </StyledNavItem>
   );
 };
+
+const IconContainer: React.FC<{ icon: TNavRoute['icon'] }> = ({ icon: Icon }) => (
+  <Box aria-hidden="true" className="iconContainer">
+    <Icon fontSize="inherit" />
+  </Box>
+);
 
 const StyledNavItem = styled(Box)(({ theme }) => {
   const { palette } = theme;

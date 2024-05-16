@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ClickAwayListener } from '@mui/base';
 import { useDrawerTransition } from '../hooks/useDrawerTransition';
 import { Backdrop } from 'global/components/Backdrop';
 import { 
@@ -12,7 +11,9 @@ import { TRANSITION_DURATION } from '../constants';
 
 type BottomDrawerCoreProps = {
   id: string;
-  'aria-describedby': string;
+  role?: string;
+  'aria-describedby'?: string;
+  'aria-label'?: string;
   open: boolean;
   children: React.ReactNode;
   bottom?: string | number;
@@ -39,35 +40,6 @@ export const DrawerContents = React.forwardRef<HTMLDivElement, BottomDrawerConte
     </StyledDrawerWrapper>
   );
 });
-
-// For "Nav Bottom Bar" --> wraps DrawerContents in Backdrop & ClickAwayListener for rendering a pop up menu
-export const BottomDrawerWrapper: React.FC<BottomDrawerContentProps> = (props) => {
-  const { open, onClose } = props;
-
-  React.useEffect(() => {
-    // adapted from MUI's Modal component implementation
-    // locks body scroll & prevents bounce effect when drawer is open
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.removeProperty('overflow');
-    }
-
-    // cleanup function on unmount
-    return () => {
-      document.body.style.removeProperty('overflow');
-    };
-  }, [open]);
-
-  return (
-    <>
-      <Backdrop open={open} transitionDuration={TRANSITION_DURATION} />
-      <ClickAwayListener onClickAway={onClose} mouseEvent="onMouseDown">
-        <DrawerContents {...props} />
-      </ClickAwayListener>
-    </>
-  );
-};
 
 // For "Modal" --> wraps DrawerContents in Modal
 export const BottomDrawerModal: React.FC<BottomDrawerCoreProps> = ({

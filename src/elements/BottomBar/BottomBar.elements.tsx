@@ -1,5 +1,4 @@
-import { styled } from '@mui/system';
-import { Menu, MenuItem } from '@mui/base';
+import { Box, styled } from '@mui/system';
 import { BOTTOM_BAR_HEIGHT } from './constants';
 
 type ContainerProps = {
@@ -7,10 +6,10 @@ type ContainerProps = {
 };
 
 const options = {
-  shouldForwardProp: (prop: string) => !['isDrawerVisible', 'zIndex'].includes(prop),
+  shouldForwardProp: (prop: string) => !['isDrawerVisible'].includes(prop),
 };
 
-export const BottomBarMenu = styled(Menu, options)<ContainerProps>(({ theme, isDrawerVisible }) => ({
+export const BottomBarContainer = styled(Box, options)<ContainerProps>(({ theme, isDrawerVisible }) => ({
   position: 'relative',
   width: '100vw',
   maxWidth: '100%',
@@ -28,19 +27,3 @@ export const BottomBarMenu = styled(Menu, options)<ContainerProps>(({ theme, isD
     width: '100%',
   },
 }));
-
-
-export const StyledMenuItem = styled(MenuItem, options)<{ zIndex: number | string }>(({ zIndex }) => {
-  let focusZIndex = 1;
-
-  if (typeof zIndex === 'number') {
-    focusZIndex = zIndex + 1;
-  }
-
-  return {
-    zIndex,
-    '&:focus-within': {
-      zIndex: focusZIndex, // keeps focused outline above sibling elements
-    },
-  };
-});
