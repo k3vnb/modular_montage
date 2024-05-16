@@ -1,10 +1,10 @@
 import React from 'react';
-import { Modal } from '@mui/base';
-import { Stack, styled } from '@mui/system';
-import { TRANSITION_DURATION } from '../constants';
+import { Stack, type StackProps, styled } from '@mui/system';
+import { TRANSITION_DURATION } from '../../constants';
 import { THEME_FONTS } from 'theme/typography';
+import { CloseButton } from './CloseButton';
 
-type StyledDrawerWrapperProps = {
+type StyledWrapperProps = {
   open: boolean;
   isClosing?: boolean;
   bottom?: string | number;
@@ -12,13 +12,32 @@ type StyledDrawerWrapperProps = {
   maxHeight?: string;
 };
 
+export type TBottomDrawerContainerProps = StackProps & StyledWrapperProps & {
+  onClose: () => void;
+};
+
+export const Drawer = React.forwardRef<HTMLDivElement, TBottomDrawerContainerProps>(function BottomDrawerContainer ({
+  children,
+  onClose = () => undefined,
+  ...wrapperProps
+}, ref) {
+  return (
+    <StyledDrawerWrapper ref={ref} {...wrapperProps}>
+      <CloseButton onClick={onClose} />
+      <ScrollContainer>
+        {children}
+      </ScrollContainer>
+    </StyledDrawerWrapper>
+  );
+});
+
 const options = {
   shouldForwardProp: (prop: string) => ![
     'open', 'isClosing', 'bottom', 'zIndex', 'maxHeight',
   ].includes(prop),
 };
 
-export const StyledDrawerWrapper = styled(Stack, options)<StyledDrawerWrapperProps>(({
+export const StyledDrawerWrapper = styled(Stack, options)<StyledWrapperProps>(({
   theme,
   open,
   isClosing,
@@ -43,7 +62,7 @@ export const StyledDrawerWrapper = styled(Stack, options)<StyledDrawerWrapperPro
   transition: `transform ${TRANSITION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1) 10ms`,
 }));
 
-const StyledStack = styled(Stack)(({ theme }) => ({
+const StyledScrollStackOuter = styled(Stack)(({ theme }) => ({
   flexGrow: 1,
   padding: theme.spacing(2, 4),
   gap: theme.spacing(2),
@@ -54,17 +73,12 @@ const StyledStack = styled(Stack)(({ theme }) => ({
   color: theme.palette.neutral[100],
 }));
 
-export const DrawerContent: React.FC<React.PropsWithChildren> = ({ children }) => {
+const ScrollContainer: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
-    <StyledStack>
+    <StyledScrollStackOuter>
       <Stack minHeight="max-content">
         {children}
       </Stack>
-    </StyledStack>
+    </StyledScrollStackOuter>
   );
 };
-
-export const StyledModal = styled(Modal)(() => ({
-  zIndex: 1300,
-  position: 'relative',
-}));

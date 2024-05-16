@@ -3,7 +3,6 @@ import { NavItem, ToggleExpandButton, BottomBarDrawer, DrawerClickaway } from '.
 import { BottomBarContainer } from './BottomBar.elements';
 import { useDrawerContext, DrawerContextProvider } from 'global/components/Drawers/contexts/DrawerContext';
 import { NAV_ROUTES_LIST_MOBILE as allLinks } from 'routes';
-import { MENU_ID } from './constants';
 
 const BottomBarContent = (): JSX.Element => {
   const { isDrawerVisible } = useDrawerContext();
@@ -14,11 +13,7 @@ const BottomBarContent = (): JSX.Element => {
 
   return (    
     <DrawerClickaway>
-      <BottomBarContainer
-        component="nav"
-        id={MENU_ID}
-        isDrawerVisible={isDrawerVisible}
-      >
+      <BottomBarContainer component="nav" isDrawerVisible={isDrawerVisible}>
         <ul>
           {primaryLinks.map((link) => (
             <li key={link.path} tabIndex={-1}>

@@ -6,7 +6,7 @@ import { useDrawerContext } from 'global/components/Drawers/contexts/DrawerConte
 import { THEME_FONTS } from 'theme/typography';
 import type { TNavRoute } from 'routes';
 
-export const DrawerNavItem: React.FC<TNavRoute> = ({
+const NavListItem: React.FC<TNavRoute> = ({
   path,
   label,
   icon: Icon,
@@ -16,19 +16,21 @@ export const DrawerNavItem: React.FC<TNavRoute> = ({
   const className = match ? 'active' : '';
 
   return (
-    <NavLink
-      to={path}
-      aria-label={`Go to ${label}`}
-      onClick={closeDrawer}
-      style={{ textDecoration: 'none' }}
-    >
-      <StyledLinkContainer className={className}>
-        <Box className="iconContainer">
-          <Icon fontSize="medium" />
-        </Box>
-        {label}
-      </StyledLinkContainer>
-    </NavLink>
+    <StyledListItem>
+      <NavLink
+        to={path}
+        aria-label={`Go to ${label}`}
+        onClick={closeDrawer}
+        style={{ textDecoration: 'none' }}
+      >
+        <StyledLinkContainer className={className}>
+          <Box className="iconContainer">
+            <Icon fontSize="medium" />
+          </Box>
+          {label}
+        </StyledLinkContainer>
+      </NavLink>
+    </StyledListItem>
   );
 };
 
@@ -84,6 +86,6 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
 }));
 
 export const DrawerList = {
-  Ul: UnstyledList,
-  Li: StyledListItem,
+  Container: UnstyledList,
+  Item: NavListItem,
 };

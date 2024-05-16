@@ -1,47 +1,13 @@
-import * as React from 'react';
+import React from 'react';
+import { Modal } from '@mui/base';
 import { useDrawerTransition } from '../hooks/useDrawerTransition';
 import { Backdrop } from 'global/components/Backdrop';
-import { CloseButton } from './bin';
-import { 
-  StyledDrawerWrapper,
-  StyledModal,
-  DrawerContent,
- } from './BottomDrawer.elements';
+import { Drawer, type TBottomDrawerContainerProps } from './bin';
 
-type BottomDrawerCoreProps = {
-  id: string;
-  role?: string;
-  'aria-describedby'?: string;
-  'aria-label'?: string;
-  open: boolean;
-  children: React.ReactNode;
-  bottom?: string | number;
-  maxHeight?: string;
-  zIndex?: string | number;
-  onClose: () => void;
-};
-
-type BottomDrawerContentProps = BottomDrawerCoreProps & {
-  isClosing?: boolean;
-};
-
-export const DrawerContents = React.forwardRef<HTMLDivElement, BottomDrawerContentProps>(function DrawerContents ({
-  children,
-  onClose = () => undefined,
-  ...wrapperProps
-}, ref) {
-  return (
-    <StyledDrawerWrapper ref={ref} {...wrapperProps}>
-      <CloseButton onClick={onClose} />
-      <DrawerContent>
-        {children}
-      </DrawerContent>
-    </StyledDrawerWrapper>
-  );
-});
+type BottomDrawerModalProps = Omit<TBottomDrawerContainerProps, 'isClosing'>;
 
 // For "Modal" --> wraps DrawerContents in Modal
-export const BottomDrawerModal: React.FC<BottomDrawerCoreProps> = ({
+export const BottomDrawerModal: React.FC<BottomDrawerModalProps> = ({
   open: isModalMounted = false,
   children,
   onClose,
@@ -86,13 +52,14 @@ export const BottomDrawerModal: React.FC<BottomDrawerCoreProps> = ({
   };
 
   return (
-    <StyledModal
+    <Modal
       open={isModalMounted}
       onClose={handleStartClose}
       slots={{ backdrop: Backdrop }}
       slotProps={{ backdrop: () => ({ open: isDrawerOpen, transitionDuration }) }}
+      style={{ zIndex: 1300, position: 'relative' }}
     >
-      <DrawerContents
+      <Drawer
         ref={handleDidContentMount}
         open={isDrawerOpen}
         isClosing={transitionStatus.isClosing}
@@ -100,7 +67,7 @@ export const BottomDrawerModal: React.FC<BottomDrawerCoreProps> = ({
         {...wrapperProps}
       >
         {children}
-      </DrawerContents>
-    </StyledModal>
+      </Drawer>
+    </Modal>
   );
 };

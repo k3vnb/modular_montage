@@ -5,9 +5,9 @@ import { ClickAwayListener, FocusTrap } from '@mui/base';
 import { DrawerHeader } from 'global/components/Drawers/BottomDrawer';
 import { useDrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
 import { Backdrop } from 'global/components/Backdrop';
-import { DrawerContents } from 'global/components/Drawers/BottomDrawer/BottomDrawer';
-import { DrawerList, DrawerNavItem } from './BottomBarDrawer.elements';
-import { BOTTOM_BAR_HEIGHT } from '../constants';
+import { BottomDrawerBase } from 'global/components/Drawers/BottomDrawer';
+import { DrawerList } from './BottomBarDrawer.elements';
+import { BOTTOM_BAR_HEIGHT, MENU_ID } from '../constants';
 import type { TNavRoute } from 'routes';
 
 type DrawerNavMenuProps = {
@@ -34,27 +34,23 @@ const DRAWER_TITLE = 'More';
 
 export const BottomBarDrawer: React.FC<DrawerNavMenuProps> = ({ links }) => {
   const { closeDrawer, open, transitionStatus } = useDrawerContext();
-  
   return (
-    <DrawerContents
-      id="btm-drawer-nav-menu"
+    <BottomDrawerBase
+      id={MENU_ID}
       aria-label="Expanded navigation menu"
       role="presentation"
       open={open}
       isClosing={transitionStatus.isClosing}
       bottom={BOTTOM_BAR_HEIGHT}
-      zIndex={1}
       onClose={closeDrawer}
       maxHeight={`calc(90% - ${BOTTOM_BAR_HEIGHT}px)`}
     >
       <DrawerHeader component="h3">{DRAWER_TITLE}</DrawerHeader>
-      <DrawerList.Ul>
+      <DrawerList.Container>
         {links.map((link) => (
-          <DrawerList.Li key={link.path}>
-            <DrawerNavItem {...link} />
-          </DrawerList.Li>
+          <DrawerList.Item key={link.path} {...link} />
         ))}
-      </DrawerList.Ul>
-    </DrawerContents>
+      </DrawerList.Container>
+    </BottomDrawerBase>
   );
 };
