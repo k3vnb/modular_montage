@@ -1,13 +1,13 @@
 import React from 'react';
-import { Box, Stack } from '@mui/system';
+import { Box } from '@mui/system';
 import { ClickAwayListener, FocusTrap } from '@mui/base';
 
-import { Divider, StyledListItem, DrawerNavItem } from './BottomBarDrawer.elements';
 import { DrawerHeader } from 'global/components/Drawers/BottomDrawer';
 import { DrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
-import { BOTTOM_BAR_HEIGHT } from '../constants';
 import { Backdrop } from 'global/components/Backdrop';
 import { DrawerContents } from 'global/components/Drawers/BottomDrawer/BottomDrawer';
+import { DrawerList, DrawerNavItem } from './BottomBarDrawer.elements';
+import { BOTTOM_BAR_HEIGHT } from '../constants';
 import type { TNavRoute } from 'routes';
 
 type DrawerNavMenuProps = {
@@ -30,6 +30,8 @@ export const DrawerClickaway = ({ children }: React.PropsWithChildren ) => {
   );
 };
 
+const DRAWER_TITLE = 'More';
+
 export const BottomBarDrawer: React.FC<DrawerNavMenuProps> = ({ links }) => {
   const { closeDrawer, open, transitionStatus } = React.useContext(DrawerContext);
   
@@ -45,14 +47,14 @@ export const BottomBarDrawer: React.FC<DrawerNavMenuProps> = ({ links }) => {
       onClose={closeDrawer}
       maxHeight={`calc(90% - ${BOTTOM_BAR_HEIGHT}px)`}
     >
-      <DrawerHeader component="h3"> More </DrawerHeader>
-      <Stack divider={<Divider aria-hidden="true" />}>
+      <DrawerHeader component="h3">{DRAWER_TITLE}</DrawerHeader>
+      <DrawerList.Ul>
         {links.map((link) => (
-          <StyledListItem key={link.path}>
+          <DrawerList.Li key={link.path}>
             <DrawerNavItem {...link} />
-          </StyledListItem>
+          </DrawerList.Li>
         ))}
-      </Stack>
+      </DrawerList.Ul>
     </DrawerContents>
   );
 };

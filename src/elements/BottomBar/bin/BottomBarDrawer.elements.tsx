@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, styled } from '@mui/system';
 import { NavLink, useMatch } from 'react-router-dom';
+import { Box, styled } from '@mui/system';
+import { UnstyledList, ListItem } from 'global/components/List';
 import { DrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
 import { THEME_FONTS } from 'theme/typography';
 import type { TNavRoute } from 'routes';
@@ -72,14 +73,16 @@ export const StyledLinkContainer = styled(Box)(({ theme }) => {
   };
 });
 
-export const Divider = styled(Box)(({ theme }) => ({
-  height: '1px',
-  width: '100%',
-  backgroundColor: theme.palette.neutral[30],
-}));
-
-export const StyledListItem = styled(Box)(() => ({
+const StyledListItem = styled(ListItem)(({ theme }) => ({
   '&:focus-within': {
     zIndex: 1, // keeps focused outline above sibling elements
   },
+  '&:not(:last-child)': {
+    borderBottom: `1px solid ${theme.palette.neutral[30]}`,
+  },
 }));
+
+export const DrawerList = {
+  Ul: UnstyledList,
+  Li: StyledListItem,
+};
