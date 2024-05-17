@@ -35,6 +35,7 @@ const ButtonList = (props: ButtonListProps) => {
           key={variant}
           text={`${variant.charAt(0).toUpperCase() + variant.slice(1)} Button`}
           variant={variant}
+          style={{ minWidth: 'max-content'}}
           {...buttonProps}
         />
       ))}
@@ -50,7 +51,7 @@ const ButtonList = (props: ButtonListProps) => {
 
 const ColorModeButtonLists = (props: Omit<ButtonListProps, 'light'>) => {
   return (
-    <Stack flexDirection="row" flexWrap="wrap" gap="20px">
+    <Stack display="inline-flex" flexWrap="wrap" gap="20px">
       {['light', 'dark'].map((colorMode) => (
         <Stack key={colorMode} gap="20px">
           <Box sx={{ fontVariant: 'all-small-caps', color: '#323233', letterSpacing: '0.5px', textAlign: 'center' }}>
@@ -69,8 +70,8 @@ const ThemeButtonExamples: React.FC = () => {
       {['large', 'medium', 'small'].map((size) => (
         <Stack key={size} flexDirection="row" gap="40px">
           {['with border', 'no border'].map((borderType) => (
-            <Stack key={borderType} gap="20px" maxWidth="max-content">
-              <Box sx={{ fontSize: '18px', color: '#626262', fontVariant: 'all-small-caps', textTransform: 'capitalize', fontWeight: 'bolder', textAlign: 'center',  letterSpacing: '0.5px', }}>
+            <Stack key={borderType} gap="20px" alignItems="center">
+              <Box sx={{ fontSize: '18px', color: '#626262', fontVariant: 'all-small-caps', textTransform: 'capitalize', fontWeight: 'bolder', letterSpacing: '0.5px', }}>
                 {`${size} - ${borderType}`}
               </Box>
               <ColorModeButtonLists size={size as TButtonSize} showBorder={borderType === 'with border'} />
