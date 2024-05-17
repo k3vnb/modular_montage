@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { Layout } from './AppLayout.elements';
 import { Header } from 'elements/Header';
-import { Sidebar } from 'elements/Sidebar';
-import { BottomBar } from 'elements/BottomBar';
+import { Sidebar } from 'elements/AppBar/Sidebar';
+import { BottomBar } from 'elements/AppBar/BottomBar';
 
 const IS_DEBUG_MODE = false;
 
