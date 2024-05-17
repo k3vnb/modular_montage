@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Stack, Box } from '@mui/system';
-import { THEME_FONTS } from '../theme/typography';
+import { THEME_FONTS } from './typography';
 
 const formatTitle = (title: string) => {
   const [type, size, variation] = title
@@ -22,7 +22,6 @@ const Divider = () => (
     }}
   />
 );
-
 
 const TypographyExamples: React.FC = () => {
   return (
