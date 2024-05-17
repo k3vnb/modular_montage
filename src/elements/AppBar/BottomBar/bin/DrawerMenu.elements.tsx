@@ -59,10 +59,10 @@ const StyledLinkContainer = styled(Box)(({ theme }) => {
       backgroundColor: palette.special.surface,
       color: palette.special.main,
       fontWeight: 500,
-      borderColor: palette.primary.focus,
+      borderColor: palette.primary.borderActive,
       borderRadius: '4px',
       width: `calc(100% + ${theme.spacing(paddingXOffset * 2)})`,
-      boxShadow: `inset 0px 0px 0px 2px ${palette.special.focus}`,
+      boxShadow: `inset 0px 0px 0px 2px ${palette.special.borderActive}`,
       letterSpacing: '0px',
     },
     '&:hover&:not(.active)': {

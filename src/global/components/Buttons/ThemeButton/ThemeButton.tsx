@@ -38,21 +38,21 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
       textDisabled: palette.neutral[60],
 
       bg: palette[variant].main,
-      bgHover: palette[variant].hover,
-      bgPressed: palette[variant].pressed,
+      bgHover: palette[variant].mainHover,
+      bgPressed: palette[variant].mainActive,
       bgDisabled: palette.neutral[30],
 
       border: showBorder ? palette[variant].border : 'transparent',
-      borderHover: showBorder ? palette[variant].focus : 'transparent',
-      borderPressed: showBorder ? palette[variant].focus : 'transparent',
+      borderHover: showBorder ? palette[variant].borderHover : 'transparent',
+      borderPressed: showBorder ? palette[variant].borderActive : 'transparent',
       borderDisabled: showBorder ? palette.neutral[50] : 'transparent',
       focusOutline: palette[variant].border,
     };
   
     return {
       text: palette[variant].main,
-      textHover: palette[variant].hover,
-      textPressed: palette[variant].pressed,
+      textHover: palette[variant].mainHover,
+      textPressed: palette[variant].mainActive,
       textDisabled: palette.neutral[60],
 
       bg: palette[variant].surface,
@@ -60,9 +60,9 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
       bgPressed: palette[variant].surface,
       bgDisabled: palette.neutral[30],
 
-      border: showBorder ? palette[variant].main : 'transparent',
-      borderHover: showBorder ? palette[variant].hover : 'transparent',
-      borderPressed: showBorder ? palette[variant].pressed : 'transparent',
+      border: showBorder ? palette[variant].border : 'transparent',
+      borderHover: showBorder ? palette[variant].borderHover : 'transparent',
+      borderPressed: showBorder ? palette[variant].borderActive : 'transparent',
       borderDisabled: showBorder ? palette.neutral[40] : 'transparent',
       focusOutline: palette[variant].border,
     };

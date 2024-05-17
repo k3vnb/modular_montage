@@ -2,12 +2,15 @@ import type { ThemedTemplateVariants } from 'global/types';
 
 export type ThemedTemplateColorMap = {
   main: string;
+  mainHover: string;
+  mainActive: string;
   surface: string;
-  border: string;
-  hover: string;
-  pressed: string;
-  focus: string;
   surfaceHover: string;
+  surfaceActive: string;
+  border: string;
+  borderHover: string;
+  borderActive: string;
+  accent?: string;
 };
 
 export type ThemedTemplateMap = {
