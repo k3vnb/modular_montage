@@ -16,7 +16,7 @@ const options = {
 
 type StyledButtonProps = {
   size: TButtonSize;
-  light?: boolean;
+  filled?: boolean;
   variant: ThemedTemplateVariants;
 } & BaseButtonProps;
 
@@ -24,14 +24,14 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
   theme,
   size,
   shadow,
-  light = false,
+  filled = false,
   variant,
   showBorder,
 }) => {
   const { palette } = theme;
 
   const colors = React.useMemo(() => {
-    if (!light) return {
+    if (filled) return {
       text: palette.neutral[10],
       textHover: palette.neutral[10],
       textPressed: palette.neutral[10],
@@ -66,7 +66,7 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
       borderDisabled: showBorder ? palette.neutral[40] : 'transparent',
       focusOutline: palette[variant].border,
     };
-  }, [palette, variant, light, showBorder]);
+  }, [palette, variant, filled, showBorder]);
 
   const fontStyles = React.useMemo(() => {
     const sizes = {
@@ -137,7 +137,7 @@ export type TButtonProps = {
   text: string;
   shadow?: boolean;
   size?: TButtonSize;
-  light?: boolean;
+  filled?: boolean;
   variant?: ThemedTemplateVariants;
   showBorder?: boolean;
   icon?: SvgIconComponent | React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
@@ -148,21 +148,20 @@ export const ThemeButton: React.FC<TButtonProps> = ({
   type = 'button',
   shadow = true,
   size = 'large',
-  icon,
+  icon: Icon,
   variant = 'primary',
   showBorder = false,
   ...props
 }) => {
 
   const withIcon: React.ReactNode | null = React.useMemo(() => {
-    if (!icon) return null;
-    const Icon = icon;
+    if (!Icon) return null;
     return (
-      <Box className="btn-icon">
+      <Box aria-hidden="true" className="btn-icon">
         <Icon fontSize="inherit" />
       </Box>
     );
-  }, [icon]);
+  }, [Icon]);
 
   return (
     <StyledButton

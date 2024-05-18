@@ -18,7 +18,7 @@ const variantOptions: ThemedTemplateVariants[] = [
 type ButtonListProps = {
   showBorder: boolean;
   size: TButtonSize;
-  light: boolean;
+  filled: boolean;
 };
 
 const ButtonList = (props: ButtonListProps) => {
@@ -49,15 +49,15 @@ const ButtonList = (props: ButtonListProps) => {
   );
 };
 
-const ColorModeButtonLists = (props: Omit<ButtonListProps, 'light'>) => {
+const ColorModeButtonLists = (props: Omit<ButtonListProps, 'filled'>) => {
   return (
     <Stack display="inline-flex" flexWrap="wrap" gap="20px">
-      {['light', 'dark'].map((colorMode) => (
+      {['filled', 'unfilled'].map((colorMode) => (
         <Stack key={colorMode} gap="20px">
           <Box sx={{ fontVariant: 'all-small-caps', color: '#323233', letterSpacing: '0.5px', textAlign: 'center' }}>
-            Color Mode: {colorMode}
+            {colorMode}
           </Box>
-          <ButtonList {...props} light={colorMode === 'light'} />
+          <ButtonList {...props} filled={colorMode === 'filled'} />
         </Stack>
       ))}
     </Stack>
