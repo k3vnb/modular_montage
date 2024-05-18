@@ -5,6 +5,8 @@ import type { SvgIconComponent } from '@mui/icons-material';
 import type { ThemedTemplateVariants } from 'global/types';
 import { UnstyledButton } from '../UnstyledButton';
 import { THEME_FONTS } from 'theme/typography';
+import { getButtonThemeColors } from '../utils';
+import type { ThemePalette } from 'theme/types';
 
 export type TButtonSize = 'small' | 'medium' | 'large';
 
@@ -28,45 +30,8 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
   variant,
   showBorder,
 }) => {
-  const { palette } = theme;
-
-  const colors = React.useMemo(() => {
-    if (filled) return {
-      text: palette.neutral[10],
-      textHover: palette.neutral[10],
-      textPressed: palette.neutral[10],
-      textDisabled: palette.neutral[60],
-
-      bg: palette[variant].main,
-      bgHover: palette[variant].mainHover,
-      bgPressed: palette[variant].mainActive,
-      bgDisabled: palette.neutral[30],
-
-      border: showBorder ? palette[variant].border : 'transparent',
-      borderHover: showBorder ? palette[variant].borderHover : 'transparent',
-      borderPressed: showBorder ? palette[variant].borderActive : 'transparent',
-      borderDisabled: showBorder ? palette.neutral[50] : 'transparent',
-      focusOutline: palette[variant].border,
-    };
-  
-    return {
-      text: palette[variant].main,
-      textHover: palette[variant].mainHover,
-      textPressed: palette[variant].mainActive,
-      textDisabled: palette.neutral[60],
-
-      bg: palette[variant].surface,
-      bgHover: palette[variant].surfaceHover,
-      bgPressed: palette[variant].surface,
-      bgDisabled: palette.neutral[30],
-
-      border: showBorder ? palette[variant].border : 'transparent',
-      borderHover: showBorder ? palette[variant].borderHover : 'transparent',
-      borderPressed: showBorder ? palette[variant].borderActive : 'transparent',
-      borderDisabled: showBorder ? palette.neutral[40] : 'transparent',
-      focusOutline: palette[variant].border,
-    };
-  }, [palette, variant, filled, showBorder]);
+  const palette = theme.palette as ThemePalette;
+  const colors = React.useMemo(() => getButtonThemeColors({ palette, variant, filled, showBorder }), [palette, variant, filled, showBorder]);
 
   const fontStyles = React.useMemo(() => {
     const sizes = {

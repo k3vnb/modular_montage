@@ -12,7 +12,7 @@ const themeColors = {
     50: '#999999',
     60: '#808080',
     70: '#666666',
-    75: '#5C5C5C',
+    75: '#515151',
     80: '#4D4D4D',
     85: '#333333',
     90: '#1A1A1A',
@@ -65,13 +65,13 @@ const themeColors = {
     borderActive: colors.rose['300'],
   },
   warning: {
-    main: colors.orange['900'],
-    mainHover: colors.orange['800'],
-    mainActive: colors.orange['700'],
+    main: colors.stone['800'],
+    mainHover: colors.orange['600'],
+    mainActive: colors.yellow['700'],
     surface: colors.yellow['50'],
     surfaceHover: colors.yellow['100'],
     surfaceActive: colors.yellow['50'],
-    border: colors.yellow['400'],
+    border: colors.yellow['500'],
     borderHover: colors.yellow['300'],
     borderActive: colors.yellow['200'],
   },
@@ -108,4 +108,5 @@ const shadows = {
 export const themePalette: ThemePalette = {
   ...shadows,
   ...themeColors,
+  mode: 'light',
 } as const;

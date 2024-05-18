@@ -19,6 +19,7 @@ export type ThemedTemplateMap = {
 
 export type ThemePalette = ThemedTemplateMap & {
   neutral: {
+    0: string;
     10: string;
     20: string;
     30: string;
@@ -33,4 +34,5 @@ export type ThemePalette = ThemedTemplateMap & {
   shadow1: string;
   shadow2: string;
   shadow3: string;
+  mode: 'light' | 'dark';
 };
