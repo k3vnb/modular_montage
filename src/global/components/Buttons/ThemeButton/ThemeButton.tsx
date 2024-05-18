@@ -6,7 +6,6 @@ import type { ThemedTemplateVariants } from 'global/types';
 import { UnstyledButton } from '../UnstyledButton';
 import { THEME_FONTS } from 'theme/typography';
 import { getButtonThemeColors } from '../utils';
-import type { ThemePalette } from 'theme/types';
 
 export type TButtonSize = 'small' | 'medium' | 'large';
 
@@ -30,8 +29,7 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
   variant,
   showBorder,
 }) => {
-  const palette = theme.palette as ThemePalette;
-  const colors = React.useMemo(() => getButtonThemeColors({ palette, variant, filled, showBorder }), [palette, variant, filled, showBorder]);
+  const colors = React.useMemo(() => getButtonThemeColors({ theme, variant, filled, showBorder }), [theme, variant, filled, showBorder]);
 
   const fontStyles = React.useMemo(() => {
     const sizes = {
@@ -88,7 +86,7 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
       backgroundColor: colors.bgDisabled,
     },
     '&:not(:hover, :active, :disabled, :focus)': {
-      boxShadow: shadow ? palette.shadow1 : 'none',
+      boxShadow: shadow ? theme.styles.shadow1 : 'none',
     },
     // Icon
     '.btn-icon': {

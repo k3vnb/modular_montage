@@ -1,8 +1,9 @@
+import type { Theme } from '@mui/system';
 import type { ThemedTemplateVariants } from 'global/types';
-import type { ThemePalette, ThemedTemplateColorMap } from 'theme/types';
+import type { ThemedTemplateColorMap } from 'theme/types';
 
 type FnOptions = {
-  palette: ThemePalette;
+  theme: Theme;
   variant: ThemedTemplateVariants;
   filled: boolean;
   showBorder: boolean;
@@ -27,13 +28,13 @@ type ButtonThemeColors = {
 };
 
 export function getButtonThemeColors({
-  palette,
+  theme,
   variant,
   filled,
   showBorder,
 }: FnOptions): ButtonThemeColors {
-  const { neutral } = palette;
-  const colorVariant = palette[variant];
+  const { neutral } = theme.styles;
+  const colorVariant = theme.styles[variant];
 
   const disabledColors = {
     textDisabled: neutral[70],
@@ -46,7 +47,7 @@ export function getButtonThemeColors({
   const commonColors = {
     ...borderColors,
     ...disabledColors,
-    focusOutline: palette.info.mainActive,
+    focusOutline: theme.palette.info.mainActive,
   };
 
   if (filled)
