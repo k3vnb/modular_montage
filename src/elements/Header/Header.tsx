@@ -54,9 +54,9 @@ const HeaderWrapper = styled(Box)(({ theme }) => ({
   maxHeight: '100%',
   maxWidth: '100%',
   overflow: 'hidden',
-  backgroundColor: theme.palette.primary.main,
-  color: theme.palette.neutral[10],
-  borderBottom: `0.5px solid ${theme.palette.primary.accent}`,
+  backgroundColor: theme.styles.primary.shades.dark,
+  color: theme.styles.neutral[10],
+  borderBottom: `0.5px solid ${theme.styles.primary.shades.accent}`,
   '& .brand': {
     textShadow: `0px 1px 0px ${theme.palette.neutral[95]}`,
   },

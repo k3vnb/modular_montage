@@ -230,7 +230,7 @@ const colors = {
     950: '#4f0034',
   },
   mutedBlue: {
-    25: '#fcfbff',
+    25: '#f7f6ff',
     50: '#e5e6ee',
     100: '#bdc1d6',
     200: '#6b749f',

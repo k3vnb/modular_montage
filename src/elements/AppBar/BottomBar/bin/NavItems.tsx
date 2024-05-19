@@ -77,7 +77,7 @@ const StyledNavItem = styled(Box)(({ theme }) => {
     alignItems: 'center',
     width: '100%',
     ...THEME_FONTS.textMd,
-    color: palette.secondary.main,
+    color: theme.styles.primary.shades.neutral[100],
     fontWeight: 400,
     letterSpacing: '.25px',
     height: '80px',
@@ -92,15 +92,15 @@ const StyledNavItem = styled(Box)(({ theme }) => {
     transitionTimingFunction: 'ease',
     '&.active': {
       boxShadow: `2px 2px 1px ${palette.neutral[15]}`,
-      backgroundColor: palette.special.surface,
-      color: palette.special.main,
+      backgroundColor: theme.styles.primary.surface,
+      color: theme.styles.primary.main,
       fontWeight: 600,
       borderWidth: `0 0 ${borderOffset}px 0`,
-      borderColor: palette.special.main,
+      borderColor: theme.styles.primary.main,
       letterSpacing: '0px',
     },
     '&:hover&:not(.active)': {
-      color: palette.special.main,
+      color: theme.styles.primary.main,
     },
     '&:not(.active)': {
       borderColor: 'transparent',

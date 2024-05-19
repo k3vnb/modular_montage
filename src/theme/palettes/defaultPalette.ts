@@ -31,11 +31,11 @@ const themeColors = {
     borderActive: colors.blueViolet['300'],
     shades: {
       neutral: {
-        50: colors.mutedBlue['50'],
+        50: colors.mutedBlue['25'],
         100: colors.mutedBlue['900']
       },
       dark: colors.mutedPurple['900'],
-      accent: '#fb0081',
+      accent: colors.brightPink['500'],
     },
   },
   secondary: {

@@ -58,7 +58,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => {
     padding: '16px 0px',
     textDecoration: 'none',
     letterSpacing: '0.5px',
-    color: palette.secondary.main,
+    color: theme.styles.primary.shades.neutral[100],
     transitionProperty: 'color, background-color, box-shadow',
     transitionDuration: `${TRANSITION_DURATION}ms`,
     transitionTimingFunction: 'ease',
@@ -72,11 +72,11 @@ const StyledNavLink = styled(NavLink)(({ theme }) => {
       fontSize: 38,
     },
     '&.active': {
-      color: palette.special.main,
-      backgroundColor: palette.special.surface,
+      color: theme.styles.primary.main,
+      backgroundColor: theme.styles.primary.surface,
       fontWeight: 600,
       letterSpacing: '0px',
-      borderColor: palette.special.main,
+      borderColor: theme.styles.primary.main,
       borderWidth: `0 0 0 ${borderOffset}px`,
       borderStyle: 'solid',
       borderRadius: `0 ${rounded} ${rounded} 0`,
@@ -94,7 +94,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => {
       },
     },
     '&:hover&:not(.active)': {
-      color: palette.special.main,
+      color: theme.styles.primary.main,
       fontWeight: 500,
     },
   };

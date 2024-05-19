@@ -1,5 +1,14 @@
 import type { ThemedTemplateVariants } from 'global/types';
 
+type ShadesMap = {
+  neutral: {
+    50: string;
+    100: string;
+  };
+  dark: string;
+  accent: string;
+};
+
 export type ThemedTemplateColorMap = {
   main: string;
   mainHover: string;
@@ -10,11 +19,17 @@ export type ThemedTemplateColorMap = {
   border: string;
   borderHover: string;
   borderActive: string;
-  accent?: string;
+  shades?: ShadesMap;
 };
 
-export type ThemedTemplateMap = {
+type TMap = {
   [key in ThemedTemplateVariants]: ThemedTemplateColorMap;
+};
+
+export type ThemedTemplateMap = Omit<TMap, 'primary'> & {
+  primary: ThemedTemplateColorMap & {
+    shades: ShadesMap;
+  };
 };
 
 export type ThemePalette = ThemedTemplateMap & {
