@@ -1,21 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@mui/system';
 import { THEME_TEMPLATE_VARIANTS } from 'global/types';
-import { get } from 'http';
 import type { ShadesMap, ThemedTemplateColorMap } from 'theme/types';
 
 function getShades(shadesMap?: ShadesMap) {
   if (!shadesMap) return;
   return {
-    neutral: [
-      shadesMap.neutral[50],
-      shadesMap.neutral[100],
-    ],
-      dark: shadesMap.dark,
-      accent: shadesMap.accent,
+    neutral: [shadesMap.neutral[50], shadesMap.neutral[100]],
+    dark: shadesMap.dark,
+    accent: shadesMap.accent,
   };
 }
 
-function getHueFromHex(hex: string): [string, number] {
+function getHSLFromHex(hex: string): [string, number] {
   // convert hex to hsl and return lightness
   const r = parseInt(hex.slice(1, 3), 16) / 255;
   const g = parseInt(hex.slice(3, 5), 16) / 255;
@@ -34,13 +31,13 @@ function getHueFromHex(hex: string): [string, number] {
 
     switch (max) {
       case r:
-        h = ((g - b) / d) + (g < b ? 6 : 0);
+        h = (g - b) / d + (g < b ? 6 : 0);
         break;
       case g:
-        h = ((b - r) / d) + 2;
+        h = (b - r) / d + 2;
         break;
       case b:
-        h = ((r - g) / d) + 4;
+        h = (r - g) / d + 4;
         break;
       default:
         break;
@@ -54,21 +51,22 @@ function getHueFromHex(hex: string): [string, number] {
 }
 
 function getThemeColorSpectrum(themeColor: ThemedTemplateColorMap) {
-  return Array.from(new Set([
-    themeColor.main,
-    themeColor.mainHover,
-    themeColor.mainActive,
-    themeColor.surface,
-    themeColor.surfaceHover,
-    themeColor.surfaceActive,
-    themeColor.border,
-    themeColor.borderHover,
-    themeColor.borderActive,
-  ]))
-  .sort()
-  .map(getHueFromHex)
-  .sort((a, b) => a[1] - b[1])
-  .map(([hex]) => hex);
+  return Array.from(
+    new Set([
+      themeColor.main,
+      themeColor.mainHover,
+      themeColor.mainActive,
+      themeColor.surface,
+      themeColor.surfaceHover,
+      themeColor.surfaceActive,
+      themeColor.border,
+      themeColor.borderHover,
+      themeColor.borderActive,
+    ])
+  )
+    .map(getHSLFromHex)
+    .sort((a, b) => a[1] - b[1])
+    .map(([hex]) => hex);
 }
 
 export function getThemeColorPaletteDisplay(theme: Theme) {
