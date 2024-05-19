@@ -20,6 +20,7 @@ const themeColors = {
     100: '#000000',
   },
   primary: {
+    name: 'primary',
     main: colors.blueViolet['700'],
     mainHover: colors.blueViolet['500'],
     mainActive: colors.blueViolet['400'],
@@ -39,6 +40,7 @@ const themeColors = {
     },
   },
   secondary: {
+    name: 'secondary',
     main: colors.blue['950'],
     mainHover: colors.blue['900'],
     mainActive: colors.blue['700'],
@@ -50,6 +52,7 @@ const themeColors = {
     borderActive: colors.blue['300'],
   },
   basic: {
+    name: 'basic',
     main: colors.mutedBlue['900'],
     mainHover: colors.blueViolet['800'],
     mainActive: colors.blueViolet['500'],
@@ -61,6 +64,7 @@ const themeColors = {
     borderActive: colors.blueViolet['300'],
   },
   special: {
+    name: 'special',
     main: colors.brightPink['900'],
     mainHover: colors.brightPink['700'],
     mainActive: colors.brightPink['500'],
@@ -72,6 +76,7 @@ const themeColors = {
     borderActive: colors.brightPink['300'],
   },
   danger: {
+    name: 'danger',
     main: colors.red['750'],
     mainHover: colors.red['700'],
     mainActive: colors.red['500'],
@@ -83,6 +88,7 @@ const themeColors = {
     borderActive: colors.red['300'],
   },
   warning: {
+    name: 'warning',
     main: colors.stone['800'],
     mainHover: colors.orange['600'],
     mainActive: colors.yellow['700'],
@@ -94,6 +100,7 @@ const themeColors = {
     borderActive: colors.yellow['200'],
   },
   success: {
+    name: 'success',
     main: colors.green['750'],
     mainHover: colors.green['700'],
     mainActive: colors.green['600'],
@@ -105,6 +112,7 @@ const themeColors = {
     borderActive: colors.green['400'],
   },
   info: {
+    name: 'info',
     main: colors.blue['700'],
     mainHover: colors.blue['700'],
     mainActive: colors.blue['600'],

@@ -1,6 +1,6 @@
 import type { ThemedTemplateVariants } from 'global/types';
 
-type ShadesMap = {
+export type ShadesMap = {
   neutral: {
     50: string;
     100: string;
@@ -10,6 +10,7 @@ type ShadesMap = {
 };
 
 export type ThemedTemplateColorMap = {
+  name: string;
   main: string;
   mainHover: string;
   mainActive: string;
