@@ -1,4 +1,5 @@
 import type { ThemedTemplateVariants } from 'global/types';
+import type { ThemeFontMap } from './typography';
 
 export type ShadesMap = {
   neutral: {
@@ -47,8 +48,11 @@ export type ThemePalette = ThemedTemplateMap & {
     90: string;
     100: string;
   };
+  mode: 'light' | 'dark';
+};
+
+export type ThemeStyles = ThemePalette & ThemeFontMap & {
   shadow1: string;
   shadow2: string;
   shadow3: string;
-  mode: 'light' | 'dark';
 };

@@ -151,7 +151,7 @@ const fontStyles = {
     fontFamily,
     fontWeight: 500,
     fontSize: '2.5rem',
-    lineHeight: '2.85rem',
+    lineHeight: '3.85rem',
     letterSpacing: '-1.1px',
   },
   'heading-h2-mobile': {
@@ -219,9 +219,9 @@ const fontStyleVariants = {
   headingH6: fontStyles['heading-h6'],
 };
 
-type ThemeFontKeys = keyof typeof fontStyleVariants;
-type ThemeFontMap  = Record<ThemeFontKeys, FontStyleCSSProperties>;
-export const THEME_FONTS: ThemeFontMap = {...fontStyleVariants};
+export type ThemeFontKeys = keyof typeof fontStyleVariants;
+export type ThemeFontMap  = Record<ThemeFontKeys, FontStyleCSSProperties>;
+export const THEME_FONTS: ThemeFontMap = {...fontStyleVariants} as const;
 
 const themeFontKeyList: ThemeFontKeys[] = Object.keys(THEME_FONTS) as ThemeFontKeys[];
 export const themeFontKeys= Object.fromEntries(themeFontKeyList.map(key => [key, key])) as Record<ThemeFontKeys, ThemeFontKeys>;
