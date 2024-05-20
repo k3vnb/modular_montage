@@ -3,6 +3,18 @@ import type { Theme } from '@mui/system';
 import { THEME_TEMPLATE_VARIANTS } from 'global/types';
 import type { ShadesMap, ThemedTemplateColorMap } from 'theme/types';
 
+type TShadesDisplay = {
+  neutral: string[];
+  dark: string;
+  accent: string;
+};
+
+export type TPaletteDisplay = {
+  name: string;
+  spectrum: string[];
+  shades?: TShadesDisplay;
+};
+
 function getShades(shadesMap?: ShadesMap) {
   if (!shadesMap) return;
   return {
@@ -69,7 +81,7 @@ function getThemeColorSpectrum(themeColor: ThemedTemplateColorMap) {
     .map(([hex]) => hex);
 }
 
-export function getThemeColorPaletteDisplay(theme: Theme) {
+export function getThemeColorPaletteDisplay(theme: Theme): TPaletteDisplay[] {
   return THEME_TEMPLATE_VARIANTS.map((variant) => ({
     name: theme.styles[variant].name,
     spectrum: getThemeColorSpectrum(theme.styles[variant]),
