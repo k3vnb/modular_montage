@@ -1,1 +1,1 @@
-export { UnstyledList, ListItem } from './UnstyledList';
+export { UnstyledList, DividedList, ListItem } from './UnstyledList';
