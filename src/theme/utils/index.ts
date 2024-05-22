@@ -62,7 +62,14 @@ function getHSLFromHex(hex: string): [string, number] {
   return [hex, l];
 }
 
-function getThemeColorSpectrum(themeColor: ThemedTemplateColorMap) {
+function sortHexesByLightness(hexes: string[]) {
+  return hexes
+    .map(getHSLFromHex)
+    .sort((a, b) => a[1] - b[1])
+    .map(([hex]) => hex);
+}
+
+function getUniqueHexes(themeColor: ThemedTemplateColorMap) {
   return Array.from(
     new Set([
       themeColor.main,
@@ -75,16 +82,27 @@ function getThemeColorSpectrum(themeColor: ThemedTemplateColorMap) {
       themeColor.borderHover,
       themeColor.borderActive,
     ])
-  )
-    .map(getHSLFromHex)
-    .sort((a, b) => a[1] - b[1])
-    .map(([hex]) => hex);
+  );
+}
+
+function getThemeColorSpectrum(themeColor: ThemedTemplateColorMap) {
+  return sortHexesByLightness(getUniqueHexes(themeColor));
+}
+
+function getNeutralPaletteDisplay(theme: Theme): TPaletteDisplay {
+  return {
+    name: 'neutral',
+    spectrum: Object.values(theme.styles.neutral),
+  };
 }
 
 export function getThemeColorPaletteDisplay(theme: Theme): TPaletteDisplay[] {
-  return THEME_TEMPLATE_VARIANTS.map((variant) => ({
+  const neutralPalette = getNeutralPaletteDisplay(theme);
+  const themeColors = THEME_TEMPLATE_VARIANTS.map((variant) => ({
     name: theme.styles[variant].name,
     spectrum: getThemeColorSpectrum(theme.styles[variant]),
     shades: getShades(theme.styles[variant].shades),
   }));
+
+  return [...themeColors, neutralPalette];
 }

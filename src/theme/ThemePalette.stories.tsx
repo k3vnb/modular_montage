@@ -65,9 +65,9 @@ const ShadeSection = ({ name, hexes }: { name: string; hexes: string[] }): JSX.E
 );
 
 const ColorBoxList = ({ hexes, ...props }: BoxProps & { hexes: string[] }): JSX.Element => (
-  <UnstyledList display="flex" gap="10px" {...props}>
+  <UnstyledList display="flex" gap={1.25} {...props}>
     {hexes.map((hex) => (
-      <ColorBox component={ListItem} key={hex} hex={hex} />
+      <ColorBox component={ListItem} key={hex} hex={hex} title={hex} />
     ))}
   </UnstyledList>
 );

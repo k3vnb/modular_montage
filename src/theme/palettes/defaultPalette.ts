@@ -2,23 +2,7 @@ import colors from './colors';
 import type { ThemePalette } from '../types';
 
 const themeColors = {
-  neutral: {
-    0: '#FFFFFF',
-    10: '#F2F2F2',
-    15: '#E6E6E6',
-    20: '#D9D9D9',
-    30: '#CCCCCC',
-    40: '#B3B3B3',
-    50: '#999999',
-    60: '#808080',
-    70: '#666666',
-    75: '#515151',
-    80: '#4D4D4D',
-    85: '#333333',
-    90: '#1A1A1A',
-    95: '#0A0A0A',
-    100: '#000000',
-  },
+  neutral: colors.neutral,
   primary: {
     name: 'primary',
     main: colors.blueViolet['700'],
@@ -70,7 +54,7 @@ const themeColors = {
     mainActive: colors.brightPink['500'],
     surface: colors.brightPink['50'],
     surfaceHover: colors.brightPink['100'],
-    surfaceActive: colors.neutral['50'],
+    surfaceActive: colors.neutral['5'],
     border: colors.brightPink['500'],
     borderHover: colors.brightPink['400'],
     borderActive: colors.brightPink['300'],
@@ -125,14 +109,7 @@ const themeColors = {
   },
 } as const;
 
-const shadows = {
-  shadow1: '0px 2px 4px 0px rgba(0, 0, 0, 0.16)',
-  shadow2: '0px 6px 4px 0px rgba(0, 0, 0, 0.25)',
-  shadow3: '0px 8px 8px 0px rgba(0, 0, 0, 0.30)',
-};
-
 export const themePalette: ThemePalette = {
-  ...shadows,
   ...themeColors,
   mode: 'light',
 } as const;

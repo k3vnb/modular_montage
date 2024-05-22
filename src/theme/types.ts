@@ -51,8 +51,10 @@ export type ThemePalette = ThemedTemplateMap & {
   mode: 'light' | 'dark';
 };
 
-export type ThemeStyles = ThemePalette & ThemeFontMap & {
+type ThemeShadow = {
   shadow1: string;
   shadow2: string;
   shadow3: string;
 };
+
+export type ThemeStyles = ThemePalette & ThemeFontMap & ThemeShadow;
