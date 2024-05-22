@@ -31,7 +31,7 @@ export const PaletteMandala = ({ spectrum, shades, reverse, size = DEFAULT_SIZE 
       ))}
       {shades && (
         <>
-          {[...shades.neutral, shades.dark, shades.accent].map((hex, i, arr) => (
+          {[...shades.neutral, ...shades.dark, shades.accent].map((hex, i, arr) => (
             <ColorBox
               key={hex}
               hex={hex}

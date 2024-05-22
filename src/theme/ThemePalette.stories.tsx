@@ -47,7 +47,7 @@ const PaletteExample = (props: TPaletteDisplay): JSX.Element => {
           {shades && (
             <Box display="inline-flex" alignItems="center" gap={2}>
               <ShadeSection name="neutral" hexes={shades.neutral} />
-              <ShadeSection name="dark" hexes={[shades.dark]} />
+              <ShadeSection name="dark" hexes={shades.dark} />
               <ShadeSection name="accent" hexes={[shades.accent]} />
             </Box>
           )}        

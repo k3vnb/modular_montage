@@ -19,7 +19,14 @@ const themeColors = {
         50: colors.mutedBlue['25'],
         100: colors.mutedBlue['900']
       },
-      dark: colors.mutedPurple['900'],
+      dark: {
+        0: colors.mutedPurple['800'],
+        1: colors.mutedPurple['900'],
+        2: colors.mutedPurple['950'],
+      },
+      gradient: {
+        0: `linear-gradient(.25deg, ${colors.mutedPurple['950']} 0%, ${colors.mutedPurple['900']} 40%, ${colors.mutedPurple['800']} 68%, ${colors.blueViolet['600']} 100%)`,
+      },
       accent: colors.brightPink['500'],
     },
   },

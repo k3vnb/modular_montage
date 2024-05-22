@@ -1,5 +1,4 @@
 import { Stack, Box, styled } from '@mui/system';
-import { THEME_FONTS } from 'theme/typography';
 
 export const Header = (): JSX.Element => {
   return (
@@ -33,14 +32,14 @@ const Brand = (): JSX.Element => (
   </>
 );
 
-const StyledTitle = styled(Box)(() => ({
-  ...THEME_FONTS.textLgMedium,
+const StyledTitle = styled(Box)(({ theme }) => ({
+  ...theme.styles.textLgMedium,
   lineHeight: 0.85,
 }));
 
-const AdornedText = styled(Box)(() => ({
+const AdornedText = styled(Box)(({ theme }) => ({
   alignSelf: 'center',
-  ...THEME_FONTS.textLgMedium,
+  ...theme.styles.textLgMedium,
   lineHeight: 0.5,
   fontSize: '0.6rem',
   fontVariant: 'petite-caps',
@@ -54,10 +53,11 @@ const HeaderWrapper = styled(Box)(({ theme }) => ({
   maxHeight: '100%',
   maxWidth: '100%',
   overflow: 'hidden',
-  backgroundColor: theme.styles.primary.shades.dark,
+  backgroundColor: theme.styles.primary.shades.dark[1],
+  background: theme.styles.primary.shades.gradient[0],
   color: theme.styles.neutral[10],
-  borderBottom: `0.5px solid ${theme.styles.primary.shades.accent}`,
+  borderBottom: `1px solid ${theme.styles.primary.shades.accent}`,
   '& .brand': {
-    textShadow: `0px 1px 0px ${theme.palette.neutral[95]}`,
+    textShadow: `0px 1px 0px ${theme.styles.neutral[90]}`,
   },
 }));

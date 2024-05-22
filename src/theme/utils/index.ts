@@ -5,7 +5,7 @@ import type { ShadesMap, ThemedTemplateColorMap } from 'theme/types';
 
 type TShadesDisplay = {
   neutral: string[];
-  dark: string;
+  dark: string[];
   accent: string;
 };
 
@@ -19,7 +19,7 @@ function getShades(shadesMap?: ShadesMap) {
   if (!shadesMap) return;
   return {
     neutral: [shadesMap.neutral[50], shadesMap.neutral[100]],
-    dark: shadesMap.dark,
+    dark: [shadesMap.dark[0], shadesMap.dark[1], shadesMap.dark[2]],
     accent: shadesMap.accent,
   };
 }

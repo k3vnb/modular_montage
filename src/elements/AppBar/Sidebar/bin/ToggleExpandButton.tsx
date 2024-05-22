@@ -8,10 +8,9 @@ type ToggleExpandButtonProps = {
 };
 
 export const ToggleExpandButton = ({ onClick, expanded }: ToggleExpandButtonProps) => {
-  const ariaLabel = expanded ? 'collapse sidebar' : 'expand sidebar';
   return (
     <StyledToggleExpandButton
-      aria-label={ariaLabel}
+      aria-label={expanded ? 'collapse sidebar' : 'expand sidebar'}
       aria-controls={MENU_ID}
       onClick={onClick}
       aria-expanded={expanded}
@@ -31,13 +30,11 @@ const StyledToggleExpandButton = styled(UnstyledButton)(({ theme }) => ({
   justifyContent: 'center',
   borderRadius: '50%',
   backgroundColor: theme.styles.primary.shades.neutral[50],
-  transition: `all ${TRANSITION_DURATION * 2} ease`,
   transform: 'translateX(50%)',
   border: `1px solid ${theme.styles.primary.shades.neutral[50]}`,
   '&:hover': {
-    boxShadow: `1px 0px 2px ${theme.palette.neutral[10]}`,
     '&::after': {
-      borderLeftColor: theme.palette.neutral[50],
+      borderLeftColor: theme.styles.primary.borderHover,
     },
   },
   '&::after': {
@@ -46,7 +43,7 @@ const StyledToggleExpandButton = styled(UnstyledButton)(({ theme }) => ({
     height: 0,
     borderTop: '8px solid transparent',
     borderBottom: '8px solid transparent',
-    borderLeft: `8px solid ${theme.palette.neutral[30]}`,
+    borderLeft: `8px solid ${theme.styles.neutral[30]}`,
     transformOrigin: 'center',
     transition: `transform ${TRANSITION_DURATION}ms ease`,
   },

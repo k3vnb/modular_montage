@@ -6,8 +6,15 @@ export type ShadesMap = {
     50: string;
     100: string;
   };
-  dark: string;
+  dark: {
+    0: string;
+    1: string;
+    2: string;
+  }
   accent: string;
+  gradient: {
+    0: string;
+  }
 };
 
 export type ThemedTemplateColorMap = {
