@@ -80,7 +80,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => {
       borderStyle: 'solid',
       borderRadius: `0 ${rounded} ${rounded} 0`,
       width: 'calc(100% + 4px)',
-      boxShadow: theme.styles.shadow1,
+      boxShadow: theme.styles.shadow[1],
       '> .iconContainer': {
         marginLeft: `-${borderOffset}px`,
       },

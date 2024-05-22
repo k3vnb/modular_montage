@@ -2,6 +2,7 @@ import { createTheme, type Theme } from '@mui/system';
 import { breakpoints } from './breakpoints';
 import { themePalette } from './palettes/defaultPalette';
 import { THEME_FONTS, fontFamily } from './typography';
+import shadow from './shadow';
 import type { ThemeStyles, ThemePalette } from './types';
 
 declare module '@mui/system/createTheme' {
@@ -21,9 +22,7 @@ export const theme: Theme = createTheme({
     return {
       ..._palette,
       ...THEME_FONTS,
-      shadow1: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-      shadow2: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-      shadow3: '0px 8px 16px rgba(0, 0, 0, 0.1)',
+      shadow,
     };
   }, 
   typography: { fontFamily },

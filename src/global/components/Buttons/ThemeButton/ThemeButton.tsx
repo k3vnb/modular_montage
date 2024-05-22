@@ -86,7 +86,7 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
       backgroundColor: colors.bgDisabled,
     },
     '&:not(:hover, :active, :disabled, :focus)': {
-      boxShadow: shadow ? theme.styles.shadow1 : 'none',
+      boxShadow: shadow ? theme.styles.shadow[1] : 'none',
     },
     // Icon
     '.btn-icon': {
