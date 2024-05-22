@@ -38,9 +38,8 @@ export const Backdrop = styled(BaseBackdrop, options)`
   inset: 0;
   height: 100vh;
   width: 100vw;
-  opacity: ${({ open }) => open ? 1 : 0};
-  background-color: rgb(0 0 0 / 0.65);
-  backdrop-filter: blur(0.1px);
+  opacity: ${({ open }) => open ? 0.65 : 0};
+  background-color: ${({ theme }) => `${theme.styles.primary.shades.neutral[100]}`};
   -webkit-tap-highlight-color: transparent;
   transition: ${({ transitionDuration }) => `opacity ${transitionDuration ?? 225}ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`};
 `;

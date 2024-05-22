@@ -8,6 +8,7 @@ const UnstyledHeading = styled(Box)`
 	border: 0;
 	font-size: 100%;
 	font: inherit;
+	color: ${props => props.theme.styles.neutral[90]};
 	vertical-align: baseline;
 `;
 
@@ -20,7 +21,7 @@ const options = {
 }; 
 
 const StyledHeading = styled(UnstyledHeading, options)<StyledHeadingProps>(({ theme, fontKey }) => ({
-	color: theme.palette.neutral[90],
+	color: theme.styles.neutral[90],
 	...theme.styles[fontKey],
 }));
 

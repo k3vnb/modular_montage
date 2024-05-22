@@ -47,7 +47,6 @@ const StyledNavMenu = styled(Menu)(() => ({
 }));
 
 const StyledNavLink = styled(NavLink)(({ theme }) => {
-  const { palette } = theme;
   const rounded = `${theme.shape.borderRadius}px`;
   const borderOffset = 4;
   
@@ -81,7 +80,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => {
       borderStyle: 'solid',
       borderRadius: `0 ${rounded} ${rounded} 0`,
       width: 'calc(100% + 4px)',
-      boxShadow: palette.shadow1,
+      boxShadow: theme.styles.shadow1,
       '> .iconContainer': {
         marginLeft: `-${borderOffset}px`,
       },

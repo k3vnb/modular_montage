@@ -1,7 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Box, useTheme, styled } from '@mui/system';
+import { Box, BoxProps, useTheme } from '@mui/system';
+
 import { UnstyledList, DividedList, ListItem } from 'global/components/List';
+import { ColorBox } from 'elements/Palette/ColorBox';
+import { PaletteMandala } from 'elements/Palette/PaletteMandala';
 import { Typography } from 'global/components/Typography';
 import { getThemeColorPaletteDisplay, type TPaletteDisplay } from './utils';
 
@@ -29,97 +32,42 @@ export const Examples: Story = {
   render: () => <PaletteExamples />,
 };
 
-const ColorBox = styled(Box)`
-  height: 36px;
-  width: 36px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-`;
-
-const SIZE = 44;
-const PaletteBox = ({ spectrum, shades, concentric }: TPaletteDisplay & { concentric?: boolean }): JSX.Element => {
-  const list = concentric ? [...spectrum].reverse() : spectrum;
-  return (
-    <Box display="flex" alignItems="center" justifyContent="center" gap="10px" position="relative" height={SIZE} width={SIZE} >
-      
-      {list.map((hex, i, arr) => (
-        <ColorBox
-          key={hex}
-          position="absolute"
-          sx={{
-            top: '50%',
-            left: '50%',
-            zIndex: i,
-            transform: `translate(-50%, -50%) rotate(${i * 30}deg)`,
-            backgroundColor: hex,
-            width: SIZE - (i * (SIZE / arr.length)),
-            height: SIZE - (i * (SIZE / arr.length)),
-          }}
-        />
-      ))}
-      {shades && (
-        <>
-          {[...shades.neutral, shades.dark, shades.accent].map((hex, i, arr) => (
-            <ColorBox
-              key={hex}
-              position="absolute"
-              bottom={`${(i) * (100 / arr.length)}%`}
-              left="100%"
-              sx={{
-                backgroundColor: hex,
-                zIndex: 1,
-                height: SIZE / 8,
-                width: SIZE / 8,
-                transformOrigin: 'top', transform: `translate(100%, -50%) rotate(${45}deg)`
-            }} />
-          ))}
-        </>
-      )}
-    </Box>
-  );
-};
-
 const PaletteExample = (props: TPaletteDisplay): JSX.Element => {
   const { name, spectrum, shades } = props;
   return (
-    <ListItem key={name} marginY="15px">
+    <ListItem key={name} marginY={2}>
       <Typography.H2>{name}</Typography.H2>
       <Box display="inline-flex" alignItems="center" gap={20}>
         <Box display="inline-flex" alignItems="center" gap={2}>
-          <PaletteBox {...props} />
-          <PaletteBox concentric {...props} />
+          <PaletteMandala {...props} />
+          <PaletteMandala reverse {...props} />
         </Box>
         <Box display="flex" flexDirection="column" gap={2}>
-          <UnstyledList display="flex" gap="10px">
-            {spectrum.map((hex) => (
-              <ColorBox
-              component={ListItem}
-              title={hex} 
-              key={hex}
-              sx={{ backgroundColor: hex }}
-              />
-            ))}
-          </UnstyledList>
-      {shades && (
-        <Box display="inline-flex" alignItems="center" gap="24px">
-          <ShadesDisplay name="neutral" hexes={shades.neutral} />
-          <ShadesDisplay name="dark" hexes={[shades.dark]} />
-          <ShadesDisplay name="accent" hexes={[shades.accent]} />
+          <ColorBoxList hexes={spectrum} />
+          {shades && (
+            <Box display="inline-flex" alignItems="center" gap={2}>
+              <ShadeSection name="neutral" hexes={shades.neutral} />
+              <ShadeSection name="dark" hexes={[shades.dark]} />
+              <ShadeSection name="accent" hexes={[shades.accent]} />
+            </Box>
+          )}        
         </Box>
-      )}
       </Box>
-    </Box>
     </ListItem>
   );
 };
 
-const ShadesDisplay = ({ name, hexes }: { name: string; hexes: string[] }): JSX.Element => (
+const ShadeSection = ({ name, hexes }: { name: string; hexes: string[] }): JSX.Element => (
   <Box display="inline-flex" alignItems="center" gap={1}>
-    <Typography.H5>{name}</Typography.H5>
-    <UnstyledList display="flex" gap="10px">
-      {hexes.map((hex) => (
-        <ColorBox component={ListItem} key={hex} sx={{ backgroundColor: hex }} />
-      ))}
-    </UnstyledList>
+    <Typography.H5 component="div">{name}</Typography.H5>
+    <ColorBoxList hexes={hexes} />
   </Box>
+);
+
+const ColorBoxList = ({ hexes, ...props }: BoxProps & { hexes: string[] }): JSX.Element => (
+  <UnstyledList display="flex" gap="10px" {...props}>
+    {hexes.map((hex) => (
+      <ColorBox component={ListItem} key={hex} hex={hex} />
+    ))}
+  </UnstyledList>
 );
