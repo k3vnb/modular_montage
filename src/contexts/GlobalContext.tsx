@@ -1,37 +1,36 @@
 import React from 'react';
 import type { Theme } from '@mui/system';
-import { theme as defaultTheme } from '../theme';
+import { THEMES, THEME_IDS, type ThemeId } from 'theme';
 
 export interface IGlobalContextValue {
   theme: Theme,
-  updateTheme: (themeId: string) => void,
+  themeId: ThemeId,
+  updateTheme: (themeId: ThemeId) => void,
 }
 
 export const GlobalContext = React.createContext<IGlobalContextValue>({
-  theme: defaultTheme,
+  theme: THEMES.default,
+  themeId: THEME_IDS.default,
   updateTheme: () => undefined,
 });
 
 export const useGlobalContext = () => React.useContext(GlobalContext);
 
-type GlobalContextProviderProps = {
-  children: React.ReactNode;
-};
-
-export const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({
+export const GlobalContextProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const [theme, setTheme] = React.useState<Theme>(defaultTheme);
+  const [themeId, setThemeId] = React.useState<ThemeId>(THEME_IDS.default);
+  const theme = THEMES[themeId];
 
-  const updateTheme = React.useCallback((themeId: string) => {
-    console.log(themeId);
-    setTheme(theme);
-  }, [theme, setTheme]);
+  const updateTheme = React.useCallback((themeId: ThemeId) => {
+    setThemeId(themeId);
+  }, [setThemeId]);
 
   return (
     <GlobalContext.Provider
       value={{
         theme,
+        themeId,
         updateTheme,
       }}
     >
