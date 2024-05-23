@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { ROUTES } from './routes';
 import { AppLayout } from 'layouts';
-import { PlaceholderPage, ErrorPage, NotFoundPage } from 'pages';
+import { Dashboard, PlaceholderPage, ErrorPage, NotFoundPage } from 'pages';
 import App from '../App';
 
 const router = createBrowserRouter([
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: ROUTES.dashboard.path,
-            element: <PlaceholderPage title="Dashboard" />,
+            element: <Dashboard />,
           },
           {
             path: ROUTES.widgets.path,

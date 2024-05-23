@@ -1,5 +1,5 @@
-import { Box, Stack, styled } from '@mui/system';
-import { THEME_FONTS as themeFonts } from 'theme/typography';
+import { Stack, styled } from '@mui/system';
+import { Typography } from '../Typography';
 
 type Props = {
   title: string;
@@ -8,19 +8,17 @@ type Props = {
 
 export const PageTitle = ({ title, description }: Props): JSX.Element => {
   return (
-    <Stack gap="20px">
-      <StyledTitle component="h2">{title}</StyledTitle>
+    <Stack component="h2" gap={0.5}>
+      <StyledTitle>{title}</StyledTitle>
       {description && <StyledDescription component="p">{description}</StyledDescription>}
     </Stack>
   );
 };
 
-const StyledTitle = styled(Box)(({ theme }) => ({
-  color: theme.palette.neutral[90],
-  ...themeFonts.headingH3
+const StyledTitle = styled(Typography.H3)(({ theme }) => ({
+  color: theme.styles.neutral[80],
 }));
 
-const StyledDescription = styled(Box)(({ theme }) => ({
-  color: theme.palette.neutral[80],
-  ...themeFonts.textLg
+const StyledDescription = styled(Typography.H4)(({ theme }) => ({
+  color: theme.styles.neutral[70],
 }));

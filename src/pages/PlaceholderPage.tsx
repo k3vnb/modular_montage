@@ -1,6 +1,6 @@
 import { Box, Stack } from '@mui/system';
-import { PageTitle } from 'global/components/PageTitle';
 import { Outlet } from 'react-router-dom';
+import { PageTitle } from 'global/components/PageTitle';
 
 type Props = {
   title: string;
