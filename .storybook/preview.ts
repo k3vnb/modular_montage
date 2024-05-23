@@ -1,7 +1,7 @@
 import type { Preview } from "@storybook/react";
-import { ThemeProvider } from "@emotion/react";
+import { ThemeProvider } from "@mui/system";
 import { withThemeFromJSXProvider } from "@storybook/addon-styling";
-import { theme } from "../src/theme";
+import { THEMES, THEME_IDS } from "../src/theme";
 
 const preview: Preview = {
   parameters: {
@@ -16,10 +16,8 @@ const preview: Preview = {
   decorators: [
     // Adds global styles and theme switching support.
     withThemeFromJSXProvider({
-      themes: {
-        lucid: theme,
-      },
-      defaultTheme: "lucid",
+      themes: THEMES,
+      defaultTheme: THEME_IDS.default,
       Provider: ThemeProvider,
     }),
   ],
