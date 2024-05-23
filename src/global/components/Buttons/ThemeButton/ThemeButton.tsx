@@ -6,11 +6,7 @@ export type TButtonProps = {
   icon?: IconProp;
 } & StyledButtonProps;
 
-export const ThemeButton: React.FC<TButtonProps> = ({
-  text,
-  icon,
-  ...props
-}) => {
+export const ThemeButton = React.forwardRef<HTMLButtonElement, TButtonProps>(function ThemeButton({ text, icon, ...props }, ref) {
 
   const withIcon = React.useMemo(() => {
     if (!icon) return null;
@@ -18,8 +14,8 @@ export const ThemeButton: React.FC<TButtonProps> = ({
   }, [icon]);
 
   return (
-    <StyledButton {...props}>
+    <StyledButton ref={ref}  {...props}>
       {withIcon}{text}
     </StyledButton>
   );
-};
+});

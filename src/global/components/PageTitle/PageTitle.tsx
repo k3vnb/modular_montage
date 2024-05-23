@@ -8,8 +8,8 @@ type Props = {
 
 export const PageTitle = ({ title, description }: Props): JSX.Element => {
   return (
-    <Stack component="h2" gap={0.5}>
-      <StyledTitle>{title}</StyledTitle>
+    <Stack gap={0.5}>
+      <StyledTitle component="h2">{title}</StyledTitle>
       {description && <StyledDescription component="p">{description}</StyledDescription>}
     </Stack>
   );

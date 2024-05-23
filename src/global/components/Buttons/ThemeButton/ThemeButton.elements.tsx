@@ -1,9 +1,8 @@
 import React from 'react';
 import { Box, styled } from '@mui/system';
-import type { ButtonProps as BaseButtonProps  } from '@mui/base';
 import type { SvgIconComponent } from '@mui/icons-material';
 import type { ThemedTemplateVariants } from 'global/types';
-import { UnstyledButton } from '../UnstyledButton';
+import { UnstyledButton, type UnstyledButtonProps } from '../UnstyledButton';
 import { getButtonThemeColors } from '../utils';
 
 export type TButtonSize = 'small' | 'medium' | 'large';
@@ -14,7 +13,7 @@ export type StyledButtonProps = {
   shadow?: boolean;
   variant?: ThemedTemplateVariants;
   showBorder?: boolean;
-} & BaseButtonProps;
+} & UnstyledButtonProps;
 
 const options = {
   shouldForwardProp: (prop: string) => ![
@@ -32,23 +31,19 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
 }) => {
   const colors = React.useMemo(() => getButtonThemeColors({ theme, variant, filled, showBorder }), [theme, variant, filled, showBorder]);
 
-  const fontStyles = React.useMemo(() => {
-    const sizes = {
+  const [fontStyles, padding] = React.useMemo(() => {
+    const fontStyles = {
       small: theme.styles.textSmSemibold,
       medium: theme.styles.textMdBold,
       large: theme.styles.textLgBold,
     };
-    return sizes[size];
-  }, [theme, size]);
-
-  const padding = React.useMemo(() => {
-    const sizes = {
-      small: '6px 16px',
-      medium: '8px 16px',
-      large: '10px 16px',
+    const paddings = {
+      small: theme.spacing(1, 2),
+      medium: theme.spacing(1.25, 2),
+      large: theme.spacing(1.5, 2),
     };
-    return sizes[size];
-  }, [size]);
+    return [fontStyles[size], paddings[size]];
+  }, [theme, size]);
 
   return {
     minWidth: 'min-content',
@@ -57,9 +52,9 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    gap: '8px',
+    gap: theme.spacing(1),
     backgroundColor: colors.bg,
-    borderRadius: '4px',
+    borderRadius: theme.shape.borderRadius,
     border: `1.5px solid ${colors.border}`,
     padding,
     color: colors.text,
