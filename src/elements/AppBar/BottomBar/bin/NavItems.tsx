@@ -5,7 +5,6 @@ import MoreIcon from '@mui/icons-material/MoreHorizOutlined';
 
 import { UnstyledButton } from 'global/components/Buttons';
 import { useDrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
-import { THEME_FONTS } from 'theme/typography';
 import { MENU_ID, TRANSITION_DURATION } from '../constants';
 import type { TNavRoute } from 'routes';
 
@@ -67,7 +66,7 @@ const IconContainer: React.FC<{ icon: TNavRoute['icon'] }> = ({ icon: Icon }) =>
 );
 
 const StyledNavItem = styled(Box)(({ theme }) => {
-  const { palette } = theme;
+  const { appbar } = theme.styles.primary.elements;
   const borderOffset = 8;
 
   return {
@@ -76,8 +75,8 @@ const StyledNavItem = styled(Box)(({ theme }) => {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    ...THEME_FONTS.textMd,
-    color: theme.styles.primary.shades.neutral[100],
+    ...theme.styles.textMd,
+    color: appbar.surfaceContrast[0],
     fontWeight: 400,
     letterSpacing: '.25px',
     height: '80px',
@@ -91,16 +90,15 @@ const StyledNavItem = styled(Box)(({ theme }) => {
     transitionDuration: `${TRANSITION_DURATION}ms`,
     transitionTimingFunction: 'ease',
     '&.active': {
-      boxShadow: `2px 2px 1px ${palette.neutral[15]}`,
-      backgroundColor: theme.styles.primary.box.surface[0],
-      color: theme.styles.primary.main,
+      backgroundColor: appbar.surface[1],
+      color: appbar.surfaceContrast[1],
       fontWeight: 600,
       borderWidth: `0 0 ${borderOffset}px 0`,
-      borderColor: theme.styles.primary.main,
+      borderColor: appbar.border[1],
       letterSpacing: '0px',
     },
     '&:hover&:not(.active)': {
-      color: theme.styles.primary.main,
+      color: appbar.surfaceContrast[1],
     },
     '&:not(.active)': {
       borderColor: 'transparent',

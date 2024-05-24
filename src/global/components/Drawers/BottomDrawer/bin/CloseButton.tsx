@@ -8,13 +8,13 @@ const StyledCloseButton = styled(UnstyledButton)(({ theme }) => {
     alignItems: 'center',
     justifyContent: 'center',
     justifySelf: 'flex-end',
-    backgroundColor: theme.palette.neutral[50],
+    backgroundColor: theme.styles.neutral[50],
     borderRadius: '4px',
     width: '40%',
     minWidth: '60px',
     height: '7px',
     '&:hover&:not(:disabled)': {
-      backgroundColor: theme.palette.info.main,
+      backgroundColor: theme.styles.info.main,
     },
     '&:disabled': {
       cursor: 'not-allowed',

@@ -37,7 +37,7 @@ export const DrawerList = {
 };
 
 const StyledLinkContainer = styled(Box)(({ theme }) => {
-  const { palette } = theme;
+  const { box } = theme.styles.primary;
   const paddingXOffset = 0.75;
 
   return {
@@ -48,24 +48,24 @@ const StyledLinkContainer = styled(Box)(({ theme }) => {
     padding: theme.spacing(0, paddingXOffset),
     margin: theme.spacing(0, -paddingXOffset),
     gap: theme.spacing(1),
-    color: palette.neutral[100],
+    color: theme.styles.neutral[100],
     letterSpacing: '.5px',
     height: '80px',
     textDecoration: 'none',
     border: '1px solid transparent',
     borderRadius: '4px',
     '&.active': {
-      backgroundColor: theme.styles.primary.box.surface[0],
-      color: theme.styles.primary.main,
+      backgroundColor: box.surface[0],
+      color: box.surfaceContrast[0],
       fontWeight: 500,
-      borderColor: theme.styles.primary.main,
+      borderColor: box.border[0],
       borderRadius: '4px',
       width: `calc(100% + ${theme.spacing(paddingXOffset * 2)})`,
-      boxShadow: `inset 0px 0px 0px 2px ${theme.styles.primary.box.border[2]}`,
+      boxShadow: `inset 0px 0px 0px 2px ${box.border[0]}`,
       letterSpacing: '0px',
     },
     '&:hover&:not(.active)': {
-      color: theme.styles.primary.main,
+      color: box.surfaceContrast[0],
       fontWeight: 600,
       letterSpacing: '0px',
     },

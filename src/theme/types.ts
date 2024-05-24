@@ -23,20 +23,27 @@ type ColorBox = {
   surfaceContrast: { 0: string, 1: string, 2: string };
 }
 
+type ElementColorMaps = {
+  appbar: ColorBox;
+};
+
+
 export type ThemedTemplateColorMap = {
   name: string;
   main: string;
   box: ColorBox;
   shades?: ShadesMap;
+  elements?: ElementColorMaps;
 };
 
 type TMap = {
   [key in ThemedTemplateVariants]: ThemedTemplateColorMap;
 };
 
-export type ThemedTemplateMap = Omit<TMap, 'primary'> & {
+export type ThemedTemplateMap = Omit<TMap, 'primary' | 'elements'> & {
   primary: ThemedTemplateColorMap & {
     shades: ShadesMap;
+    elements: ElementColorMaps;
   };
 };
 

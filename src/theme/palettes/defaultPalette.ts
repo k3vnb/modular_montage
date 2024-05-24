@@ -11,6 +11,13 @@ const themeColors = {
       border: [colors.blueViolet[500], colors.blueViolet[400], colors.blueViolet[300]],
       surfaceContrast: [colors.blueViolet[700], colors.blueViolet[500], colors.blueViolet[400]],
     },
+    elements: {
+      appbar: {
+        surface: [colors.neutral[10], colors.blueViolet[50], colors.blueViolet[25]],
+        border: [colors.blueViolet[600], colors.blueViolet[500], colors.blueViolet[400]],
+        surfaceContrast: [colors.mutedBlue[900], colors.blueViolet[700], colors.blueViolet[500]],
+      },
+    },
     shades: {
       neutral: {
         50: colors.neutral['10'],

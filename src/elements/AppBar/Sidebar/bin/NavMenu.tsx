@@ -47,6 +47,7 @@ const StyledNavMenu = styled(Menu)(() => ({
 }));
 
 const StyledNavLink = styled(NavLink)(({ theme }) => {
+  const { appbar } = theme.styles.primary.elements;
   const rounded = `${theme.shape.borderRadius}px`;
   const borderOffset = 4;
   
@@ -57,7 +58,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => {
     padding: '16px 0px',
     textDecoration: 'none',
     letterSpacing: '0.5px',
-    color: theme.styles.primary.shades.neutral[100],
+    color: appbar.surfaceContrast[0],
     transitionProperty: 'color, background-color, box-shadow',
     transitionDuration: `${TRANSITION_DURATION}ms`,
     transitionTimingFunction: 'ease',
@@ -71,11 +72,11 @@ const StyledNavLink = styled(NavLink)(({ theme }) => {
       fontSize: 38,
     },
     '&.active': {
-      color: theme.styles.primary.main,
-      backgroundColor: theme.styles.primary.box.surface[0],
+      color: appbar.surfaceContrast[1],
+      backgroundColor: appbar.surface[1],
       fontWeight: 600,
       letterSpacing: '0px',
-      borderColor: theme.styles.primary.main,
+      borderColor: appbar.border[1],
       borderWidth: `0 0 0 ${borderOffset}px`,
       borderStyle: 'solid',
       borderRadius: `0 ${rounded} ${rounded} 0`,
@@ -93,7 +94,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => {
       },
     },
     '&:hover&:not(.active)': {
-      color: theme.styles.primary.main,
+      color: appbar.surfaceContrast[1],
       fontWeight: 500,
     },
   };

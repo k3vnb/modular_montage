@@ -81,7 +81,14 @@ const themeColors = {
     box: {
       surface: [_rhinoBlue[10], _rhinoBlue[20], _rhinoBlue[100]],
       border: [_rhinoBlue[500], _rhinoBlue[400], _rhinoBlue[300]],
-      surfaceContrast: [_rhinoBlue[900], _rhinoBlue[800], _rhinoBlue[700]],
+      surfaceContrast: [_rhinoBlue[950], _rhinoBlue[850], _rhinoBlue[700]],
+    },
+    elements: {
+      appbar: {
+        surface: ['#1c1c21', _rhinoBlue[950], _rhinoBlue[850]],
+        border: [seafoamGreen[500], seafoamGreen[400], seafoamGreen[300]],
+        surfaceContrast: [colors.neutral[40], _rhinoBlue[10], _rhinoBlue[20]],
+      },
     },
     shades: {
       neutral: {
