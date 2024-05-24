@@ -92,7 +92,7 @@ const StyledNavItem = styled(Box)(({ theme }) => {
     transitionTimingFunction: 'ease',
     '&.active': {
       boxShadow: `2px 2px 1px ${palette.neutral[15]}`,
-      backgroundColor: theme.styles.primary.surface,
+      backgroundColor: theme.styles.primary.box.surface[0],
       color: theme.styles.primary.main,
       fontWeight: 600,
       borderWidth: `0 0 ${borderOffset}px 0`,

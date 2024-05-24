@@ -1,8 +1,9 @@
 import colors from './colors';
 import type { ThemePalette } from '../types';
-
+const d0 = '#a3a3a3';
+const d1 = '#1c1c21';
 const rhinoBlue = {
-  25: '#f5f6f9',
+  25: '#f5f6f9', //
   50: '#ebebef',
   100: '#d6d7e0',
   200: '#adafc1',
@@ -12,12 +13,41 @@ const rhinoBlue = {
   500: '#5d66b8',
   600: '#545ca6',
   650: '#414781',
-  700: '#323763',
+  700: '#323763', //
   750: '#282c4f',
-  800: '#141628',
-  900: '#0f101e',
+  800: '#141628', //
+  900: '#0f101e', //
   950: '#0a0b14',
 };
+
+const _rhinoBlue = {
+  10: '#f5f5f5',
+  20: '#ced2fd',
+  100: '#98a1f0',
+  200: '#4858e5',
+  300: '#172bde',
+  400: '#1424b3',
+  500: '#242c7b',
+  600: '#172382',
+  650: '#232d71',
+  700: '#323663', //700
+  750: '#292d61',
+  800: '#101865',
+  825: '#111646',
+  850: '#151728', //800
+  900: '#1c1c21',
+  950: '#0f101f', // 900
+};
+
+const testlist3 = [
+  '#f5f6f9',
+  '#a3a3a3',
+  '#323763',
+  '#292e61',
+  '#141628',
+  '#0f101e',
+  '#1c1c21',
+];
 
 const brightBlue = '#131faa';
 const marigold = '#d3b201';
@@ -41,21 +71,18 @@ const red = {
 };
 
 const main = '#182181';
-const mainDark = '#292e61';
+const mainDark = '#292e61'; //
 
 const themeColors = {
   neutral: colors.neutral,
   primary: {
     name: 'primary',
-    main: rhinoBlue['25'],
-    mainHover: brightBlue,
-    mainActive: main,
-    surface: rhinoBlue['900'],
-    surfaceHover: rhinoBlue['25'],
-    surfaceActive: rhinoBlue['25'],
-    border: '#303991',
-    borderHover: rhinoBlue['600'],
-    borderActive: brightBlue,
+    main: _rhinoBlue[500],
+    box: {
+      surface: [_rhinoBlue[10], _rhinoBlue[20], _rhinoBlue[100]],
+      border: [_rhinoBlue[500], _rhinoBlue[400], _rhinoBlue[300]],
+      surfaceContrast: [_rhinoBlue[900], _rhinoBlue[800], _rhinoBlue[700]],
+    },
     shades: {
       neutral: {
         50: '#1c1c21',
@@ -75,74 +102,56 @@ const themeColors = {
   secondary: {
     name: 'secondary',
     main: '#388560',
-    mainHover: '#07af79',
-    mainActive: colors.blue['700'],
-    surface: colors.blue['50'],
-    surfaceHover: colors.blue['25'],
-    surfaceActive: colors.blue['50'],
-    border: '#245840',
-    borderHover: colors.blue['400'],
-    borderActive: colors.blue['300'],
+    box: {
+      surface: [colors.neutral[10], colors.neutral[20], colors.neutral[30]],
+      border: [colors.neutral[50], colors.neutral[40], colors.neutral[30]],
+      surfaceContrast: [colors.neutral[90], colors.neutral[80], colors.neutral[70]],
+    },
   },
   special: {
     name: 'special',
-    main: seafoamGreen[500],
-    mainHover: seafoamGreen[600],
-    mainActive: seafoamGreen[500],
-    surface: seafoamGreen[100],
-    surfaceHover: seafoamGreen[50],
-    surfaceActive: seafoamGreen[100],
-    border: seafoamGreen[600],
-    borderHover: seafoamGreen[500],
-    borderActive: seafoamGreen[400],
+    main: colors.brightPink[900],
+    box: {
+      surface: [colors.brightPink[50], colors.brightPink[100], colors.neutral[5]],
+      border: [colors.brightPink[500], colors.brightPink[400], colors.brightPink[300]],
+      surfaceContrast: [colors.brightPink[900], colors.brightPink[700], colors.brightPink[500]],
+    },
   },
   danger: {
     name: 'danger',
-    main: red['600'],
-    mainHover: colors.red['700'],
-    mainActive: colors.red['600'],
-    surface: colors.red['50'],
-    surfaceHover: colors.red['100'],
-    surfaceActive: colors.red['50'],
-    border: red['600'],
-    borderHover: colors.red['700'],
-    borderActive: colors.red['600'],
+    main: colors.red[800],
+    box: {
+      surface: [colors.red[50], colors.red[100], colors.neutral[5]],
+      border: [colors.red[600], colors.red[500], colors.red[400]],
+      surfaceContrast: [colors.red[800], colors.red[700], colors.red[600]],
+    },
   },
   warning: {
     name: 'warning',
-    main: colors.orange['950'],
-    mainHover: colors.orange['800'],
-    mainActive: colors.orange['500'],
-    surface: colors.orange['50'],
-    surfaceHover: colors.orange['100'],
-    surfaceActive: colors.orange['50'],
-    border: colors.orange['500'],
-    borderHover: colors.orange['450'],
-    borderActive: colors.orange['500'],
+    main: colors.orange[950],
+    box: {
+      surface: [colors.orange[50], colors.orange[100], colors.neutral[5]],
+      border: [colors.orange[500], colors.orange[450], colors.orange[500]],
+      surfaceContrast: [colors.orange[950], colors.orange[800], colors.orange[500]],
+    },
   },
   success: {
     name: 'success',
-    main: colors.green['850'],
-    mainHover: colors.green['800'],
-    mainActive: colors.green['700'],
-    surface: colors.green['50'],
-    surfaceHover: colors.green['100'],
-    surfaceActive: colors.green['50'],
-    border: colors.green['500'],
-    borderHover: colors.green['400'],
-    borderActive: colors.green['300'],
+    main: colors.green[850],
+    box: {
+      surface: [colors.green[50], colors.green[100], colors.neutral[5]],
+      border: [colors.green[500], colors.green[400], colors.green[300]],
+      surfaceContrast: [colors.green[850], colors.green[800], colors.green[700]],
+    },
   },
   info: {
     name: 'info',
-    main: brightBlue,
-    mainHover: colors.blue['700'],
-    mainActive: colors.blue['600'],
-    surface: colors.blue['50'],
-    surfaceHover: colors.blue['100'],
-    surfaceActive: colors.blue['50'],
-    border: colors.blue['600'],
-    borderHover: colors.blue['500'],
-    borderActive: colors.blue['400'],
+    main: colors.blue[700],
+    box: {
+      surface: [colors.blue[50], colors.blue[100], colors.neutral[5]],
+      border: [colors.blue[600], colors.blue[500], colors.blue[400]],
+      surfaceContrast: [colors.blue[700], colors.blue[500], colors.blue[400]],
+    },
   },
 } as const;
 

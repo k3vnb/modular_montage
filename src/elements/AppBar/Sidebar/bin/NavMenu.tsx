@@ -72,7 +72,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => {
     },
     '&.active': {
       color: theme.styles.primary.main,
-      backgroundColor: theme.styles.primary.surface,
+      backgroundColor: theme.styles.primary.box.surface[0],
       fontWeight: 600,
       letterSpacing: '0px',
       borderColor: theme.styles.primary.main,

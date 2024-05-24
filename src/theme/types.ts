@@ -17,17 +17,16 @@ export type ShadesMap = {
   }
 };
 
+type ColorBox = {
+  surface: { 0: string, 1: string, 2: string };
+  border: { 0: string, 1: string, 2: string };
+  surfaceContrast: { 0: string, 1: string, 2: string };
+}
+
 export type ThemedTemplateColorMap = {
   name: string;
   main: string;
-  mainHover: string;
-  mainActive: string;
-  surface: string;
-  surfaceHover: string;
-  surfaceActive: string;
-  border: string;
-  borderHover: string;
-  borderActive: string;
+  box: ColorBox;
   shades?: ShadesMap;
 };
 

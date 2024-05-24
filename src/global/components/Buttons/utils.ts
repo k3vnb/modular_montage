@@ -35,6 +35,7 @@ export function getButtonThemeColors({
 }: FnOptions): ButtonThemeColors {
   const { neutral } = theme.styles;
   const colorVariant = theme.styles[variant];
+  const { surface, surfaceContrast } = colorVariant.box;
 
   const disabledColors = {
     textDisabled: neutral[70],
@@ -50,27 +51,28 @@ export function getButtonThemeColors({
     focusOutline: theme.palette.info.mainActive,
   };
 
-  if (filled)
+  if (filled) {
     return {
       text: neutral[0],
       textHover: neutral[10],
       textPressed: neutral[10],
 
-      bg: colorVariant.main,
-      bgHover: colorVariant.mainHover,
-      bgPressed: colorVariant.mainActive,
-
+      bg: surfaceContrast[0],
+      bgHover: surfaceContrast[1],
+      bgPressed: surfaceContrast[2],
+      
       ...commonColors,
     };
+  }
 
   return {
-    text: colorVariant.main,
-    textHover: colorVariant.mainHover,
-    textPressed: colorVariant.mainActive,
-
-    bg: colorVariant.surface,
-    bgHover: colorVariant.surfaceHover,
-    bgPressed: colorVariant.surface,
+    text: surfaceContrast[0],
+    textHover: surfaceContrast[1],
+    textPressed: surfaceContrast[2],
+    
+    bg: surface[0],
+    bgHover: surface[1],
+    bgPressed: surface[2],
 
     ...commonColors,
   };
@@ -88,8 +90,8 @@ function getBorderColors(
     };
 
   return {
-    border: colorVariant.border,
-    borderHover: colorVariant.borderHover,
-    borderPressed: colorVariant.borderActive,
+    border: colorVariant.box.border[0],
+    borderHover: colorVariant.box.border[1],
+    borderPressed: colorVariant.box.border[2],
   };
 }

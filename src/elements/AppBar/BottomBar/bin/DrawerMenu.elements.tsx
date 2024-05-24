@@ -2,7 +2,6 @@ import { NavLink, useMatch } from 'react-router-dom';
 import { Box, styled } from '@mui/system';
 import { UnstyledList, ListItem } from 'global/components/List';
 import { useDrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
-import { THEME_FONTS } from 'theme/typography';
 import type { TNavRoute } from 'routes';
 
 const NavListItem = ({
@@ -45,7 +44,7 @@ const StyledLinkContainer = styled(Box)(({ theme }) => {
     display: 'flex',
     alignItems: 'center',
     width: '100%',
-    ...THEME_FONTS.textLg,
+    ...theme.styles.textLg,
     padding: theme.spacing(0, paddingXOffset),
     margin: theme.spacing(0, -paddingXOffset),
     gap: theme.spacing(1),
@@ -56,13 +55,13 @@ const StyledLinkContainer = styled(Box)(({ theme }) => {
     border: '1px solid transparent',
     borderRadius: '4px',
     '&.active': {
-      backgroundColor: theme.styles.primary.surface,
+      backgroundColor: theme.styles.primary.box.surface[0],
       color: theme.styles.primary.main,
       fontWeight: 500,
       borderColor: theme.styles.primary.main,
       borderRadius: '4px',
       width: `calc(100% + ${theme.spacing(paddingXOffset * 2)})`,
-      boxShadow: `inset 0px 0px 0px 2px ${theme.styles.primary.borderActive}`,
+      boxShadow: `inset 0px 0px 0px 2px ${theme.styles.primary.box.border[2]}`,
       letterSpacing: '0px',
     },
     '&:hover&:not(.active)': {

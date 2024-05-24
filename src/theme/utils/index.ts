@@ -71,17 +71,7 @@ function sortHexesByLightness(hexes: string[]) {
 
 function getUniqueHexes(themeColor: ThemedTemplateColorMap) {
   return Array.from(
-    new Set([
-      themeColor.main,
-      themeColor.mainHover,
-      themeColor.mainActive,
-      themeColor.surface,
-      themeColor.surfaceHover,
-      themeColor.surfaceActive,
-      themeColor.border,
-      themeColor.borderHover,
-      themeColor.borderActive,
-    ])
+    new Set(Object.values(themeColor.box).map(colorVals => Object.values(colorVals)).flat())
   );
 }
 
