@@ -4,6 +4,7 @@ import { themePalette } from './palettes/defaultPalette';
 import { themePalette1 } from './palettes/variantPalettes';
 import { THEME_FONTS, fontFamily } from './typography';
 import shadow from './shadow';
+import borderRadius from './borderRadius';
 import type { ThemeStyles, ThemePalette } from './types';
 
 declare module '@mui/system/createTheme' {
@@ -16,14 +17,19 @@ declare module '@mui/system/createTheme' {
   }
 }
 
+const commonStyles = {
+  ...THEME_FONTS,
+  borderRadius,
+  shadow,
+};
+
 const defaultTheme: Theme = createTheme({
   palette: themePalette,
   get styles() {
     const _palette = this.palette as ThemePalette; // allows typescript to recognize the palette as ThemePalette; unfortunately, the library does not provide a way to override it's basic type definitions: https://github.com/mui/material-ui/issues/30678
     return {
       ..._palette,
-      ...THEME_FONTS,
-      shadow,
+      ...commonStyles,
     };
   }, 
   typography: { fontFamily },
@@ -36,8 +42,7 @@ const borealisTheme: Theme = createTheme({
     const _palette = this.palette as ThemePalette;
     return {
       ..._palette,
-      ...THEME_FONTS,
-      shadow,
+      ...commonStyles,
     };
   },
   typography: { fontFamily },

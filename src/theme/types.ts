@@ -65,4 +65,12 @@ export type ThemeShadowMap = {
     3: string;
 }
 
+export type BorderRadiusMap = {
+  0: string;
+  1: string;
+  2: string;
+  3: string;
+  full: string;
+};
+
 export type ThemeStyles = ThemePalette & ThemeFontMap & { shadow: ThemeShadowMap };
