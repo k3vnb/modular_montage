@@ -47,7 +47,7 @@ const StyledNavMenu = styled(Menu)(() => ({
 }));
 
 const StyledNavLink = styled(NavLink)(({ theme }) => {
-  const { appbar } = theme.styles.primary.elements;
+  const { appbar } = theme.styles.elements;
   const rounded = `${theme.shape.borderRadius}px`;
   const borderOffset = 4;
   

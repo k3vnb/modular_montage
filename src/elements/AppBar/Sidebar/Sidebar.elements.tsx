@@ -19,6 +19,6 @@ export const SidebarContent = styled(Stack)(({ theme }) => ({
   minHeight: '100%',
   height: 'auto',
   padding: '34px 0',
-  backgroundColor: theme.styles.primary.elements.appbar.surface[0],
+  backgroundColor: theme.styles.elements.appbar.surface[0],
   transition,
 }));

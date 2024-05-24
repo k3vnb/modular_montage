@@ -1,7 +1,7 @@
 import { createTheme, type Theme } from '@mui/system';
 import { breakpoints } from './breakpoints';
-import { themePalette } from './palettes/defaultPalette';
-import { themePalette1 } from './palettes/variantPalettes';
+import * as theme1 from './palettes/defaultPalette';
+import * as theme2 from './palettes/variantPalettes';
 import { THEME_FONTS, fontFamily } from './typography';
 import shadow from './shadow';
 import borderRadius from './borderRadius';
@@ -24,12 +24,13 @@ const commonStyles = {
 };
 
 const defaultTheme: Theme = createTheme({
-  palette: themePalette,
+  palette: theme1.themePalette,
   get styles() {
     const _palette = this.palette as ThemePalette; // allows typescript to recognize the palette as ThemePalette; unfortunately, the library does not provide a way to override it's basic type definitions: https://github.com/mui/material-ui/issues/30678
     return {
       ..._palette,
       ...commonStyles,
+      elements: theme1.elements,
     };
   }, 
   typography: { fontFamily },
@@ -37,12 +38,13 @@ const defaultTheme: Theme = createTheme({
 });
 
 const borealisTheme: Theme = createTheme({
-  palette: themePalette1,
+  palette: theme2.themePalette,
   get styles() {
     const _palette = this.palette as ThemePalette;
     return {
       ..._palette,
       ...commonStyles,
+      elements: theme2.elements,
     };
   },
   typography: { fontFamily },

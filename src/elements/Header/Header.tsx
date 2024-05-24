@@ -46,18 +46,18 @@ const AdornedText = styled(Box)(({ theme }) => ({
   fontFamily: 'monospace',
 }));
 
-const HeaderWrapper = styled(Box)(({ theme }) => ({
+const HeaderWrapper = styled(Box)(({ theme: { styles } }) => ({
   position: 'relative',
   height: '100%',
   width: '100%',
   maxHeight: '100%',
   maxWidth: '100%',
   overflow: 'hidden',
-  backgroundColor: theme.styles.primary.shades.dark[1],
-  background: theme.styles.primary.shades.gradient[0],
-  color: theme.styles.neutral[10],
-  borderBottom: `1px solid ${theme.styles.primary.shades.accent}`,
+  backgroundColor: styles.elements.header.surface[0],
+  background: styles.elements.header.gradients?.[0] || styles.elements.header.surface[0],
+  color: styles.elements.header.surfaceContrast[0],
+  borderBottom: `1px solid ${styles.elements.header.border[0]}`,
   '& .brand': {
-    textShadow: `0px 1px 0px ${theme.styles.neutral[90]}`,
+    textShadow: `0px 1px 0px ${styles.neutral[90]}`,
   },
 }));

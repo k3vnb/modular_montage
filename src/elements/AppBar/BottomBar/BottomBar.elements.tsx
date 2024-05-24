@@ -14,7 +14,7 @@ export const BottomBarContainer = styled(Box, options)<ContainerProps>(({ theme,
   width: '100vw',
   maxWidth: '100%',
   height: BOTTOM_BAR_HEIGHT,
-  backgroundColor: theme.styles.primary.elements.appbar.surface[0],
+  backgroundColor: theme.styles.elements.appbar.surface[0],
   zIndex: isDrawerVisible ? 50 : 'auto',
   '& > ul': {
     listStyle: 'none',

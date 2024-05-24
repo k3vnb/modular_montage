@@ -21,10 +21,13 @@ type ColorBox = {
   surface: { 0: string, 1: string, 2: string };
   border: { 0: string, 1: string, 2: string };
   surfaceContrast: { 0: string, 1: string, 2: string };
+  gradients?: { 0: string };
 }
 
-type ElementColorMaps = {
+export type ElementColorMaps = {
   appbar: ColorBox;
+  header: ColorBox;
+  main: ColorBox;
 };
 
 
@@ -33,17 +36,15 @@ export type ThemedTemplateColorMap = {
   main: string;
   box: ColorBox;
   shades?: ShadesMap;
-  elements?: ElementColorMaps;
 };
 
 type TMap = {
   [key in ThemedTemplateVariants]: ThemedTemplateColorMap;
 };
 
-export type ThemedTemplateMap = Omit<TMap, 'primary' | 'elements'> & {
+export type ThemedTemplateMap = Omit<TMap, 'primary'> & {
   primary: ThemedTemplateColorMap & {
     shades: ShadesMap;
-    elements: ElementColorMaps;
   };
 };
 
@@ -79,4 +80,7 @@ export type BorderRadiusMap = {
   full: string;
 };
 
-export type ThemeStyles = ThemePalette & ThemeFontMap & { shadow: ThemeShadowMap };
+  export type ThemeStyles = ThemePalette & ThemeFontMap & {
+    elements: ElementColorMaps;
+    shadow: ThemeShadowMap
+  };

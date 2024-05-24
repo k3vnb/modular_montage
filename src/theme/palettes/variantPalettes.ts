@@ -1,5 +1,5 @@
 import colors from './colors';
-import type { ThemePalette } from '../types';
+import type { ElementColorMaps, ThemePalette } from '../types';
 const d0 = '#a3a3a3';
 const d1 = '#1c1c21';
 const rhinoBlue = {
@@ -73,7 +73,7 @@ const red = {
 const main = '#182181';
 const mainDark = '#292e61'; //
 
-const themeColors = {
+const palette = {
   neutral: colors.neutral,
   primary: {
     name: 'primary',
@@ -82,13 +82,6 @@ const themeColors = {
       surface: [_rhinoBlue[10], _rhinoBlue[20], _rhinoBlue[100]],
       border: [_rhinoBlue[500], _rhinoBlue[400], _rhinoBlue[300]],
       surfaceContrast: [_rhinoBlue[950], _rhinoBlue[850], _rhinoBlue[700]],
-    },
-    elements: {
-      appbar: {
-        surface: ['#1c1c21', _rhinoBlue[950], _rhinoBlue[850]],
-        border: [seafoamGreen[500], seafoamGreen[400], seafoamGreen[300]],
-        surfaceContrast: [colors.neutral[40], _rhinoBlue[10], _rhinoBlue[20]],
-      },
     },
     shades: {
       neutral: {
@@ -162,7 +155,27 @@ const themeColors = {
   },
 } as const;
 
-export const themePalette1: ThemePalette = {
-  ...themeColors,
+export const themePalette: ThemePalette = {
+  ...palette,
   mode: 'light',
 } as const;
+
+export const elements: ElementColorMaps = {
+  appbar: {
+    surface: ['#1c1c21', _rhinoBlue[950], _rhinoBlue[850]],
+    border: [seafoamGreen[500], seafoamGreen[400], seafoamGreen[300]],
+    surfaceContrast: [colors.neutral[40], _rhinoBlue[10], _rhinoBlue[20]],
+  },
+  header: {
+    surface: [rhinoBlue[800], rhinoBlue[900], mainDark],
+    border: [seafoamGreen[500], seafoamGreen[400], seafoamGreen[300]],
+    surfaceContrast: [palette.neutral[10], palette.neutral[5], palette.neutral[0]],
+    gradients: [`linear-gradient(45deg, ${rhinoBlue[800]} 30%, ${rhinoBlue[900]} 50%, ${rhinoBlue[800]} 66%, ${mainDark} 100%)`],
+  },
+  main: {
+    surface: [palette.neutral[10], palette.neutral[20], palette.neutral[30]],
+    border: [palette.neutral[10], palette.neutral[20], palette.neutral[30]],
+    surfaceContrast: [colors.mutedBlue[900], colors.blueViolet[700], colors.blueViolet[500]],
+    gradients: [`radial-gradient(ellipse at top, ${palette.neutral[5]} 0%, ${palette.neutral[20]} 61%, #e2e1e5 100%)`],
+  },
+};

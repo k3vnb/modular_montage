@@ -66,7 +66,7 @@ const IconContainer: React.FC<{ icon: TNavRoute['icon'] }> = ({ icon: Icon }) =>
 );
 
 const StyledNavItem = styled(Box)(({ theme }) => {
-  const { appbar } = theme.styles.primary.elements;
+  const { appbar } = theme.styles.elements;
   const borderOffset = 8;
 
   return {

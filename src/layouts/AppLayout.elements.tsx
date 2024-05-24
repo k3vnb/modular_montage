@@ -90,7 +90,6 @@ const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
       ref={ref}
       sx={{
         gridArea: 'main',
-        // flex: 2,
         overflow: 'auto',
         width: {
           xxs: '100vw',
@@ -117,7 +116,7 @@ const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
               MAIN_CONTENT_PADDING_LEFT_SM,
             ),
           }),
-          backgroundColor: debugMode ? 'rgb(242, 0, 255)' : 'transparent',
+          background: theme => debugMode ? 'rgb(242, 0, 255)' : theme.styles.elements.main.gradients?.[0] || theme.styles.elements.main.surface[0],
         }}    
       >
         {children}

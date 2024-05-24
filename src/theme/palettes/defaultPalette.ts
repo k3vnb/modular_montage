@@ -1,7 +1,7 @@
 import colors from './colors';
-import type { ThemePalette } from '../types';
+import type { ElementColorMaps, ThemePalette } from '../types';
 
-const themeColors = {
+const palette = {
   neutral: colors.neutral,
   primary: {
     name: 'primary',
@@ -10,13 +10,6 @@ const themeColors = {
       surface: [colors.blueViolet[50], colors.blueViolet[25], colors.neutral[10]],
       border: [colors.blueViolet[500], colors.blueViolet[400], colors.blueViolet[300]],
       surfaceContrast: [colors.blueViolet[700], colors.blueViolet[500], colors.blueViolet[400]],
-    },
-    elements: {
-      appbar: {
-        surface: [colors.neutral[10], colors.blueViolet[50], colors.blueViolet[25]],
-        border: [colors.blueViolet[600], colors.blueViolet[500], colors.blueViolet[400]],
-        surfaceContrast: [colors.mutedBlue[900], colors.blueViolet[700], colors.blueViolet[500]],
-      },
     },
     shades: {
       neutral: {
@@ -91,6 +84,26 @@ const themeColors = {
 } as const;
 
 export const themePalette: ThemePalette = {
-  ...themeColors,
+  ...palette,
   mode: 'light',
 } as const;
+
+export const elements: ElementColorMaps = {
+  appbar: {
+    surface: [palette.neutral[10], colors.blueViolet[50], colors.blueViolet[25]],
+    border: [colors.blueViolet[900], colors.blueViolet[800], colors.blueViolet[600]],
+    surfaceContrast: [colors.mutedBlue[900], colors.blueViolet[700], colors.blueViolet[500]],
+  },
+  header: {
+    surface: [colors.mutedBlue[900], colors.mutedBlue[800], colors.blueViolet[600]],
+    border: [colors.brightPink[500], colors.brightPink[400], colors.brightPink[300]],
+    surfaceContrast: [palette.neutral[10], palette.neutral[5], palette.neutral[0]],
+    gradients: [`linear-gradient(45deg, ${colors.mutedPurple[900]} 40%, ${colors.mutedPurple[800]} 68%, ${colors.blueViolet[600]} 100%)`],
+  },
+  main: {
+    surface: [palette.neutral[10], colors.blueViolet[50], colors.blueViolet[25]],
+    border: [colors.blueViolet[600], colors.blueViolet[500], colors.blueViolet[400]],
+    surfaceContrast: [colors.mutedBlue[900], colors.blueViolet[700], colors.blueViolet[500]],
+    gradients: [`radial-gradient(ellipse at top, ${palette.neutral[5]} 0%, ${palette.neutral[20]} 61%, #e2e1e5 100%)`],
+  },
+};

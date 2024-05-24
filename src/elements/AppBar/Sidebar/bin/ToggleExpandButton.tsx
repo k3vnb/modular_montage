@@ -29,12 +29,12 @@ const StyledToggleExpandButton = styled(UnstyledButton)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '50%',
-  backgroundColor: theme.styles.primary.elements.appbar.surface[0],
+  backgroundColor: theme.styles.elements.appbar.surface[0],
   transform: 'translateX(50%)',
-  border: `1px solid ${theme.styles.primary.elements.appbar.surface[0]}`,
+  border: `1px solid ${theme.styles.elements.appbar.surface[0]}`,
   '&:hover': {
     '&::after': {
-      borderLeftColor: theme.styles.primary.elements.appbar.border[1],
+      borderLeftColor: theme.styles.elements.appbar.border[1],
     },
   },
   '&::after': {
