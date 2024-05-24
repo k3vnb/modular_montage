@@ -51,6 +51,7 @@ export type ThemedTemplateMap = Omit<TMap, 'primary'> & {
 export type ThemePalette = ThemedTemplateMap & {
   neutral: {
     0: string;
+    5: string;
     10: string;
     20: string;
     30: string;
@@ -66,10 +67,10 @@ export type ThemePalette = ThemedTemplateMap & {
 };
 
 export type ThemeShadowMap = {
-    0: string;
-    1: string;
-    2: string;
-    3: string;
+  0: string;
+  1: string;
+  2: string;
+  3: string;
 }
 
 export type BorderRadiusMap = {
