@@ -31,7 +31,7 @@ const router = createBrowserRouter([
           },
           {
             path: ROUTES.about.path,
-            element: <PlaceholderPage hasSubroutes title="About" icon={ROUTES.about.icon} />,
+            element: <Pages.About />,
             children: [
               {
                 index: true,

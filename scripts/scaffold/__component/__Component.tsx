@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 
 // Basic component template
 
-export type Props = {
+type Props = {
   text?: string;
 };
 
