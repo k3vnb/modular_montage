@@ -19,19 +19,19 @@ const router = createBrowserRouter([
           },
           {
             path: ROUTES.widgets.path,
-            element: <PlaceholderPage title="Widgets" />,
+            element: <PlaceholderPage title="Widgets" icon={ROUTES.widgets.icon} />,
           },
           {
             path: ROUTES.forms.path,
-            element: <PlaceholderPage title="Forms" />,
+            element: <PlaceholderPage title="Forms" icon={ROUTES.forms.icon} />,
           },
           {
             path: ROUTES.contact.path,
-            element: <PlaceholderPage title="Contact" />,
+            element: <PlaceholderPage title="Contact" icon={ROUTES.contact.icon} />,
           },
           {
             path: ROUTES.about.path,
-            element: <PlaceholderPage hasSubroutes title="About" />,
+            element: <PlaceholderPage hasSubroutes title="About" icon={ROUTES.about.icon} />,
             children: [
               {
                 index: true,
