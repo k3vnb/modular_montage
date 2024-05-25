@@ -17,9 +17,9 @@ const palette = {
         100: colors.mutedBlue['900']
       },
       dark: {
-        0: colors.mutedPurple['800'],
-        1: colors.mutedPurple['900'],
-        2: colors.mutedPurple['950'],
+        0: colors.mutedPurple[700],
+        1: colors.mutedPurple[800],
+        2: colors.mutedPurple[950],
       },
       gradient: {
         0: `linear-gradient(45deg, ${colors.mutedPurple['900']} 40%, ${colors.mutedPurple['800']} 68%, ${colors.blueViolet['600']} 100%)`,

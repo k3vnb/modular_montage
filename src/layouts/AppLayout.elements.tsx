@@ -1,6 +1,7 @@
 import React, { type PropsWithChildren } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Box, Stack } from '@mui/system';
+import { MAIN_CONTENT_PAGE_PADDING } from './constants';
 
 type Props = {
   debugMode?: boolean;
@@ -68,13 +69,6 @@ const Sidebar = ({ children, debugMode }: LayoutProps): JSX.Element => {
   );
 };
 
-// offset values for full width elements
-export const MAIN_CONTENT_PADDING_Y_XS = 4;
-export const MAIN_CONTENT_PADDING_Y_SM = 4;
-export const MAIN_CONTENT_PADDING_X_XS = 2;
-export const MAIN_CONTENT_PADDING_LEFT_SM = 8;
-export const MAIN_CONTENT_PADDING_RIGHT_SM = 8;
-
 const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
   const { pathname } = useLocation();
   const ref = React.useRef<HTMLDivElement>(null);
@@ -106,14 +100,12 @@ const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
           minHeight: '100%',
           padding: theme => ({
             xxs: theme.spacing(
-              MAIN_CONTENT_PADDING_Y_XS,
-              MAIN_CONTENT_PADDING_X_XS,
+              MAIN_CONTENT_PAGE_PADDING.Y_XXS,
+              MAIN_CONTENT_PAGE_PADDING.X_XXS,
             ),
             sm: theme.spacing(
-              MAIN_CONTENT_PADDING_Y_SM,
-              MAIN_CONTENT_PADDING_RIGHT_SM,
-              MAIN_CONTENT_PADDING_Y_SM,
-              MAIN_CONTENT_PADDING_LEFT_SM,
+              MAIN_CONTENT_PAGE_PADDING.Y_SM,
+              MAIN_CONTENT_PAGE_PADDING.X_SM,
             ),
           }),
           background: theme => debugMode ? 'rgb(242, 0, 255)' : theme.styles.elements.main.gradients?.[0] || theme.styles.elements.main.surface[0],

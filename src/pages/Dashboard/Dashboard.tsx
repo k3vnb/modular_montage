@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box } from '@mui/system';
 import { PageTitle } from 'global/components/PageTitle';
 import { useGlobalContext } from 'contexts/GlobalContext';
@@ -7,14 +6,13 @@ import { ThemeButton } from 'global/components/Buttons';
 import { Tile } from 'global/components/Tile/Tile';
 
 export const Dashboard = (): JSX.Element => {
-  const ref = React.useRef<HTMLButtonElement>(null);
   return (
     <Box display="flex" flexDirection="column" gap={3}>
-      <PageTitle title="Dashboard" description="Lorem Ipsum Doleres etc" />
+      <PageTitle title="Mandala Themes" description="Lorem Ipsum Doleres etc" />
       <Tile showBorder variant="info" elevation={1}>
         <ThemeRadioButtons />
       </Tile>
-      <ThemeButton ref={ref} text="Primary" />
+      <ThemeButton filled text="Primary" />
     </Box>
   );
 };
