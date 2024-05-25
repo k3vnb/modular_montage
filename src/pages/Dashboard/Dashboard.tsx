@@ -5,11 +5,12 @@ import { THEME_IDS } from 'theme';
 import { ThemeButton } from 'global/components/Buttons';
 import { Tile } from 'global/components/Tile/Tile';
 import { Typography } from 'global/components/Typography';
+import DashboardIcon from '@mui/icons-material/BlurOnOutlined';
 
 export const Dashboard = (): JSX.Element => {
   return (
     <Box display="flex" flexDirection="column" gap={3}>
-      <PageTitle title="Mandala Themes" description="Lorem Ipsum Doleres etc" />
+      <PageTitle title="Mandala Themes" icon={DashboardIcon} description="Lorem Ipsum Doleres etc" />
       <Tile showBorder variant="info" gap={1}  elevation={1}>
         <Typography.H4 textAlign="center" mb={1}>Welcome to Modular Montage</Typography.H4>
         <Typography.Body>

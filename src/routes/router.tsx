@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { ROUTES } from './routes';
 import { AppLayout } from 'layouts';
-import { Dashboard, PlaceholderPage, ErrorPage, NotFoundPage } from 'pages';
+import { Pages, PlaceholderPage, ErrorPage, NotFoundPage } from 'pages';
 import App from '../App';
 
 const router = createBrowserRouter([
@@ -15,15 +15,15 @@ const router = createBrowserRouter([
         children: [
           {
             path: ROUTES.dashboard.path,
-            element: <Dashboard />,
+            element: <Pages.Dashboard />,
           },
           {
             path: ROUTES.widgets.path,
-            element: <PlaceholderPage title="Widgets" icon={ROUTES.widgets.icon} />,
+            element: <Pages.Widgets />,
           },
           {
             path: ROUTES.forms.path,
-            element: <PlaceholderPage title="Forms" icon={ROUTES.forms.icon} />,
+            element: <Pages.Forms />,
           },
           {
             path: ROUTES.contact.path,

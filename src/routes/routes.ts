@@ -1,8 +1,9 @@
-import NoteIcon from '@mui/icons-material/NoteAltOutlined';
-import AppsIcon from '@mui/icons-material/AppsOutlined';
+import DashboardIcon from '@mui/icons-material/AppsOutlined';
 import YardIcon from '@mui/icons-material/YardOutlined';
 import AltEmail from '@mui/icons-material/AlternateEmailOutlined';
-import RockingHorseIcon from '@mui/icons-material/BedroomBabyOutlined';
+import RobotIcon from '@mui/icons-material/SmartToyOutlined';
+import InterestsIcon from '@mui/icons-material/InterestsOutlined';
+
 import type { TNavRoute } from './types';
 
 const PATHS = {
@@ -23,17 +24,17 @@ export const ROUTES = {
   dashboard: {
     path: PATHS.dashboard,
     label: 'Home',
-    icon: AppsIcon,
+    icon: DashboardIcon,
   },
   widgets: {
     path: PATHS.widgets,
     label: 'Widgets',
-    icon: RockingHorseIcon,
+    icon: InterestsIcon,
   },
   forms: {
     path: PATHS.forms,
     label: 'Forms',
-    icon: NoteIcon,
+    icon: RobotIcon,
   },
   about: {
     path: PATHS.about,
