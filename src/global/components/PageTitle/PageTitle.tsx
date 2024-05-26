@@ -36,7 +36,7 @@ export const PageTitle = ({
         alignItems="center"
         flexWrap="wrap"
         width="100%"
-        gap={2}
+        gap={3}
         padding={theme => ({
           xxs: theme.spacing(2,3),
           md: theme.spacing(3,6),

@@ -1,5 +1,6 @@
 import type { ThemedTemplateVariants } from 'global/types';
 import type { ThemeFontMap } from './typography';
+import zIndex from './zIndex';
 
 export type ShadesMap = {
   neutral: {
@@ -84,4 +85,5 @@ export type BorderRadiusMap = {
   export type ThemeStyles = ThemePalette & ThemeFontMap & {
     elements: ElementColorMaps;
     shadow: ThemeShadowMap
+    zIndex: typeof zIndex;
   };

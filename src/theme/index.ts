@@ -1,9 +1,10 @@
 import { createTheme, type Theme } from '@mui/system';
-import { breakpoints } from './breakpoints';
 import * as theme1 from './palettes/defaultPalette';
 import * as theme2 from './palettes/variantPalettes';
 import { THEME_FONTS, fontFamily } from './typography';
 import shadow from './shadow';
+import zIndex from './zIndex';
+import breakpoints from './breakpoints';
 import borderRadius from './borderRadius';
 import type { ThemeStyles, ThemePalette } from './types';
 
@@ -21,6 +22,7 @@ const commonStyles = {
   ...THEME_FONTS,
   borderRadius,
   shadow,
+  zIndex,
 };
 
 const defaultTheme: Theme = createTheme({
@@ -35,6 +37,7 @@ const defaultTheme: Theme = createTheme({
   }, 
   typography: { fontFamily },
   breakpoints: { values: breakpoints },
+  zIndex,
 });
 
 const borealisTheme: Theme = createTheme({
