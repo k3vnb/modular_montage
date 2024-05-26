@@ -3,39 +3,25 @@ import { Stack } from '@mui/system';
 import { Backdrop } from 'global/components/Backdrop';
 import { StyledDrawerWrapper, StyledModal, DrawerContent, DrawerHeader } from './RightDrawer.elements';
 import { useDrawerTransitionState } from '../hooks/useDrawerTransitionState';
+import type { RightDrawerModalProps, DrawerTransitionChildProps } from '../types';
 
-type RightDrawerCoreProps = {
-  id?: string;
-  open: boolean;
-  children: React.ReactNode;
-  title: string;
-  hideTitle?: boolean;
-  bottom?: string | number;
-  maxHeight?: string;
-  zIndex?: string | number;
-  onClose: () => void;
-};
-
-type RightDrawerContentProps = RightDrawerCoreProps & {
-  isClosing?: boolean;
-};
-
-const getHeaderId = (id?: string) => `${id || 'drawer'}-header`;
-
-export const DrawerContents = React.forwardRef<HTMLDivElement, RightDrawerContentProps>(function DrawerContents ({
+export const DrawerContents = React.forwardRef<HTMLDivElement, DrawerTransitionChildProps<RightDrawerModalProps>>(function DrawerContents ({
   id,
   children,
   title,
   hideTitle,
   onClose = () => undefined,
-  ...wrapperProps
+  ...props
 }, ref) {
+
+  const headerId = React.useMemo(() => getHeaderId(id), [id]);
+
   return (
-    <StyledDrawerWrapper ref={ref} {...wrapperProps}>
+    <StyledDrawerWrapper ref={ref} {...props}>
       <DrawerContent>
         <DrawerHeader
           title={title}
-          id={getHeaderId(id)}
+          id={headerId}
           hideTitle={hideTitle}
           onClose={onClose}
         />
@@ -47,14 +33,14 @@ export const DrawerContents = React.forwardRef<HTMLDivElement, RightDrawerConten
   );
 });
 
-// For "Modal" --> wraps DrawerContents in Modal
-export const RightDrawerModal: React.FC<RightDrawerCoreProps> = ({
+export const RightDrawerModal = ({
   id = 'modal-drawer--right',
   open: isModalMounted = false,
   children,
   onClose,
   ...wrapperProps
-}) => {
+}: RightDrawerModalProps) => {
+
   const {
     isClosing,
     isDrawerOpen,
@@ -84,3 +70,5 @@ export const RightDrawerModal: React.FC<RightDrawerCoreProps> = ({
     </StyledModal>
   );
 };
+
+const getHeaderId = (id?: string) => `${id || 'right-drawer'}-header`;

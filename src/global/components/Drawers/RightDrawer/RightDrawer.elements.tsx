@@ -3,18 +3,14 @@ import { visuallyHidden } from '@mui/utils';
 import { Stack, Box, styled, type StackProps } from '@mui/system';
 import { Button as BaseButton, type ButtonProps } from '@mui/base';
 import CloseIcon from '@mui/icons-material/Close';
+import { Typography } from 'global/components/Typography';
 import { TRANSITION_DURATION } from '../constants';
+import type { DrawerTransitionChildProps, RightDrawerModalProps } from '../types';
 
-type StyledDrawerWrapperProps = {
-  open: boolean;
-  isClosing?: boolean;
-  zIndex?: string | number;
-};
+type StyledDrawerWrapperProps = DrawerTransitionChildProps<Partial<RightDrawerModalProps>>;
 
 const options = {
-  shouldForwardProp: (prop: string) => ![
-    'open', 'isClosing', 'zIndex',
-  ].includes(prop),
+  shouldForwardProp: (prop: string) => ![ 'open', 'isClosing' ].includes(prop),
 };
 
 export const StyledDrawerWrapper = styled(Stack, options)<StyledDrawerWrapperProps>(({
@@ -31,7 +27,7 @@ export const StyledDrawerWrapper = styled(Stack, options)<StyledDrawerWrapperPro
   height: '100vh',
   maxHeight: '100vh',
   minWidth: '350px',
-  maxWidth: '50vw',
+  maxWidth: '82vw',
   overflow: 'hidden',
   backgroundColor: theme.styles.neutral[10],
   borderRadius: '2px 0px 0px 2px',
@@ -47,7 +43,7 @@ export const StyledModal = styled(Modal)(() => ({
 
 const StyledContentStack = styled(Stack)(({ theme }) => ({
   flexGrow: 1,
-  padding: '28px 32px',
+  padding: theme.spacing(2.5, 3),
   gap: theme.spacing(2),
   overflowY: 'hidden',
   height: '100%',
@@ -64,6 +60,8 @@ const StyledHeader = styled(Box)(({ theme }) => ({
   justifyContent: 'space-between',
   maxWidth: '100%',
   color: theme.styles.neutral[80],
+  borderBottom: `1px solid ${theme.styles.neutral[80]}`,
+  padding: theme.spacing(0, 0, 1),
   [`.${CLOSE_BUTTON_CLASS}`]: {
     display: 'inline-flex',
     borderRadius: '4px',
@@ -80,32 +78,25 @@ const StyledHeader = styled(Box)(({ theme }) => ({
   },
   [`.${TITLE_CLASS}`]: {
     margin: 0,
-    ...theme.styles.headingH4,
+    color: theme.styles.neutral[90],
   },
 }));
 
-export const CloseButton= ({ onClick }: ButtonProps) => (
+const CloseButton= (props: ButtonProps) => (
   <BaseButton
     aria-label="Close this modal."
     className={CLOSE_BUTTON_CLASS}
-    onClick={onClick}
+    {...props}
   >
     <CloseIcon fontSize="inherit" />
   </BaseButton>
 );
 
-type DrawerHeaderProps = {
-  id: string;
-  title: string;
-  hideTitle?: boolean;
-  onClose: () => void;
-};
-
-export const DrawerHeader = ({ title, id, hideTitle, onClose }: DrawerHeaderProps) => {
+export const DrawerHeader = ({ title, id, hideTitle, onClose }: Pick<RightDrawerModalProps, 'id' | 'title' | 'hideTitle' | 'onClose'>) => {
   const titleStyleOverrides = hideTitle ? { style: { ...visuallyHidden } } : {};
   return (
     <StyledHeader id={id}>
-      <h4 className={TITLE_CLASS} {...titleStyleOverrides}>{title}</h4>
+      <Typography.H4 className={TITLE_CLASS} {...titleStyleOverrides}>{title}</Typography.H4>
       <CloseButton onClick={onClose} />
     </StyledHeader>
   );

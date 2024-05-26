@@ -1,22 +1,12 @@
 import React from 'react';
-import { Stack, type StackProps, styled } from '@mui/system';
-import { TRANSITION_DURATION } from '../../constants';
-import { THEME_FONTS } from 'theme/typography';
+import { Stack, styled } from '@mui/system';
 import { CloseButton } from './CloseButton';
+import { TRANSITION_DURATION } from '../../constants';
+import type { BottomDrawerModalProps, DrawerTransitionChildProps } from '../../types';
 
-type StyledWrapperProps = {
-  open: boolean;
-  isClosing?: boolean;
-  bottom?: string | number;
-  zIndex?: string | number;
-  maxHeight?: string;
-};
+type BottomDrawerProps = DrawerTransitionChildProps<BottomDrawerModalProps>;
 
-export type TBottomDrawerContainerProps = StackProps & StyledWrapperProps & {
-  onClose: () => void;
-};
-
-export const Drawer = React.forwardRef<HTMLDivElement, TBottomDrawerContainerProps>(function BottomDrawerContainer ({
+export const Drawer = React.forwardRef<HTMLDivElement, BottomDrawerProps>(function BottomDrawerContainer ({
   children,
   onClose = () => undefined,
   ...wrapperProps
@@ -37,7 +27,7 @@ const options = {
   ].includes(prop),
 };
 
-export const StyledDrawerWrapper = styled(Stack, options)<StyledWrapperProps>(({
+export const StyledDrawerWrapper = styled(Stack, options)<Omit<BottomDrawerProps, 'onClose'>>(({
   theme,
   open,
   isClosing,
@@ -55,7 +45,7 @@ export const StyledDrawerWrapper = styled(Stack, options)<StyledWrapperProps>(({
   maxWidth: '100vw',
   maxHeight,
   overflow: 'auto',
-  backgroundColor: theme.styles.neutral[10],
+  backgroundColor: theme.styles.neutral[5],
   borderRadius: '8px 8px 0 0',
   transformOrigin: 'top',
   transform: open ? 'translateY(0%)' : 'translateY(100%)',
@@ -69,16 +59,14 @@ const StyledScrollStackOuter = styled(Stack)(({ theme }) => ({
   overflowY: 'auto',
   height: '100%',
   maxHeight: '100%',
-  ...THEME_FONTS.textMd,
-  color: theme.palette.neutral[100],
+  ...theme.styles.textMd,
+  color: theme.styles.neutral[90],
 }));
 
-const ScrollContainer: React.FC<React.PropsWithChildren> = ({ children }) => {
-  return (
-    <StyledScrollStackOuter>
-      <Stack minHeight="max-content">
-        {children}
-      </Stack>
-    </StyledScrollStackOuter>
-  );
-};
+const ScrollContainer = ({ children }: React.PropsWithChildren) => (
+  <StyledScrollStackOuter>
+    <Stack minHeight="max-content">
+      {children}
+    </Stack>
+  </StyledScrollStackOuter>
+);

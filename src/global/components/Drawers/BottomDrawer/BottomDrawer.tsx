@@ -1,12 +1,15 @@
-import React from 'react';
+import { Box } from '@mui/system';
 import { Modal } from '@mui/base';
 import { useDrawerTransitionState } from '../hooks/useDrawerTransitionState';
 import { Backdrop } from 'global/components/Backdrop';
-import { Drawer, type TBottomDrawerContainerProps } from './bin';
+import { Drawer } from './bin';
+import { type BottomDrawerModalProps } from '../types';
 
-type BottomDrawerModalProps = Omit<TBottomDrawerContainerProps, 'isClosing'>;
+/* 
+* Modal instance of BottomDrawer
+* the Nav BottomDrawer utilizes the inner Drawer component directly, not via this Modal
+*/
 
-// For "Modal" --> wraps DrawerContents in Modal
 export const BottomDrawerModal = ({
   open: isModalMounted = false,
   children,
@@ -17,18 +20,22 @@ export const BottomDrawerModal = ({
   const {
     isClosing,
     isDrawerOpen,
+    transitionDuration,
     handleDidContentMount,
     handleStartClose,
-    transitionDuration,
   } = useDrawerTransitionState({ isModalMounted, onClose });
 
   return (
-    <Modal
+    <Box
+      component={Modal}
       open={isModalMounted}
       onClose={handleStartClose}
       slots={{ backdrop: Backdrop }}
       slotProps={{ backdrop: () => ({ open: isDrawerOpen, transitionDuration }) }}
-      style={{ zIndex: 1300, position: 'relative' }}
+      sx={{
+        position: 'relative',
+        zIndex: theme => theme.styles.zIndex.drawer,
+      }}
     >
       <Drawer
         ref={handleDidContentMount}
@@ -39,6 +46,6 @@ export const BottomDrawerModal = ({
       >
         {children}
       </Drawer>
-    </Modal>
+    </Box>
   );
 };
