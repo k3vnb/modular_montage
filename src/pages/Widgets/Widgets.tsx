@@ -7,6 +7,7 @@ import { ThemeButton } from 'global/components/Buttons';
 import { Tile } from 'global/components/Tile/Tile';
 import { Typography } from 'global/components/Typography';
 import { Modal, type ModalProps } from 'global/components/Modal';
+import { BottomDrawerModal, RightDrawerModal } from 'global/components/Drawers';
 
 export const Widgets = (): JSX.Element => {
   const theme = useTheme();
@@ -21,8 +22,8 @@ export const Widgets = (): JSX.Element => {
         <Typography.H4>Drawers & Modals</Typography.H4>
         <Box display="flex" justifyContent="space-around" flexDirection="row" flexWrap="wrap" gap={1}>
           <DemoModalButton />
-          <ThemeButton variant="secondary" text="Open bottom drawer" />
-          <ThemeButton variant="info" text="Open right drawer" />
+          <DemoRightDrawerButton />
+          <DemoBottomDrawerButton />
           <ThemeButton variant="primary" text="Responsive drawer" />
         </Box>
       </Tile>
@@ -39,7 +40,6 @@ const DemoModalButton = () => {
   const [open, setOpen] = React.useState(false);
   const closeModal = () => setOpen(false);
   const openModal = () => setOpen(true);
-
   return (
     <>
       <ThemeButton text="Open a modal" onClick={openModal} />
@@ -68,5 +68,44 @@ const DemoModalWidget = ({ open, onClose }: Pick<ModalProps, 'open' | 'onClose'>
         <ThemeButton filled text="Close" onClick={onClose} />
       </Modal.FooterContainer>
     </Modal.Wrapper>
+  );
+};
+
+const DemoRightDrawerButton = () => {
+  const [open, setOpen] = React.useState(false);
+  const closeModal = () => setOpen(false);
+  const openModal = () => setOpen(true);
+  return (
+    <>
+      <ThemeButton variant="info" text="Open right drawer" onClick={openModal} />
+      <RightDrawerModal
+        open={open}
+        id="demo-right-drawer"
+        onClose={closeModal}
+        title="Right Drawer"
+      >
+        <Typography.H5 component="div">Right Drawer Content</Typography.H5>
+      </RightDrawerModal>
+    </>
+  );
+};
+
+const DemoBottomDrawerButton = () => {
+  const [open, setOpen] = React.useState(false);
+  const closeModal = () => setOpen(false);
+  const openModal = () => setOpen(true);
+  return (
+    <>
+      <ThemeButton variant="secondary" text="Open bottom drawer" onClick={openModal} />
+      <BottomDrawerModal
+        open={open}
+        id="demo-bottom-drawer"
+        onClose={closeModal}
+        title="Bottom Drawer"
+      >
+        <Typography.H5 component="div">Bottom Drawer Content</Typography.H5>
+        <Box minHeight="200px" />
+      </BottomDrawerModal>
+    </>
   );
 };
