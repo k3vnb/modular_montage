@@ -1,55 +1,26 @@
 import React from 'react';
 import { Modal } from '@mui/base';
-import { useDrawerTransition } from '../hooks/useDrawerTransition';
+import { useDrawerTransitionState } from '../hooks/useDrawerTransitionState';
 import { Backdrop } from 'global/components/Backdrop';
 import { Drawer, type TBottomDrawerContainerProps } from './bin';
 
 type BottomDrawerModalProps = Omit<TBottomDrawerContainerProps, 'isClosing'>;
 
 // For "Modal" --> wraps DrawerContents in Modal
-export const BottomDrawerModal: React.FC<BottomDrawerModalProps> = ({
+export const BottomDrawerModal = ({
   open: isModalMounted = false,
   children,
   onClose,
   ...wrapperProps
-}) => {
-  const [didContentMount, setDidContentMount] = React.useState(false);
-  const [willDrawerExit, setWillDrawerExit] = React.useState(false);
-  const isContentMounted = didContentMount && isModalMounted;
+}: BottomDrawerModalProps) => {
 
   const {
-    open: isDrawerOpen,
-    openDrawer,
-    closeDrawer,
-    transitionStatus,
+    isClosing,
+    isDrawerOpen,
+    handleDidContentMount,
+    handleStartClose,
     transitionDuration,
-  } = useDrawerTransition();
-
-  const needsUpdate = isContentMounted && !isDrawerOpen;
-  const didDrawerExit = willDrawerExit && transitionStatus.didCompleteClose;
-  const shouldCloseModal = needsUpdate && didDrawerExit;
-  const shouldDrawerEnter = needsUpdate && !willDrawerExit;
-
-  React.useEffect(() => {
-    if (shouldCloseModal) {
-      onClose();
-      setWillDrawerExit(false);
-    }
-    else if (shouldDrawerEnter) {
-      openDrawer();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldCloseModal, shouldDrawerEnter]);
-
-  const handleDidContentMount = React.useCallback(() => {
-    // allows content to render to DOM before transitioning in for smoother animation
-    setDidContentMount(true);
-  }, []);
-
-  const handleStartClose = () => {
-    setWillDrawerExit(true);
-    closeDrawer();
-  };
+  } = useDrawerTransitionState({ isModalMounted, onClose });
 
   return (
     <Modal
@@ -62,7 +33,7 @@ export const BottomDrawerModal: React.FC<BottomDrawerModalProps> = ({
       <Drawer
         ref={handleDidContentMount}
         open={isDrawerOpen}
-        isClosing={transitionStatus.isClosing}
+        isClosing={isClosing}
         onClose={handleStartClose}
         {...wrapperProps}
       >

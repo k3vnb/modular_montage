@@ -1,12 +1,10 @@
 import React from 'react';
 import { Stack } from '@mui/system';
-
-import { useDrawerTransition } from '../hooks/useDrawerTransition';
 import { Backdrop } from 'global/components/Backdrop';
 import { StyledDrawerWrapper, StyledModal, DrawerContent, DrawerHeader } from './RightDrawer.elements';
-import { TRANSITION_DURATION } from '../constants';
+import { useDrawerTransitionState } from '../hooks/useDrawerTransitionState';
 
-type BottomDrawerCoreProps = {
+type RightDrawerCoreProps = {
   id?: string;
   open: boolean;
   children: React.ReactNode;
@@ -18,13 +16,13 @@ type BottomDrawerCoreProps = {
   onClose: () => void;
 };
 
-type BottomDrawerContentProps = BottomDrawerCoreProps & {
+type RightDrawerContentProps = RightDrawerCoreProps & {
   isClosing?: boolean;
 };
 
 const getHeaderId = (id?: string) => `${id || 'drawer'}-header`;
 
-export const DrawerContents = React.forwardRef<HTMLDivElement, BottomDrawerContentProps>(function DrawerContents ({
+export const DrawerContents = React.forwardRef<HTMLDivElement, RightDrawerContentProps>(function DrawerContents ({
   id,
   children,
   title,
@@ -50,48 +48,20 @@ export const DrawerContents = React.forwardRef<HTMLDivElement, BottomDrawerConte
 });
 
 // For "Modal" --> wraps DrawerContents in Modal
-export const RightDrawerModal: React.FC<BottomDrawerCoreProps> = ({
+export const RightDrawerModal: React.FC<RightDrawerCoreProps> = ({
   id = 'modal-drawer--right',
   open: isModalMounted = false,
   children,
   onClose,
   ...wrapperProps
 }) => {
-  const [didContentMount, setDidContentMount] = React.useState(false);
-  const [willDrawerExit, setWillDrawerExit] = React.useState(false);
-  const isContentMounted = didContentMount && isModalMounted;
-
   const {
-    open: isDrawerOpen,
-    openDrawer,
-    closeDrawer,
-    transitionStatus,
-  } = useDrawerTransition();
-
-  const needsUpdate = isContentMounted && !isDrawerOpen;
-  const didDrawerExit = willDrawerExit && transitionStatus.didCompleteClose;
-  const shouldCloseModal = needsUpdate && didDrawerExit;
-  const shouldDrawerEnter = needsUpdate && !willDrawerExit;
-
-  React.useEffect(() => {
-    if (shouldCloseModal) {
-      onClose();
-      setWillDrawerExit(false);
-    }
-    else if (shouldDrawerEnter) {
-      openDrawer();
-    }
-  }, [shouldCloseModal, shouldDrawerEnter]);
-
-  const handleDidContentMount = React.useCallback(() => {
-    // allows content to render to DOM before transitioning in for smoother animation
-    setDidContentMount(true);
-  }, []);
-
-  const handleStartClose = () => {
-    setWillDrawerExit(true);
-    closeDrawer();
-  };
+    isClosing,
+    isDrawerOpen,
+    handleDidContentMount,
+    handleStartClose,
+    transitionDuration,
+  } = useDrawerTransitionState({ isModalMounted, onClose });
 
   return (
     <StyledModal
@@ -99,13 +69,13 @@ export const RightDrawerModal: React.FC<BottomDrawerCoreProps> = ({
       aria-labelledby={getHeaderId(id)}
       onClose={handleStartClose}
       slots={{ backdrop: Backdrop }}
-      slotProps={{ backdrop: () => ({ open: isDrawerOpen, transitionDuration: TRANSITION_DURATION }) }}
+      slotProps={{ backdrop: () => ({ open: isDrawerOpen, transitionDuration }) }}
     >
       <DrawerContents
         ref={handleDidContentMount}
         id={id}
         open={isDrawerOpen}
-        isClosing={transitionStatus.isClosing}
+        isClosing={isClosing}
         onClose={handleStartClose}
         {...wrapperProps}
       >
