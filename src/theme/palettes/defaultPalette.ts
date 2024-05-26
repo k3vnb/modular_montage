@@ -3,6 +3,7 @@ import type { ElementColorMaps, ThemePalette } from '../types';
 
 const palette = {
   neutral: colors.neutral,
+  hyperlink: [colors.blue[700], colors.blue[500]],
   primary: {
     name: 'primary',
     main: colors.blueViolet[700],

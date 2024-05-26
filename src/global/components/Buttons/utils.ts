@@ -48,7 +48,7 @@ export function getButtonThemeColors({
   const commonColors = {
     ...borderColors,
     ...disabledColors,
-    focusOutline: theme.palette.info.mainActive,
+    focusOutline: theme.styles.hyperlink[0],
   };
 
   if (filled) {

@@ -75,8 +75,8 @@ const StyledHeaderContainer = styled(FlexBox)(({ theme }) => ({
     padding: '3px',
     fontSize: '32px',
     '&:hover': {
-      boxShadow: `0px 0px 2px 0px ${theme.styles.info.main}`,
-      color: theme.styles.info.main,
+      boxShadow: `0px 0px 2px 0px ${theme.styles.hyperlink[0]}`,
+      color: theme.styles.hyperlink[0],
     },
   },
 }));

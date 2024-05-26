@@ -14,7 +14,7 @@ const StyledCloseButton = styled(UnstyledButton)(({ theme }) => {
     minWidth: '60px',
     height: '7px',
     '&:hover&:not(:disabled)': {
-      backgroundColor: theme.styles.info.main,
+      backgroundColor: theme.styles.hyperlink[0],
     },
     '&:disabled': {
       cursor: 'not-allowed',

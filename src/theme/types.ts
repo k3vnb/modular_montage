@@ -50,6 +50,10 @@ export type ThemedTemplateMap = Omit<TMap, 'primary'> & {
 };
 
 export type ThemePalette = ThemedTemplateMap & {
+  hyperlink: {
+    0: string;
+    1: string;
+  };
   neutral: {
     0: string;
     5: string;

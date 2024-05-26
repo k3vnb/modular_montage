@@ -75,6 +75,7 @@ const mainDark = '#292e61'; //
 
 const palette = {
   neutral: colors.neutral,
+  hyperlink: [colors.blue[700], colors.blue[500]],
   primary: {
     name: 'primary',
     main: _rhinoBlue[500],
