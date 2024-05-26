@@ -2,7 +2,7 @@ import { Box } from '@mui/system';
 import { Modal } from '@mui/base';
 import { useDrawerTransitionState } from '../hooks/useDrawerTransitionState';
 import { Backdrop } from 'global/components/Backdrop';
-import { Drawer } from './bin';
+import { Drawer } from './BottomDrawer.elements';
 import { type BottomDrawerModalProps } from '../types';
 
 /* 

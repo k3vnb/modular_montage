@@ -1,5 +1,5 @@
 import React from 'react';
-import { DrawerHeader } from 'global/components/Drawers/BottomDrawer';
+import { BottomDrawerHeader } from 'global/components/Drawers/BottomDrawer';
 import { useDrawerContext } from 'global/components/Drawers/contexts/DrawerContext';
 import { BottomDrawerBase } from 'global/components/Drawers/BottomDrawer';
 import { DrawerList } from './DrawerMenu.elements';
@@ -25,7 +25,7 @@ export const DrawerMenu: React.FC<DrawerNavMenuProps> = ({ links }) => {
       onClose={closeDrawer}
       maxHeight={`calc(90% - ${BOTTOM_BAR_HEIGHT}px)`}
     >
-      <DrawerHeader component="h3">{DRAWER_TITLE}</DrawerHeader>
+      <BottomDrawerHeader component="h3">{DRAWER_TITLE}</BottomDrawerHeader>
       <DrawerList.Container>
         {links.map((link) => (
           <DrawerList.Item key={link.path} {...link} />

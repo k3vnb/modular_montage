@@ -27,13 +27,17 @@ export const StyledDrawerWrapper = styled(Stack, options)<StyledDrawerWrapperPro
   height: '100vh',
   maxHeight: '100vh',
   minWidth: '350px',
-  maxWidth: '82vw',
+  maxWidth: '450px',
   overflow: 'hidden',
   backgroundColor: theme.styles.neutral[10],
   borderRadius: '2px 0px 0px 2px',
   transformOrigin: 'right',
   transform: open ? 'translateX(0%)' : 'translateX(100%)',
   transition: `transform ${TRANSITION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1) 10ms`,
+  [theme.breakpoints.down('sm')]: {
+    minWidth: '85vw',
+    maxWidth: '85vw',
+  },
 }));
 
 export const StyledModal = styled(Modal)(() => ({
@@ -49,6 +53,9 @@ const StyledContentStack = styled(Stack)(({ theme }) => ({
   height: '100%',
   maxHeight: '100%',
   minWidth: '100%',
+  [theme.breakpoints.down('sm')]: {
+    padding: theme.spacing(2),
+  },
 }));
 
 const CLOSE_BUTTON_CLASS = 'close-btn';

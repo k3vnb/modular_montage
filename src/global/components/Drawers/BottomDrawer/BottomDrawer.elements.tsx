@@ -1,8 +1,8 @@
 import React from 'react';
-import { Stack, styled } from '@mui/system';
-import { CloseButton } from './CloseButton';
-import { TRANSITION_DURATION } from '../../constants';
-import type { BottomDrawerModalProps, DrawerTransitionChildProps } from '../../types';
+import { Box, Stack, styled } from '@mui/system';
+import { CloseButton } from './bin';
+import { TRANSITION_DURATION } from '../constants';
+import type { BottomDrawerModalProps, DrawerTransitionChildProps } from '../types';
 
 type BottomDrawerProps = DrawerTransitionChildProps<BottomDrawerModalProps>;
 
@@ -70,3 +70,9 @@ const ScrollContainer = ({ children }: React.PropsWithChildren) => (
     </Stack>
   </StyledScrollStackOuter>
 );
+
+export const BottomDrawerHeader = styled(Box)(({ theme }) => ({
+  ...theme.styles.headingH4,
+  color: theme.palette.neutral[90],
+}));
+
