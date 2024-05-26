@@ -9,9 +9,11 @@ export type DrawerCommonProps = StackProps & {
 }; 
 
 export type RightDrawerModalProps = DrawerCommonProps & {
-  title: string;
+  title?: string;
   hideTitle?: boolean;
 };
+
+export type ResponsiveDrawerProps = Omit<RightDrawerModalProps, 'hideTitle'>;
 
 export type DrawerTransitionChildProps<T> = T & {
   isClosing?: boolean;

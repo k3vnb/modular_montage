@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, useTheme } from '@mui/system';
+import { Box } from '@mui/system';
 import { PageTitle } from 'global/components/PageTitle';
 import InterestsIcon from '@mui/icons-material/InterestsOutlined';
 // import { useGlobalContext } from 'contexts/GlobalContext';
@@ -7,11 +7,9 @@ import { ThemeButton } from 'global/components/Buttons';
 import { Tile } from 'global/components/Tile/Tile';
 import { Typography } from 'global/components/Typography';
 import { Modal, type ModalProps } from 'global/components/Modal';
-import { BottomDrawerModal, RightDrawerModal } from 'global/components/Drawers';
+import { BottomDrawerModal, RightDrawerModal, ResponsiveDrawerModal } from 'global/components/Drawers';
 
 export const Widgets = (): JSX.Element => {
-  const theme = useTheme();
-  console.log(theme);
   return (
     <Box display="flex" flexDirection="column" gap={3}>
       <PageTitle title="App Widgets" icon={InterestsIcon} description="Whirligigs & whatnot" />
@@ -24,7 +22,7 @@ export const Widgets = (): JSX.Element => {
           <DemoModalButton />
           <DemoRightDrawerButton />
           <DemoBottomDrawerButton />
-          <ThemeButton variant="primary" text="Responsive drawer" />
+          <DemoResponsiveDrawerButton />
         </Box>
       </Tile>
       <Tile showBorder gap={1} variant="special" elevation={1}>
@@ -106,6 +104,30 @@ const DemoBottomDrawerButton = () => {
         <Typography.H5 component="div">Bottom Drawer Content</Typography.H5>
         <Box minHeight="200px" />
       </BottomDrawerModal>
+    </>
+  );
+};
+
+const DemoResponsiveDrawerButton = () => {
+  const [open, setOpen] = React.useState(false);
+  const closeModal = () => setOpen(false);
+  const openModal = () => setOpen(true);
+  return (
+    <>
+      <ThemeButton variant="secondary" text="Open responsive drawer" onClick={openModal} />
+      <ResponsiveDrawerModal
+        open={open}
+        id="demo-responsive-drawer"
+        onClose={closeModal}
+        title="Responsive Drawer"
+      >
+        <Typography.Body>
+          I am a responsive drawer. I will render as a BottomDrawer on mobile, and a RightDrawer on tablet/desktop.
+        </Typography.Body>
+        <Typography.Body>
+          Resize the browser window to see me change!
+        </Typography.Body>
+      </ResponsiveDrawerModal>
     </>
   );
 };
