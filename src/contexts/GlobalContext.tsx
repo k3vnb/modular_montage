@@ -2,6 +2,7 @@ import React from 'react';
 import type { Theme } from '@mui/system';
 import { THEMES, THEME_IDS, type ThemeId } from 'theme';
 import { type GlobalToastState, useGlobalToastStateCore } from 'global/components/Toast/hooks/useGlobalToastState';
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
 export interface IGlobalContextValue {
   theme: Theme,
@@ -26,7 +27,7 @@ export const useGlobalContext = () => React.useContext(GlobalContext);
 export const GlobalContextProvider = ({
   children,
 }: React.PropsWithChildren) => {
-  const [themeId, setThemeId] = React.useState<ThemeId>(THEME_IDS.default);
+  const [themeId, setThemeId] = useLocalStorage<ThemeId>('themeId', THEME_IDS.default);
   const theme = THEMES[themeId];
 
   const updateTheme = React.useCallback((themeId: ThemeId) => {
