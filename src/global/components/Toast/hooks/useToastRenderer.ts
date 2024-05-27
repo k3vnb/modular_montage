@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useGlobalToastState } from './useGlobalToastState';
 import type { ToastRendererOptions } from '../types';

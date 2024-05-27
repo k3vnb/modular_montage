@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Box } from '@mui/system';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Notifications, MailOutlined, Search } from '@mui/icons-material';
