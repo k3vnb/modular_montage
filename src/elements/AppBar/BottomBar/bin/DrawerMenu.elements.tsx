@@ -83,6 +83,6 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
     zIndex: 1, // keeps focused outline above sibling elements
   },
   '&:not(:last-child)': {
-    borderBottom: `1px solid ${theme.palette.neutral[30]}`,
+    borderBottom: `1px solid ${theme.styles.neutral[30]}`,
   },
 }));

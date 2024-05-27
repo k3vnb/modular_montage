@@ -73,6 +73,6 @@ const ScrollContainer = ({ children }: React.PropsWithChildren) => (
 
 export const BottomDrawerHeader = styled(Box)(({ theme }) => ({
   ...theme.styles.headingH4,
-  color: theme.palette.neutral[90],
+  color: theme.styles.neutral[90],
 }));
 
