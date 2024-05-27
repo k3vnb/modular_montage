@@ -76,6 +76,7 @@ export const StyledToast = styled(Box, options)<StyledToastProps>(({
     padding: theme.spacing(1,2),
     gap: theme.spacing(2.25),
     minHeight: '56px',
+    maxHeight: 500, // allows for transition on maxHeight
     minWidth: '340px',
     width: 'max-content',
     maxWidth: '550px',
@@ -116,8 +117,13 @@ export const StyledToast = styled(Box, options)<StyledToastProps>(({
     },
     [`&.${EXIT_CLASS}`]: {
       opacity: 0,
+      minHeight: 0,
+      maxHeight: 0,
       transform: 'translateX(100%)',
-      transition: 'all .2s cubic-bezier(.4,0,.2,1)',
+      transitionDelay: '0, 0, .2s',
+      transitionDuration: '.2s, .1s, .8s',
+      transitionProperty: 'transform, opacity, max-height',
+      transitionTimingFunction: 'cubic-bezier(.4,0,.2,1)',
     },
     [theme.breakpoints.down('sm')]: {
       right: 0,

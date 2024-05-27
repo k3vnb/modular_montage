@@ -1,5 +1,5 @@
 import { Stack, styled } from '@mui/system';
-import { Toast } from '../Toast/Toast';
+import { Toast } from '../Toast';
 import { useGlobalToastState } from '../hooks/useGlobalToastState';
 
 export const ToastListRenderer = () => {
@@ -22,7 +22,6 @@ export const ToastListRenderer = () => {
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   position: 'fixed',
-  width: '100vw',
   alignItems: 'flex-end',
   gap: theme.spacing(1),
   top: theme.spacing(1),
