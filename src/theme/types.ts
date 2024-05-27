@@ -1,6 +1,7 @@
 import type { ThemedTemplateVariants } from 'global/types';
 import type { ThemeFontMap } from './typography';
 import zIndex from './zIndex';
+import borderRadius from './borderRadius';
 
 export type ShadesMap = {
   neutral: {
@@ -30,7 +31,6 @@ export type ElementColorMaps = {
   header: ColorBox;
   main: ColorBox;
 };
-
 
 export type ThemedTemplateColorMap = {
   name: string;
@@ -78,16 +78,9 @@ export type ThemeShadowMap = {
   3: string;
 }
 
-export type BorderRadiusMap = {
-  0: string;
-  1: string;
-  2: string;
-  3: string;
-  full: string;
+export type ThemeStyles = ThemePalette & ThemeFontMap & {
+  elements: ElementColorMaps;
+  shadow: ThemeShadowMap
+  zIndex: typeof zIndex;
+  borderRadius: typeof borderRadius;
 };
-
-  export type ThemeStyles = ThemePalette & ThemeFontMap & {
-    elements: ElementColorMaps;
-    shadow: ThemeShadowMap
-    zIndex: typeof zIndex;
-  };

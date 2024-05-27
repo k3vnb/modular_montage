@@ -1,11 +1,12 @@
-import { BorderRadiusMap } from './types';
-
-const borderRadius: BorderRadiusMap = {
-  0: '0',
-  1: '0.125rem',
-  2: '0.25rem',
-  3: '0.5rem',
+const borderRadius = {
+  none: '0px',
+  xs: '2px',
+  sm: '4px',
+  md: '8px',
+  lg: '16px',
+  xl: '32px',
+  xxl: '48px',
   full: '9999px',
-};
+} as const;
 
 export default borderRadius;
