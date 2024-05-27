@@ -1,11 +1,14 @@
 import { Box } from '@mui/system';
-import { PageTitle } from 'global/components/PageTitle';
-import { useGlobalContext } from 'contexts/GlobalContext';
-import { THEME_IDS } from 'theme';
-import { ThemeButton } from 'global/components/Buttons';
-import { Tile } from 'global/components/Tile/Tile';
-import { Typography } from 'global/components/Typography';
 import DashboardIcon from '@mui/icons-material/BlurOnOutlined';
+
+import { Tile } from 'global/components/Tile/Tile';
+import { PageTitle } from 'global/components/PageTitle';
+import { Typography } from 'global/components/Typography';
+import { ThemeButton } from 'global/components/Buttons';
+import { RadioGroup } from 'global/components/Form/Inputs/RadioGroup';
+
+import { THEME_IDS, type ThemeId } from 'theme';
+import { useGlobalContext } from 'contexts/GlobalContext';
 
 export const Dashboard = (): JSX.Element => {
   return (
@@ -38,18 +41,13 @@ export const Dashboard = (): JSX.Element => {
 const ThemeRadioButtons = (): JSX.Element => {
   const { themeId, updateTheme } = useGlobalContext();
   return (
-    <Box display="flex" flexDirection="row" gap={1}>
-      {Object.values(THEME_IDS).map((key) => (
-        <label key={key}>
-          <input
-            type="radio"
-            name="theme"
-            checked={themeId === THEME_IDS[key]}
-            onChange={() => updateTheme(key)}
-          />
-          {key}
-        </label>
-      ))}
-    </Box>
+    <RadioGroup
+      legend="Theme Selector"
+      id="theme-selector"
+      name="theme-selector"
+      value={themeId}
+      options={Object.values(THEME_IDS).map((key) => ({ value: key, label: key}))}
+      onChange={(val: string) => updateTheme(val as ThemeId)}
+    />
   );
 };
