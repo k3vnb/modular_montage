@@ -1,12 +1,12 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import { PageTitle } from 'global/components/PageTitle';
 import InterestsIcon from '@mui/icons-material/InterestsOutlined';
 // import { useGlobalContext } from 'contexts/GlobalContext';
-import { ThemeButton } from 'global/components/Buttons';
+// import { ThemeButton } from 'global/components/Buttons';
 import { Tile } from 'global/components/Tile/Tile';
+import { PageTitle } from 'global/components/PageTitle';
 import { Typography } from 'global/components/Typography';
-import { ModalLaunchButtons } from './components';
+import { AllToastsButton, ErrorToastButton, ModalLaunchButtons, SuccessToastButton } from './components';
 
 export const Widgets = (): JSX.Element => {
   return (
@@ -26,8 +26,9 @@ export const Widgets = (): JSX.Element => {
       </Tile>
       <Tile showBorder gap={1} variant="special" elevation={1}>
         <Typography.H4>Toasts</Typography.H4>
-        <ThemeButton variant="info" text="Show a success toast" />
-        <ThemeButton filled text="Show all the toasts" />
+        <SuccessToastButton />
+        <ErrorToastButton />
+        <AllToastsButton />
       </Tile>
     </Box>
   );
