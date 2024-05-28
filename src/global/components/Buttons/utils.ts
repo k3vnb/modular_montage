@@ -70,9 +70,9 @@ export function getButtonThemeColors({
     textHover: surfaceContrast[1],
     textPressed: surfaceContrast[2],
     
-    bg: surface[0],
-    bgHover: surface[1],
-    bgPressed: surface[2],
+    bg: neutral[0],
+    bgHover: surface[0],
+    bgPressed: surface[1],
 
     ...commonColors,
   };

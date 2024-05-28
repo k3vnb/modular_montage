@@ -39,8 +39,8 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
     };
     const paddings = {
       small: theme.spacing(1, 2),
-      medium: theme.spacing(1.25, 2),
-      large: theme.spacing(1.5, 2),
+      medium: theme.spacing(1.5, 2),
+      large: theme.spacing(2, 2),
     };
     return [fontStyles[size], paddings[size]];
   }, [theme, size]);
@@ -54,7 +54,7 @@ export const StyledButton = styled(UnstyledButton, options)<StyledButtonProps>((
     textAlign: 'center',
     gap: theme.spacing(1),
     backgroundColor: colors.bg,
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: theme.styles.borderRadius.full,
     border: `1.5px solid ${colors.border}`,
     padding,
     color: colors.text,

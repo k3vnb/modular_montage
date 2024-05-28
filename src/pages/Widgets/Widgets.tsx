@@ -15,7 +15,7 @@ export const Widgets = (): JSX.Element => {
       <Tile showBorder variant="info" gap={1}  elevation={1}>
         <Typography.H4 textAlign="center" mb={1}>Here we explore a variety of pop-ups, modals, and themed components</Typography.H4>
       </Tile>
-      <Tile showBorder gap={1} variant="info" elevation={1}>
+      <Tile showBorder gap={1} variant="info" elevation={1} sx={{ backgroundColor: theme => theme.styles.secondary.box.surface[0] }}>
         <Typography.H4>Drawers & Modals</Typography.H4>
         <Box display="flex" justifyContent="space-around" flexDirection="row" flexWrap="wrap" gap={1}>
           <ModalLaunchButtons.Modal />
@@ -24,7 +24,7 @@ export const Widgets = (): JSX.Element => {
           <ModalLaunchButtons.ResponsiveDrawer />
         </Box>
       </Tile>
-      <Tile showBorder gap={1} variant="special" elevation={1}>
+      <Tile showBorder gap={1} variant="special" elevation={1} sx={{ backgroundColor: theme => theme.styles.primary.box.surface[0] }}>
         <Typography.H4>Toasts</Typography.H4>
         <SuccessToastButton />
         <ErrorToastButton />
