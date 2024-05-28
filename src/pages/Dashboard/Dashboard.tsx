@@ -9,6 +9,7 @@ import { RadioGroup } from 'global/components/Form/Inputs/RadioGroup';
 
 import { THEME_IDS, type ThemeId } from 'theme';
 import { useGlobalContext } from 'contexts/GlobalContext';
+import { ThemeButtonExamples } from './components';
 
 export const Dashboard = (): JSX.Element => {
   return (
@@ -33,6 +34,10 @@ export const Dashboard = (): JSX.Element => {
         <Typography.H4>Theme Selector</Typography.H4>
         <ThemeRadioButtons />
       </Tile>
+      <Tile showBorder gap={1} variant="info" elevation={1} maxWidth="max-content">
+        <Typography.H4>Theme Buttons</Typography.H4>
+        <ThemeButtonExamples />
+      </Tile>
       <ThemeButton filled text="Primary" size="large" />
     </Box>
   );
@@ -45,6 +50,7 @@ const ThemeRadioButtons = (): JSX.Element => {
       legend="Theme Selector"
       id="theme-selector"
       name="theme-selector"
+      direction="row"
       value={themeId}
       options={Object.values(THEME_IDS).map((key) => ({ value: key, label: key}))}
       onChange={(val: string) => updateTheme(val as ThemeId)}

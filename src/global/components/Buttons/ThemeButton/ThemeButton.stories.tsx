@@ -64,7 +64,7 @@ const ColorModeButtonLists = (props: Omit<ButtonListProps, 'filled'>) => {
   );
 };
 
-const ThemeButtonExamples: React.FC = () => {
+export const ThemeButtonExamples = () => {
   return (
     <Stack gap="40px">
       {['large', 'medium', 'small'].map((size) => (
