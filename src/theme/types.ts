@@ -23,7 +23,7 @@ type ColorBox = {
   surface: { 0: string, 1: string, 2: string };
   border: { 0: string, 1: string, 2: string };
   surfaceContrast: { 0: string, 1: string, 2: string };
-  gradients?: { 0: string };
+  gradients: { 0: string, 1: string, 2: string};
 }
 
 export type ElementColorMaps = {

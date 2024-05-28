@@ -43,7 +43,7 @@ export const PageTitle = ({
         })}
         sx={{
           color: theme => theme.styles.neutral[10],
-          background: theme => `linear-gradient(90deg, ${theme.styles.primary.main} 70%, ${theme.styles.primary.shades.dark[0]} 100%)`,
+          background: theme => theme.styles.elements.main.gradients[1],
           borderRadius: '4px',
           border: theme => `1px solid ${theme.styles.primary.shades.dark[1]}`,
           outline: theme => `1px solid ${theme.styles.primary.shades.accent}`,

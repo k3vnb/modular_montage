@@ -1,7 +1,7 @@
 import colors from './colors';
 import type { ElementColorMaps, ThemePalette } from '../types';
-const d0 = '#a3a3a3';
-const d1 = '#1c1c21';
+import { semanticPalettes } from './defaultSemanticPalettes';
+
 const rhinoBlue = {
   25: '#f5f6f9', //
   50: '#ebebef',
@@ -39,19 +39,6 @@ const _rhinoBlue = {
   950: '#0f101f', // 900
 };
 
-const testlist3 = [
-  '#f5f6f9',
-  '#a3a3a3',
-  '#323763',
-  '#292e61',
-  '#141628',
-  '#0f101e',
-  '#1c1c21',
-];
-
-const brightBlue = '#131faa';
-const marigold = '#d3b201';
-
 const seafoamGreen = {
   0: '#f1f9f7',
   50: '#e3f3ee',
@@ -66,16 +53,10 @@ const seafoamGreen = {
   900: '#002923',
 };
 
-const red = {
-  600: '#d30122',
-};
-
-const main = '#182181';
 const mainDark = '#292e61'; //
 
 const palette = {
-  neutral: colors.neutral,
-  hyperlink: [colors.blue[700], colors.blue[500]],
+  ...semanticPalettes,
   primary: {
     name: 'primary',
     main: _rhinoBlue[500],
@@ -83,6 +64,7 @@ const palette = {
       surface: [_rhinoBlue[10], _rhinoBlue[20], _rhinoBlue[100]],
       border: [_rhinoBlue[500], _rhinoBlue[400], _rhinoBlue[300]],
       surfaceContrast: [_rhinoBlue[950], _rhinoBlue[850], _rhinoBlue[700]],
+      gradients: ['','',''],
     },
     shades: {
       neutral: {
@@ -107,6 +89,7 @@ const palette = {
       surface: [colors.neutral[10], colors.neutral[20], colors.neutral[30]],
       border: [colors.neutral[50], colors.neutral[40], colors.neutral[30]],
       surfaceContrast: [colors.neutral[90], colors.neutral[80], colors.neutral[70]],
+      gradients: ['','',''],
     },
   },
   special: {
@@ -116,42 +99,7 @@ const palette = {
       surface: [colors.brightPink[50], colors.brightPink[100], colors.neutral[5]],
       border: [colors.brightPink[500], colors.brightPink[400], colors.brightPink[300]],
       surfaceContrast: [colors.brightPink[900], colors.brightPink[700], colors.brightPink[500]],
-    },
-  },
-  danger: {
-    name: 'danger',
-    main: colors.red[800],
-    box: {
-      surface: [colors.red[50], colors.red[100], colors.neutral[5]],
-      border: [colors.red[600], colors.red[500], colors.red[400]],
-      surfaceContrast: [colors.red[800], colors.red[700], colors.red[600]],
-    },
-  },
-  warning: {
-    name: 'warning',
-    main: colors.orange[950],
-    box: {
-      surface: [colors.orange[50], colors.orange[100], colors.neutral[5]],
-      border: [colors.orange[500], colors.orange[450], colors.orange[500]],
-      surfaceContrast: [colors.orange[950], colors.orange[800], colors.orange[500]],
-    },
-  },
-  success: {
-    name: 'success',
-    main: colors.green[850],
-    box: {
-      surface: [colors.green[50], colors.green[100], colors.neutral[5]],
-      border: [colors.green[500], colors.green[400], colors.green[300]],
-      surfaceContrast: [colors.green[850], colors.green[800], colors.green[700]],
-    },
-  },
-  info: {
-    name: 'info',
-    main: colors.blue[700],
-    box: {
-      surface: [colors.blue[50], colors.blue[100], colors.neutral[5]],
-      border: [colors.blue[600], colors.blue[500], colors.blue[400]],
-      surfaceContrast: [colors.blue[700], colors.blue[500], colors.blue[400]],
+      gradients: ['','',''],
     },
   },
 } as const;
@@ -166,17 +114,26 @@ export const elements: ElementColorMaps = {
     surface: ['#1c1c21', _rhinoBlue[950], _rhinoBlue[850]],
     border: [seafoamGreen[500], seafoamGreen[400], seafoamGreen[300]],
     surfaceContrast: [colors.neutral[40], _rhinoBlue[10], _rhinoBlue[20]],
+    gradients: ['','',''],
   },
   header: {
     surface: [rhinoBlue[800], rhinoBlue[900], mainDark],
     border: [seafoamGreen[500], seafoamGreen[400], seafoamGreen[300]],
     surfaceContrast: [palette.neutral[10], palette.neutral[5], palette.neutral[0]],
-    gradients: [`linear-gradient(45deg, ${rhinoBlue[800]} 30%, ${rhinoBlue[900]} 50%, ${rhinoBlue[800]} 66%, ${mainDark} 100%)`],
+    gradients: [
+      `linear-gradient(45deg, ${rhinoBlue[800]} 30%, ${rhinoBlue[900]} 50%, ${rhinoBlue[800]} 66%, ${mainDark} 100%)`,
+      '',
+      '',
+    ],
   },
   main: {
     surface: [palette.neutral[10], palette.neutral[20], palette.neutral[30]],
     border: [palette.neutral[10], palette.neutral[20], palette.neutral[30]],
     surfaceContrast: [colors.mutedBlue[900], colors.blueViolet[700], colors.blueViolet[500]],
-    gradients: [`radial-gradient(ellipse at top, ${palette.neutral[5]} 0%, ${palette.neutral[20]} 61%, #e2e1e5 100%)`],
+    gradients: [
+      `radial-gradient(ellipse at top, ${palette.neutral[5]} 0%, ${palette.neutral[20]} 61%, #e2e1e5 100%)`,
+      `linear-gradient(90deg, ${palette.primary.main} 70%, ${palette.primary.shades.dark[0]} 100%)`,
+      '',
+    ],
   },
 };
