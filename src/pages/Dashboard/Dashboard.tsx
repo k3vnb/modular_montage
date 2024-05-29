@@ -4,7 +4,6 @@ import DashboardIcon from '@mui/icons-material/BlurOnOutlined';
 import { Tile } from 'global/components/Tile/Tile';
 import { PageTitle } from 'global/components/PageTitle';
 import { Typography } from 'global/components/Typography';
-import { ThemeButton } from 'global/components/Buttons';
 import { RadioGroup } from 'global/components/Form/Inputs/RadioGroup';
 
 import { THEME_IDS, type ThemeId } from 'theme';
@@ -38,7 +37,6 @@ export const Dashboard = (): JSX.Element => {
         <Typography.H4>Theme Buttons</Typography.H4>
         <ThemeButtonExamples />
       </Tile>
-      <ThemeButton filled text="Primary" size="large" />
     </Box>
   );
 };

@@ -102,10 +102,12 @@ const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
             xxs: theme.spacing(
               MAIN_CONTENT_PAGE_PADDING.Y_XXS,
               MAIN_CONTENT_PAGE_PADDING.X_XXS,
+              MAIN_CONTENT_PAGE_PADDING.Y_XXS + 1,
             ),
             sm: theme.spacing(
               MAIN_CONTENT_PAGE_PADDING.Y_SM,
               MAIN_CONTENT_PAGE_PADDING.X_SM,
+              MAIN_CONTENT_PAGE_PADDING.Y_SM + 12,
             ),
           }),
           background: theme => debugMode ? 'rgb(242, 0, 255)' : theme.styles.elements.main.gradients?.[0] || theme.styles.elements.main.surface[0],
