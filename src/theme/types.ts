@@ -19,7 +19,7 @@ export type ShadesMap = {
   }
 };
 
-type ColorBox = {
+export type ColorBox = {
   surface: { 0: string, 1: string, 2: string };
   border: { 0: string, 1: string, 2: string };
   surfaceContrast: { 0: string, 1: string, 2: string };

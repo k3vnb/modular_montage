@@ -3,44 +3,19 @@ import type { ElementColorMaps, ThemePalette } from '../types';
 import { semanticPalettes } from './defaultSemanticPalettes';
 
 const rhinoBlue = {
-  25: '#f5f6f9', //
-  50: '#ebebef',
-  100: '#d6d7e0',
-  200: '#adafc1',
-  250: '#707392',
-  300: '#7d85c6',
-  400: '#6d75bf',
-  500: '#5d66b8',
-  600: '#545ca6',
-  650: '#414781',
-  700: '#323763', //
-  750: '#282c4f',
-  800: '#141628', //
-  900: '#0f101e', //
-  950: '#0a0b14',
-};
-
-const _rhinoBlue = {
-  10: '#f5f5f5',
-  20: '#ced2fd',
+  50: '#ced2fd',
   100: '#98a1f0',
   200: '#4858e5',
   300: '#172bde',
   400: '#1424b3',
   500: '#242c7b',
-  600: '#172382',
-  650: '#232d71',
-  700: '#323663', //700
-  750: '#292d61',
-  800: '#101865',
-  825: '#111646',
-  850: '#151728', //800
-  900: '#1c1c21',
-  950: '#0f101f', // 900
+  700: '#323763',
+  800: '#141628',
+  900: '#0f101e',
 };
 
 const seafoamGreen = {
-  0: '#f1f9f7',
+  10: '#f1f9f7',
   50: '#e3f3ee',
   100: '#ccf6f0',
   200: '#99ede0',
@@ -48,22 +23,24 @@ const seafoamGreen = {
   400: '#34dcc1',
   500: '#01d3b2',
   600: '#59d6ba',
-  630: '#41bba7',
+  650: '#41bba7',
   700: '#397a7e',
+  800: '#2f5e5f',
   900: '#002923',
 };
 
-const mainDark = '#292e61'; //
+const mainDark = '#292e61';
+const secondaryDark = '#1c1c21';
 
 const palette = {
   ...semanticPalettes,
   primary: {
     name: 'primary',
-    main: _rhinoBlue[500],
+    main: rhinoBlue[500],
     box: {
-      surface: [_rhinoBlue[10], _rhinoBlue[20], _rhinoBlue[100]],
-      border: [_rhinoBlue[500], _rhinoBlue[400], _rhinoBlue[300]],
-      surfaceContrast: [_rhinoBlue[950], _rhinoBlue[850], _rhinoBlue[700]],
+      surface: [rhinoBlue[50], rhinoBlue[100], rhinoBlue[200]],
+      border: [rhinoBlue[500], rhinoBlue[400], rhinoBlue[300]],
+      surfaceContrast: [rhinoBlue[500], rhinoBlue[400], rhinoBlue[300]],
       gradients: ['','',''],
     },
     shades: {
@@ -72,33 +49,33 @@ const palette = {
         100: colors.neutral[40],
       },
       dark: {
-        0: rhinoBlue['700'],
-        1: rhinoBlue['800'],
-        2: rhinoBlue['900'],
+        0: rhinoBlue[700],
+        1: rhinoBlue[800],
+        2: rhinoBlue[900],
       },
       accent: seafoamGreen[500],
       gradient: {
-        0: `linear-gradient(45deg, ${rhinoBlue['800']} 30%, ${rhinoBlue['900']} 50%, ${rhinoBlue['800']} 66%, ${mainDark} 100%)`,
+        0: `linear-gradient(45deg, ${rhinoBlue[800]} 30%, ${rhinoBlue[900]} 50%, ${rhinoBlue[800]} 66%, ${mainDark} 100%)`,
       },
     },
   },
   secondary: {
     name: 'secondary',
-    main: '#388560',
+    main: colors.neutral[90],
     box: {
-      surface: [colors.neutral[10], colors.neutral[20], colors.neutral[30]],
-      border: [colors.neutral[50], colors.neutral[40], colors.neutral[30]],
-      surfaceContrast: [colors.neutral[90], colors.neutral[80], colors.neutral[70]],
+      surface: [colors.blue[50], colors.blue[100], colors.blue[200]],
+      border: [colors.neutral[50], colors.blue[950], colors.blue[900]],
+      surfaceContrast: [colors.neutral[90], colors.neutral[90], colors.neutral[80]],
       gradients: ['','',''],
     },
   },
   special: {
     name: 'special',
-    main: colors.brightPink[900],
+    main: seafoamGreen[500],
     box: {
-      surface: [colors.brightPink[50], colors.brightPink[100], colors.neutral[5]],
-      border: [colors.brightPink[500], colors.brightPink[400], colors.brightPink[300]],
-      surfaceContrast: [colors.brightPink[900], colors.brightPink[700], colors.brightPink[500]],
+      surface: [seafoamGreen[100], colors.neutral[0], colors.neutral[0]],
+      border: [seafoamGreen[500], seafoamGreen[400], seafoamGreen[300]],
+      surfaceContrast: [seafoamGreen[800], seafoamGreen[700], seafoamGreen[600]],
       gradients: ['','',''],
     },
   },
@@ -111,9 +88,9 @@ export const themePalette: ThemePalette = {
 
 export const elements: ElementColorMaps = {
   appbar: {
-    surface: ['#1c1c21', _rhinoBlue[950], _rhinoBlue[850]],
+    surface: [secondaryDark, rhinoBlue[900], rhinoBlue[800]],
     border: [seafoamGreen[500], seafoamGreen[400], seafoamGreen[300]],
-    surfaceContrast: [colors.neutral[40], _rhinoBlue[10], _rhinoBlue[20]],
+    surfaceContrast: [colors.neutral[40], colors.neutral[10], rhinoBlue[50]],
     gradients: ['','',''],
   },
   header: {

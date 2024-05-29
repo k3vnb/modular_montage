@@ -1,6 +1,7 @@
 import colors from './colors';
 import type { ElementColorMaps, ThemePalette } from '../types';
 import { semanticPalettes } from './defaultSemanticPalettes';
+import { getGradients } from 'theme/utils';
 
 const palette = {
   ...semanticPalettes,
@@ -11,12 +12,12 @@ const palette = {
       surface: [colors.blueViolet[50], colors.blueViolet[25], colors.neutral[10]],
       border: [colors.blueViolet[500], colors.blueViolet[400], colors.blueViolet[300]],
       surfaceContrast: [colors.blueViolet[700], colors.blueViolet[500], colors.blueViolet[400]],
-      gradients: ['','','']
+      gradients: getGradients(colors.blueViolet[800], colors.blueViolet[900], colors.blueViolet[700]),
     },
     shades: {
       neutral: {
-        50: colors.neutral['10'],
-        100: colors.mutedBlue['900']
+        50: colors.neutral[10],
+        100: colors.mutedBlue[900]
       },
       dark: {
         0: colors.mutedPurple[700],
@@ -24,9 +25,9 @@ const palette = {
         2: colors.mutedPurple[950],
       },
       gradient: {
-        0: `linear-gradient(45deg, ${colors.mutedPurple['900']} 40%, ${colors.mutedPurple['800']} 68%, ${colors.blueViolet['600']} 100%)`,
+        0: `linear-gradient(45deg, ${colors.mutedPurple[900]} 40%, ${colors.mutedPurple[800]} 68%, ${colors.blueViolet[600]} 100%)`,
       },
-      accent: colors.brightPink['500'],
+      accent: colors.brightPink[500],
     },
   },
   secondary: {
@@ -36,7 +37,7 @@ const palette = {
       surface: [colors.blue[50], colors.blue[25], colors.neutral[5]],
       border: [colors.blue[500], colors.blue[400], colors.blue[300]],
       surfaceContrast: [colors.blue[950], colors.blue[900], colors.blue[700]],
-      gradients: ['','','']
+      gradients: getGradients(colors.blue[800], colors.blue[900], colors.blue[700]),
     },
   },
   special: {
@@ -46,7 +47,7 @@ const palette = {
       surface: [colors.brightPink[50], colors.brightPink[100], colors.neutral[5]],
       border: [colors.brightPink[500], colors.brightPink[400], colors.brightPink[300]],
       surfaceContrast: [colors.brightPink[900], colors.brightPink[700], colors.brightPink[500]],
-      gradients: ['','','']
+      gradients: getGradients(colors.brightPink[800], colors.brightPink[900], colors.brightPink[700]),
     },
   },
 } as const;

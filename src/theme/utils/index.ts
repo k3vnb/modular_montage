@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Theme } from '@mui/system';
 import { THEME_TEMPLATE_VARIANTS } from 'global/types';
-import type { ShadesMap, ThemedTemplateColorMap } from 'theme/types';
+import type { ShadesMap, ThemedTemplateColorMap, ColorBox } from 'theme/types';
 
 type TShadesDisplay = {
   neutral: string[];
@@ -95,4 +95,13 @@ export function getThemeColorPaletteDisplay(theme: Theme): TPaletteDisplay[] {
   }));
 
   return [...themeColors, neutralPalette];
+}
+
+
+export function getGradients(color1: string, color2: string, color3: string): ColorBox['gradients'] {
+  return [
+    `linear-gradient(45deg, ${color1} 30%, ${color2} 50%, ${color1} 66%, ${color3} 100%)`,
+    `linear-gradient(45deg, ${color1} 40%, ${color2} 68%, ${color3} 100%)`,
+    `linear-gradient(45deg, ${color1} 30%, ${color2} 50%, ${color1} 66%, ${color3} 100%)`,
+  ];
 }
