@@ -2,7 +2,7 @@ import { createTheme, type Theme } from '@mui/system';
 import * as theme1 from './palettes/defaultPalette';
 import * as borealis from './palettes/borealis';
 import * as limonad from './palettes/limonad';
-// import * as defaultDark from './palettes/defaultDark';
+import * as defaultDark from './palettes/defaultDark';
 import { THEME_FONTS, fontFamily } from './typography';
 import shadow from './shadow';
 import zIndex from './zIndex';
@@ -13,6 +13,7 @@ import type { ThemeStyles, ThemePalette } from './types';
 declare module '@mui/system/createTheme' {
   interface Theme {
     styles: ThemeStyles;
+    isDark: boolean;
   }
   // allow configuration using `createTheme`
   interface ThemeOptions {
@@ -41,6 +42,7 @@ const defaultTheme: Theme = createTheme({
       ..._palette,
       ...commonStyles,
       elements: theme1.elements,
+      isDark: _palette.mode === 'dark',
     };
   }, 
   ...commonThemeItems,
@@ -54,6 +56,7 @@ const borealisTheme: Theme = createTheme({
       ..._palette,
       ...commonStyles,
       elements: borealis.elements,
+      isDark: _palette.mode === 'dark',
     };
   },
   ...commonThemeItems,
@@ -67,6 +70,21 @@ const limonadTheme: Theme = createTheme({
       ..._palette,
       ...commonStyles,
       elements: limonad.elements,
+      isDark: _palette.mode === 'dark',
+    };
+  },
+  ...commonThemeItems,
+});
+
+const defaultDarkTheme: Theme = createTheme({
+  palette: defaultDark.themePalette,
+  get styles() {
+    const _palette = this.palette as ThemePalette;
+    return {
+      ..._palette,
+      ...commonStyles,
+      elements: defaultDark.elements,
+      isDark: _palette.mode === 'dark',
     };
   },
   ...commonThemeItems,
@@ -74,7 +92,7 @@ const limonadTheme: Theme = createTheme({
 
 export const THEME_IDS = {
   default: 'default',
-  // defaultDark: 'defaultDark',
+  defaultDark: 'defaultDark',
   borealis: 'borealis',
   limonad: 'limonad',
 } as const;
@@ -85,7 +103,7 @@ export const THEME_ID_LIST = Object.keys(THEME_IDS) as ThemeId[];
 
 export const THEMES: Record<ThemeId, Theme> = {
   [THEME_IDS.default]: defaultTheme,
-  // [THEME_IDS.defaultDark]: defaultDarkTheme,
+  [THEME_IDS.defaultDark]: defaultDarkTheme,
   [THEME_IDS.borealis]: borealisTheme,
   [THEME_IDS.limonad]: limonadTheme,
 };

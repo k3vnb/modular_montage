@@ -30,7 +30,7 @@ const seafoamGreen = {
 };
 
 const mainDark = '#292e61';
-const secondaryDark = '#1c1c21';
+const secondaryDark = '#1c1c21'; 
 
 const palette = {
   ...semanticPalettes,
@@ -58,6 +58,40 @@ const palette = {
         0: `linear-gradient(45deg, ${rhinoBlue[800]} 30%, ${rhinoBlue[900]} 50%, ${rhinoBlue[800]} 66%, ${mainDark} 100%)`,
       },
     },
+    button: {
+      text: {
+        main: rhinoBlue[500],
+        hover: rhinoBlue[400],
+        pressed: rhinoBlue[300],
+      },
+      background: {
+        main: colors.neutral[0],
+        hover: rhinoBlue[50],
+        pressed: colors.neutral[0],
+      },
+      border: {
+        main: rhinoBlue[500],
+        hover: rhinoBlue[400],
+        pressed: rhinoBlue[300],
+      },
+      filled: {
+        text: {
+          main: colors.neutral[0],
+          hover: colors.neutral[10],
+          pressed: colors.neutral[10],
+        },
+        background: {
+          main: rhinoBlue[500],
+          hover: rhinoBlue[400],
+          pressed: rhinoBlue[300],
+        },
+        border: {
+          main: rhinoBlue[400],
+          hover: rhinoBlue[300],
+          pressed: rhinoBlue[200],
+        },
+      },
+    },
   },
   secondary: {
     name: 'secondary',
@@ -68,6 +102,40 @@ const palette = {
       surfaceContrast: [colors.neutral[90], colors.neutral[90], colors.neutral[80]],
       gradients: ['','',''],
     },
+    button: {
+      text: {
+        main: colors.neutral[90],
+        hover: colors.neutral[90],
+        pressed: colors.neutral[80],
+      },
+      background: {
+        main: colors.neutral[0],
+        hover: colors.blue[50],
+        pressed: colors.blue[100],
+      },
+      border: {
+        main: colors.neutral[50],
+        hover: colors.blue[950],
+        pressed: colors.blue[900],
+      },
+      filled: {
+        text: {
+          main: colors.neutral[5],
+          hover: colors.neutral[0],
+          pressed: colors.neutral[10],
+        },
+        background: {
+          main: colors.neutral[90],
+          hover: colors.neutral[80],
+          pressed: colors.neutral[90],
+        },
+        border: {
+          main: colors.neutral[50],
+          hover: colors.blue[950],
+          pressed: colors.blue[900],
+        },
+      },
+    },
   },
   special: {
     name: 'special',
@@ -77,6 +145,40 @@ const palette = {
       border: [seafoamGreen[500], seafoamGreen[400], seafoamGreen[300]],
       surfaceContrast: [seafoamGreen[800], seafoamGreen[700], seafoamGreen[600]],
       gradients: ['','',''],
+    },
+    button: {
+      text: {
+        main: seafoamGreen[800],
+        hover: seafoamGreen[700],
+        pressed: seafoamGreen[600],
+      },
+      background: {
+        main: colors.neutral[0],
+        hover: seafoamGreen[50],
+        pressed: colors.neutral[0],
+      },
+      border: {
+        main: seafoamGreen[500],
+        hover: seafoamGreen[400],
+        pressed: seafoamGreen[300],
+      },
+      filled: {
+        text: {
+          main: colors.neutral[0],
+          hover: colors.neutral[10],
+          pressed: colors.neutral[10],
+        },
+        background: {
+          main: seafoamGreen[500],
+          hover: seafoamGreen[400],
+          pressed: seafoamGreen[300],
+        },
+        border: {
+          main: seafoamGreen[500],
+          hover: seafoamGreen[400],
+          pressed: seafoamGreen[300],
+        },
+      },
     },
   },
 } as const;

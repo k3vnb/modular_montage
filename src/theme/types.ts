@@ -19,6 +19,22 @@ export type ShadesMap = {
   }
 };
 
+type ButtonMap = {
+  main: string;
+  hover: string;
+  pressed: string;
+};
+
+export type ButtonStates = {
+  text: ButtonMap;
+  background: ButtonMap;
+  border: ButtonMap;
+};
+
+type ButtonColorMap = ButtonStates & {
+  filled: ButtonStates;
+}
+
 export type ColorBox = {
   surface: { 0: string, 1: string, 2: string };
   border: { 0: string, 1: string, 2: string };
@@ -37,6 +53,7 @@ export type ThemedTemplateColorMap = {
   main: string;
   box: ColorBox;
   shades?: ShadesMap;
+  button: ButtonColorMap;
 };
 
 type TMap = {
@@ -66,6 +83,7 @@ export type ThemePalette = ThemedTemplateMap & {
     70: string;
     80: string;
     90: string;
+    95: string;
     100: string;
   };
   mode: 'light' | 'dark';

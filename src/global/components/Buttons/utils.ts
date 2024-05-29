@@ -1,6 +1,6 @@
-import type { Theme } from '@mui/system';
+import { type Theme } from '@mui/system';
+import type { ButtonStates } from 'theme/types';
 import type { ThemedTemplateVariants } from 'global/types';
-import type { ThemedTemplateColorMap } from 'theme/types';
 
 type FnOptions = {
   theme: Theme;
@@ -35,7 +35,7 @@ export function getButtonThemeColors({
 }: FnOptions): ButtonThemeColors {
   const { neutral } = theme.styles;
   const colorVariant = theme.styles[variant];
-  const { surface, surfaceContrast } = colorVariant.box;
+  const colors = filled ? colorVariant.button.filled : colorVariant.button;
 
   const disabledColors = {
     textDisabled: neutral[70],
@@ -43,7 +43,7 @@ export function getButtonThemeColors({
     borderDisabled: showBorder ? neutral[40] : 'transparent',
   };
 
-  const borderColors = getBorderColors(colorVariant, showBorder);
+  const borderColors = getBorderColors(colors, showBorder);
 
   const commonColors = {
     ...borderColors,
@@ -51,36 +51,22 @@ export function getButtonThemeColors({
     focusOutline: theme.styles.hyperlink[0],
   };
 
-  if (filled) {
-    return {
-      text: neutral[0],
-      textHover: neutral[10],
-      textPressed: neutral[10],
-
-      bg: surfaceContrast[0],
-      bgHover: surfaceContrast[1],
-      bgPressed: surfaceContrast[2],
-      
-      ...commonColors,
-    };
-  }
-
   return {
-    text: surfaceContrast[0],
-    textHover: surfaceContrast[1],
-    textPressed: surfaceContrast[2],
+    text: colors.text.main,
+    textHover: colors.text.hover,
+    textPressed: colors.text.pressed,
     
-    bg: neutral[0],
-    bgHover: surface[0],
-    bgPressed: surface[1],
+    bg: colors.background.main,
+    bgHover: colors.background.hover,
+    bgPressed: colors.background.pressed,
 
     ...commonColors,
   };
 }
 
 function getBorderColors(
-  colorVariant: ThemedTemplateColorMap,
-  showBorder: boolean
+  colors: ButtonStates,
+  showBorder: boolean,
 ): { border: string; borderHover: string; borderPressed: string } {
   if (!showBorder)
     return {
@@ -90,8 +76,8 @@ function getBorderColors(
     };
 
   return {
-    border: colorVariant.box.border[0],
-    borderHover: colorVariant.box.border[1],
-    borderPressed: colorVariant.box.border[2],
+    border: colors.border.main,
+    borderHover: colors.border.hover,
+    borderPressed: colors.border.pressed,
   };
 }

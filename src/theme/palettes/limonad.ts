@@ -2,7 +2,6 @@ import colors from './colors';
 import type { ElementColorMaps, ThemePalette } from '../types';
 import { semanticPalettes } from './defaultSemanticPalettes';
 
-
 const yellows = { //primary
   50: '#fefee8',
   100: '#fdfac5',
@@ -96,6 +95,40 @@ const palette = {
         0: `linear-gradient(45deg, ${yellows[800]} 30%, ${yellows[900]} 50%, ${yellows[800]} 66%, ${mainDark} 100%)`,
       },
     },
+    button: {
+      text: {
+        main: pinks[600],
+        hover: pinks[700],
+        pressed: pinks[600],
+      },
+      background: {
+        main: colors.neutral[0],
+        hover: pinks[50],
+        pressed: colors.neutral[0],
+      },
+      border: {
+        main: pinks[500],
+        hover: pinks[400],
+        pressed: pinks[300],
+      },
+      filled: {
+        text: {
+          main: colors.neutral[0],
+          hover: colors.neutral[0],
+          pressed: colors.neutral[0],
+        },
+        background: {
+          main: pinks[500],
+          hover: pinks[600],
+          pressed: pinks[500],
+        },
+        border: {
+          main: pinks[700],
+          hover: pinks[600],
+          pressed: pinks[500],
+        },
+      },
+    },
   },
   secondary: {
     name: 'secondary',
@@ -106,6 +139,40 @@ const palette = {
       surfaceContrast: [blues[900], blues[900], blues[800]],
       gradients: ['','',''],
     },
+    button: {
+      text: {
+        main: blues[900],
+        hover: blues[800],
+        pressed: blues[700],
+      },
+      background: {
+        main: colors.neutral[0],
+        hover: blues[50],
+        pressed: colors.neutral[0],
+      },
+      border: {
+        main: blues[500],
+        hover: blues[400],
+        pressed: blues[300],
+      },
+      filled: {
+        text: {
+          main: colors.neutral[10],
+          hover: blues[50],
+          pressed: colors.neutral[10],
+        },
+        background: {
+          main: blues[500],
+          hover: blues[600],
+          pressed: blues[500],
+        },
+        border: {
+          main: blues[300],
+          hover: blues[200],
+          pressed: blues[400],
+        },
+      },
+    },
   },
   special: {
     name: 'special',
@@ -115,6 +182,40 @@ const palette = {
       border: [greens[500], greens[400], greens[300]],
       surfaceContrast: [greens[800], greens[700], greens[600]],
       gradients: ['','',''],
+    },
+    button: {
+      text: {
+        main: greens[900],
+        hover: greens[800],
+        pressed: greens[900],
+      },
+      background: {
+        main: colors.neutral[0],
+        hover: greens[50],
+        pressed: colors.neutral[0],
+      },
+      border: {
+        main: greens[600],
+        hover: greens[700],
+        pressed: greens[600],
+      },
+      filled: {
+        text: {
+          main: colors.neutral[0],
+          hover: colors.neutral[10],
+          pressed: colors.neutral[10],
+        },
+        background: {
+          main: greens[600],
+          hover: greens[700],
+          pressed: greens[500],
+        },
+        border: {
+          main: greens[400],
+          hover: greens[500],
+          pressed: greens[400],
+        },
+      },
     },
   },
 } as const;
