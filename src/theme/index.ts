@@ -2,6 +2,7 @@ import { createTheme, type Theme } from '@mui/system';
 import * as theme1 from './palettes/defaultPalette';
 import * as borealis from './palettes/borealis';
 import * as limonad from './palettes/limonad';
+// import * as defaultDark from './palettes/defaultDark';
 import { THEME_FONTS, fontFamily } from './typography';
 import shadow from './shadow';
 import zIndex from './zIndex';
@@ -26,6 +27,12 @@ const commonStyles = {
   zIndex,
 };
 
+const commonThemeItems = {
+  typography: { fontFamily },
+  breakpoints: { values: breakpoints },
+  zIndex,
+};
+
 const defaultTheme: Theme = createTheme({
   palette: theme1.themePalette,
   get styles() {
@@ -36,9 +43,7 @@ const defaultTheme: Theme = createTheme({
       elements: theme1.elements,
     };
   }, 
-  typography: { fontFamily },
-  breakpoints: { values: breakpoints },
-  zIndex,
+  ...commonThemeItems,
 });
 
 const borealisTheme: Theme = createTheme({
@@ -51,8 +56,7 @@ const borealisTheme: Theme = createTheme({
       elements: borealis.elements,
     };
   },
-  typography: { fontFamily },
-  breakpoints: { values: breakpoints },
+  ...commonThemeItems,
 });
 
 const limonadTheme: Theme = createTheme({
@@ -65,12 +69,12 @@ const limonadTheme: Theme = createTheme({
       elements: limonad.elements,
     };
   },
-  typography: { fontFamily },
-  breakpoints: { values: breakpoints },
+  ...commonThemeItems,
 });
 
 export const THEME_IDS = {
   default: 'default',
+  // defaultDark: 'defaultDark',
   borealis: 'borealis',
   limonad: 'limonad',
 } as const;
@@ -81,6 +85,7 @@ export const THEME_ID_LIST = Object.keys(THEME_IDS) as ThemeId[];
 
 export const THEMES: Record<ThemeId, Theme> = {
   [THEME_IDS.default]: defaultTheme,
+  // [THEME_IDS.defaultDark]: defaultDarkTheme,
   [THEME_IDS.borealis]: borealisTheme,
   [THEME_IDS.limonad]: limonadTheme,
 };
