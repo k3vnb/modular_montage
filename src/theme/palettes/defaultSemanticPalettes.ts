@@ -184,7 +184,7 @@ export const semanticPalettes = {
 
 export const semanticDarkPalettes = {
   neutral: colors.neutralDark,
-  hyperlink: [colors.blue[400], colors.blue[300]],
+  hyperlink: [colors.blue[500], colors.blue[600]],
   danger: {
     name: 'danger',
     main: colors.red[400],

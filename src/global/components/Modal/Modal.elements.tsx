@@ -31,7 +31,7 @@ export const StyledContentContainer = styled(FlexBox)(({ theme }) => ({
   overflow: 'auto',
   outline: 'none',
   borderRadius: '8px',
-  backgroundColor: theme.styles.neutral[5],
+  backgroundColor: theme.styles.neutral[theme.styles.isDark ? 10 : 5],
   boxShadow: theme.styles.shadow[2],
   padding: '28px 35px',
   '&:focus': {

@@ -31,6 +31,7 @@ const ButtonList = (props: ButtonListProps) => {
           key={variant}
           text={`${variant.charAt(0).toUpperCase() + variant.slice(1)} Button`}
           variant={variant}
+          size="medium"
           style={{ minWidth: 'max-content'}}
           {...buttonProps}
         />
@@ -39,6 +40,8 @@ const ButtonList = (props: ButtonListProps) => {
         text="Disabled Button"
         variant="primary"
         disabled
+        size="medium"
+        style={{ minWidth: 'max-content'}}
         {...buttonProps}
       />
     </Stack>
@@ -50,7 +53,13 @@ export const ThemeButtonExamples = () => {
     <Box display="flex" flexWrap="wrap" gap={4}>
       {['filled', 'unfilled'].map((colorMode) => (
         <Stack key={colorMode} alignItems="center" gap={2}>
-          <Box sx={theme => ({...theme.styles.textLgMedium, fontVariant: 'all-small-caps' })}>
+          <Box
+            sx={theme => ({
+              ...theme.styles.textLgMedium,
+              fontVariant: 'all-small-caps',
+              color: theme.styles.neutral[90],
+            })}
+            >
             {colorMode}
           </Box>
           <ButtonList filled={colorMode === 'filled'} />

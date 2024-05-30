@@ -27,7 +27,7 @@ const palette = {
       gradient: {
         0: `linear-gradient(45deg, ${colors.mutedPurple[900]} 40%, ${colors.mutedPurple[800]} 68%, ${colors.blueViolet[600]} 100%)`,
       },
-      accent: colors.brightPink[500],
+      accent: colors.brightPink[900],
     },
     button: {
       text: {
@@ -172,7 +172,7 @@ export const elements: ElementColorMaps = {
   },
   header: {
     surface: [colors.mutedBlue[900], colors.mutedBlue[800], colors.blueViolet[600]],
-    border: [colors.brightPink[700], colors.brightPink[600], colors.brightPink[500]],
+    border: [colors.brightPink[800], colors.brightPink[700], colors.brightPink[600]],
     surfaceContrast: [palette.neutral[80], palette.neutral[90], palette.neutral[95]],
     gradients: [
       `linear-gradient(45deg, ${colors.mutedPurple[900]} 40%, ${colors.blueViolet[800]} 68%, ${colors.blueViolet[900]} 100%)`,
@@ -182,11 +182,11 @@ export const elements: ElementColorMaps = {
   },
   main: {
     surface: [palette.neutral[10], colors.blueViolet[50], colors.blueViolet[25]],
-    border: [colors.blueViolet[600], colors.blueViolet[500], colors.blueViolet[400]],
-    surfaceContrast: [colors.mutedBlue[900], colors.blueViolet[700], colors.blueViolet[500]],
+    border: [colors.blueViolet[800], colors.blueViolet[500], colors.blueViolet[400]],
+    surfaceContrast: [colors.blueViolet[900], colors.blueViolet[700], colors.blueViolet[500]],
     gradients: [
       `radial-gradient(ellipse at top, ${palette.neutral[10]} 0%, ${palette.neutral[0]} 100%)`,
-      `linear-gradient(90deg, ${palette.primary.main} 70%, ${palette.primary.shades.dark[0]} 100%)`,
+      `linear-gradient(90deg, ${colors.mutedBlue[900]} 70%, ${palette.primary.shades.dark[0]} 100%)`,
       '',
     ],
   },

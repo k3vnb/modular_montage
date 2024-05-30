@@ -42,7 +42,7 @@ export const PageTitle = ({
           md: theme.spacing(3,6),
         })}
         sx={{
-          color: theme => theme.styles.neutral[10],
+          color: theme => theme.styles.neutral[theme.styles.isDark ? 100 : 10],
           background: theme => theme.styles.elements.main.gradients[1],
           borderRadius: '4px',
           border: theme => `1px solid ${theme.styles.primary.shades.dark[1]}`,
@@ -67,10 +67,10 @@ export const PageTitle = ({
 };
 
 const StyledTitle = styled(Typography.H3)(({ theme }) => ({
-  color: theme.styles.neutral[5],
+  color: theme.styles.neutral[theme.styles.isDark ? 100 : 5],
 }));
 
 const StyledDescription = styled(Typography.H5)(({ theme }) => ({
-  color: theme.styles.neutral[10],
+  color: theme.styles.neutral[theme.styles.isDark ? 95 : 10],
   fontWeight: 400,
 }));

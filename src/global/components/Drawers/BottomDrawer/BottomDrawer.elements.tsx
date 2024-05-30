@@ -45,7 +45,7 @@ export const StyledDrawerWrapper = styled(Stack, options)<Omit<BottomDrawerProps
   maxWidth: '100vw',
   maxHeight,
   overflow: 'auto',
-  backgroundColor: theme.styles.neutral[5],
+  backgroundColor: theme.styles.neutral[theme.styles.isDark ? 10 : 5],
   borderRadius: '8px 8px 0 0',
   transformOrigin: 'top',
   transform: open ? 'translateY(0%)' : 'translateY(100%)',
