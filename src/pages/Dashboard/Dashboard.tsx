@@ -11,12 +11,12 @@ import { useGlobalContext } from 'contexts/GlobalContext';
 import { ThemeButtonExamples } from './components';
 import { LAYOUT_STYLES, type LayoutStyle } from 'layouts/types';
 
-export const Dashboard = (): JSX.Element => {
+export const Dashboard = () => {
   return (
     <Box display="flex" flexDirection="column" gap={3}>
-      <PageTitle title="Mandala Themes" icon={DashboardIcon} description="Lorem Ipsum Doleres etc" />
+      <PageTitle title="Themes & Layout" icon={DashboardIcon} description="Modular UI Systems" />
       <Tile showBorder variant="info" gap={1}  elevation={1}>
-        <Typography.H4 textAlign="center" mb={1}>Welcome to Modular Montage</Typography.H4>
+        <Typography.H3 textAlign="center" mb={1}>Welcome to Modular Montage</Typography.H3>
         <Typography.Body>
           This app is dedicated to the exploration of themes, layout, and components in a clientside rendered environment.
         </Typography.Body>

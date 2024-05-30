@@ -21,7 +21,7 @@ export const DrawerClickaway = ({ children }: React.PropsWithChildren ): JSX.Ele
   return (
     <FocusTrap open={open}>
       <Box>
-        <Backdrop open={open} transitionDuration={transitionDuration} zIndex={0} />
+        <Backdrop open={open} transitionDuration={transitionDuration} zIndex={open ? 0 : -1} />
         <ClickAwayListener onClickAway={closeDrawer} mouseEvent="onMouseDown">
           <Box role="presentation">
             {children}

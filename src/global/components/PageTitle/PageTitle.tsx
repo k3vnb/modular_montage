@@ -15,62 +15,79 @@ export const PageTitle = ({
   title,
   description,
   icon: Icon = FlowerIcon,
-}: Props): JSX.Element => {
+}: Props) => {
   return (
-    <Hero
-      flexDirection="row"
-      alignItems="center"
-      gap={2}
-      marginTop={theme => ({
-        xxs: theme.spacing(-MAIN_CONTENT_PAGE_PADDING.Y_XXS + 1),
-        sm: theme.spacing(-MAIN_CONTENT_PAGE_PADDING.Y_SM),
-      })}
-      sx={{
-        color: theme => theme.styles.neutral[10],
-        padding: theme => theme.spacing(1, 2),
-      }}
-    >
-      <Box
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        flexWrap="wrap"
-        width="100%"
-        gap={3}
-        padding={theme => ({
-          xxs: theme.spacing(2,3),
-          md: theme.spacing(3,6),
-        })}
-        sx={{
-          color: theme => theme.styles.neutral[theme.styles.isDark ? 100 : 10],
-          background: theme => theme.styles.elements.main.gradients[1],
-          borderRadius: '4px',
-          border: theme => `1px solid ${theme.styles.primary.shades.dark[1]}`,
-          outline: theme => `1px solid ${theme.styles.primary.shades.accent}`,
-          outlineOffset: '-2px',
-          boxShadow: theme => theme.styles.shadow[1],
-        }}
-      >
-      <Box
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        gap={2}
-      >
-        <Icon fontSize="large" />
-        <StyledTitle component="h2">{title}</StyledTitle>
-      </Box>
-      {description && <StyledDescription component="p">{description}</StyledDescription>}
-      </Box>
-    </Hero>
+    <StyledHeroOuter>
+      <StyledHeroInner>
+        <Box display="flex" flexDirection="row" alignItems="center" gap={2}>
+          <Box component={Icon} alignSelf="start" fontSize={32} display={{ xxs: 'none', sm: 'block' }} />
+          <Box
+            display="flex"
+            flexDirection={{ xxs: 'column', sm: 'row' }}
+            alignItems="center"
+            gap={{ xxs: 1, sm: 3 }}
+          >
+            <Box display="flex" flexShrink={0} alignItems="center" gap={{ xxs: 1, xs: 2 }} flexDirection={{ xxs: 'column', xs: 'row' }}>
+              <Box component={Icon} fontSize={32} display={{ xxs: 'block', sm: 'none' }} />
+              <StyledTitle component="h2">{title}</StyledTitle>
+            </Box>
+            {description && <StyledDescription component="span">{description}</StyledDescription>}
+          </Box>
+        </Box>
+      </StyledHeroInner>
+    </StyledHeroOuter>
   );
 };
 
 const StyledTitle = styled(Typography.H3)(({ theme }) => ({
   color: theme.styles.neutral[theme.styles.isDark ? 100 : 5],
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.5rem',
+  },
+  [theme.breakpoints.down('xs')]: {
+    fontSize: '1.25rem',
+  },
 }));
 
 const StyledDescription = styled(Typography.H5)(({ theme }) => ({
   color: theme.styles.neutral[theme.styles.isDark ? 95 : 10],
   fontWeight: 400,
+}));
+
+const StyledHeroOuter = styled(Hero)(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: theme.spacing(3),
+  marginTop: theme.spacing(-MAIN_CONTENT_PAGE_PADDING.Y_SM),
+  padding: theme.spacing(1, 2),
+  color: theme.styles.neutral[10],
+  [theme.breakpoints.down('sm')]: {
+    marginTop: theme.spacing(-MAIN_CONTENT_PAGE_PADDING.Y_XXS + 1),
+    gap: theme.spacing(2),
+  },
+}));
+
+const StyledHeroInner = styled(Box)(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  flexWrap: 'wrap',
+  padding: theme.spacing(3, 6),
+  color: theme.styles.neutral[theme.styles.isDark ? 100 : 10],
+  background: theme.styles.elements.main.gradients[1],
+  borderRadius: theme.styles.borderRadius.sm,
+  border: `1px solid ${theme.styles.primary.shades.dark[1]}`,
+  outline: `1px solid ${theme.styles.primary.shades.accent}`,
+  boxShadow: theme.styles.shadow[1],
+  outlineOffset: '-2px',
+  [theme.breakpoints.down('sm')]: {
+    padding: theme.spacing(2, 3),
+    flexDirection: 'column',
+    alignItems: 'start',
+    gap: theme.spacing(1),
+  },
+  [theme.breakpoints.down('xs')]: {
+    alignItems: 'center',
+  },
 }));
