@@ -180,6 +180,12 @@ export const elements: ElementColorMaps = {
       '',
     ],
   },
+  flyout: {
+    text: colors.neutral[90],
+    textActive: colors.blueViolet[750],
+    surface: colors.neutral[5],
+    surfaceActive: colors.blueViolet[50],
+  },
   main: {
     surface: [palette.neutral[10], colors.blueViolet[50], colors.blueViolet[25]],
     border: [colors.blueViolet[600], colors.blueViolet[500], colors.blueViolet[400]],

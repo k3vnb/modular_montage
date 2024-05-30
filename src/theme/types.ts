@@ -46,6 +46,12 @@ export type ElementColorMaps = {
   appbar: ColorBox;
   header: ColorBox;
   main: ColorBox;
+  flyout: {
+    text: string;
+    textActive: string;
+    surface: string;
+    surfaceActive: string;
+  }
 };
 
 export type ThemedTemplateColorMap = {

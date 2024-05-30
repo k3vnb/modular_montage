@@ -3,11 +3,13 @@ import type { ElementColorMaps, ThemePalette } from '../types';
 import { semanticPalettes } from './defaultSemanticPalettes';
 
 const rhinoBlue = {
+  25: '#f0f2ff',
   50: '#ced2fd',
   100: '#98a1f0',
   200: '#4858e5',
   300: '#172bde',
   400: '#1424b3',
+  450: '#0f1f9e',
   500: '#242c7b',
   700: '#323763',
   800: '#141628',
@@ -204,6 +206,12 @@ export const elements: ElementColorMaps = {
       '',
       '',
     ],
+  },
+  flyout: {
+    text: colors.neutral[80],
+    textActive: rhinoBlue[450],
+    surface: colors.neutral[5],
+    surfaceActive: rhinoBlue[50],
   },
   main: {
     surface: [palette.neutral[10], palette.neutral[20], palette.neutral[30]],

@@ -1,4 +1,6 @@
 import { Stack, Box, styled } from '@mui/system';
+import { NavMenuButton } from 'global/components/Buttons/NavMenuButton/NavMenuButton';
+import { NAV_ROUTES_LIST } from 'routes';
 
 export const Header = (): JSX.Element => {
   return (
@@ -11,6 +13,7 @@ export const Header = (): JSX.Element => {
         sx={{ position: 'relative', zIndex: 1 }}
       >
         <Brand />
+        <NavMenuButton menuItems={NAV_ROUTES_LIST} />
       </Stack>
     </HeaderWrapper>
   );
