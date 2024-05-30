@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Theme } from '@mui/system';
 import { THEMES, THEME_IDS, type ThemeId } from 'theme';
+import { LAYOUT_STYLES, type LayoutStyle } from 'layouts/types';
 import { type GlobalToastState, useGlobalToastStateCore } from 'global/components/Toast/hooks/useGlobalToastState';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
@@ -8,6 +9,8 @@ export interface IGlobalContextValue {
   theme: Theme,
   themeId: ThemeId,
   updateTheme: (themeId: ThemeId) => void,
+  layoutStyle: LayoutStyle,
+  updateLayoutStyle: (layoutStyle: LayoutStyle) => void,
   toastState: GlobalToastState,
 }
 
@@ -15,6 +18,8 @@ export const GlobalContext = React.createContext<IGlobalContextValue>({
   theme: THEMES.default,
   themeId: THEME_IDS.default,
   updateTheme: () => undefined,
+  layoutStyle: LAYOUT_STYLES.appShell,
+  updateLayoutStyle: () => undefined,
   toastState:  {
     toastList: [],
     addToast: () => undefined,
@@ -28,11 +33,16 @@ export const GlobalContextProvider = ({
   children,
 }: React.PropsWithChildren) => {
   const [themeId, setThemeId] = useLocalStorage<ThemeId>('themeId', THEME_IDS.default);
+  const [layoutStyle, setLayoutStyle] = useLocalStorage<LayoutStyle>('layoutStyle', LAYOUT_STYLES.appShell);
   const theme = THEMES[themeId] || THEMES.default;
 
   const updateTheme = React.useCallback((themeId: ThemeId) => {
     setThemeId(themeId);
   }, [setThemeId]);
+
+  const updateLayoutStyle = React.useCallback((layoutStyle: LayoutStyle) => {
+    setLayoutStyle(layoutStyle);
+  }, [setLayoutStyle]);
 
   const toastState = useGlobalToastStateCore();
 
@@ -42,6 +52,8 @@ export const GlobalContextProvider = ({
         theme,
         themeId,
         updateTheme,
+        layoutStyle,
+        updateLayoutStyle,
         toastState,
       }}
     >

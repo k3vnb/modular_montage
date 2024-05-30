@@ -9,6 +9,7 @@ import { RadioGroup } from 'global/components/Form/Inputs/RadioGroup';
 import { THEME_IDS, type ThemeId } from 'theme';
 import { useGlobalContext } from 'contexts/GlobalContext';
 import { ThemeButtonExamples } from './components';
+import { LAYOUT_STYLES, type LayoutStyle } from 'layouts/types';
 
 export const Dashboard = (): JSX.Element => {
   return (
@@ -33,6 +34,10 @@ export const Dashboard = (): JSX.Element => {
         <Typography.H4>Theme Selector</Typography.H4>
         <ThemeRadioButtons />
       </Tile>
+      <Tile showBorder gap={1} variant="info" elevation={1}>
+        <Typography.H4>Layout Selector</Typography.H4>
+        <LayoutStyleRadioButtons />
+      </Tile>
       <Tile showBorder gap={1} variant="info" elevation={1} maxWidth="max-content">
         <Typography.H4>Theme Buttons</Typography.H4>
         <ThemeButtonExamples />
@@ -41,7 +46,7 @@ export const Dashboard = (): JSX.Element => {
   );
 };
 
-const ThemeRadioButtons = (): JSX.Element => {
+const ThemeRadioButtons = () => {
   const { themeId, updateTheme } = useGlobalContext();
   return (
     <RadioGroup
@@ -52,6 +57,21 @@ const ThemeRadioButtons = (): JSX.Element => {
       value={themeId}
       options={Object.values(THEME_IDS).map((key) => ({ value: key, label: key}))}
       onChange={(val: string) => updateTheme(val as ThemeId)}
+    />
+  );
+};
+
+const LayoutStyleRadioButtons = () => {
+  const { layoutStyle, updateLayoutStyle } = useGlobalContext();
+  return (
+    <RadioGroup
+      legend="Layout Selector"
+      id="layout-selector"
+      name="layout-selector"
+      direction="row"
+      value={layoutStyle}
+      options={Object.values(LAYOUT_STYLES).map((key) => ({ value: key, label: key}))}
+      onChange={(val: string) => updateLayoutStyle(val as LayoutStyle)}
     />
   );
 };
