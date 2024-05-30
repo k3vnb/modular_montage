@@ -41,18 +41,18 @@ const blues = { // complementary
   900: '#0017c6',
 };
 
-const melon = { // analogous
-  50:'#fff8e4',
-  100: '#ffedbb',
-  200: '#ffe291',
-  300: '#ffd868',
-  400: '#ffce4f',
-  500: '#ffc645',
-  600: '#ffb941',
-  700: '#ffa73d',
-  800: '#ff973b',
-  900: '#fb7c37', // 900
-};
+// const melon = { // analogous
+//   50:'#fff8e4',
+//   100: '#ffedbb',
+//   200: '#ffe291',
+//   300: '#ffd868',
+//   400: '#ffce4f',
+//   500: '#ffc645',
+//   600: '#ffb941',
+//   700: '#ffa73d',
+//   800: '#ff973b',
+//   900: '#fb7c37', // 900
+// };
 
 const greens = {
   50:'#f5ffe6',
@@ -220,38 +220,36 @@ const palette = {
   },
 } as const;
 
-export const themePalette: ThemePalette = {
-  ...palette,
-  mode: 'light',
-} as const;
+// export const themePalette: ThemePalette = {
+//   ...palette,
+//   mode: 'light',
+// } as const;
 
-export const elements: ElementColorMaps = {
-  appbar: {
-    surface: [yellows[300], yellows[500], yellows[800]],
-    border: [pinks[600], pinks[400], pinks[300]],
-    surfaceContrast: [colors.neutral[80], pinks[700], yellows[50]],
-    gradients: ['','',''],
-  },
-  header: {
-    surface: [yellows[300], yellows[400], yellows[500]],
-    border: [pinks[400], pinks[300], pinks[200]],
-    surfaceContrast: [pinks[600], pinks[700], pinks[800]],
-    gradients: [
-      `linear-gradient(45deg, ${yellows[500]} 50%, ${yellows[600]} 66%, ${yellows[700]} 100%)`,
-      '',
-      '',
-    ],
-  },
-  main: {
-    surface: [palette.neutral[10], palette.neutral[20], palette.neutral[30]],
-    border: [palette.neutral[10], palette.neutral[20], palette.neutral[30]],
-    surfaceContrast: [colors.mutedBlue[900], colors.blueViolet[700], colors.blueViolet[500]],
-    gradients: [
-      `radial-gradient(ellipse at top, ${palette.neutral[0]} 0%, ${palette.neutral[5]} 61%, #e2e1e5 100%)`,
-      `linear-gradient(90deg, ${pinks[500]} 70%, ${palette.primary.shades.dark[0]} 100%)`,
-      '',
-    ],
-  },
-};
-
-
+// export const elements: ElementColorMaps = {
+//   appbar: {
+//     surface: [yellows[300], yellows[500], yellows[800]],
+//     border: [pinks[600], pinks[400], pinks[300]],
+//     surfaceContrast: [colors.neutral[80], pinks[700], yellows[50]],
+//     gradients: ['','',''],
+//   },
+//   header: {
+//     surface: [yellows[300], yellows[400], yellows[500]],
+//     border: [pinks[400], pinks[300], pinks[200]],
+//     surfaceContrast: [pinks[600], pinks[700], pinks[800]],
+//     gradients: [
+//       `linear-gradient(45deg, ${yellows[500]} 50%, ${yellows[600]} 66%, ${pinks[700]} 100%)`,
+//       '',
+//       '',
+//     ],
+//   },
+//   main: {
+//     surface: [palette.neutral[10], palette.neutral[20], palette.neutral[30]],
+//     border: [yellows[100], yellows[200], palette.neutral[30]],
+//     surfaceContrast: [colors.mutedBlue[900], colors.blueViolet[700], colors.blueViolet[500]],
+//     gradients: [
+//       `radial-gradient(ellipse at top, ${palette.neutral[0]} 0%, ${palette.neutral[5]} 61%, #e2e1e5 100%)`,
+//       `linear-gradient(90deg, ${pinks[600]} 70%, ${pinks[900]} 100%)`,
+//       '',
+//     ],
+//   },
+// };

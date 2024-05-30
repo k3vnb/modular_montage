@@ -169,9 +169,9 @@ const palette = {
           pressed: colors.neutral[10],
         },
         background: {
-          main: seafoamGreen[500],
-          hover: seafoamGreen[400],
-          pressed: seafoamGreen[300],
+          main: seafoamGreen[700],
+          hover: seafoamGreen[600],
+          pressed: seafoamGreen[500],
         },
         border: {
           main: seafoamGreen[500],

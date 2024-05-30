@@ -101,4 +101,5 @@ export type ThemeStyles = ThemePalette & ThemeFontMap & {
   shadow: ThemeShadowMap
   zIndex: typeof zIndex;
   borderRadius: typeof borderRadius;
+  isDark?: boolean;
 };

@@ -28,7 +28,7 @@ export const GlobalContextProvider = ({
   children,
 }: React.PropsWithChildren) => {
   const [themeId, setThemeId] = useLocalStorage<ThemeId>('themeId', THEME_IDS.default);
-  const theme = THEMES[themeId];
+  const theme = THEMES[themeId] || THEMES.default;
 
   const updateTheme = React.useCallback((themeId: ThemeId) => {
     setThemeId(themeId);

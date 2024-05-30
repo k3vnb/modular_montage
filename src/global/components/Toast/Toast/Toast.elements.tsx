@@ -80,7 +80,7 @@ export const StyledToast = styled(Box, options)<StyledToastProps>(({
     minWidth: '340px',
     width: 'max-content',
     maxWidth: '550px',
-    color: styles.neutral[80],
+    color: styles.neutral[theme.styles.isDark ? 100 : 80],
     borderRadius: '8px',
     boxShadow: styles.shadow[1],
     borderWidth: '1px',
