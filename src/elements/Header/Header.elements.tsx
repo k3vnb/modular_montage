@@ -3,19 +3,22 @@ import { Box, Stack, styled } from '@mui/system';
 import { NavMenuButton } from 'global/components/Buttons/NavMenuButton';
 import { NAV_ROUTES_LIST, type TNavRoute } from 'routes';
 import { UnstyledList, ListItem } from 'global/components/List';
+import { text } from 'stream/consumers';
 
 const NavMenuContainer = styled(Box)(({ theme }) => ({
   ...theme.styles.textMdSemibold,
   '.nav-item': {
-    textDecoration: 'none',
+    textDecoration: 'underline',
+    textDecorationColor: 'transparent',
+    textDecorationThickness: '2px',
     color: theme.styles.elements.header.surfaceContrast[1],
     textUnderlineOffset: theme.spacing(0.75),
+    transition: 'text-decoration-color 0.1s ease-in-out',
     '&:hover': {
-      textDecoration: 'underline',
+      textDecorationColor: theme.styles.elements.header.surfaceContrast[0],
       color: theme.styles.elements.header.surfaceContrast[0],
     },
     '&.active': {
-      textDecoration: 'underline',
       textDecorationColor: theme.styles.elements.header.border[0],
       color: theme.styles.elements.header.surfaceContrast[1],
     },

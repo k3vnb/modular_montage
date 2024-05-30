@@ -111,6 +111,7 @@ const MainContent = ({ children, debugMode }: LayoutProps): JSX.Element => {
             ),
           }),
           background: theme => debugMode ? 'rgb(242, 0, 255)' : theme.styles.elements.main.gradients?.[0] || theme.styles.elements.main.surface[0],
+          transition: 'background 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0ms',
         }}    
       >
         {children}

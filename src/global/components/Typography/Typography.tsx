@@ -31,4 +31,4 @@ export const H3 = (props: BoxProps) => <StyledHeading component="h3" fontKey="he
 export const H4 = (props: BoxProps) => <StyledHeading component="h4" fontKey="headingH4" {...props} />;
 export const H5 = (props: BoxProps) => <StyledHeading component="h5" fontKey="headingH5" {...props} />;
 export const H6 = (props: BoxProps) => <StyledHeading component="h6" fontKey="headingH6" {...props} />;
-export const Body = (props: BoxProps) => <StyledHeading component="p" fontKey="textMd" {...props} />;
+export const Body = (props: BoxProps) => <StyledHeading component="p" fontKey="textMd" {...props} sx={{ color: theme => theme.styles.neutral[95], fontSize: '14px', lineHeight: 1.65 }} />;

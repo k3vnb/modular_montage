@@ -30,7 +30,7 @@ export const Tile = styled(Box, {
     borderStyle: 'solid',
     borderColor: showBorder ? borderColor : 'transparent',
     boxShadow: theme.styles.shadow[elevation],
-    transition: 'background-color 50ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+    transition: 'background-color .15s cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(3,2),
     },
