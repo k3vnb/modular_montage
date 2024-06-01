@@ -22,8 +22,8 @@ const router = createBrowserRouter([
             element: <Pages.Widgets />,
           },
           {
-            path: ROUTES.forms.path,
-            element: <Pages.Forms />,
+            path: ROUTES.games.path,
+            element: <Pages.Games />,
           },
           {
             path: ROUTES.contact.path,

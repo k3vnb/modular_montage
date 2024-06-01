@@ -10,7 +10,7 @@ const PATHS = {
   root: '/',
   dashboard: '/dashboard',
   widgets: '/widgets',
-  forms: '/forms',
+  games: '/games',
   about: '/about',
   etc: '/about/etc',
   etc2: '/about/etc2',
@@ -31,9 +31,9 @@ export const ROUTES = {
     label: 'Widgets',
     icon: InterestsIcon,
   },
-  forms: {
-    path: PATHS.forms,
-    label: 'Forms',
+  games: {
+    path: PATHS.games,
+    label: 'Games',
     icon: RobotIcon,
   },
   about: {
@@ -59,7 +59,7 @@ export const ROUTES = {
 export const NAV_ROUTES_LIST: TNavRoute[] = [
   ROUTES.dashboard,
   ROUTES.widgets,
-  ROUTES.forms,
+  ROUTES.games,
   ROUTES.about,
   ROUTES.contact,
 ];
