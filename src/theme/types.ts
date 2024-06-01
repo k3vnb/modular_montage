@@ -51,7 +51,8 @@ export type ElementColorMaps = {
     textActive: string;
     surface: string;
     surfaceActive: string;
-  }
+  };
+  mandala: string[];
 };
 
 export type ThemedTemplateColorMap = {
@@ -81,6 +82,7 @@ export type ThemePalette = ThemedTemplateMap & {
     0: string;
     5: string;
     10: string;
+    15: string;
     20: string;
     30: string;
     40: string;

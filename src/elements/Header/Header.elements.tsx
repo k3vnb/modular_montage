@@ -1,9 +1,9 @@
-import { NavLink } from 'react-router-dom';
-import { Box, Stack, styled } from '@mui/system';
+import { Link, NavLink } from 'react-router-dom';
+import { Box, Stack, styled, useTheme } from '@mui/system';
 import { NavMenuButton } from 'global/components/Buttons/NavMenuButton';
-import { NAV_ROUTES_LIST, type TNavRoute } from 'routes';
 import { UnstyledList, ListItem } from 'global/components/List';
-import { text } from 'stream/consumers';
+import { PaletteMandala } from 'elements/Palette/PaletteMandala';
+import { NAV_ROUTES_LIST, ROUTES, type TNavRoute } from 'routes';
 
 const NavMenuContainer = styled(Box)(({ theme }) => ({
   ...theme.styles.textMdSemibold,
@@ -60,21 +60,33 @@ export const NavMenu = () => {
   );
 };
 
-export const Brand = ()=> (
-  <>
-    <h1 className="sr-only">UX & UI Montage Reviewed</h1>
-    <Stack className="brand" aria-hidden="true" alignItems="start" justifyContent="center">
-      <Stack direction="row" alignItems="center">
-        <StyledTitle mr="4px">Modular</StyledTitle>
-        <AdornedText component="span">UX</AdornedText>
-      </Stack>
-      <Stack direction="row" alignItems="center">
-        <AdornedText component="span">UI</AdornedText>
-        <StyledTitle ml="4px">Montage</StyledTitle>
-      </Stack>
-    </Stack>
-  </>
-);
+export const Brand = ()=> {
+  const theme = useTheme();
+  return (
+    <>
+      <h1 className="sr-only">UX & UI Montage Reviewed</h1>
+      <Link
+        title={`Go to ${ROUTES.dashboard.label} page`}
+        to={ROUTES.dashboard.path}
+        style={{ color: 'unset', textDecoration: 'unset' }}
+      >
+        <Box display="flex" flexDirection="row" gap={2}>
+          <PaletteMandala spectrum={theme.styles.elements.mandala} size={40} />
+          <Stack className="brand" aria-hidden="true" alignItems="start" justifyContent="center">
+            <Stack direction="row" alignItems="center">
+              <StyledTitle mr="4px">Modular</StyledTitle>
+              <AdornedText component="span">UX</AdornedText>
+            </Stack>
+            <Stack direction="row" alignItems="center">
+              <AdornedText component="span">UI</AdornedText>
+              <StyledTitle ml="4px">Montage</StyledTitle>
+            </Stack>
+          </Stack>
+        </Box>
+      </Link>
+    </>
+  );
+};
 
 const StyledTitle = styled(Box)(({ theme }) => ({
   ...theme.styles.textLgMedium,
@@ -105,4 +117,3 @@ export const HeaderWrapper = styled(Box)(({ theme: { styles } }) => ({
     textShadow: `0px 1px 0px ${styles.neutral[90]}`,
   },
 }));
-

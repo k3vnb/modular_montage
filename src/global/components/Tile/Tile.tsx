@@ -16,7 +16,7 @@ export const Tile = styled(Box, {
 
   const [borderColor, backgroundColor] = React.useMemo(() => {
     if (variant === 'neutral') return [theme.styles.neutral[40], theme.styles.neutral[10]];
-    return [theme.styles[variant].box.border[2], theme.styles.neutral[5]];
+    return [theme.styles[variant].box.border[2], theme.styles.neutral[theme.styles.isDark ? 10 : 5]];
   }, [variant, theme]);
 
   return {

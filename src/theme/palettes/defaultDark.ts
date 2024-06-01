@@ -161,9 +161,9 @@ export const themePalette: ThemePalette = {
 
 export const elements: ElementColorMaps = {
   appbar: {
-    surface: [palette.neutral[5], colors.blueViolet[950], colors.blueViolet[25]],
+    surface: [palette.neutral[10], colors.blueViolet[950], colors.blueViolet[25]],
     border: [colors.brightPink[500], colors.blueViolet[400], colors.blueViolet[700]],
-    surfaceContrast: [palette.neutral[60], colors.blueViolet[50], colors.blueViolet[500]],
+    surfaceContrast: [palette.neutral[80], palette.neutral[100], colors.blueViolet[500]],
     gradients: [
       `linear-gradient(45deg, ${colors.mutedPurple[900]} 40%, ${colors.mutedPurple[800]} 68%, ${colors.blueViolet[600]} 100%)`,
       '',
@@ -191,9 +191,21 @@ export const elements: ElementColorMaps = {
     border: [colors.blueViolet[800], colors.blueViolet[500], colors.blueViolet[400]],
     surfaceContrast: [colors.blueViolet[900], colors.blueViolet[700], colors.blueViolet[500]],
     gradients: [
-      `radial-gradient(ellipse at top, ${palette.neutral[10]} 0%, ${palette.neutral[0]} 100%)`,
+      `radial-gradient(ellipse at top, ${palette.neutral[5]} 0%, ${palette.neutral[0]} 100%)`,
       `linear-gradient(90deg, ${colors.mutedBlue[900]} 70%, ${palette.primary.shades.dark[0]} 100%)`,
       '',
     ],
   },
+  mandala: [
+    colors.blueViolet[900],
+    colors.blueViolet[800],
+    colors.blueViolet[700],
+    colors.blueViolet[600],
+    colors.blueViolet[500],
+    colors.blueViolet[400],
+    colors.blueViolet[300],
+    colors.blueViolet[200],
+    colors.blueViolet[100],
+    colors.blueViolet[50],
+  ],
 };

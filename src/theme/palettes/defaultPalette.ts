@@ -196,4 +196,16 @@ export const elements: ElementColorMaps = {
       '',
     ],
   },
+  mandala: [
+    colors.blueViolet[900],
+    colors.blueViolet[800],
+    colors.blueViolet[700],
+    colors.blueViolet[600],
+    colors.blueViolet[500],
+    colors.blueViolet[400],
+    colors.blueViolet[300],
+    colors.blueViolet[200],
+    colors.blueViolet[100],
+    colors.blueViolet[50],
+  ],
 };

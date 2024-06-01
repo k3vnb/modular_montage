@@ -1,6 +1,6 @@
 import colors from './colors';
-import type { ElementColorMaps, ThemePalette } from '../types';
 import { semanticPalettes } from './defaultSemanticPalettes';
+import type { ElementColorMaps, ThemePalette } from '../types';
 
 const rhinoBlue = {
   25: '#f0f2ff',
@@ -223,4 +223,19 @@ export const elements: ElementColorMaps = {
       '',
     ],
   },
+  mandala: [
+    colors.mutedBlue[900],
+    rhinoBlue[500],
+    rhinoBlue[450],
+    colors.mutedBlue[800],
+    colors.mutedBlue[700],
+    colors.mutedBlue[600],
+    colors.mutedBlue[500],
+    colors.mutedBlue[400],
+    colors.mutedBlue[300],
+    colors.mutedBlue[200],
+    colors.mutedBlue[100],
+    colors.mutedBlue[50],
+    colors.mutedBlue[25],
+  ],
 };

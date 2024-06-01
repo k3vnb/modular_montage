@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/system';
+import { Box, Stack, useTheme } from '@mui/system';
 import DashboardIcon from '@mui/icons-material/BlurOnOutlined';
 
 import { Tile } from 'global/components/Tile/Tile';
@@ -10,38 +10,52 @@ import { THEME_IDS, type ThemeId } from 'theme';
 import { useGlobalContext } from 'contexts/GlobalContext';
 import { ThemeButtonExamples } from './components';
 import { LAYOUT_STYLES, type LayoutStyle } from 'layouts/types';
+import { PaletteMandala } from 'elements/Palette/PaletteMandala';
 
 export const Dashboard = () => {
+  const { styles } = useTheme();
   return (
     <Box display="flex" flexDirection="column" gap={3}>
       <PageTitle title="Themes & Layout" icon={DashboardIcon} description="Modular UI Systems" />
-      <Tile showBorder variant="info" gap={1}  elevation={1}>
-        <Typography.H3 textAlign="center" mb={1}>Welcome to Modular Montage</Typography.H3>
-        <Typography.Body>
-          This app is dedicated to the exploration of themes, layout, and components in a clientside rendered environment.
-        </Typography.Body>
-        <Typography.Body>
-          This is a dashboard page. It is a place where you can see the themes & layout design in action.
-        </Typography.Body>
-        <Typography.Body>
-          The 'Widgets page' will explore assortments of popups, modals, toasts and other components.
-        </Typography.Body>
-        <Typography.Body>
-          The 'Forms page' will explore form state, styling and validation.
-        </Typography.Body>
-      </Tile>
-      <Tile showBorder gap={1} variant="info" elevation={1}>
-        <Typography.H4>Theme Selector</Typography.H4>
-        <Stack gap={1.5}>
+      {/* INTRO TILE */}
+      <Tile showBorder variant="primary" gap={2}  elevation={1}>
+        <Typography.H3 textAlign="center" mb={1} sx={{ fontWeight: 500, fontSize: '1.5rem' }}>
+          Welcome to Modular Montage
+        </Typography.H3>
+        <Stack gap={1}>
           <Typography.Body>
-            Adjust the application's color scheme.
+            This app is dedicated to the exploration of themes, layout, and components in a clientside rendered environment.
           </Typography.Body>
-          <ThemeRadioButtons />
           <Typography.Body>
-            Color schemes are comprised of semantic colors (ie, Primary, Secondary, Special, Danger, Warning, Info, Success) and neutral colors (ie, Black, White, Gray).
+            This is a dashboard page. It is a place where you can see the themes & layout design in action.
+          </Typography.Body>
+          <Typography.Body>
+            The 'Widgets page' will explore assortments of popups, modals, toasts and other components.
+          </Typography.Body>
+          <Typography.Body>
+            The 'Forms page' will explore form state, styling and validation.
           </Typography.Body>
         </Stack>
       </Tile>
+      {/* THEME SELECTOR */}
+      <Box display="flex" flexDirection="row" gap={3}>
+        <Tile gap={1} variant="info" elevation={1} width="70%">
+          <Typography.H4>Theme Selector</Typography.H4>
+          <Stack gap={1.5}>
+            <Typography.Body>
+              Adjust the application's color scheme.
+            </Typography.Body>
+            <ThemeRadioButtons />
+            <Typography.Body>
+              Color schemes are comprised of semantic colors (ie, Primary, Secondary, Special, Danger, Warning, Info, Success) and neutral colors (ie, Black, White, Gray).
+            </Typography.Body>
+          </Stack>
+        </Tile>
+        <Tile gap={1} flexGrow={1} elevation={0}>
+          <PaletteMandala spectrum={styles.elements.mandala} size={100} />
+        </Tile>
+      </Box>
+      {/* LAYOUT SELECTOR */}
       <Tile showBorder gap={1} variant="info" elevation={1}>
         <Typography.H4>Layout Selector</Typography.H4>
         <Stack gap={1.5}>
