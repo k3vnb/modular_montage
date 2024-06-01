@@ -17,6 +17,8 @@ type ButtonListProps = {
   filled: boolean;
 };
 
+const BUTTON_WIDTH = 200;
+
 const ButtonList = (props: ButtonListProps) => {
   const buttonProps = {
     ...props,
@@ -25,10 +27,17 @@ const ButtonList = (props: ButtonListProps) => {
   };
 
   return (
-    <Stack gap={2.5} maxWidth="290px">
+    <Box
+      gap={1}
+      display="flex"
+      flexWrap="wrap"
+      justifyContent="space-evenly"
+      maxWidth={BUTTON_WIDTH * 5}
+    >
       {variantOptions.map((variant) => (
         <Button
           key={variant}
+          sx={{ maxWidth: BUTTON_WIDTH, width: BUTTON_WIDTH }}
           text={`${variant.charAt(0).toUpperCase() + variant.slice(1)} Button`}
           variant={variant}
           size="medium"
@@ -37,6 +46,7 @@ const ButtonList = (props: ButtonListProps) => {
         />
       ))}
       <Button
+        sx={{ maxWidth: BUTTON_WIDTH, width: BUTTON_WIDTH }}
         text="Disabled Button"
         variant="primary"
         disabled
@@ -44,22 +54,23 @@ const ButtonList = (props: ButtonListProps) => {
         style={{ minWidth: 'max-content'}}
         {...buttonProps}
       />
-    </Stack>
+    </Box>
   );
 };
 
 export const ThemeButtonExamples = () => {
   return (
-    <Box display="flex" flexWrap="wrap" gap={4}>
+    <Box display="flex" flexWrap="wrap" justifyContent="center" gap={4}>
       {['filled', 'unfilled'].map((colorMode) => (
-        <Stack key={colorMode} alignItems="center" gap={2}>
+        <Stack key={colorMode} alignItems="start" gap={2}>
           <Box
             sx={theme => ({
+              marginLeft: theme.spacing(6),
               ...theme.styles.textLgMedium,
               fontVariant: 'all-small-caps',
               color: theme.styles.neutral[90],
             })}
-            >
+          >
             {colorMode}
           </Box>
           <ButtonList filled={colorMode === 'filled'} />
