@@ -52,14 +52,14 @@ export const Dashboard = () => {
             </Typography.Body>
           </Stack>
         </Tile>
-        <Box p={6} flexGrow={1} flexWrap="wrap" justifyContent="center" alignItems="center" sx={{ backgroundColor: 'transparent' }}>
-          <Box component={IdeaIcon} maxHeight={300} maxWidth="100%" color={styles.neutral[70]} />
+        <Box p={6} flexGrow={1} flexWrap="wrap" justifyContent="center" alignItems="center">
+          <Box component={IdeaIcon} maxHeight={300} maxWidth="100%" fill={styles.neutral[80]} />
         </Box>
       </Box>
       {/* LAYOUT SELECTOR */}
       <Box display="flex" flexDirection="row" gap={3}>
-        <Box p={6} flexGrow={1} flexWrap="wrap" justifyContent="center" alignItems="center" sx={{ backgroundColor: 'transparent' }}>
-          <Box component={StoryboardIcon} maxHeight={300} maxWidth="100%" color={styles.neutral[70]} />
+        <Box p={6} flexGrow={1} flexWrap="wrap" justifyContent="center" alignItems="center">
+          <Box component={StoryboardIcon} maxHeight={300} maxWidth="100%" fill={styles.neutral[80]} />
         </Box>
         <Tile flexShrink={0} gap={1} variant="info" elevation={1} width="70%">
           <Typography.H4>Layout Selector</Typography.H4>
