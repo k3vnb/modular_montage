@@ -5,12 +5,13 @@ import { Tile } from 'global/components/Tile/Tile';
 import { PageTitle } from 'global/components/PageTitle';
 import { Typography } from 'global/components/Typography';
 import { RadioGroup } from 'global/components/Form/Inputs/RadioGroup';
-
-import { THEME_IDS, type ThemeId } from 'theme';
-import { useGlobalContext } from 'contexts/GlobalContext';
+import { ReactComponent as IdeaIcon } from 'global/assets/idea.svg';
+import { ReactComponent as StoryboardIcon } from 'global/assets/storyboard.svg';
 import { ThemeButtonExamples } from './components';
+
+import { useGlobalContext } from 'contexts/GlobalContext';
+import { THEME_IDS, type ThemeId } from 'theme';
 import { LAYOUT_STYLES, type LayoutStyle } from 'layouts/types';
-import { PaletteMandala } from 'elements/Palette/PaletteMandala';
 
 export const Dashboard = () => {
   const { styles } = useTheme();
@@ -18,7 +19,7 @@ export const Dashboard = () => {
     <Box display="flex" flexDirection="column" gap={3}>
       <PageTitle title="Themes & Layout" icon={DashboardIcon} description="Modular UI Systems" />
       {/* INTRO TILE */}
-      <Tile showBorder variant="primary" gap={2}  elevation={1}>
+      <Tile showBorder gap={2} elevation={1}>
         <Typography.H3 textAlign="center" mb={1} sx={{ fontWeight: 500, fontSize: '1.5rem' }}>
           Welcome to Modular Montage
         </Typography.H3>
@@ -39,7 +40,7 @@ export const Dashboard = () => {
       </Tile>
       {/* THEME SELECTOR */}
       <Box display="flex" flexDirection="row" gap={3}>
-        <Tile gap={1} variant="info" elevation={1} width="70%">
+        <Tile gap={1} variant="info" elevation={1} width="70%" flexShrink={0}>
           <Typography.H4>Theme Selector</Typography.H4>
           <Stack gap={1.5}>
             <Typography.Body>
@@ -51,26 +52,31 @@ export const Dashboard = () => {
             </Typography.Body>
           </Stack>
         </Tile>
-        <Tile gap={1} flexGrow={1} elevation={0}>
-          <PaletteMandala spectrum={styles.elements.mandala} size={100} />
-        </Tile>
+        <Box p={6} flexGrow={1} flexWrap="wrap" justifyContent="center" alignItems="center" sx={{ backgroundColor: 'transparent' }}>
+          <Box component={IdeaIcon} maxHeight={300} maxWidth="100%" color={styles.neutral[70]} />
+        </Box>
       </Box>
       {/* LAYOUT SELECTOR */}
-      <Tile showBorder gap={1} variant="info" elevation={1}>
-        <Typography.H4>Layout Selector</Typography.H4>
-        <Stack gap={1.5}>
-          <Typography.Body>
-            Adjust the application's layout.
-          </Typography.Body>
-          <LayoutStyleRadioButtons />
-          <Typography.Body>
-            The 'App Shell' layout features a site header, main content area, a navigation side bar in desktop screen widths and a navigation bottom bar in mobile screenwidths.
-          </Typography.Body>
-          <Typography.Body>
-            The 'Classic' layout features a site header which contains the nav menu and main content area.  The nav menu collapses into a hamburger menu in mobile screen widths.
-          </Typography.Body>
-          </Stack>
-      </Tile>
+      <Box display="flex" flexDirection="row" gap={3}>
+        <Box p={6} flexGrow={1} flexWrap="wrap" justifyContent="center" alignItems="center" sx={{ backgroundColor: 'transparent' }}>
+          <Box component={StoryboardIcon} maxHeight={300} maxWidth="100%" color={styles.neutral[70]} />
+        </Box>
+        <Tile flexShrink={0} gap={1} variant="info" elevation={1} width="70%">
+          <Typography.H4>Layout Selector</Typography.H4>
+          <Stack gap={1.5}>
+            <Typography.Body>
+              Adjust the application's layout.
+            </Typography.Body>
+            <LayoutStyleRadioButtons />
+            <Typography.Body>
+              The 'App Shell' layout features a site header, main content area, a navigation side bar in desktop screen widths and a navigation bottom bar in mobile screenwidths.
+            </Typography.Body>
+            <Typography.Body>
+              The 'Classic' layout features a site header which contains the nav menu and main content area.  The nav menu collapses into a hamburger menu in mobile screen widths.
+            </Typography.Body>
+            </Stack>
+        </Tile>
+      </Box>
       <Tile showBorder gap={1} variant="info" elevation={1} maxWidth="max-content">
         <Typography.H4>Theme Buttons</Typography.H4>
         <ThemeButtonExamples />
