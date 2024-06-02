@@ -7,15 +7,15 @@ export type TTileVariants = ThemedTemplateVariants | 'neutral';
 type TileProps = BoxProps & {
   showBorder?: boolean;
   variant?: TTileVariants;
-  elevation: 0 | 1 | 2;
+  elevation?: 0 | 1 | 2;
 };
 
 export const Tile = styled(Box, {
   shouldForwardProp: (prop: string) => ![ 'showBorder', 'variant', 'elevation' ].includes(prop),
-})<TileProps>(({ theme, showBorder, elevation, variant = 'neutral' }) => {
+})<TileProps>(({ theme, showBorder, elevation = 0, variant = 'neutral' }) => {
 
   const [borderColor, backgroundColor] = React.useMemo(() => {
-    if (variant === 'neutral') return [theme.styles.neutral[40], theme.styles.neutral[10]];
+    if (variant === 'neutral') return [theme.styles.neutral[70], theme.styles.neutral[10]];
     return [theme.styles[variant].box.border[2], theme.styles.neutral[theme.styles.isDark ? 10 : 5]];
   }, [variant, theme]);
 
