@@ -9,6 +9,7 @@ const MIN_WIDTH = 130;
 
 export const ThemeRadioButtons = () => {
   const { themeId, updateTheme } = useGlobalContext();
+  const options = Object.values(THEME_IDS).map((key) => ({ value: key, label: key}));
   return (
     <Stack my={2} gap={1.5} minWidth={MIN_WIDTH}>
       <Typography.Body fontStyle="italic">Select a theme:</Typography.Body>
@@ -18,7 +19,7 @@ export const ThemeRadioButtons = () => {
         id="theme-selector-settings"
         name="theme-selector-settings"
         value={themeId}
-        options={Object.values(THEME_IDS).map((key) => ({ value: key, label: key}))}
+        options={options}
         onChange={(val: string) => updateTheme(val as ThemeId)}
       />
     </Stack>

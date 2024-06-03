@@ -173,7 +173,7 @@ export const elements: ElementColorMaps = {
   header: {
     surface: [colors.mutedBlue[900], colors.mutedBlue[800], colors.blueViolet[600]],
     border: [colors.brightPink[800], colors.brightPink[700], colors.brightPink[600]],
-    surfaceContrast: [palette.neutral[80], palette.neutral[90], palette.neutral[95]],
+    surfaceContrast: [palette.neutral[90], palette.neutral[95], palette.neutral[100]],
     gradients: [
       `linear-gradient(45deg, ${colors.mutedPurple[900]} 40%, ${colors.blueViolet[800]} 68%, ${colors.blueViolet[900]} 100%)`,
       '',

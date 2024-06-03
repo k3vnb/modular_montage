@@ -15,8 +15,8 @@ export interface IGlobalContextValue {
 }
 
 export const GlobalContext = React.createContext<IGlobalContextValue>({
-  theme: THEMES.default,
-  themeId: THEME_IDS.default,
+  theme: THEMES[THEME_IDS.sysPrefs],
+  themeId: THEME_IDS.sysPrefs,
   updateTheme: () => undefined,
   layoutStyle: LAYOUT_STYLES.appShell,
   updateLayoutStyle: () => undefined,
@@ -32,9 +32,9 @@ export const useGlobalContext = () => React.useContext(GlobalContext);
 export const GlobalContextProvider = ({
   children,
 }: React.PropsWithChildren) => {
-  const [themeId, setThemeId] = useLocalStorage<ThemeId>('themeId', THEME_IDS.default);
+  const [themeId, setThemeId] = useLocalStorage<ThemeId>('themeId', THEME_IDS.sysPrefs);
   const [layoutStyle, setLayoutStyle] = useLocalStorage<LayoutStyle>('layoutStyle', LAYOUT_STYLES.appShell);
-  const theme = THEMES[themeId] || THEMES.default;
+  const theme = THEMES[themeId] || THEMES[THEME_IDS.default];
 
   const updateTheme = React.useCallback((themeId: ThemeId) => {
     setThemeId(themeId);

@@ -42,7 +42,7 @@ export const Dashboard = () => {
             <Typography.Body textAlign="center">
               Adjust the application's color scheme.
             </Typography.Body>
-            <Box display="flex" alignItems="center" justifyContent={{ xxs: 'space-between', sm: 'start' }} gap={2.5}>
+            <Box display="flex" alignItems="center" justifyContent="space-between" gap={2.5} mx={2.5}>
               <ThemeRadioButtons />
               <LayoutIcons.IdeaIcon small sx={{ display: { xxs: 'flex', md: 'none' } }} />
             </Box>
@@ -61,7 +61,7 @@ export const Dashboard = () => {
             <Typography.Body textAlign="center">
               Adjust the application's layout.
             </Typography.Body>
-            <Box display="flex" alignItems="center" justifyContent={{ xxs: 'space-between', sm: 'start' }} gap={2.5}>
+            <Box display="flex" alignItems="center" justifyContent="space-between" gap={2.5} mx={2.5}>
               <LayoutStyleRadioButtons />
               <LayoutIcons.StoryboardIcon small sx={{ display: { xxs: 'flex', md: 'none' } }} />
             </Box>

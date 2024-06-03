@@ -90,9 +90,10 @@ const defaultDarkTheme: Theme = createTheme({
 });
 
 export const THEME_IDS = {
-  default: 'default',
-  defaultDark: 'defaultDark',
-  borealis: 'borealis',
+  default: 'Default',
+  defaultDark: 'Default Dark',
+  borealis: 'Borealis',
+  sysPrefs: 'Use System Preferences',
   // limonad: 'limonad',
 } as const;
 
@@ -104,5 +105,6 @@ export const THEMES: Record<ThemeId, Theme> = {
   [THEME_IDS.default]: defaultTheme,
   [THEME_IDS.defaultDark]: defaultDarkTheme,
   [THEME_IDS.borealis]: borealisTheme,
+  [THEME_IDS.sysPrefs]: window?.matchMedia('(prefers-color-scheme: dark)').matches ? defaultDarkTheme : defaultTheme || defaultTheme,
   // [THEME_IDS.limonad]: limonadTheme,
 };

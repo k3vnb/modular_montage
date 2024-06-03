@@ -114,6 +114,6 @@ export const HeaderWrapper = styled(Box)(({ theme: { styles } }) => ({
   color: styles.elements.header.surfaceContrast[0],
   borderBottom: `1px solid ${styles.elements.header.border[0]}`,
   '& .brand': {
-    textShadow: `0px 1px 0px ${styles.neutral[90]}`,
+    textShadow: `0px 1px 0px ${styles.neutral[styles.isDark ? 0 : 95]}`,
   },
 }));
