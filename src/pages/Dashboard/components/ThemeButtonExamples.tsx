@@ -28,11 +28,11 @@ const ButtonList = (props: ButtonListProps) => {
 
   return (
     <Box
-      gap={1}
+      gap={2}
       display="flex"
       flexWrap="wrap"
-      justifyContent="space-evenly"
-      maxWidth={BUTTON_WIDTH * 5}
+      justifyContent="flex-start"
+      maxWidth={BUTTON_WIDTH * 4.5}
     >
       {variantOptions.map((variant) => (
         <Button
@@ -73,7 +73,9 @@ export const ThemeButtonExamples = () => {
           >
             {colorMode}
           </Box>
-          <ButtonList filled={colorMode === 'filled'} />
+          <Box display="flex" justifyContent="end" alignItems="center" minWidth="100%">
+            <ButtonList filled={colorMode === 'filled'} />
+          </Box>
         </Stack>
       ))}
     </Box>
