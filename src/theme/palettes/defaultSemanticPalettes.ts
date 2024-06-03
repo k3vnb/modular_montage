@@ -201,9 +201,9 @@ export const semanticDarkPalettes = {
         pressed: colors.red[300],
       },
       background: {
-        main: colors.neutralDark[5],
+        main: colors.neutral[95],
         hover: colors.red[950],
-        pressed: colors.neutralDark[5],
+        pressed: colors.neutral[95],
       },
       border: {
         main: colors.red[400],
@@ -212,19 +212,19 @@ export const semanticDarkPalettes = {
       },
       filled: {
         text: {
-          main: colors.neutralDark[5],
-          hover: colors.neutralDark[10],
-          pressed: colors.neutralDark[20],
+          main: colors.neutral[0],
+          hover: colors.neutral[5],
+          pressed: colors.neutral[0],
         },
         background: {
-          main: colors.red[600],
-          hover: colors.red[500],
+          main: colors.red[800],
+          hover: colors.red[700],
           pressed: colors.red[600],
         },
         border: {
-          main: colors.red[400],
+          main: colors.red[600],
           hover: colors.red[500],
-          pressed: colors.red[600],
+          pressed: colors.red[400],
         },
       },
     },
@@ -245,9 +245,9 @@ export const semanticDarkPalettes = {
         pressed: colors.orange[600],
       },
       background: {
-        main: colors.neutralDark[5],
+        main: colors.neutral[95],
         hover: colors.orange[950],
-        pressed: colors.neutralDark[5],
+        pressed: colors.neutral[95],
       },
       border: {
         main: colors.orange[400],
@@ -256,19 +256,19 @@ export const semanticDarkPalettes = {
       },
       filled: {
         text: {
-          main: colors.neutralDark[5],
-          hover: colors.neutralDark[10],
-          pressed: colors.neutralDark[20],
+          main: colors.neutral[5],
+          hover: colors.neutral[0],
+          pressed: colors.neutral[5],
         },
         background: {
-          main: colors.orange[400],
-          hover: colors.orange[500],
-          pressed: colors.orange[600],
+          main: colors.orange[850],
+          hover: colors.orange[750],
+          pressed: colors.orange[700],
         },
         border: {
-          main: colors.orange[400],
-          hover: colors.orange[500],
-          pressed: colors.orange[600],
+          main: colors.orange[500],
+          hover: colors.orange[400],
+          pressed: colors.orange[700],
         },
       },
     },
@@ -289,9 +289,9 @@ export const semanticDarkPalettes = {
         pressed: colors.green[600],
       },
       background: {
-        main: colors.neutralDark[5],
+        main: colors.neutral[95],
         hover: colors.green[950],
-        pressed: colors.neutralDark[5],
+        pressed: colors.neutral[95],
       },
       border: {
         main: colors.green[400],
@@ -300,19 +300,19 @@ export const semanticDarkPalettes = {
       },
       filled: {
         text: {
-          main: colors.neutralDark[5],
-          hover: colors.neutralDark[10],
-          pressed: colors.neutralDark[20],
+          main: colors.neutral[5],
+          hover: colors.neutral[0],
+          pressed: colors.neutral[5],
         },
         background: {
-          main: colors.green[400],
-          hover: colors.green[500],
+          main: colors.green[800],
+          hover: colors.green[750],
           pressed: colors.green[600],
         },
         border: {
           main: colors.green[400],
           hover: colors.green[500],
-          pressed: colors.green[600],
+          pressed: colors.green[400],
         },
       },
     },
@@ -333,9 +333,9 @@ export const semanticDarkPalettes = {
         pressed: colors.blue[50],
       },
       background: {
-        main: colors.neutralDark[5],
+        main: colors.neutral[95],
         hover: colors.blue[950],
-        pressed: colors.neutralDark[5],
+        pressed: colors.neutral[95],
       },
       border: {
         main: colors.blue[400],
@@ -344,19 +344,19 @@ export const semanticDarkPalettes = {
       },
       filled: {
         text: {
-          main: colors.neutralDark[5],
-          hover: colors.neutralDark[10],
-          pressed: colors.neutralDark[20],
+          main: colors.neutral[5],
+          hover: colors.neutral[0],
+          pressed: colors.neutral[5],
         },
         background: {
-          main: colors.blue[400],
-          hover: colors.blue[500],
-          pressed: colors.blue[600],
+          main: colors.blue[700],
+          hover: colors.blue[600],
+          pressed: colors.blue[500],
         },
         border: {
-          main: colors.blue[400],
-          hover: colors.blue[500],
-          pressed: colors.blue[600],
+          main: colors.blue[500],
+          hover: colors.blue[400],
+          pressed: colors.blue[300],
         },
       },
     },

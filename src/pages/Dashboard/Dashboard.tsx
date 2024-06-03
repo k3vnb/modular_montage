@@ -75,8 +75,12 @@ export const Dashboard = () => {
         </Tile>
         <LayoutIcons.StoryboardIcon sx={{ display: { xxs: 'none', md: 'flex' }}} />
       </Box>
-      <Tile showBorder gap={1} variant="info" elevation={1} maxWidth="max-content">
-        <Typography.H4 textAlign="center">Theme Buttons</Typography.H4>
+      {/* THEME COLORS */}
+      <Tile showBorder gap={1} elevation={1} maxWidth="max-content">
+        <Typography.H4 textAlign="center">Theme Colors</Typography.H4>
+        <Typography.Body textAlign="center">
+          Themed buttons show the semantic color system in action - including hover and active states.
+        </Typography.Body>
         <ThemeButtonExamples />
       </Tile>
     </Box>
