@@ -26,8 +26,8 @@ const router = createBrowserRouter([
             element: <Pages.Games />,
           },
           {
-            path: ROUTES.contact.path,
-            element: <PlaceholderPage title="Contact" icon={ROUTES.contact.icon} />,
+            path: ROUTES.settings.path,
+            element: <Pages.Settings />,
           },
           {
             path: ROUTES.about.path,

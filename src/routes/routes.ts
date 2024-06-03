@@ -1,6 +1,6 @@
 import DashboardIcon from '@mui/icons-material/AppsOutlined';
 import YardIcon from '@mui/icons-material/YardOutlined';
-import AltEmail from '@mui/icons-material/AlternateEmailOutlined';
+import SettingsIcon from '@mui/icons-material/SettingsOutlined';
 import RobotIcon from '@mui/icons-material/SmartToyOutlined';
 import InterestsIcon from '@mui/icons-material/InterestsOutlined';
 
@@ -14,7 +14,7 @@ const PATHS = {
   about: '/about',
   etc: '/about/etc',
   etc2: '/about/etc2',
-  contact: '/contact',
+  settings: '/settings',
 } as const;
 
 export const ROUTES = {
@@ -49,10 +49,10 @@ export const ROUTES = {
       },
     },
   },
-  contact: {
-    path: PATHS.contact,
-    label: 'Contact',
-    icon: AltEmail,
+  settings: {
+    path: PATHS.settings,
+    label: 'Settings',
+    icon: SettingsIcon,
   },
 } as const;
 
@@ -61,7 +61,7 @@ export const NAV_ROUTES_LIST: TNavRoute[] = [
   ROUTES.widgets,
   ROUTES.games,
   ROUTES.about,
-  ROUTES.contact,
+  ROUTES.settings,
 ];
 
 export const NAV_ROUTES_LIST_MOBILE: TNavRoute[] = [
