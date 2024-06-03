@@ -1,10 +1,11 @@
 import { Stack } from '@mui/system';
 import { HeaderWrapper, Brand, NavMenu } from './Header.elements';
 import { useGlobalContext } from 'contexts/GlobalContext';
+import { LAYOUT_STYLES } from 'layouts/types';
 
 export const Header = (): JSX.Element => {
   const { layoutStyle } = useGlobalContext();
-  const shouldShowNavMenu = layoutStyle === 'classic';
+  const shouldShowNavMenu = layoutStyle === LAYOUT_STYLES.classic;
   return (
     <HeaderWrapper component="header">
       <Stack

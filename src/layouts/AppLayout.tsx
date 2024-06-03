@@ -4,12 +4,13 @@ import { Header } from 'elements/Header';
 import { Sidebar } from 'elements/AppBar/Sidebar';
 import { BottomBar } from 'elements/AppBar/BottomBar';
 import { useGlobalContext } from 'contexts/GlobalContext';
+import { LAYOUT_STYLES } from './types';
 
 const IS_DEBUG_MODE = false;
 
 export const AppLayout = (): JSX.Element => {
   const { layoutStyle } = useGlobalContext();
-  const isAppShell = layoutStyle === 'appShell';
+  const isAppShell = layoutStyle === LAYOUT_STYLES.appShell;
   return (
     <Layout.AppContainer debugMode={IS_DEBUG_MODE}>
       <Layout.Header debugMode={IS_DEBUG_MODE}>
