@@ -1,6 +1,5 @@
-import { Box, Stack, useTheme } from '@mui/system';
+import { Box, Stack } from '@mui/system';
 import DashboardIcon from '@mui/icons-material/BlurOnOutlined';
-
 import { Tile } from 'global/components/Tile/Tile';
 import { PageTitle } from 'global/components/PageTitle';
 import { Typography } from 'global/components/Typography';
@@ -11,9 +10,7 @@ import {
   LayoutStyleRadioButtons,
 } from './components';
 
-
 export const Dashboard = () => {
-  const { styles } = useTheme();
   return (
     <Box display="flex" flexDirection="column" gap={3}>
       <PageTitle title="Themes & Layout" icon={DashboardIcon} description="Modular UI Systems" />
