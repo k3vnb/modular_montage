@@ -9,9 +9,10 @@ export const Settings = () => {
   return (
     <Box display="flex" flexDirection="column" gap={3}>
       <PageTitle title="Settings" icon={SettingsIcon} />
+
+      <Box display="flex" flexDirection="row" flexWrap="wrap" gap={3} p={{ xxs: 4, sm: 0 }}>
       {/* THEME SELECTOR */}
-      <Box display="flex" flexDirection="row" gap={3}>
-        <Tile gap={1} variant="info" elevation={1} width={{ xxs: '100%', md: '70%' }} flexShrink={0}>
+        <Tile showBorder gap={1} elevation={1} flexShrink={0} minWidth={340}>
           <Typography.H4 textAlign="center">Theme Settings</Typography.H4>
           <Stack gap={1.5}>
             <Typography.Body textAlign="center">
@@ -22,10 +23,8 @@ export const Settings = () => {
             </Box>
           </Stack>
         </Tile>
-      </Box>
       {/* LAYOUT SELECTOR */}
-      <Box display="flex" flexDirection="row-reverse" gap={3}>
-        <Tile flexShrink={0} gap={1} variant="info" elevation={1} width={{ xxs: '100%', md: '70%' }}>
+        <Tile showBorder flexShrink={0} gap={1} elevation={1} minWidth={340}>
           <Typography.H4 textAlign="center">Layout Selector</Typography.H4>
           <Stack gap={1.5}>
             <Typography.Body textAlign="center">

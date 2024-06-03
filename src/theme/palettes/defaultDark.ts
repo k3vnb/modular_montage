@@ -11,7 +11,7 @@ const palette = {
     box: {
       surface: [colors.blueViolet[900], colors.blueViolet[950], colors.neutralDark[10]],
       border: [colors.blueViolet[700], colors.blueViolet[600], colors.blueViolet[300]],
-      surfaceContrast: [colors.blueViolet[600], colors.blueViolet[400], colors.blueViolet[200]],
+      surfaceContrast: [colors.blueViolet[50], colors.blueViolet[100], colors.blueViolet[200]],
       gradients: getGradients(colors.blueViolet[800], colors.blueViolet[900], colors.blueViolet[700]),
     },
     shades: {

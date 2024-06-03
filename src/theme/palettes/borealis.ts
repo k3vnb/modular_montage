@@ -11,6 +11,7 @@ const rhinoBlue = {
   400: '#1424b3',
   450: '#0f1f9e',
   500: '#242c7b',
+  600: '#1f2a6d',
   700: '#323763',
   800: '#141628',
   900: '#0f101e',
@@ -42,7 +43,7 @@ const palette = {
     box: {
       surface: [rhinoBlue[50], rhinoBlue[100], rhinoBlue[200]],
       border: [rhinoBlue[500], rhinoBlue[400], rhinoBlue[300]],
-      surfaceContrast: [rhinoBlue[500], rhinoBlue[400], rhinoBlue[300]],
+      surfaceContrast: [rhinoBlue[700], rhinoBlue[600], rhinoBlue[500]],
       gradients: ['','',''],
     },
     shades: {
