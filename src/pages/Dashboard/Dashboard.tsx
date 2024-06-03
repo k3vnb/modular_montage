@@ -4,14 +4,13 @@ import DashboardIcon from '@mui/icons-material/BlurOnOutlined';
 import { Tile } from 'global/components/Tile/Tile';
 import { PageTitle } from 'global/components/PageTitle';
 import { Typography } from 'global/components/Typography';
-import { RadioGroup } from 'global/components/Form/Inputs/RadioGroup';
-import { ReactComponent as IdeaIcon } from 'global/assets/idea.svg';
-import { ReactComponent as StoryboardIcon } from 'global/assets/storyboard.svg';
-import { ThemeButtonExamples } from './components';
+import {
+  LayoutIcons,
+  ThemeRadioButtons,
+  ThemeButtonExamples,
+  LayoutStyleRadioButtons,
+} from './components';
 
-import { useGlobalContext } from 'contexts/GlobalContext';
-import { THEME_IDS, type ThemeId } from 'theme';
-import { LAYOUT_STYLES, type LayoutStyle } from 'layouts/types';
 
 export const Dashboard = () => {
   const { styles } = useTheme();
@@ -40,81 +39,49 @@ export const Dashboard = () => {
       </Tile>
       {/* THEME SELECTOR */}
       <Box display="flex" flexDirection="row" gap={3}>
-        <Tile gap={1} variant="info" elevation={1} width="70%" flexShrink={0}>
-          <Typography.H4>Theme Selector</Typography.H4>
+        <Tile gap={1} variant="info" elevation={1} width={{ xxs: '100%', md: '70%' }} flexShrink={0}>
+          <Typography.H4 textAlign="center">Theme Selector</Typography.H4>
           <Stack gap={1.5}>
-            <Typography.Body>
+            <Typography.Body textAlign="center">
               Adjust the application's color scheme.
             </Typography.Body>
-            <ThemeRadioButtons />
+            <Box display="flex" alignItems="center" justifyContent={{ xxs: 'space-between', sm: 'start' }} gap={2.5}>
+              <ThemeRadioButtons />
+              <LayoutIcons.IdeaIcon small sx={{ display: { xxs: 'flex', md: 'none' } }} />
+            </Box>
             <Typography.Body>
               Color schemes are comprised of semantic colors (ie, Primary, Secondary, Special, Danger, Warning, Info, Success) and neutral colors (ie, Black, White, Gray).
             </Typography.Body>
           </Stack>
         </Tile>
-        <Box p={6} flexGrow={1} flexWrap="wrap" justifyContent="center" alignItems="center">
-          <Box component={IdeaIcon} maxHeight={300} maxWidth="100%" fill={styles.neutral[80]} />
-        </Box>
+        <LayoutIcons.IdeaIcon sx={{ display: { xxs: 'none', md: 'flex' }}} />
       </Box>
       {/* LAYOUT SELECTOR */}
-      <Box display="flex" flexDirection="row" gap={3}>
-        <Box p={6} flexGrow={1} flexWrap="wrap" justifyContent="center" alignItems="center">
-          <Box component={StoryboardIcon} maxHeight={300} maxWidth="100%" fill={styles.neutral[80]} />
-        </Box>
-        <Tile flexShrink={0} gap={1} variant="info" elevation={1} width="70%">
-          <Typography.H4>Layout Selector</Typography.H4>
+      <Box display="flex" flexDirection="row-reverse" gap={3}>
+        <Tile flexShrink={0} gap={1} variant="info" elevation={1} width={{ xxs: '100%', md: '70%' }}>
+          <Typography.H4 textAlign="center">Layout Selector</Typography.H4>
           <Stack gap={1.5}>
-            <Typography.Body>
+            <Typography.Body textAlign="center">
               Adjust the application's layout.
             </Typography.Body>
-            <LayoutStyleRadioButtons />
+            <Box display="flex" alignItems="center" justifyContent={{ xxs: 'space-between', sm: 'start' }} gap={2.5}>
+              <LayoutStyleRadioButtons />
+              <LayoutIcons.StoryboardIcon small sx={{ display: { xxs: 'flex', md: 'none' } }} />
+            </Box>
             <Typography.Body>
               The 'App Shell' layout features a site header, main content area, a navigation side bar in desktop screen widths and a navigation bottom bar in mobile screenwidths.
             </Typography.Body>
             <Typography.Body>
               The 'Classic' layout features a site header which contains the nav menu and main content area.  The nav menu collapses into a hamburger menu in mobile screen widths.
             </Typography.Body>
-            </Stack>
+          </Stack>
         </Tile>
+        <LayoutIcons.StoryboardIcon sx={{ display: { xxs: 'none', md: 'flex' }}} />
       </Box>
       <Tile showBorder gap={1} variant="info" elevation={1} maxWidth="max-content">
-        <Typography.H4>Theme Buttons</Typography.H4>
+        <Typography.H4 textAlign="center">Theme Buttons</Typography.H4>
         <ThemeButtonExamples />
       </Tile>
     </Box>
-  );
-};
-
-const ThemeRadioButtons = () => {
-  const { themeId, updateTheme } = useGlobalContext();
-  return (
-    <Stack my={1}>
-      <RadioGroup
-        hideLegend
-        legend="Theme Selector"
-        id="theme-selector"
-        name="theme-selector"
-        value={themeId}
-        options={Object.values(THEME_IDS).map((key) => ({ value: key, label: key}))}
-        onChange={(val: string) => updateTheme(val as ThemeId)}
-      />
-    </Stack>
-  );
-};
-
-const LayoutStyleRadioButtons = () => {
-  const { layoutStyle, updateLayoutStyle } = useGlobalContext();
-  return (
-    <Stack my={1}>
-      <RadioGroup
-        hideLegend
-        legend="Layout Selector"
-        id="layout-selector"
-        name="layout-selector"
-        value={layoutStyle}
-        options={Object.values(LAYOUT_STYLES).map((key) => ({ value: key, label: key}))}
-        onChange={(val: string) => updateLayoutStyle(val as LayoutStyle)}
-      />
-  </Stack>
   );
 };
