@@ -4,6 +4,7 @@ import { Tile } from 'global/components/Tile/Tile';
 import { Typography } from 'global/components/Typography';
 import { getRandomHSLVals } from './utils';
 import { ThemeButton } from 'global/components/Buttons';
+import { ColorDisplay } from './ColorDisplay';
 
 export const HSLGame = () => {
   const [hslVals, setHslVals] = React.useState<number[]>([]);
@@ -13,25 +14,15 @@ export const HSLGame = () => {
     setHslVals(getRandomHSLVals());
   }, []);
 
-  const onClickReset = () => {
-    setHslVals(getRandomHSLVals());
-  };
+  const onClickReset = () => setHslVals(getRandomHSLVals());
 
   return (
     <Box display="flex" flexDirection="column" gap={3}>
       <Tile showBorder gap={1}  elevation={1}>
         <Typography.H4 textAlign="center" mb={1}>HSL</Typography.H4>
         <Typography.H5 textAlign="center" mb={1}>Hue, saturation, light</Typography.H5>
-        <Box
-          display="flex"
-          justifyContent="center"
-          borderRadius="50%"
-          sx={{
-            width: 200,
-            height: 200,
-            backgroundColor: `hsl(${hue}, ${saturation}%, ${light}%)`,
-          }}
-        />
+        <ColorDisplay backgroundColor={`hsl(${hue}, ${saturation}%, ${light}%)`} label="Match this color" />
+        <ColorDisplay backgroundColor={`hsl(${hue}, ${saturation}%, ${light}%)`} label="Your Guess" />
         <Typography.H6 textAlign="center" mt={2}>{`Hue: ${hue}`}</Typography.H6>
         <Typography.H6 textAlign="center">{`Saturation: ${saturation}%`}</Typography.H6>
         <Typography.H6 textAlign="center">{`Light: ${light}%`}</Typography.H6>

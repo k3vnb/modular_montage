@@ -9,9 +9,13 @@ export function getRandomRGBVals(): number[] {
   return [red, green, blue];
 }
 
+// avoid very dark or very light colors for better game play
+const LIGHT_MIN = 15;
+const LIGHT_MAX = 85;
+
 export function getRandomHSLVals(): number[] {
   const hue = getRandomNumberInRange(0, 360);
   const saturation = getRandomNumberInRange(0, 100);
-  const light = getRandomNumberInRange(0, 100);
+  const light = getRandomNumberInRange(LIGHT_MIN, LIGHT_MAX);
   return [hue, saturation, light];
 }
