@@ -1,22 +1,33 @@
 import React from 'react';
-import { Box, type BoxProps, Stack, useTheme, styled } from '@mui/system';
+import { Box, type BoxProps, Stack, styled } from '@mui/system';
 import { Tile } from 'global/components/Tile/Tile';
 import { Typography } from 'global/components/Typography';
 import { getRandomHSLVals } from './utils';
 import { ThemeButton } from 'global/components/Buttons';
 import { ColorDisplay } from './ColorDisplay';
 
+const HUE_GRADIENT = 'linear-gradient(90deg, hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%), hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%), hsl(360, 100%, 50%))';
+const LIGHT_GRADIENT = 'linear-gradient(90deg, hsl(0, 0%, 0%), hsl(0, 0%, 50%), hsl(0, 0%, 100%))';
+const getSaturationGradient = (hue: number) => `linear-gradient(90deg, hsl(${hue}, 0%, 50%), hsl(${hue}, 100%, 50%))`;
+const getHint = (correctVal: number, guessVal: number) => correctVal === guessVal ? 'Correct!' : `${guessVal} is too ${guessVal > correctVal ? 'high' : 'low'}`;
+
 export const HSLGame = () => {
-  const { styles } = useTheme();
   const [hslMasterVals, setHslMasterVals] = React.useState<number[]>([]);
-  const [hslGuessVals, setHslGuessVals] = React.useState<number[]>([]);
-  const [hue = 1, saturation = 1, light = 1] = hslGuessVals;
+  const [hue, setHue] = React.useState<number>(180);
+  const [saturation, setSaturation] = React.useState<number>(50);
+  const [light, setLight] = React.useState<number>(50);
+  const [showHints, setShowHints] = React.useState<boolean>(false);
+
+  const hueHint = getHint(hslMasterVals[0], hue);
+  const saturationHint = getHint(hslMasterVals[1], saturation);
+  const lightHint = getHint(hslMasterVals[2], light);
 
   React.useEffect(() => {
     setHslMasterVals(getRandomHSLVals());
   }, []);
 
   const onClickReset = () => setHslMasterVals(getRandomHSLVals());
+  const onClickHint = () => setShowHints(true);
 
   return (
     <Box display="flex" flexDirection="column" gap={3}>
@@ -30,35 +41,53 @@ export const HSLGame = () => {
             <ColorDisplay backgroundColor={`hsl(${hslMasterVals[0]}, ${hslMasterVals[1]}%, ${hslMasterVals[2]}%)`} label="Match this color" />
             <ColorDisplay backgroundColor={`hsl(${hue}, ${saturation}%, ${light}%)`} label="Your Guess" />
           </Box>
-          <Box display="flex" width="100%" justifyContent="end" mt={2}>
+          <Box display="flex" flexDirection={{ xxs: 'column', sm: 'row' }} width="100%" gap={2} justifyContent="space-between" mt={2}>
+            <ThemeButton showBorder={false} shadow={false} onClick={onClickHint} text="Get a hint" size="small" />
             <ThemeButton showBorder={false} shadow={false} onClick={onClickReset} text="Get a new color to match" size="small" />
           </Box>
         </Tile>
         <Stack gap={4} maxWidth="50%">
           <RangeInputSection
-            label="Hue"
+            label="Hue °"
+            id="hue"
             value={hue} 
-            onChange={(e) => setHslGuessVals([e.target.valueAsNumber, saturation, light])}
+            onChange={(e) => {
+              setShowHints(false);
+              setHue(e.target.valueAsNumber);
+            }}
             min={0}
             max={360}
             symbol="°"
-            background="linear-gradient(90deg, hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%), hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%), hsl(360, 100%, 50%))"
+            background={HUE_GRADIENT}
+            hint={showHints ? hueHint : ''}
           />
           <RangeInputSection
-            label="Saturation"
+            label="Saturation %"
             value={saturation}
-            onChange={(e) => setHslGuessVals([hue, e.target.valueAsNumber, light])}
+            id="saturation"
+            onChange={(e) => {
+              setShowHints(false);
+              setSaturation(e.target.valueAsNumber);
+            }}
             min={0}
             max={100}
             symbol='%'
+            background={getSaturationGradient(hue)}
+            hint={showHints ? saturationHint : ''}
           />
           <RangeInputSection
-            label="Light"
+            label="Light %"
             value={light}
-            onChange={(e) => setHslGuessVals([hue, saturation, e.target.valueAsNumber])}
+            id="light"
+            onChange={(e) => {
+              setShowHints(false);
+              setLight(e.target.valueAsNumber);
+            }}
             min={0}
             max={100}
             symbol='%'
+            background={LIGHT_GRADIENT}
+            hint={showHints ? lightHint : ''}
           />
         </Stack>
       </Tile>
@@ -67,51 +96,66 @@ export const HSLGame = () => {
 };
 
 type RangeInputSectionProps = {
+  id: string;
   label: string;
   value: number;
   symbol?: string;
   background?: string; 
   min: number;
   max: number;
+  hint?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const RangeInputSection = ({
   label,
+  id,
   value,
   symbol,
   background = '',
   min,
   max,
+  hint,
   onChange,
 }: RangeInputSectionProps) => {
-  // const theme = useTheme();
   return (
     <Box display="flex" flexDirection="column" gap={2}>
-      <RangeInputLabel label={label} value={value} symbol={symbol} />
-      <RangeInput value={value} onChange={onChange} min={min} max={max} sx={{...(background && { background })}} />
-      <RangeInputHelpText min={min} max={max} />
+      <RangeInputLabel id={id} label={label} value={value} symbol={symbol} />
+      <RangeInput
+        id={id}
+        aria-labelledby={`${id}-label`}
+        aria-describedby={`${id}-help-1 ${id}-help-2`}
+        value={value}
+        onChange={onChange}
+        min={min}
+        max={max}
+        sx={{...(background && { background })}}
+      />
+      <RangeInputHelpText id={id} min={min} max={max} hint={hint} />
     </Box>
   );
 };
 
-type RangeInputLabelProps = Pick<RangeInputSectionProps, 'label' | 'value' | 'symbol'>;
+type RangeInputLabelProps = Pick<RangeInputSectionProps, 'id' | 'label' | 'value' | 'symbol'>;
 
-const RangeInputLabel = ({ label, value, symbol }: RangeInputLabelProps) => {
+const RangeInputLabel = ({ label, value, symbol, id }: RangeInputLabelProps) => {
   const displayValue = [value, symbol].filter(Boolean).join(' ');
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
-      <Typography.Body>{label}</Typography.Body>
-      <Typography.Body>{displayValue}</Typography.Body>
+    <Box display="flex" flexDirection="row" alignItems="center" justifyContent="space-between" gap={3}>
+      <Typography.H6 id={`${id}-label`} component="label">{label}</Typography.H6>
+      <Typography.Body id={`${id}-help-1`}>
+        <Box component="span" fontStyle="italic" letterSpacing={-0.25}>Your value: </Box>
+        <Box component="span" minWidth="6char" ml={1}>{displayValue}</Box>
+      </Typography.Body>
     </Box>
   );
 };
 
-const RangeInputHelpText = ({ min, max }: { min: number; max: number }) => {
+const RangeInputHelpText = ({ min, max, id, hint = '' }: Pick<RangeInputSectionProps, 'min' | 'max' | 'hint' | 'id'>) => {
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
-      <Typography.Body>Enter a number between</Typography.Body>
-      <Typography.Body>{min} and {max}</Typography.Body>
+    <Box display="flex" flexDirection="column" alignItems="center" gap={1} id={`${id}-help-2`}>
+      <Typography.Body>Select a value between {min} and {max}</Typography.Body>
+      <Typography.Body component="span" display="inline-flex" alignItems="center" gap={1} minHeight={24}>{hint && <Typography.H6>Hint: </Typography.H6>}{hint}</Typography.Body>
     </Box>
   );
 };
@@ -151,15 +195,12 @@ const StyledRangeInput = styled('input')(({ theme }) => ({
   appearance: 'none',
   '&::-webkit-slider-thumb': {
     appearance: 'none',
-    width: '10px',
-    height: '10px',
-    background: theme.styles.neutral[90],
+    width: 14,
+    height: 14,
+    background: theme.styles.neutral[70],
     borderRadius: '50%',
   },
   '&::-moz-range-thumb': {
-    width: '10px',
-    height: '10px',
-    background: 'black',
-    borderRadius: '50%',
+    background: theme.styles.neutral[70],
   },
 }));
