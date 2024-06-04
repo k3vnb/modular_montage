@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box,letterSpacing,styled } from '@mui/system';
+import { Box, styled } from '@mui/system';
 import {
   READ_ONLY_CLASS,
   DISABLED_CLASS,
@@ -29,7 +29,7 @@ export const StyledInputRoot = styled(Box, options)<StyledRootProps>(({
   const disabledContrastColor = theme.styles.neutral[70];
 
   const colors = React.useMemo(() => ({
-    text: theme.styles.neutral[90],
+    text: theme.styles.neutral[95],
     textDisabled: disabledContrastColor,
     borderHover: error ? errorColor : theme.styles.neutral[90],
     borderFocus: error ? errorColor : theme.styles.primary.main,
@@ -61,7 +61,7 @@ export const StyledInputRoot = styled(Box, options)<StyledRootProps>(({
   };
 
   return {
-    backgroundColor,
+    backgroundColor: theme.styles.neutral[0],
     position: 'relative',
     borderRadius: '4px',
     border: `1px solid ${colors.borderDefault}`,

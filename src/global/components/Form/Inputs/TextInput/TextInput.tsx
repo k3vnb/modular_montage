@@ -14,7 +14,7 @@ import type { TInputFieldProps } from '../types';
 
 export type TextInputProps = {
   backgroundColor?: string; // transparent backgrounds will not correctly hide border behind label (:sad-face)
-  // tileVariant?: TTileVariants;  // instead of backgroundColor, you can pass a tileVariant
+  animated?: boolean;
   iconLeft?: SvgIconComponent;
   iconRight?: SvgIconComponent;
 } & TInputFieldProps;
@@ -30,7 +30,7 @@ export const TextInput = React.forwardRef(function CustomInput(
     iconRight,
     helpText = '',
     className = '',
-    // tileVariant,
+    animated = false,
     backgroundColor,
   } = props;
 
@@ -45,7 +45,7 @@ export const TextInput = React.forwardRef(function CustomInput(
   const { getRootProps, getInputProps } = useInput({ ...props, disabled });
 
   const inputHasValue = !!props.value || !!props.defaultValue;
-  const labelClassNames = [inputHasValue ? ACTIVE_LABEL_CLASS : '', iconLeft ? ICON_LEFT_LABEL_CLASS : ''].filter(Boolean).join(' ');
+  const labelClassNames = [(!animated || inputHasValue) ? ACTIVE_LABEL_CLASS : '', iconLeft ? ICON_LEFT_LABEL_CLASS : ''].filter(Boolean).join(' ');
 
   const inputProps = getInputProps();
 
@@ -67,7 +67,6 @@ export const TextInput = React.forwardRef(function CustomInput(
         error={invalid}
         className={classNames}
         backgroundColor={backgroundColor}
-        // tileVariant={tileVariant}
         {...getRootProps()}
       >
         {IconLeft && <IconLeft className={ICON_LEFT_CLASS} />}
