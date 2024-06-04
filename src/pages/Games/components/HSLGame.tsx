@@ -10,6 +10,7 @@ const HUE_GRADIENT = 'linear-gradient(90deg, hsl(0, 100%, 50%), hsl(60, 100%, 50
 const LIGHT_GRADIENT = 'linear-gradient(90deg, hsl(0, 0%, 0%), hsl(0, 0%, 50%), hsl(0, 0%, 100%))';
 const getSaturationGradient = (hue: number) => `linear-gradient(90deg, hsl(${hue}, 0%, 50%), hsl(${hue}, 100%, 50%))`;
 const getHint = (correctVal: number, guessVal: number) => correctVal === guessVal ? 'Correct!' : `${guessVal} is too ${guessVal > correctVal ? 'high' : 'low'}`;
+const getIsWithinThreshold = (correctVal: number, guessVal: number, threshold: number) => Math.abs(correctVal - guessVal) <= threshold;
 
 export const HSLGame = () => {
   const [hslMasterVals, setHslMasterVals] = React.useState<number[]>([]);
@@ -17,6 +18,7 @@ export const HSLGame = () => {
   const [saturation, setSaturation] = React.useState<number>(50);
   const [light, setLight] = React.useState<number>(50);
   const [showHints, setShowHints] = React.useState<boolean>(false);
+  const [submitted, setSubmitted] = React.useState<boolean>(false);
 
   const hueHint = getHint(hslMasterVals[0], hue);
   const saturationHint = getHint(hslMasterVals[1], saturation);
@@ -26,8 +28,19 @@ export const HSLGame = () => {
     setHslMasterVals(getRandomHSLVals());
   }, []);
 
-  const onClickReset = () => setHslMasterVals(getRandomHSLVals());
+  const onClickReset = () => {
+    setShowHints(false);
+    setHue(180);
+    setSaturation(50);
+    setLight(50);
+    setSubmitted(false);
+    setHslMasterVals(getRandomHSLVals());
+  };
+  
   const onClickHint = () => setShowHints(true);
+
+  const isCorrect = hslMasterVals[0] === hue && hslMasterVals[1] === saturation && hslMasterVals[2] === light;
+  const isAlmostCorrect = [hue, saturation, light].map((val, idx) => getIsWithinThreshold(hslMasterVals[idx], val, 15) && val !== hslMasterVals[idx]).filter(Boolean).length > 1;
 
   return (
     <Box display="flex" flexDirection="column" gap={3}>
@@ -41,55 +54,73 @@ export const HSLGame = () => {
             <ColorDisplay backgroundColor={`hsl(${hslMasterVals[0]}, ${hslMasterVals[1]}%, ${hslMasterVals[2]}%)`} label="Match this color" />
             <ColorDisplay backgroundColor={`hsl(${hue}, ${saturation}%, ${light}%)`} label="Your Guess" />
           </Box>
-          <Box display="flex" flexDirection={{ xxs: 'column', sm: 'row' }} width="100%" gap={2} justifyContent="space-between" mt={2}>
-            <ThemeButton showBorder={false} shadow={false} onClick={onClickHint} text="Get a hint" size="small" />
-            <ThemeButton showBorder={false} shadow={false} onClick={onClickReset} text="Get a new color to match" size="small" />
-          </Box>
+          {!submitted && (
+            <Box display="flex" flexDirection={{ xxs: 'column', sm: 'row' }} width="100%" gap={2} justifyContent="space-between" mt={2}>
+              <ThemeButton showBorder={false} shadow={false} onClick={onClickHint} text="Get a hint" size="small" />
+              <ThemeButton showBorder={false} shadow={false} onClick={onClickReset} text="Get a new color to match" size="small" />
+            </Box>
+          )}
         </Tile>
-        <Stack gap={4} maxWidth="50%">
-          <RangeInputSection
-            label="Hue °"
-            id="hue"
-            value={hue} 
-            onChange={(e) => {
-              setShowHints(false);
-              setHue(e.target.valueAsNumber);
-            }}
-            min={0}
-            max={360}
-            symbol="°"
-            background={HUE_GRADIENT}
-            hint={showHints ? hueHint : ''}
-          />
-          <RangeInputSection
-            label="Saturation %"
-            value={saturation}
-            id="saturation"
-            onChange={(e) => {
-              setShowHints(false);
-              setSaturation(e.target.valueAsNumber);
-            }}
-            min={0}
-            max={100}
-            symbol='%'
-            background={getSaturationGradient(hue)}
-            hint={showHints ? saturationHint : ''}
-          />
-          <RangeInputSection
-            label="Light %"
-            value={light}
-            id="light"
-            onChange={(e) => {
-              setShowHints(false);
-              setLight(e.target.valueAsNumber);
-            }}
-            min={0}
-            max={100}
-            symbol='%'
-            background={LIGHT_GRADIENT}
-            hint={showHints ? lightHint : ''}
-          />
-        </Stack>
+        {!submitted && (
+          <>
+            <Stack gap={4} maxWidth="50%">
+              <RangeInputSection
+                label="Hue °"
+                id="hue"
+                value={hue} 
+                onChange={(e) => {
+                  setShowHints(false);
+                  setHue(e.target.valueAsNumber);
+                }}
+                min={0}
+                max={360}
+                symbol="°"
+                background={HUE_GRADIENT}
+                hint={showHints ? hueHint : ''}
+              />
+              <RangeInputSection
+                label="Saturation %"
+                value={saturation}
+                id="saturation"
+                onChange={(e) => {
+                  setShowHints(false);
+                  setSaturation(e.target.valueAsNumber);
+                }}
+                min={0}
+                max={100}
+                symbol='%'
+                background={getSaturationGradient(hue)}
+                hint={showHints ? saturationHint : ''}
+              />
+              <RangeInputSection
+                label="Light %"
+                value={light}
+                id="light"
+                onChange={(e) => {
+                  setShowHints(false);
+                  setLight(e.target.valueAsNumber);
+                }}
+                min={0}
+                max={100}
+                symbol='%'
+                background={LIGHT_GRADIENT}
+                hint={showHints ? lightHint : ''}
+              />
+            </Stack>
+            <ThemeButton filled onClick={() => setSubmitted(true)} text="Submit!" sx={{ maxWidth: 250 }}  />
+          </>
+        )}
+        {submitted && (
+          <Box display="flex" flexDirection="column" gap={2} alignItems="center">
+            <Typography.H6 textAlign="center">{`Your result - hsl(${hue}, ${saturation}%, ${light}%)`}</Typography.H6>
+            <Typography.H6 textAlign="center">{`Correct result - hsl(${hslMasterVals[0]}, ${hslMasterVals[1]}%, ${hslMasterVals[2]}%)`}</Typography.H6>
+            {isCorrect ? <Typography.H6 textAlign="center">You got it right!</Typography.H6> : <Typography.H6 textAlign="center">{isAlmostCorrect ? 'You were close!' : 'Try again!'}</Typography.H6>}
+            <ThemeButton
+              onClick={onClickReset}
+              text="Play again"
+            />
+          </Box>
+        )}
       </Tile>
     </Box>
   );
@@ -104,6 +135,7 @@ type RangeInputSectionProps = {
   min: number;
   max: number;
   hint?: string;
+  disabled?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -116,6 +148,7 @@ const RangeInputSection = ({
   min,
   max,
   hint,
+  disabled = false,
   onChange,
 }: RangeInputSectionProps) => {
   return (
@@ -129,6 +162,7 @@ const RangeInputSection = ({
         onChange={onChange}
         min={min}
         max={max}
+        disabled={disabled}
         sx={{...(background && { background })}}
       />
       <RangeInputHelpText id={id} min={min} max={max} hint={hint} />
@@ -165,6 +199,7 @@ type RangeInputProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   min: number;
   max: number;
+  disabled?: boolean;
 } & BoxProps;
 
 const RangeInput = ({
@@ -172,6 +207,7 @@ const RangeInput = ({
   onChange,
   min,
   max,
+  disabled,
   ...boxProps
 }: RangeInputProps) => {
   return (
@@ -182,6 +218,7 @@ const RangeInput = ({
       onChange={onChange}
       min={min}
       max={max}
+      disabled={disabled}
       {...boxProps}
     />
   );
