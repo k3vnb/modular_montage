@@ -9,17 +9,17 @@ type Props = {
 export const ColorDisplay = ({ backgroundColor, label }: Props) => {
   return (
       <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
+        <Typography.H6 textAlign="center" mb={1}>{label}</Typography.H6>
         <Box
           display="flex"
           justifyContent="center"
           borderRadius="50%"
           sx={{
-            width: 200,
-            height: 200,
+            width: { xxs: 100, sm: 200 },
+            height: { xxs: 100, sm: 200 },
             backgroundColor,
           }}
         />
-        <Typography.H5 textAlign="center" mb={1}>{label}</Typography.H5>
       </Box>
   );
 };

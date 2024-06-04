@@ -14,7 +14,7 @@ const LIGHT_MIN = 15;
 const LIGHT_MAX = 85;
 
 export function getRandomHSLVals(): number[] {
-  const hue = getRandomNumberInRange(0, 360);
+  const hue = getRandomNumberInRange(1, 359);
   const saturation = getRandomNumberInRange(0, 100);
   const light = getRandomNumberInRange(LIGHT_MIN, LIGHT_MAX);
   return [hue, saturation, light];
