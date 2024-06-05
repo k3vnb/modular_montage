@@ -1,8 +1,8 @@
 import React from 'react';
-import { NAV_ROUTES_LIST } from 'routes';
-import { NavMenu, ToggleExpandButton } from './bin';
-import { SIDEBAR_WIDTH, SIDEBAR_OVERFLOW_X_BUFFER } from './constants';
+import { NavMenu, ToggleExpandButton } from './components';
 import { OverflowWrapper, RelativeWrapper, SidebarContent } from './Sidebar.elements';
+import { NAV_ROUTES_LIST } from 'routes';
+import { SIDEBAR_WIDTH, SIDEBAR_OVERFLOW_X_BUFFER } from './constants';
 
 export const Sidebar: React.FC = () => {
   const [expanded, setExpanded] = React.useState(false);

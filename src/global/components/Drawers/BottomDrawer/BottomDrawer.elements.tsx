@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Stack, styled } from '@mui/system';
-import { CloseButton } from './bin';
+import { CloseButton } from './components';
 import { TRANSITION_DURATION } from '../constants';
 import type { BottomDrawerModalProps, DrawerTransitionChildProps } from '../types';
 

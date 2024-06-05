@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavItem, ToggleExpandButton, DrawerMenu, DrawerClickaway } from './bin';
+import { NavItem, ToggleExpandButton, DrawerMenu, DrawerClickaway } from './components';
 import { BottomBarContainer } from './BottomBar.elements';
 import { useDrawerContext, DrawerContextProvider } from 'global/components/Drawers/contexts/DrawerContext';
 import { NAV_ROUTES_LIST_MOBILE as allLinks } from 'routes';
