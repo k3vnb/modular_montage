@@ -18,10 +18,16 @@ export function getHSLString({ hue, saturation, light }: HSLVals): string {
 // avoid very dark or very light colors for better game play
 const LIGHT_MIN = 15;
 const LIGHT_MAX = 85;
+// hue is a circle, so 0 and 360 are the same color, avoid for better game play
+const HUE_MIN = 1;
+const HUE_MAX = 359;
+// bump min saturation for better game play
+const SAT_MIN = 9;
+const SAT_MAX = 100;
 
 export function getRandomHSLVals(): HSLVals {
-  const hue = getRandomNumberInRange(1, 359);
-  const saturation = getRandomNumberInRange(0, 100);
+  const hue = getRandomNumberInRange(HUE_MIN, HUE_MAX);
+  const saturation = getRandomNumberInRange(SAT_MIN, SAT_MAX);
   const light = getRandomNumberInRange(LIGHT_MIN, LIGHT_MAX);
   return { hue, saturation, light };
 }

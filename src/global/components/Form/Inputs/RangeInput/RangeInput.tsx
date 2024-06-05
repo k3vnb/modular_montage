@@ -64,17 +64,37 @@ const RangeInputLabel = ({ label, value, symbol, id }: RangeInputLabelProps) => 
 const RangeInputHelpText = ({ min, max, id, hint = '' }: Pick<RangeInputProps, 'min' | 'max' | 'hint' | 'id'>) => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" gap={0.5} id={`${id}-help-2`}>
-      <Typography.Body>Select a value between {min} and {max}</Typography.Body>
+      <Typography.Body sx={{ fontSize: 12 }}>
+        Select a value between {min} and {max}
+      </Typography.Body>
       <Typography.Body
         component="span"
         display="inline-flex"
+        justifyContent="center"
         alignItems="center"
+        textAlign="center"
         gap={1}
         minHeight={24}
-    >
-      {!!hint && <Typography.H6 component="span" sx={{ color: theme => theme.styles.info.main }}>Hint: </Typography.H6>}
-      {hint}
-    </Typography.Body>
+        sx={{
+          color: theme => theme.styles.neutral[90],
+          background: theme => hint && theme.styles.info.box.surface[0],
+          padding: '0 8px',
+          borderRadius: 4,
+          fontWeight: 500,
+          fontSize: 12,
+        }}
+      >
+        {!!hint && (
+          <Box component="span"
+            display="inline-flex"
+            color={theme => theme.styles.info.box.surfaceContrast[0]}
+            fontWeight={600}
+          >
+            Hint:
+          </Box>
+        )}
+        {hint}
+      </Typography.Body>
     </Box>
   );
 };

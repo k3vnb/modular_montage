@@ -20,7 +20,7 @@ export const ResultsDisplay = ({
   return (
     <Stack gap={2} alignItems="center">
       <DisplayText>{`Your Guess - ${guessDisplay}`}</DisplayText>
-      <DisplayText>{`Correct result - ${targetDisplay}`}</DisplayText>
+      <DisplayText>{`Correct Answer - ${targetDisplay}`}</DisplayText>
       {isCorrect ? (
         <DisplayText sx={{ color: theme => theme.styles.success.main }}>
           🎉🎉🎉 You got it right! 🎉🎉🎉
