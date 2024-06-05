@@ -6,6 +6,9 @@ type Props = {
   label: string;
 };
 
+const XXS_SIZE = 80;
+const SM_SIZE = 100;
+
 export const ColorDisplay = ({ backgroundColor, label }: Props) => {
   return (
       <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
@@ -15,8 +18,8 @@ export const ColorDisplay = ({ backgroundColor, label }: Props) => {
           justifyContent="center"
           borderRadius="50%"
           sx={{
-            width: { xxs: 100, sm: 200 },
-            height: { xxs: 100, sm: 200 },
+            width: { xxs: XXS_SIZE, sm: SM_SIZE },
+            height: { xxs: XXS_SIZE, sm: SM_SIZE },
             backgroundColor,
           }}
         />
