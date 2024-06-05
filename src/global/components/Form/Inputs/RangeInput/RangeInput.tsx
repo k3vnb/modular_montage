@@ -49,7 +49,7 @@ export const RangeInput = ({
 type RangeInputLabelProps = Pick<RangeInputProps, 'id' | 'label' | 'value' | 'symbol'>;
 
 const RangeInputLabel = ({ label, value, symbol, id }: RangeInputLabelProps) => {
-  const displayValue = [value, symbol].filter(Boolean).join(' ');
+  const displayValue = [value || '0', symbol].filter(Boolean).join(' ');
   return (
     <Box display="flex" flexDirection="row" alignItems="center" justifyContent="space-between" gap={3}>
       <Typography.H6 id={`${id}-label`} component="label">{label}</Typography.H6>

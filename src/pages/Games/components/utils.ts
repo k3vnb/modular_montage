@@ -1,14 +1,18 @@
-import { type HSLVals } from './types';
+import type { RGBVals, HSLVals } from './types';
 
 function getRandomNumberInRange(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export function getRandomRGBVals(): number[] {
+export function getRandomRGBVals(): RGBVals {
   const red = getRandomNumberInRange(0, 255);
   const green = getRandomNumberInRange(0, 255);
   const blue = getRandomNumberInRange(0, 255);
-  return [red, green, blue];
+  return { red, green, blue };
+}
+
+export function getRGBString({ red, green, blue }: RGBVals): string {
+  return `rgb(${red}, ${green}, ${blue})`;
 }
 
 export function getHSLString({ hue, saturation, light }: HSLVals): string {

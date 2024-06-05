@@ -8,58 +8,55 @@ import { ColorDisplay } from './ColorDisplay';
 import { ResultsDisplay } from './ResultsDisplay';
 
 import {
-  HUE_GRADIENT,
-  LIGHT_GRADIENT,
-  HSL_VAL_KEYS,
-  INIT_HSL_GUESS_VALS,
-  INIT_HSL_HINTS
+  RGB_VAL_KEYS,
+  INIT_RGB_GUESS_VALS,
+  INIT_RGB_HINTS
 } from './constants';
 
 import {
   getHint,
-  getHSLString,
-  getRandomHSLVals,
+  getRGBString,
+  getRandomRGBVals,
   getIsWithinThreshold,
-  getSaturationGradient,
 } from './utils';
 
-import type { HSLVals, HSLValsKey } from './types';
+import type { RGBVals, RGBValsKey } from './types';
 
-const HSL_RANGE_INPUT_LIST = [
-  { key: 'hue', label: 'Hue °', min: 0, max: 360, symbol: '°', getBackground: () => HUE_GRADIENT },
-  { key: 'saturation', label: 'Saturation %', min: 0, max: 100, symbol: '%', getBackground: (hue: number) => getSaturationGradient(hue) },
-  { key: 'light', label: 'Light %', min: 0, max: 100, symbol: '%', getBackground: () => LIGHT_GRADIENT},
+const RGB_RANGE_INPUT_LIST = [
+  { key: 'red', label: 'Red' },
+  { key: 'green', label: 'Green' },
+  { key: 'blue', label: 'Blue' },
 ] as const;
 
-export const HSLGame = () => {
-  const [targetVals, setTargetVals] = React.useState<HSLVals>(getRandomHSLVals());
-  const [guessVals, setGuessVals] = React.useState<HSLVals>(INIT_HSL_GUESS_VALS);
-  const [hints, setHints] = React.useState<Record<HSLValsKey, string>>(INIT_HSL_HINTS);
+export const RGBGame = () => {
+  const [targetVals, setTargetVals] = React.useState<RGBVals>(getRandomRGBVals());
+  const [guessVals, setGuessVals] = React.useState<RGBVals>(INIT_RGB_GUESS_VALS);
+  const [hints, setHints] = React.useState<Record<RGBValsKey, string>>(INIT_RGB_HINTS);
   const [submitted, setSubmitted] = React.useState<boolean>(false);
 
-  const targetColor = React.useMemo(() => getHSLString(targetVals), [targetVals]);
-  const guessColor = React.useMemo(() => getHSLString(guessVals), [guessVals]);
+  const targetColor = React.useMemo(() => getRGBString(targetVals), [targetVals]);
+  const guessColor = React.useMemo(() => getRGBString(guessVals), [guessVals]);
 
-  const updateGuessVals = (key: keyof HSLVals, value: number) => {
+  const updateGuessVals = (key: keyof RGBVals, value: number) => {
     setHints((prev) => ({ ...prev, [key]: '' }));
     setGuessVals((prev) => ({ ...prev, [key]: value }));
   };
 
   const targetGuessList = React.useMemo(() => (
-    HSL_VAL_KEYS.map((key) => ({ target: targetVals[key], guess: guessVals[key], key }) as const)
+    RGB_VAL_KEYS.map((key) => ({ target: targetVals[key], guess: guessVals[key], key }) as const)
   ), [targetVals, guessVals]);
 
   const handleReset = () => {
-    setHints(INIT_HSL_HINTS);
-    setGuessVals(INIT_HSL_GUESS_VALS);
+    setHints(INIT_RGB_HINTS);
+    setGuessVals(INIT_RGB_GUESS_VALS);
     setSubmitted(false);
-    setTargetVals(getRandomHSLVals());
+    setTargetVals(getRandomRGBVals());
   };
   
   const onClickHint = React.useCallback(() => {
     const newHints = Object.fromEntries(
       targetGuessList.map(({ key, target, guess }) => [key, getHint(target, guess)] as const)
-    ) as Record<HSLValsKey, string>;
+    ) as Record<RGBValsKey, string>;
     
     setHints(newHints);
   }, [targetGuessList]);
@@ -79,9 +76,9 @@ export const HSLGame = () => {
       elevation={1}
       maxWidth={500}
     >
-      <Typography.H4 component="h3" textAlign="center">HSL - Hue, saturation, light</Typography.H4>
+      <Typography.H4 component="h3" textAlign="center">RGB - Hue, saturation, light</Typography.H4>
       <Typography.Body textAlign="center">
-        Try to guess the HSL values.
+        Try to guess the RGB values.
       </Typography.Body>
       <Tile
         showBorder
@@ -103,17 +100,15 @@ export const HSLGame = () => {
       {!submitted && (
         <>
           <Stack gap={4} width="100%">
-            {HSL_RANGE_INPUT_LIST.map(({ key, label, min, max, symbol, getBackground }) => (
+            {RGB_RANGE_INPUT_LIST.map(({ key, label }) => (
               <RangeInput
                 key={key}
                 id={key}
                 label={label}
                 value={guessVals[key]}
-                onChange={(e) => updateGuessVals(key as HSLValsKey, e.target.valueAsNumber)}
-                min={min}
-                max={max}
-                symbol={symbol}
-                background={getBackground(guessVals.hue)}
+                onChange={(e) => updateGuessVals(key as RGBValsKey, e.target.valueAsNumber)}
+                min={0}
+                max={255}
                 hint={hints[key]}
               />
             ))}
