@@ -4,6 +4,7 @@ import { ThemeButton } from 'global/components/Buttons';
 import { Typography } from 'global/components/Typography';
 import { Modal } from 'global/components/Modal';
 import { BottomDrawerModal, RightDrawerModal, ResponsiveDrawerModal } from 'global/components/Drawers';
+import { ModalAccessibilityContent } from './ModalContent';
 
 // simple hook to manage modal state
 const useModalActions = () => {
@@ -30,7 +31,7 @@ const ModalButton = () => {
           onClose={closeModal}
         />
         <Modal.MainContentContainer>
-          <Typography.H5 component="div">Modal Content</Typography.H5>
+          <ModalAccessibilityContent />
         </Modal.MainContentContainer>
         <Modal.FooterContainer>
           <ThemeButton filled text="Close" onClick={closeModal} />
@@ -51,7 +52,7 @@ const RightDrawerButton = () => {
         onClose={closeModal}
         title="Right Drawer"
       >
-        <Typography.H5 component="div">Right Drawer Content</Typography.H5>
+        <ModalAccessibilityContent />
       </RightDrawerModal>
     </>
   );
@@ -69,7 +70,7 @@ const BottomDrawerButton = () => {
         title="Bottom Drawer"
       >
         <Typography.H5 component="div">Bottom Drawer Content</Typography.H5>
-        <Box minHeight="200px" />
+        <ModalAccessibilityContent />
       </BottomDrawerModal>
     </>
   );
@@ -92,6 +93,7 @@ const ResponsiveDrawerButton = () => {
         <Typography.Body>
           Resize the browser window to see me change!
         </Typography.Body>
+        <ModalAccessibilityContent />
       </ResponsiveDrawerModal>
     </>
   );
