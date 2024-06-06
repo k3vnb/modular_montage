@@ -22,11 +22,21 @@ export const ResultsDisplay = ({
       <DisplayText>{`Your Guess - ${guessDisplay}`}</DisplayText>
       <DisplayText>{`Correct Answer - ${targetDisplay}`}</DisplayText>
       {isCorrect ? (
-        <DisplayText sx={{ color: theme => theme.styles.success.main }}>
+        <DisplayText
+          sx={{
+            color: theme => theme.styles.success.main,
+            fontSize: 18,
+          }}
+        >
           🎉🎉🎉 You got it right! 🎉🎉🎉
         </DisplayText>
       ) : (
-        <DisplayText sx={{ color: theme => theme.styles.danger.main }}>
+        <DisplayText
+          sx={{
+            color: theme => theme.styles.danger.main,
+            fontSize: 18,
+          }}
+        >
           {isAlmostCorrect ? 'You were close!' : 'Try again!'}
         </DisplayText>
       )}

@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { ROUTES } from './routes';
 import { AppLayout } from 'layouts';
 import { Pages, PlaceholderPage, ErrorPage, NotFoundPage } from 'pages';
+import { GameSubroutes } from 'pages/Games';
 import App from '../App';
 
 const router = createBrowserRouter([
@@ -24,6 +25,20 @@ const router = createBrowserRouter([
           {
             path: ROUTES.games.path,
             element: <Pages.Games />,
+            children: [
+              {
+                index: true,
+                element: <GameSubroutes.Menu />,
+              },
+              {
+                path: ROUTES.games.subroutes.hslGame.path,
+                element: <GameSubroutes.HSLGame />,
+              },
+              {
+                path: ROUTES.games.subroutes.rgbGame.path,
+                element: <GameSubroutes.RGBGame />,
+              },
+            ],
           },
           {
             path: ROUTES.settings.path,

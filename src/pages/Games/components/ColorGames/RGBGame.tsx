@@ -1,11 +1,10 @@
 import React from 'react';
 import { Box, Stack } from '@mui/system';
-import { Tile } from 'global/components/Tile/Tile';
-import { Typography } from 'global/components/Typography';
 import { ThemeButton } from 'global/components/Buttons';
 import { RangeInput } from 'global/components/Form/Inputs/RangeInput';
 import { ColorDisplay } from './ColorDisplay';
 import { ResultsDisplay } from './ResultsDisplay';
+import { GameContainerOuter } from './GameContainer';
 
 import {
   RGB_VAL_KEYS,
@@ -70,33 +69,20 @@ export const RGBGame = () => {
   ), [isCorrect, targetGuessList]);
 
   return (
-    <Tile
-      showBorder
-      gap={1} 
-      elevation={1}
-      maxWidth={500}
+    <GameContainerOuter
+      title="RGB - Red, Green, Blue"
+      description="Move the sliders to guess the guess the RGB values and match the color."
     >
-      <Typography.H4 component="h3" textAlign="center">RGB - Hue, saturation, light</Typography.H4>
-      <Typography.Body textAlign="center">
-        Try to guess the RGB values.
-      </Typography.Body>
-      <Tile
-        showBorder
-        justifyContent="center"
-        alignItems="center"
-        gap={2}
-        sx={{ background: theme => theme.styles.neutral[0] }}
-      >
-        {!submitted && (
-          <Box display="flex" flexDirection={{ xxs: 'column', sm: 'row' }} width="100%" gap={2} justifyContent="space-between" mt={2}>
-            <ThemeButton showBorder={false} shadow={false} onClick={onClickHint} text="Get a hint" size="small" />
-            <ThemeButton showBorder={false} shadow={false} onClick={handleReset} text="Get a new color to match" size="small" />
-          </Box>
-        )}
-        <Box display="flex" flexDirection="row" gap={3}>
-          <ColorDisplay backgroundColor={targetColor} label="Match this color" />
-          <ColorDisplay backgroundColor={guessColor} label="Your Guess" />
+      {!submitted && (
+        <Box display="flex" flexDirection={{ xxs: 'column', sm: 'row' }} width="100%" gap={2} justifyContent="space-between" mt={2}>
+          <ThemeButton showBorder={false} shadow={false} onClick={onClickHint} text="Get a hint" size="small" />
+          <ThemeButton showBorder={false} shadow={false} onClick={handleReset} text="Get a new color to match" size="small" />
         </Box>
+      )}
+      <Box display="flex" flexDirection="row" gap={3}>
+        <ColorDisplay backgroundColor={targetColor} label="Match this color" />
+        <ColorDisplay backgroundColor={guessColor} label="Your Guess" />
+      </Box>
       {!submitted && (
         <>
           <Stack gap={4} width="100%">
@@ -125,7 +111,6 @@ export const RGBGame = () => {
           handleReset={handleReset}
         />
       )}
-      </Tile>
-    </Tile>
+    </GameContainerOuter>
   );
 };

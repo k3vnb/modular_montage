@@ -11,6 +11,8 @@ const PATHS = {
   dashboard: '/dashboard',
   widgets: '/widgets',
   games: '/games',
+  hslGame: '/games/hsl-game',
+  rgbGame: '/games/rgb-game',
   about: '/about',
   etc: '/about/etc',
   etc2: '/about/etc2',
@@ -35,6 +37,14 @@ export const ROUTES = {
     path: PATHS.games,
     label: 'Games',
     icon: RobotIcon,
+    subroutes: {
+      hslGame: {
+        path: PATHS.hslGame,
+      },
+      rgbGame: {
+        path: PATHS.rgbGame,
+      },
+    },
   },
   about: {
     path: PATHS.about,
