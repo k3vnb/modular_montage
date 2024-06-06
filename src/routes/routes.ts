@@ -68,8 +68,8 @@ export const ROUTES = {
 
 export const NAV_ROUTES_LIST: TNavRoute[] = [
   ROUTES.dashboard,
-  ROUTES.widgets,
   ROUTES.games,
+  ROUTES.widgets,
   ROUTES.about,
   ROUTES.settings,
 ];
