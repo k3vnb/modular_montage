@@ -1,27 +1,24 @@
 import { Box, Stack } from '@mui/system';
-import { Tile } from 'global/components/Tile/Tile';
-import { Typography } from 'global/components/Typography';
+import { Tile } from 'global/components/Tile';
+import { H2, P } from 'global/components/Typography';
+
+const PARAGRAPHS = [
+  'If you\'ve tiptoed into the fray of web app development you\'ve probably had moments of reflection that you can\'t quite verbalize.  How is something so ubiquitous so disorienting to dissect?  How many acronyms can one thought contain before the thought melts into something irretrievable? My best answer is: just depends on the day.',
+  'Modular Montage is by and large a "meta" app - it is an app about itself, a starter kit, a component library, a sandbox, and a demo reel all in one. It is dedicated to the various systems that go into the architecture of a web application, including the exploration of themes, layout, and modular component structure.  It is my attempt to display the process of building cohesive digital interfaces and user experiences and maybe to explain them without melting into a sea of acronyms, though the sea of acronyms calls to me.',
+  'I will be updating this site regularly with new features, components, and themes.'
+];
 
 export const IntroTile = () => {
   return (
     <Box component="section">
       <Tile showBorder gap={3} elevation={1}>
-        <Typography.H2 component="h3" textAlign="center">
+        <H2 component="h3" textAlign="center">
           Welcome to Modular Montage
-        </Typography.H2>
-        <Stack gap={1}>
-          <Typography.Body>
-            This app is dedicated to the exploration of themes, layout, and components in a clientside rendered environment.
-          </Typography.Body>
-          <Typography.Body>
-            This is a dashboard page. It is a place where you can see the themes & layout design in action.
-          </Typography.Body>
-          <Typography.Body>
-            The 'Widgets page' will explore assortments of popups, modals, toasts and other components.
-          </Typography.Body>
-          <Typography.Body>
-            The 'Forms page' will explore form state, styling and validation.
-          </Typography.Body>
+        </H2>
+        <Stack gap={2}>
+          {PARAGRAPHS.map((text, index) => (
+            <P key={index} sx={{ fontSize: '1rem' }}>{text}</P>
+          ))}
         </Stack>
       </Tile>
     </Box>
