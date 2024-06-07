@@ -52,7 +52,7 @@ export type ElementColorMaps = {
     surface: string;
     surfaceActive: string;
   };
-  mandala: string[];
+  yantra: string[];
 };
 
 export type ThemedTemplateColorMap = {

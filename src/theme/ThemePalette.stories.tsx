@@ -4,7 +4,7 @@ import { Box, BoxProps, useTheme } from '@mui/system';
 
 import { UnstyledList, DividedList, ListItem } from 'global/components/List';
 import { ColorBox } from 'elements/Palette/ColorBox';
-import { PaletteMandala } from 'elements/Palette/PaletteMandala';
+import { PaletteYantra } from 'elements/Palette/PaletteYantra';
 import { Typography } from 'global/components/Typography';
 import { getThemeColorPaletteDisplay, type TPaletteDisplay } from './utils';
 
@@ -39,8 +39,8 @@ const PaletteExample = (props: TPaletteDisplay): JSX.Element => {
       <Typography.H2>{name}</Typography.H2>
       <Box display="inline-flex" alignItems="center" gap={20}>
         <Box display="inline-flex" alignItems="center" gap={2}>
-          <PaletteMandala {...props} />
-          <PaletteMandala reverse {...props} />
+          <PaletteYantra {...props} />
+          <PaletteYantra reverse {...props} />
         </Box>
         <Box display="flex" flexDirection="column" gap={2}>
           <ColorBoxList hexes={spectrum} />

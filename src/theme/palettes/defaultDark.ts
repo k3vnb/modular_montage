@@ -196,7 +196,7 @@ export const elements: ElementColorMaps = {
       '',
     ],
   },
-  mandala: [
+  yantra: [
     colors.blueViolet[900],
     colors.blueViolet[800],
     colors.blueViolet[700],

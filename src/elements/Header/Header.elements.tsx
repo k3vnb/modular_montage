@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { Box, Stack, styled, useTheme } from '@mui/system';
 import { NavMenuButton } from 'global/components/Buttons/NavMenuButton';
 import { UnstyledList, ListItem } from 'global/components/List';
-import { PaletteMandala } from 'elements/Palette/PaletteMandala';
+import { PaletteYantra } from 'elements/Palette/PaletteYantra';
 import { NAV_ROUTES_LIST, ROUTES, type TNavRoute } from 'routes';
 
 const NavMenuContainer = styled(Box)(({ theme }) => ({
@@ -71,7 +71,7 @@ export const Brand = ()=> {
         style={{ color: 'unset', textDecoration: 'unset' }}
       >
         <Box display="flex" flexDirection="row" gap={2}>
-          <PaletteMandala spectrum={theme.styles.elements.mandala} size={40} />
+          <PaletteYantra spectrum={theme.styles.elements.yantra} size={40} />
           <Stack className="brand" aria-hidden="true" alignItems="start" justifyContent="center">
             <Stack direction="row" alignItems="center">
               <StyledTitle mr="4px">Modular</StyledTitle>

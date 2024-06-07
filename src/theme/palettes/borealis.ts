@@ -224,7 +224,7 @@ export const elements: ElementColorMaps = {
       '',
     ],
   },
-  mandala: [
+  yantra: [
     colors.mutedBlue[900],
     rhinoBlue[500],
     rhinoBlue[450],

@@ -9,7 +9,7 @@ type Props = Omit<TPaletteDisplay, 'name'> & {
 
 const DEFAULT_SIZE = 44;
 
-export const PaletteMandala = ({
+export const PaletteYantra = ({
   spectrum,
   shades,
   reverse,
@@ -18,7 +18,6 @@ export const PaletteMandala = ({
   const list = reverse ? [...spectrum].reverse() : spectrum;
   return (
     <Box display="flex" alignItems="center" justifyContent="center" gap={1.25} position="relative" height={size} width={size} >
-      
       {list.map((hex, i, arr) => (
         <ColorBox
           key={hex}
