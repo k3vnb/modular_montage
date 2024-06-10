@@ -19,8 +19,6 @@ export const ResultsDisplay = ({
 }: Props) => {
   return (
     <Stack gap={2} alignItems="center">
-      <DisplayText>{`Your Guess - ${guessDisplay}`}</DisplayText>
-      <DisplayText>{`Correct Answer - ${targetDisplay}`}</DisplayText>
       {isCorrect ? (
         <DisplayText
           sx={{
@@ -28,7 +26,7 @@ export const ResultsDisplay = ({
             fontSize: 18,
           }}
         >
-          🎉🎉🎉 You got it right! 🎉🎉🎉
+          🎉🎉🎉 <Box component="span" mx={2}>You got it right! </Box>🎉🎉🎉
         </DisplayText>
       ) : (
         <DisplayText
@@ -40,6 +38,9 @@ export const ResultsDisplay = ({
           {isAlmostCorrect ? 'You were close!' : 'Try again!'}
         </DisplayText>
       )}
+      <DisplayText>{`Your Guess - ${guessDisplay}`}</DisplayText>
+      <DisplayText>{`Correct Answer - ${targetDisplay}`}</DisplayText>
+      
       <ThemeButton onClick={handleReset} text="Play again" />
     </Stack>
   );

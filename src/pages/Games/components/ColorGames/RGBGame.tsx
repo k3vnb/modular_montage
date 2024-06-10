@@ -71,7 +71,7 @@ export const RGBGame = () => {
   return (
     <GameContainerOuter
       title="RGB - Red, Green, Blue"
-      description="Move the sliders to guess the guess the RGB values and match the color."
+      description="Move the sliders to guess the RGB values and match the color."
     >
       {!submitted && (
         <Box display="flex" flexDirection={{ xxs: 'column', sm: 'row' }} width="100%" gap={2} justifyContent="space-between" mt={2}>

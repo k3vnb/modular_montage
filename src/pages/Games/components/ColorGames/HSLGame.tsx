@@ -74,7 +74,7 @@ export const HSLGame = () => {
   return (
     <GameContainerOuter
       title="HSL - Hue, Saturation, Lightness"
-      description="Move the sliders to guess the guess the HSL values and match the color."
+      description="Move the sliders to guess the HSL values and match the color."
     >
       {!submitted && (
         <Box display="flex" flexDirection={{ xxs: 'column', sm: 'row' }} width="100%" gap={2} justifyContent="space-between" mt={2}>
