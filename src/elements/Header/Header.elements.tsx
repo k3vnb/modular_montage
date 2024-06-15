@@ -5,40 +5,6 @@ import { UnstyledList, ListItem } from 'global/components/List';
 import { PaletteYantra } from 'elements/Palette/PaletteYantra';
 import { NAV_ROUTES_LIST, ROUTES, type TNavRoute } from 'routes';
 
-const NavMenuContainer = styled(Box)(({ theme }) => ({
-  ...theme.styles.textMdSemibold,
-  '.nav-item': {
-    textDecoration: 'underline',
-    textDecorationColor: 'transparent',
-    textDecorationThickness: '2px',
-    color: theme.styles.elements.header.surfaceContrast[1],
-    textUnderlineOffset: theme.spacing(0.75),
-    transition: 'text-decoration-color 0.1s ease-in-out',
-    '&:hover': {
-      textDecorationColor: theme.styles.elements.header.surfaceContrast[0],
-      color: theme.styles.elements.header.surfaceContrast[0],
-    },
-    '&.active': {
-      textDecorationColor: theme.styles.elements.header.border[0],
-      color: theme.styles.elements.header.surfaceContrast[1],
-    },
-  },
-  [theme.breakpoints.down('sm')]: {
-    display: 'none',
-  },
-}));
-
-const BurgerButtonContainer = styled(Box)(({ theme }) => ({
-  display: 'none',
-  [theme.breakpoints.down('sm')]: {
-    display: 'inline-flex',
-  },
-}));
-
-const NavItem = styled(NavLink)(({ theme }) => ({
-  color: theme.styles.elements.header.surfaceContrast[0],
-}));
-
 export const NavMenu = () => {
   return (
     <>
@@ -87,6 +53,40 @@ export const Brand = ()=> {
     </>
   );
 };
+
+const NavMenuContainer = styled(Box)(({ theme }) => ({
+  ...theme.styles.textMdSemibold,
+  '.nav-item': {
+    textDecoration: 'underline',
+    textDecorationColor: 'transparent',
+    textDecorationThickness: '2px',
+    color: theme.styles.elements.header.surfaceContrast[1],
+    textUnderlineOffset: theme.spacing(0.75),
+    transition: 'text-decoration-color 0.1s ease-in-out',
+    '&:hover': {
+      textDecorationColor: theme.styles.elements.header.surfaceContrast[0],
+      color: theme.styles.elements.header.surfaceContrast[0],
+    },
+    '&.active': {
+      textDecorationColor: theme.styles.elements.header.border[0],
+      color: theme.styles.elements.header.surfaceContrast[1],
+    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    display: 'none',
+  },
+}));
+
+const BurgerButtonContainer = styled(Box)(({ theme }) => ({
+  display: 'none',
+  [theme.breakpoints.down('sm')]: {
+    display: 'inline-flex',
+  },
+}));
+
+const NavItem = styled(NavLink)(({ theme }) => ({
+  color: theme.styles.elements.header.surfaceContrast[0],
+}));
 
 const StyledTitle = styled(Box)(({ theme }) => ({
   ...theme.styles.textLgMedium,
