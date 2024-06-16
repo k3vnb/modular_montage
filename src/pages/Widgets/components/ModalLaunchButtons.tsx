@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box } from '@mui/system';
 import { ThemeButton } from 'global/components/Buttons';
 import { Typography } from 'global/components/Typography';
 import { Modal } from 'global/components/Modal';
